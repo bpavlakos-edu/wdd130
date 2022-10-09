@@ -46,13 +46,15 @@ header{
 }
 .book, .join{
     text-decoration: none;
-    background-color: #0695EA;
-    transition-duration: 200ms;
-    color:#1E0C6F
-}
-.book:hover, .join:hover{
     background-color:#1E0C6F;
     color:#ffffff;
+    transition-duration: 200ms;
+
+}
+.book:hover, .join:hover{
+    background-color: #0695EA;
+    color:#1E0C6F;
+    text-decoration: underline;
 }
 .msg{
     background-color: #1e0c6fb9;
@@ -104,4 +106,9 @@ footer p{
 }
 #hero-img{
     width: 100%;
+}
+
+/*Added because it just doesn't look right*/
+nav{
+    background-color: #1E0C6F;
 }
