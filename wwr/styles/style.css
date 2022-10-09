@@ -36,7 +36,7 @@ main section{
 }
 /*12*/
 body{
-    color:#FFF;
+    color:#0695EA;
     background-color: white;
     background-image: linear-gradient(#bdf,#fff 50%,#0695EA 85%,#1E0C6F,#f67a14ab);
 }
