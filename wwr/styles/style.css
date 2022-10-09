@@ -54,7 +54,7 @@ header{
 .book:hover, .join:hover{
     background-color: #0695EA;
     color:#1E0C6F;
-    text-decoration: underline;
+    /*text-decoration: underline;*/
 }
 .msg{
     background-color: #1e0c6fb9;
