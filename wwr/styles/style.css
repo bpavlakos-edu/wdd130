@@ -1,0 +1,107 @@
+/* How I learned about gradients: https://www.youtube.com/watch?v=f3mwKLXpOLk*/
+
+#content{
+    width :  1000px;
+    margin : 0 auto;
+    max-width : 1600px;
+}
+/*10 */
+nav a{
+    text-decoration: none;
+    text-align: center;
+    color:#fff;
+    background: #1E0C6F;
+    transition-duration: 200ms; /*https://www.w3schools.com/css/css3_buttons.asp I finally understand how this works*/
+}
+nav a:hover{
+    background-color: #0695EA;
+    color:#1E0C6F;
+}
+#hero-msg h1, #hero-msg h4{
+    text-align: center;
+}
+
+.button-box{
+    text-align: center;
+}
+
+main section{
+    text-align: center;
+}
+/*11*/
+#background{
+    height: 725px;
+    background-color : #1e0c6f54;
+    background-image: linear-gradient(#bde7ff38,#1e0c6fbb); /*Something a little extra (;*/
+}
+/*12*/
+body{
+    color:#0695EA;
+    background-color: white;
+    background-image: linear-gradient(#bdf,#fff 50%,#0695EA 75%,#1E0C6F,#f67a14ab);
+}
+header{
+    background-color: #0695EA;
+    background-image: repeating-linear-gradient(#f67a14ab,#0695EA,#bde);
+}
+.book, .join{
+    text-decoration: none;
+    background-color: #0695EA;
+    transition-duration: 200ms;
+    color:#1E0C6F
+}
+.book:hover, .join:hover{
+    background-color:#1E0C6F;
+    color:#ffffff;
+}
+.msg{
+    background-color: #1e0c6fb9;
+}
+footer{
+    color:#fff;
+    background-color: #1e0c6fb9;
+}
+/*13*/
+.home-title{
+    color:#0695EA;
+}
+h4{
+    color:#1e0c6fb9;
+}
+.msg h2{
+    color: #fff;
+}
+.msg p{
+    color: #fff;
+}
+footer a{
+    color : #fff;
+    text-decoration: none;
+}
+footer a:hover{
+    color :#0695EA;
+    text-decoration: underline;
+}
+
+/*Step 15*/
+footer p{
+    font-size: 1.2em;
+}
+
+/*Step 14*/
+/*Added for logo color to have a normal background*/
+/*Nice, I did step 14 early!*/
+.logo{
+    width: 80px; /*14*/
+    background-color: #fff;
+    background: radial-gradient(#fff 50%,rgb(236, 245, 255));
+    border: 2px solid #f67a14a2; /*https://www.w3schools.com/css/css3_buttons.asp https://developer.mozilla.org/en-US/docs/Web/CSS/border-style https://developer.mozilla.org/en-US/docs/Web/CSS/border*/
+    border-radius: 20px; /*https://www.w3schools.com/css/css3_borders.asp*/
+}
+
+.icon{
+    width: 80px;
+}
+#hero-img{
+    width: 100%;
+}
