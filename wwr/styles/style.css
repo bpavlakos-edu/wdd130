@@ -32,13 +32,13 @@ main section{
 #background{
     height: 725px;
     background-color : #1e0c6f54;
-    background-image: linear-gradient(#bde7ff38,#1e0c6fbb); /*Something a little extra (;*/
+    background-image: linear-gradient(#56c1ff96,#1e0c6fbb); /*Something a little extra (;*/
 }
 /*12*/
 body{
-    color:#0695EA;
+    color:#FFF;
     background-color: white;
-    background-image: linear-gradient(#bdf,#fff 50%,#0695EA 75%,#1E0C6F,#f67a14ab);
+    background-image: linear-gradient(#bdf,#fff 50%,#0695EA 85%,#1E0C6F,#f67a14ab);
 }
 header{
     background-color: #0695EA;
