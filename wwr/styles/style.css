@@ -49,18 +49,25 @@ nav a:hover{
 .book, .join{
     text-decoration: none;
     background-color: #1E0C6F;
-    color: #ffffff;
+    color: #fff;
     transition-duration: 200ms;
     font-size: 18px; /*Step 02*/
     padding: 15px 30px; /*Step 04*/
     margin-top: 50px; /*Step 05*/
     border-radius: 5px; /*Rounded button!*//*Step 06*/
+    border: 3px solid #fff; /*Added for better visibility*/
+    box-shadow: 0px 0px 0px 3px #f67a14;
+    background-image: linear-gradient(#1E0C6F 50%, #000);
+    
 }
 
 .book:hover, .join:hover{
-    background-color: #0695EA;
+    background-color: #0696ea;
     color: #1E0C6F;
     /*text-decoration: underline;*/
+    border: 3px solid #1E0C6F; /*Added for better visibility*/
+    box-shadow: 0px 0px 10px 5px #f67a14;
+    background-image: linear-gradient(#0696ea,#fff);
 }
 
 .button-box{
