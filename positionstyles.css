@@ -1,0 +1,417 @@
+/* CSS - Name: "positionstyles.css" */
+/* Activity 1 styles */
+.content1 {
+  /* This is the parent of the activity 1 boxes. */
+  display: grid; /*Step 05*/
+  grid-template-columns: 1fr 1fr; /*Step 05*/
+  justify-items: center; /*Step 06-B*/
+  grid-gap: 20px; /*Step 06-C*/
+}
+.red1 { 
+  width: 100%; /*Step 04-A*/
+  height: 100px;
+  background-color: red; 
+  grid-column: 1/3; /*Step 06-A*/ /*Very clever, using only the column, so that you don't have to set the row as well*/
+} 
+.green1 {
+  width: 200px; /*Step 04-B*/
+  height: 200px; /*Step 04-B*/
+  background-color: green; 
+
+} 
+.yellow1 {
+  width: 200px; /*Step 04-B*/
+  height: 200px; /*Step 04-B*/ 
+  background-color: gold;
+
+} 
+.blue1 {
+  width: 100%; /*Step 04-A*/ 
+  height: 100px;
+  background-color: blue; 
+  grid-column: 1/3; /*Step 06-A*/ /*Very clever, using only the column, so that you don't have to set the row as well*/
+} 
+/* Activity 2 styles */
+/* https://byui-wdd.github.io/wdd130/images/example2.png */
+.content2 {
+  /* This is the parent of the activity 2 boxes. */
+  display: grid;
+  /*Suggestion was to setup 50px 50px 50px 50px 50px grid*/
+  /*So I automated it instead*/
+  grid-template-columns: repeat(5, 50px);
+  grid-template-rows: repeat(5, 50px);
+}
+.red2 {
+  width: 100px; 
+  height: 100px; 
+  background-color: red; 
+  /*No additions needed*/
+} 
+.green2 { 
+  width: 100px; 
+  height: 100px; 
+  background-color: green;
+  /*Set grid position*/
+  grid-column: 2/3;
+  grid-row: 2/3;
+} 
+.yellow2 {
+  width: 100px; 
+  height: 100px; 
+  background-color: gold;
+  /*Set grid position*/
+  grid-column: 3/4;
+  grid-row: 3/4;
+} 
+.blue2 {
+  width: 100px; 
+  height: 100px; 
+  background-color: blue;
+  /*Set grid position*/
+  grid-column: 4/5;
+  grid-row: 4/5;
+} 
+/* Activity 3 styles */ 
+/*https://byui-wdd.github.io/wdd130/images/example3.png*/
+.content3 {
+  /* This is the parent of the activity 3 boxes. */
+  display: grid;/*I forgot this for a long time*/
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-column-gap: 10%; /*Puts a gap in the columns, but only when specified*/
+}
+.red3 {
+  width: 100%; /*make it stretch across the viewport, this is the width of the grid too!*/ 
+  height: 100px; /*Must be a number, or else the viewport won't work!*/
+  background-color: red;
+  grid-column: 1/3; /*Stretch across the entire viewport*/
+  grid-row: 1/2; /*Top*/
+} 
+.green3 {
+  /*Fill grid box*/
+  width: 100%;
+  height: 100%;/*Changed to 2x size*/
+  background-color: green;
+  grid-column: 1/2;
+  grid-row: 2/4; /*start at the second row, end at the second to last row*/
+} 
+.yellow3 {
+  /*Fill grid box*/
+  width: 100%;
+  height: 100%;
+  background-color: gold;
+  grid-column: 2/3;
+  grid-row: 2/4; /*start at the second row, end at the second to last row*/
+} 
+.blue3 {
+  /*Fill grid box*/
+  width: 100%;
+  height: 100%; 
+  background-color: blue; 
+  grid-column: 1/3; /*Stretch across the entire viewport*/
+  grid-row: 4/5; /*Bottom*/
+} 
+/* Activity 4 styles */ 
+/*https://byui-wdd.github.io/wdd130/images/example4.png*/
+/*Completed before checking hint*/
+.content4 {
+  /* This is the parent of the activity 4 boxes. */
+  height: 400px;
+  /*New Code*/
+  display: grid; /*Activate Grid*/
+  grid-template-columns: 1fr 1fr; /*Split grid in half*/
+  grid-template-rows: repeat(3, 1fr); /*Split rows into thirds*/
+}
+.red4 {
+  /*Fill by grid size*/
+  width: 100%; 
+  height: 100%; 
+  background-color: red;
+  grid-column: 1/2; /*Left side of the grid*/
+  grid-row: 1/4; /*Top to bottom of grid*/
+} 
+.green4 {
+  /*Fill by grid size*/
+  width: 100%; 
+  height: 100%; 
+  background-color: green;
+  grid-column: 2/3; /*Right side of the grid */
+  /*Row is intristic, doesn't need set*/
+} 
+.yellow4 {
+  /*Fill by grid size*/
+  width: 100%; 
+  height: 100%; 
+  background-color: gold;
+  grid-column: 2/3; /*Right side of the grid */
+  /*Row is intristic, doesn't need set*/
+} 
+.blue4 {
+  /*Fill by grid size*/
+  width: 100%; 
+  height: 100%; 
+  background-color: blue;
+  grid-column: 2/3; /*Right side of the grid */
+  /*Row is intristic, doesn't need set*/
+} 
+/* Activity 5 styles */ 
+/*https://byui-wdd.github.io/wdd130/images/example5.png*/
+/*float practice*/
+.content5 {
+  /* This is the parent of the activity 5 boxes. */
+  /*height: 400px;*/
+  height: fit-content; /*Changed to dynamically adjust to content size*/
+}
+.red5 { 
+  width: 100%; /*fill viewport width*/ 
+  height: 100px; 
+  background-color: red; 
+} 
+.green5 { 
+  /*Square*/
+  width: 200px; 
+  height: 200px; 
+  background-color: green;
+  float: left; /*Make the box affect the text wrapping*/
+} 
+.yellow5 {
+  width: 100%; /*fill viewport width*/ 
+  height: fit-content; /*Special height value, makes it scale to the optimal size for the text*/
+  min-height: 270px; /*Measured in gimp*/ 
+  background-color: gold; 
+} 
+.blue5 {
+  width: 100%; /*fill viewport width*/ 
+  height: 100px; /*25% of 400px is 100px*/
+  background-color: blue; 
+} 
+/* Activity 6 styles */ 
+/* Z-level challenge???*/
+/*Completed before checking hint*/
+/*https://byui-wdd.github.io/wdd130/images/example6.png*/
+.content6 {
+  /* This is the parent of the activity 6 boxes. */
+  display: grid;
+  /*Create a 600px by 600px grid, controlled by 6 lines in both directions*/
+  grid-template-columns: repeat(6, 100px);
+  grid-template-rows: repeat(6, 100px);
+  justify-content: center;
+}
+.red6 {
+  /*Fill grid specified size*/
+  width: 100%; 
+  height: 100%; 
+  background-color: red;
+  /*4 by 2 square, top left*/
+  grid-column: 1/5;
+  grid-row: 1/3;
+} 
+.green6 {
+  /*Fill grid specified size*/
+  width: 100%; 
+  height: 100%;
+  background-color: green; 
+  /*2 by 2 square in the bottom left*/
+  grid-column: 1/3;
+  grid-row: 5/7;
+  z-index: 1;
+} 
+.yellow6 {
+  /*Fill grid specified size*/
+  width: 100%; 
+  height: 100%;
+  background-color: gold; 
+  /*2 by 4 square, bottom right*/
+  grid-column: 5/7;
+  grid-row: 3/7;
+  z-index: 1;
+} 
+.blue6 {
+  /*Fill grid specified size*/
+  width: 100%; 
+  height: 100%; 
+  background-color: blue; 
+  /*5 by 5 square*/
+  grid-column: 2/6;
+  grid-row: 2/6;
+} 
+/*Custom Activity*/
+/*Variables for the cube*/
+/*I added these because calculating the Z offset (which can't use #%) and viewport size by hand was difficult*/
+:root{
+  /*https://www.w3schools.com/css/css3_variables.asp*/
+  --squareSize: 25vw; /*25vw = 640px, which is very close to the original max size of 600px*/
+  --lineWidth: 0.3749vw; /* If it's 200px to 3px line width: 3/200 = 0.015, 0.015 * 25vw ~= 0.3749vw 8px = 0.417vw, 4px = 0.209vw on 1920px, 6px = 0.3133vw on 1920px*/ /*Line stroke width*/
+}
+/*Content container*/
+.content7{
+  /*Center everything. doesn't actually work*/
+  justify-self: center;
+  justify-items: center;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  align-self: center;
+  /*Overflow Protection*/
+  height: calc(var(--squareSize)*1.5);
+}
+/*Rotation Container*/
+.content7container {
+  /* This is the parent of the custom activity boxes. */
+  /*transform: rotateX(45deg) rotateY(0deg) rotateZ(45deg) scale3d(1,1,1);*/
+  transform-style: preserve-3d; /*Enables actual 3d transfomations, not just flat stuff*/ /*https://css-tricks.com/almanac/properties/t/transform-style/*/
+  /*Root size, controls the box that displays the contents, and the size until it disoplays the scroll wheel*/
+  width: var(--squareSize);
+  height: var(--squareSize);
+  margin: calc(var(--squareSize) / 2) auto ; /*Need extra padding to prevent the scroll wheel from appearing*/
+  /*transition-duration: 500ms;*/
+  animation: rotcube 15s linear infinite;
+  animation-play-state: paused;
+}
+/*Hover animation*/
+.content7container:hover{
+  /*transform: rotate3d(1,1,1,0deg);
+  animation-delay: 500ms;*/
+  /* animation: rotcube 15s linear infinite; */
+  /*animation-fill-mode: both;*/
+  animation-play-state: running; /*Alternate strategy from here: https://developer.mozilla.org/en-US/docs/Web/CSS/animation-play-state*/
+  
+}
+
+/*Keyframes*/
+/*https://developer.mozilla.org/en-US/docs/Web/CSS/transform*/
+/*https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/translate3d*/
+/*https://www.w3schools.com/css/css3_3dtransforms.asp*/
+@keyframes rotcube {
+  0%{
+    transform: rotateX(45deg) rotateY(0deg) rotateZ(45deg);
+    /* transform: rotate3d(0,0,0,360deg); */
+  }
+  100%{
+    transform: rotateX(405deg) rotateY(360deg) rotateZ(405deg);
+    /* transform: rotate3d(1,1,1,360deg); */
+  }
+}
+
+/*Control the sizes of all sides at one time*/
+.side3D{
+  /*Guide to stationary centered elements: https://www.freecodecamp.org/news/how-to-center-an-absolute-positioned-element/*/
+  /*Set position offset to 0,0,0,0*/
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto; /*Forces elements to the middle*/
+  /*Was 200px*/
+  width: calc(var(--squareSize) - (var(--lineWidth) * 2)); /*Subtract 2x border width */
+  height: calc(var(--squareSize) - (var(--lineWidth) * 2)); /*Subtract 2x border width */
+  border: var(--lineWidth) solid #fff;
+  /*border-radius: 1%; /*Attempted rounded corners*/
+  /*border-radius: 50%;/* Interesting Result */
+  position: absolute;/*Allows us to use 0 0 0 0 auto
+  /*position: sticky;/*Odd result, useful for background images that change???*/
+  opacity: 75%; /*This is a workaround for the bug that makes edges sharp*/
+}
+
+/*The basic Idea is to form a cube by making squares and then rotating them in 3d*/
+/*Rotate 0 to 270 on x axis and 0 to 270 on the y axis, this effects which direction the Z-Axis moves
+Translate (move) outward from the center, by using the z-axis, distance is square length / 2, the .003 is to compensate for rounding errors that cause graphical glitches
+*/
+.red7{
+  background-color: red;
+  transform: rotateX(0deg) rotateY(0deg) translate3d(0px, 0px, calc(var(--squareSize) / 2.003));
+} 
+.green7{
+  background-color: green;
+  transform: rotateX(270deg) rotateY(0deg) translate3d(0px, 0px, calc(var(--squareSize) / 2.003));
+} 
+.yellow7{
+  background-color: gold;
+  transform: rotateX(0deg) rotateY(90deg) translate3d(0px, 0px, calc(var(--squareSize) / 2.003));
+} 
+.blue7{
+  background-color: blue;
+  transform: rotateX(180deg) rotateY(0deg) translate3d(0px, 0px, calc(var(--squareSize) / 2.003));
+}
+.cyan7{
+  background-color: rgb(0, 215, 250);
+  transform: rotateX(0deg) rotateY(270deg) translate3d(0px, 0px, calc(var(--squareSize) / 2.003));
+}
+.purple7{
+  background-color: purple;
+  transform: rotateX(90deg) rotateY(0deg) translate3d(0px, 0px, calc(var(--squareSize) / 2.003)); 
+  /*transform: rotateX(135deg) rotateY(45deg) rotateZ(0deg) translate3d(0px, 0px, -27.5vh); /*Rotates the square, how odd*/
+}
+
+/* Do not make any changes below here */
+.activity {
+  width: 70%; 
+  margin: 20px auto; 
+  font-family: Arial, sans-serif; 
+  border: 1px solid black; 
+  padding: 10px; 
+  clear:both; 
+  overflow: auto;
+} 
+
+.hint {
+  border: 1px solid grey;
+  background: #e0e0e0;
+  padding: .5em;
+  position: relative;
+  margin: 1em 0;
+}
+.hint h3 {
+  margin: 0;
+}
+.hint:hover {
+  background: #d0d0d0;
+}
+.hint > div {
+  display: none;
+}
+
+.hint input[type=checkbox] {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.hint input[type=checkbox]:checked ~ div {
+  display: block;
+}
+
+.hint i {
+  position: absolute;
+  transform: translate(-6px, 0);
+  margin-top: 16px;
+  right: 10px;
+  top: -3px;
+}
+.hint i:before, .hint i:after {
+  content: "";
+  position: absolute;
+  background-color: black;
+  width: 3px;
+  height: 9px;
+}
+.hint i:before {
+  transform: translate(2px, 0) rotate(45deg);
+}
+.hint i:after {
+  transform: translate(-2px, 0) rotate(-45deg);
+}
+
+.hint input[type=checkbox]:checked ~ i:before {
+  transform: translate(-2px, 0) rotate(45deg);
+}
+.hint input[type=checkbox]:checked ~ i:after {
+  transform: translate(2px, 0) rotate(-45deg);
+}
+.hint a {
+  position: relative;
+  z-index: 1;
+}
