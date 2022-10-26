@@ -5,7 +5,7 @@
 
 /*Container for body content*/
 #content{
-    width:  1000px;
+    width:  100%; /*Setting the width to 1000px is what was messing this up so badly*/
     margin: 0 auto;
     max-width: 1600px;
 }
@@ -15,35 +15,125 @@ body{
     color:#0695EA;
     background-color: white;
     background-image: linear-gradient(#bdf,#fff 50%,#0695EA 85%,#1E0C6F,#f67a14ab);
-    font-family : 'Open Sans', 'Trebuchet MS', sans-serif; /*Step 01*/
-    font-size: 22px; /*Step 02*/
-    margin: 0; /*Step 03*/
-    padding: 0; /*Step 03*/
+    font-family : 'Open Sans', 'Trebuchet MS', sans-serif; /*W05 - Step 01*/
+    font-size: 22px; /*W05 - Step 02*/
+    margin: 0; /*W05 - Step 03*/
+    padding: 0; /*W05 - Step 03*/
+}
+
+/*Header Section*/
+header{
+    background-color: #0696eab8; /*Altered to take advantage of transparency*/
+    background-image: repeating-linear-gradient(#f67a14a8,#0695EAa8,#bbddeea8); /*Altered to take advantage of transparency*/
+    display: grid; /*W07 - Step 01A*/
+    grid-template-columns: 150px auto; /*W07 - Step 01A*/
+    /*border: 1px solid #0696ea;*/
+}
+
+.logo{
+    width: 80px;
+    background-color: #fff;
+    background: radial-gradient(#fff 50%,rgb(236, 245, 255));
+    border: 2px solid #f67a14a2; /*https://www.w3schools.com/css/css3_buttons.asp https://developer.mozilla.org/en-US/docs/Web/CSS/border-style https://developer.mozilla.org/en-US/docs/Web/CSS/border*/
+    border-radius: 20px; /*https://www.w3schools.com/css/css3_borders.asp*/
+}
+
+#logo_link{/*Added Week 05*/
+    padding-top: 5px; /*W05 - Step 04*/
+    justify-self: center; /*W07 - Step 01C*/ 
+    align-self: center; /*W07 - Step 01C*/
+}
+
+nav{
+    /*background-color: #1e0c6f;*/ /*Removed in week 07 so that the cool background is still visible with the grid*/
+    display: flex; /*W07 - Step 01B*/
+    justify-content: space-around; /*W07 - Step 01B*/
+}
+
+/*Attempted line below nav bar*/
+/* header::after{
+    width: 100%;
+    height: 5px;
+    background-color: #0695EA;
+    content: "";
+    z-index: 1;
+    display: block;
+} */
+
+nav a{
+    text-decoration: none;
+    text-align: center;
+    color: #fff;
+    /*background-color: #1e0c6f75; /*Restored in w07, and now transparent, Due to new grid display*/ /*Previous transparency level: a2*/
+    transition-duration: 200ms; /*https://www.w3schools.com/css/css3_buttons.asp I finally understand how this works*/
+    padding: 35px; /*W05 - Step 04*/ /*If this is changed to 0px 35px 35px 35px, it fixes the issue we're having with backgrounds being too large on the top*/
+    /* border-radius: 15px; */
+    /*margin: 10px 0;*/ /*Experimenting with new ways of making the nav elements not touch the line so the background is still visible*/
+    /*background: linear-gradient(#00000059,#1E0C6F75); /*Changed to gradient*/
+    background: linear-gradient(#00000000,#1E0C6F00); /*Changed to gradient*/
+    /*border: 1px solid #0696ea00;/*#1E0C6F;*/
+}
+
+nav a:hover{
+    background-color: #0695EA75;
+    color: #1E0C6F;
+    padding: 35px; /*W05 - Step 04*/ /*If this is changed to 0px 35px 35px 35px, it fixes the issue we're having with backgrounds being too large on the top*/
+    background: linear-gradient(#ffffffbc,#0696eabc); /*Changed to gradient*/
+    /*background: linear-gradient(#0695EA,#bbddee); /*Changed to gradient*/
+    /*border: 1px solid #0695EA88;*/
+}
+
+/*Hero and book (and join) button*/
+
+#hero{ /*Added W07*/
+    display: grid; /*W07 Step 2A*/
+    grid-template-columns: 1fr 3fr 1fr; /*W07 Step 2A*/
+    grid-template-rows: 1fr 1fr; /*Not asked for but I added it*/
+    margin-top: -100px; /*W07 Step 3A*/
+}
+
+#hero-box{ /*Added W07*/
+    grid-column: 1/4; /*W07 Step 2B*/
+    grid-row: 1/3; /*W07 Step 2B*/
+    z-index: -1; /*W07 Step 3C*/
+}
+
+#hero-msg{ /*Added W07*/
+    grid-column: 2/3; /*W07 Step 2C*/
+    grid-row: 1/2; /*W07 Step 2C*/
+    margin-top: 100px; /*W07 Step 3B*/
+}
+
+#hero-msg h4{/*Added to provide contrast as suggested in W07 Step 2D*/
+    color: #1e0c6f; /*#f67a14*/
+    text-shadow: 1px 1px 0px #fff, -1px -1px 0px #fff, -1px 1px 0px #fff, 1px -1px 0px #fff; /*Multiple Shadows as described here: https://developer.mozilla.org/en-US/docs/Learn/CSS/Styling_text/Fundamentals#text_drop_shadows and https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow#multiple_shadows*/
+    letter-spacing: 0.05em; /*Increased spacing*/
+    font-size: 1.109em; /*Increased size of font for better visiblity*/
+}
+
+#hero-img{
+    width: 100%;
 }
 
 #hero-msg h1, #hero-msg h4{
     text-align: center;
 }
 
-/*Added because it just doesn't look right*/
-nav{
-    background-color: #1e0c6f;
+.home-title{
+    color: #0695EA;
+    font-family: 'Architects Daughter', 'Papyrus', sans-serif; /*W05 - Step 01*/
+    font-size: 2em; /*W05 - Step 02*/
+    margin-top: 10px; /*W05 - Step 05*/
+    text-shadow: 1px 1px 0px #fff, -1px -1px 0px #fff, -1px 1px 0px #fff, 1px -1px 0px #fff; /*Added to provide contrast as suggested in W07 Step 2D*/
+    letter-spacing: 0.05em;
 }
 
-nav a{
-    text-decoration: none;
+h4{ /*Generic Selector No longer in use due to #hero-msg h4*/
+    color: #1e0c6f;
+}
+
+.button-box{ /*Generic Selector*/
     text-align: center;
-    color: #fff;
-    /*background-color: #1E0C6F;*/ /*typo fixed*/
-    transition-duration: 200ms; /*https://www.w3schools.com/css/css3_buttons.asp I finally understand how this works*/
-    padding: 35px; /*Step 04*/ /*If this is changed to 0px 35px 35px 35px, it fixes the issue we're having with backgrounds being too large on the top*/
-}
-
-nav a:hover{
-    background-color: #0695EA;
-    color: #1E0C6F;
-    padding: 35px; /*Step 04*/ /*If this is changed to 0px 35px 35px 35px, it fixes the issue we're having with backgrounds being too large on the top*/
-    
 }
 
 .book, .join{
@@ -51,10 +141,10 @@ nav a:hover{
     background-color: #1E0C6F;
     color: #fff;
     transition-duration: 200ms;
-    font-size: 18px; /*Step 02*/
-    padding: 15px 30px; /*Step 04*/
-    margin-top: 50px; /*Step 05*/
-    border-radius: 5px; /*Rounded button!*//*Step 06*/
+    font-size: 18px; /*W05 - Step 02*/
+    padding: 15px 30px; /*W05 - Step 04*/
+    margin-top: 50px; /*W05 - Step 05*/
+    border-radius: 5px; /*Rounded button!*//*W05 - Step 06*/
     border: 3px solid #fff; /*Added for better visibility*/
     box-shadow: 0px 0px 0px 3px #f67a14;
     background-image: linear-gradient(#1E0C6F 50%, #000);
@@ -70,95 +160,111 @@ nav a:hover{
     background-image: linear-gradient(#0696ea,#fff);
 }
 
-.button-box{
-    text-align: center;
-}
+/*Main (middle) content*/
 
 main section{
     text-align: center;
 }
 
 main section img{
-    box-sizing: border-box; /*Step 06*/ /*"Now the border and image will be included in the size of those images."*/
+    box-sizing: border-box; /*W05 - Step 06*/ /*"Now the border and image will be included in the size of those images."*/
+}
+
+.home-grid{ /*W07 Added*/
+    display: grid; /*W07 Step 4A*/
+    grid-template-columns: repeat(10,1fr); /*W07 Step 4A*/
+    /*Rows are implcitly constructed*/
+}
+
+.card-img, .mountains{
+    width: 100%; /*W07 Step 4B*/
+}
+
+/*Card grid placements*/
+.rivers-card{
+    grid-column: 2/4; /*W07 Step 4C*/
+    grid-row: 2/3; /*W07 Step 4C*/
+}
+
+.camping-card{
+    grid-column: 5/7; /*W07 Step 4C*/
+    grid-row: 2/3; /*W07 Step 4C*/
+}
+
+.rapids-card{
+    grid-column: 8/10; /*W07 Step 4C*/
+    grid-row: 2/3; /*W07 Step 4C*/
+}
+
+/*Card size*/
+.card-img{/*Week 05*/
+    border: 10px solid #f67a14; /*W05 - Step 06*/
+    transition: 0.5s; /*W07 Step 6A*/
+    box-shadow: 5px 5px 10px #6f7364; /*W07 Step 6A*/
+}
+
+.card-img:hover{ /*Added week 07*/
+    opacity: .6; /*W07 Step 6A*/
+    transform: scale(1.1); /*W07 Step 6A*/
+}
+
+.rivers-card, .camping-card, .rapids-card{ /*Week 05*/
+    margin: 200px 0; /*W05 - Step 05*/
+}
+
+.icon{
+    width: 80px;
+    padding-top: 10px; /*W05 - Step 04*/
 }
 
 #background{
     height: 725px;
     background-color: #1e0c6f54;
     background-image: linear-gradient(#56c1ff96,#1e0c6fbb);
+    grid-column: 1/11; /*W07 - Step 04C*/
+    grid-row: 4/9; /*W07 - Step 04C*/
 }
 
-h2{/*Added Week 05*/
-    margin: 0; /*Step 03*/
-}
-
-h4{
-    color: #1e0c6fb9;
-}
-
-header{
-    background-color: #0695EA;
-    background-image: repeating-linear-gradient(#f67a14ab,#0695EA,#bde);
-}
-
-.logo{
-    width: 80px;
-    background-color: #fff;
-    background: radial-gradient(#fff 50%,rgb(236, 245, 255));
-    border: 2px solid #f67a14a2; /*https://www.w3schools.com/css/css3_buttons.asp https://developer.mozilla.org/en-US/docs/Web/CSS/border-style https://developer.mozilla.org/en-US/docs/Web/CSS/border*/
-    border-radius: 20px; /*https://www.w3schools.com/css/css3_borders.asp*/
-}
-
-#logo_link{/*Added Week 05*/
-    padding-top: 5px; /*Step 04*/
-}
-
-.home-title{
-    color: #0695EA;
-    font-family: 'Architects Daughter', 'Papyrus', sans-serif; /*Step 01*/
-    font-size: 2em; /*Step 02*/
-    margin-top: 10px; /*Step 05*/
-}
-
-#hero-img{
-    width: 100%;
-}
-
-.card-img{/*Week 05*/
-    border: 10px solid #f67a14; /*Step 06*/
-}
-
-.rivers-card, .camping-card, .rapids-card{ /*Week 05*/
-    margin: 200px 0; /*Step 05*/
-}
-
-.icon{
-    width: 80px;
-    padding-top: 10px; /*Step 04*/
+.mountains{ /*Added Week 07*/
+    grid-column: 2/7; /*W07 Step 04C*/
+    grid-row: 5/8; /*W07 Step 04C*/
+    box-shadow: 5px 5px 10px #f67a14; /*W07 Step 06B*/
 }
 
 .msg{
     background-color: #1e0c6fb9;
-    line-height: 1.5em; /*Step 02*/
-    padding: 35px; /*Step 04*/
+    line-height: 1.5em; /*W05 - Step 02*/
+    padding: 35px; /*W05 - Step 04*/
+    grid-column: 6/10; /*W07 Step 04C*/
+    grid-row: 6/7; /*W07 Step 04C*/
+    box-shadow: 5px 5px 10px #f67a14; /*W07 Step 06B*/
+}
+
+h2{/*Added Week 05*/
+    margin: 0; /*W05 - Step 03*/
 }
 
 .msg h2{
     color: #fff;
-    font-family: 'Architects Daughter', 'Papyrus', sans-serif; /*Step 01*/
+    font-family: 'Architects Daughter', 'Papyrus', sans-serif; /*W05 - Step 01*/
 }
 
 .msg p{
     color: #fff;
-    font-size: 0.8em; /*Step 02*/
-    padding-bottom: 15px; /*Step 04*/
+    font-size: 0.8em; /*W05 - Step 02*/
+    padding-bottom: 15px; /*W05 - Step 04*/
 }
+
+/*Footer section*/
 
 footer{
     color:#fff;
     background-color: #1e0c6fb9;
-    padding: 25px 50px; /*Step 04*/
-    margin-top: 200px; /*Step 05*/
+    padding: 25px 50px; /*W05 - Step 04*/
+    margin-top: 200px; /*W05 - Step 05*/
+    display: flex; /*W07 Step 05*/
+    justify-content: space-around; /*W07 Step 05*/
+    align-items: center; /*W07 Step 05*/
 }
 
 footer a{
@@ -166,9 +272,14 @@ footer a{
     text-decoration: none;
 }
 
-footer a:hover{
+footer a:hover{ 
     color:#0695EA;
     text-decoration: underline;
+}
+
+.social a, .social a:hover{/*Social media underline bug fix, discovered in W05 added W07, targets normal and hover a links for icons*/
+    color: transparent;
+    text-decoration: none;
 }
 
 footer p{
@@ -176,5 +287,49 @@ footer p{
 }
 
 footer .social img{ /*Added week 05*/
-    padding-top: 15px; /*Step 04*/
+    padding-top: 15px; /*W05 - Step 04*/
+}
+
+/*Mobile Phone Accessibility*/
+/*Added Week 07*/
+@media screen and (max-width: 900px){
+    #hero, .home-grid{
+        display: block;
+        height: auto;
+    }
+    nav, footer{
+        flex-direction: column;
+    }
+    nav a{
+        display: block;
+        padding: 15px;
+    }
+    #hero{
+        margin-top: 0;
+    }
+    #hero-msg{
+        margin-top: 0;
+    }
+    #hero-msg h4{/*Hidden On mobile devices*/
+        display: none;
+    }
+    .home-title{
+        font-size: 25px;
+        color: #0695EA;
+    }
+    .rivers-card, .camping-card, .rapids-card{
+        margin: 50px auto;
+        width: 60%;
+    }
+    #background{
+        display: none;
+    }
+    .mountains, .msg{
+        width: 80%;
+        display: block;
+        margin: 0 auto;
+    }
+    footer{
+        margin-top: 25px;
+    }
 }
