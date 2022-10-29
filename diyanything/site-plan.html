@@ -1,0 +1,256 @@
+
+<!DOCTYPE html>
+<html lang="en-us">
+    
+  <head>
+    <meta charset="utf-8">
+    <title>DIY Anything Site Plan</title>
+    <link type="text/css" rel="stylesheet" href="styles/site-plan.css">
+  </head>
+
+  <body>
+    <header>
+      <h1 class="decovar-blueprint">"DIY Anything" Site Plan</h1>
+      <h2>Bryce Pavlakos</h2>
+      <h2>WDD 130-11</h2>
+      <!-- In the header above, add the name or your site, your name and class number. For example if you are in section 3 you would put WDD 130.03 -->
+    </header>
+    <main>
+
+      <!-- ========================Steps 2-3============================== -->
+      <hr>
+      <h2>Overview</h2>
+      <h3>Purpose</h3>
+      <p>Our purpose is to teach the audience as much about my hobbies as possible, in a way they'll remember. We will achieve this goal through eye-catching CSS, interactive graphics (like image maps or interactive text highlighting), and ensuring that the content we teach is simple enough for beginners, and still useful to those who already have experience. We will also be providing links to the many, low cost or free, tools and tutorials, that I use each day to accomplish my goals, even ones that aren't directly related to content of the website. All this will be done, in the hope that the audience will not only learn how to do my hobbies, but also be inspired to overcome the challenges in their own.</p>  <!-- change this -->
+
+
+      <h3>Audience</h3>
+      <p>Our target audience is anyone who is willing to learn something new, especially those who want to learn more about my technology-related hobbies, we'll try to appeal to them visually, because if they see something awesome, they'll try to figure out how it works, and learn from it. Another important target audience, are those who's hobbies are hindered by seemingly impossible challenges. The experiences and the resources I provide are here to both inspire, and directly assist them so they can overcome their challenges. Many of the free tools and tutorials I use on a daily basis, have been around for years, I've simply just never known about them before now. Other tools, are brand new, but also obscure, making them difficult to locate unless you stumble upon them by chance. I'm confident that anyone who visits my website will learn gain something, whether that's a tool, a new way of thinking, or even just the idea to look for resources they haven't utilized yet.</p>  <!-- change this -->
+
+      <hr>
+      <h2>Branding</h2>
+      <h3>Website Logo</h3>
+      <!-- Replace this with some sort of logo for your site.  A logo can be as simple as the name of your site in a nice font :) -->
+      <img src="images/logo.png" alt="Logo image">
+      <hr>
+      <h2>
+        Style Guide
+      </h2>
+
+      <!-- ========================Steps 4-8============================== -->
+
+      <h3>
+        Color Palette
+      </h3>
+      <!--  The colors you choose for a website are one of the most important decisions you will make. Follow the instructions on the activity in iLearn then return and replace the color codes below with the hex color codes (the 6 digit numbers that show at the bottom of each color) for the colors you have chosen below.  You should have at least 2 colors but do not have to fill in all 4 if you do not need them.  -->
+
+      <!-- Copy and paste the URL to your finished palette below Make sure to paste it into both spots -->
+      Palette URL: <a href="https://coolors.co/248df0-001247-ff5900-63bb98-ffffff-000000" target="_blank">https://coolors.co/248df0-001247-ff5900-63bb98-ffffff-000000</a>
+
+
+      <table class="colors">
+        <!--<tr><th>Primary</th><th>Secondary</th><th>Accent 1</th><th>Accent 2</th></tr>-->
+        <tr>
+          <th>Primary</th>
+          <th>Secondary</th>
+          <th>Accent 1</th>
+          <th>Accent 2</th>
+          <th>White Color</th>
+          <th>Black Color</th>
+        </tr>
+        <!-- Replace the numbers in the boxes below with your hex color codes. Then switch to the site-plan.css file and change your colors there as well. -->
+        <!--<tr><td class="primary">[#396E94]</td><td class="secondary">[#E7C24F]</td><td class="accent1">[#A43312]</td><td class="accent2"></td></tr>-->
+        <tr>
+          <td class="primary">[#248df0]</td>
+          <td class="secondary">[#001247]</td>
+          <td class="accent1">[#FF5900]</td>
+          <td class="accent2">[#63BB98]</td>
+          <td class="whitecolor">[#FFFFFF]</td>
+          <td class="blackcolor">[#000000]</td>
+        </tr>
+        <!--Alpha Test-->
+        <tr>
+           <!--Thank you stack overflow, I finally know how to use colspan: https://stackoverflow.com/questions/35942708/fill-entire-table-row-in-css-->
+           <!-- it was behaving buggy when I tried to use it, from reading the DOCs on it () I think it bugs out when you set the number to exceed the max number of columns (ex 6) https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table#complicated_tables-->
+          <th class="row-width-header" colspan="6">Opacity Test 100% to 0%</th>
+        </tr>
+        <tr class="alphaTestRoot">
+          <td class="primary alphaTest"></td>
+          <td class="secondary alphaTest"></td>
+          <td class="accent1 alphaTest"></td>
+          <td class="accent2 alphaTest"></td>
+          <td class="whitecolor alphaTest"></td>
+          <td class="blackcolor alphaTest"></td>
+        </tr>
+        <!--Gradient-->
+        <tr>
+          <th class="row-width-header" colspan="6">Gradient Preview</th>
+        </tr>
+        <tr class="gradientContainer" id="gradientPreview"><td class="gradientContentEmptyBox" colspan="6"></td></tr>
+        <!--
+        <tr class="gradientContainerFlipped"><td class="gradientContentEmptyBox" colspan="6"></td></tr>
+        <tr class="gradientContainerUp"><td class="gradientContentEmptyBox" colspan="6"></td></tr>
+        <tr class="gradientContainerDown"><td class="gradientContentEmptyBox" colspan="6"></td></tr>
+        <tr class="gradientContainerSlope"><td class="gradientContentEmptyBox" colspan="6"></td></tr>
+        -->
+        <!--Buttons With Javascript-->
+        <tr>
+          <th colspan="6">
+            <input id="rangeSlider" type="range" min="0" max="360" value="90" step="5" oninput="rangeLabel.innerHTML = this.value+'deg'; document.querySelector(':root').style.setProperty('--rotVar',this.value+'deg');"><!--Finally found the documentation: https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement#events-->
+            Rotation:
+            <label for="rangeSlider" id="rangeLabel">90deg</label>
+            <button class="JSBtn" onclick="rangeSlider.value = 90; rangeLabel.innerHTML = rangeSlider.value+'deg'; document.querySelector(':root').style.setProperty('--rotVar','90deg');">Reset</button>
+            <!--JavaScript Explained:
+            Slider:
+            Change the label to the current value of the slider
+            Change the CSS variable for gradient rotation rotation to the current value of the slider
+            Reset Button:
+            Reset the slider to the value of 90
+            Reset the label to be "90deg"
+            Reset the CSS Variable to be 90deg
+            -->
+            <!--<button class="JSBtn" onclick="gradientPreview.classList = ['gradientContainer']">Default</button>
+            <button class="JSBtn" onclick="gradientPreview.classList = ['gradientContainerFlipped']">Default</button>
+            <button class="JSBtn" onclick="gradientPreview.classList = ['gradientContainerUp']">Default</button>
+            <button class="JSBtn" onclick="gradientPreview.classList = ['gradientContainerDown']">Default</button>-->
+          </th>
+        </tr>
+        
+      </table>
+
+      <!-- ========================Step 9============================== -->
+
+      <h3>
+        Typography
+      </h3>
+      <!-- Choose a font for your paragraphs (body copy) and headlines. What font(s) have you chosen? Why did you choose what you did?  Make sure to review the list of web safe fonts at W3Schools.org as a starting point.  Think also about which of your colors above you might use for background and font colors. -->
+
+      <h4 class="decovar-blueprint">
+        Heading Font: Decovar<!-- change this -->
+      </h4>
+      <h3>
+        Decovar Settings: [Open-Inline-Terminal: 205, Weight: 15, Rounded: 1000]
+      </h3>
+      <h3>
+        Note: Increased Font Size is Required, to compensate for the naturally small font size of Decovar. All headers were adjusted, to make it closer to how it will be implemented in the final website.
+      </h3>
+      <h4 class="recursive-default">
+        Paragraph Font: Recursive  [Preset: Sans Linear, Cursive: 0]<!-- change this -->
+      </h4>
+      <h4 class="recursive-console">
+        Coding Font: Recursive  [Weight: 335, Monospace: 1, Cursive: 0]<!-- change this -->
+      </h4>
+      <h4 class="recursive-console">
+        Examples: System.out.println("Hello world!"); 48 65 78 21
+      </h4>
+      <h3>
+        Normal paragraph example
+      </h3>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+      <h3>
+        Colored paragraph example
+      </h3>
+      <p class="colored">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+      </p>
+
+      <!-- ========================Step 10============================== -->
+
+      <h3>
+        Navigation
+      </h3>
+      <!-- Think about how you want your navigation bar to look. In the site-plan.css file change the colors to your colors to get the look you desire. --> 
+      <nav>
+        <a href="#">Home</a>
+        <a href="#">Page2</a>
+        <a href="#">Page3</a>
+      </nav>
+      <hr>
+      <h2>
+        Site Map
+      </h2>
+      <div class="sitemap">
+        <div class="sm-home">
+          Home
+        </div>
+        <div class="sm-page2">
+          [Page2] <!-- change this -->
+        </div>
+        <div class="sm-page3">
+          [Page3]  <!-- change this -->
+        </div>
+
+        <div class="top">
+          &nbsp;
+        </div>
+        <div class="left">
+          &nbsp;
+        </div>
+        <div class="right">
+          &nbsp;
+        </div>
+
+      </div>
+
+      <!-- ========Content Section ============== -->
+      <hr>
+      <h2>
+        Content
+      </h2>
+      <h3>Home page</h3>
+      <p>
+        [Written copy for the home page here]
+      </p>
+      <p>Images for the Home page</p>
+        <img src="#" alt="image for homepage">
+        <img src="#" alt="image for homepage">
+
+      <!--</ul> Detected as broken-->
+      <h3>[Page 2]</h3>
+      <p>
+        [Written copy for the Page 2 here]
+      </p>
+      <p>Images for the Page 2</p>
+        <img src="#" alt="image for page">
+        <img src="#" alt="image for page">
+
+      <!--</ul> Detected as broken-->
+      <h3>[Page 3]</h3>
+      <p>
+        [Written copy for the Page 3 here]
+      </p>
+      <p>Images for the Page 3</p>
+        <img src="#" alt="image for page3">
+        <img src="#" alt="image for page3">
+
+      <!--</ul> Detected as broken-->
+      <hr>
+      <h2>
+        Wireframes
+      </h2>
+      <p>
+        Create three wireframes for your site. One for each page and list them here</p>
+
+      <h3>Home</h3>
+      <p>         
+        [Any additional details about home that the wireframe does not make clear]
+      </p>
+      <img src="#" alt="home page wireframe">
+
+      <h3>[Page 2]</h3>
+      <p>         
+        [Any additional details about page 2 that the wireframe does not make clear]
+      </p>
+      <img src="#" alt="page 2 wireframe">
+
+      <h3>[Page 3]</h3>
+      <p>         
+        [Any additional details about page 3 that the wireframe does not make clear]
+      </p>
+      <img src="#" alt="page 3 wireframe">
+    </main>
+  </body>
+
+</html>

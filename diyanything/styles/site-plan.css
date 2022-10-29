@@ -1,0 +1,362 @@
+/* if you are using any Google fonts change the font names below to your fonts. 
+Any spaces in your font name should be replaced with a +. 
+Fonts are separated by a | */
+/*@import url('https://fonts.googleapis.com/css?family=IM+Fell+French+Canon+SC|Lato');*/
+/*@import url('https://fonts.googleapis.com/css2?family=Rubik+Moonrocks&display=swap');*/ /*Rubik Dirt Import*/
+/*@import url('https://fonts.googleapis.com/css2?family=Rubik+Dirt&display=swap');*/ /*Rubik Dirt Import*/
+/*@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');*/ /*Rubik Dirt Import*/
+/*@import url('https://fonts.googleapis.com/css2?family=Tourney:ital,wdth,wght@0,75..125,100..900;1,75..125,100..900&display=swap');*/
+/*Body font: Recursive, special import instructions for full range found here: */
+@import url('https://fonts.googleapis.com/css2?family=Recursive:slnt,wght,CASL,CRSV,MONO@-15..0,300..1000,0..1,0..1,0..1&display=swap');
+/*With this import, I am importing the entire range of settings, not just one particular option*/
+/*I found out how to do this here:
+https://css-tricks.com/getting-the-most-out-of-variable-fonts-on-google-fonts/#aa-getting-a-full-variable-font-with-the-google-fonts-api
+And from the comments: https://www.launch2success.com/guide/getting-google-font-variable-files/ */
+
+/*This one had to be downloaded, it was an open source variable font that was never finished*/
+/*It is available for download here:
+https://github.com/googlefonts/decovar
+https://github.com/googlefonts/decovar/tree/master/fonts
+This font has a Open Font Liscence: https://github.com/googlefonts/decovar/blob/master/LICENSE.txt
+Learn more here: https://www.typenetwork.com/brochure/decovar-a-decorative-variable-font-by-david-berlow#?skelID=SA&skel=1&termID=TA&term=1
+And a wonderful example of why this font is good: https://variablefonts.typenetwork.com/examples/animation/grass */
+
+@font-face {
+  font-family: "Decovar Alpha Regular";
+  /*font-family: "Decovar Blueprint"; /*Custom name for this preset, [once I figure out how to do that...]*/
+  src: url("fonts/DecovarAlpha-VF.ttf") format("truetype-variations");
+}
+:root {
+  /*New palette*/
+  /*https://coolors.co/248df0-001247-ff5900-63bb98-ffffff-000000*/
+  /* change the values below to your colors from your palette */
+  --primary-color: #248df0;/*#248df0; #006ef7*/
+  --secondary-color: #001247;
+  --accent1-color: #ff5900;
+  --accent2-color: #63bb98;
+  /*"New" colors*/
+  --black-color: #000000;
+  --white-color: #ffffff;
+
+  /* change the values below to your chosen font(s) */
+  --heading-font: "Decovar Alpha Regular", "Arial Black", display;
+  --paragraph-font: Recursive, Helvetica, sans-serif;
+
+  /*Font for the hex editor examples*/
+  --console-font: Recursive,"Courier New", monospace; 
+  /*Courier New is actually the default for any hex editor, and since it's a websafe font it's a great fallback! 
+  Found here:
+  https://www.w3schools.com/cssref/css_websafe_fonts.php
+  https://www.w3schools.com/cssref/tryit.php?filename=trycss_font_courier
+  */
+
+  /* these colors below should be chosen from among your palette colors above */
+  --headline-color-on-white: var(--primary-color);  /* headlines on a white background */ 
+  --headline-color-on-color: var(--white-color); /* headlines on a colored background */
+  /*Paragraphs*/
+  --paragraph-color-on-white: var(--secondary-color); /* paragraph text on a white background */ 
+  --paragraph-color-on-color: var(--secondary-color); /* paragraph text on a colored background */ 
+  --paragraph-background-color: var(--primary-color);
+
+  --paragraph-color: var(--black-color); /*Missing Variable*/
+
+  /*Nav Bar*/
+  --nav-link-color: var(--secondary-color);
+  --nav-background-color: var(--primary-color);
+  --nav-hover-link-color: var(--white-color); /*Previously white*/
+  --nav-hover-background-color: var(--secondary-color);
+
+  --rotVar: 90deg; /*This variable controls the gradient's rotation*/
+}
+/*COmbining selectors
+I tried making sense of this: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors
+BUt the only thing I know from that is adjacent sibling, * universal selector, and list selector, it didn't explain the others well
+Now searching through CSS Tricks::after
+https://css-tricks.com/almanac/selectors/i/is/ - Interesting but not the solution
+https://css-tricks.com/almanac/selectors/a/attribute/ Also interesting
+https://stackoverflow.com/questions/20363823/css-selector-based-on-font-weight - This is what I was looking for, but I found something similar earlier and thought it couldnt make variable font presets
+Yeah, I found it here: https://www.digitalocean.com/community/tutorials/css-font-face
+*/
+/*decovar is a very complicated font, so we need to declare presets here*/
+/*And we need to override the user agent defaults because it won't be visible otherwise*/
+h1,h2,h3,h4,h5,h6,.decovar-heading{
+  /*Presets*/
+  /*Values tested (and analyzed to find their font axis names) here: 
+  https://www.axis-praxis.org/specimens/decovar
+  Minimum of all values is 0, maximum is 1000*/
+  --blda: "BLDA" 0; /*Inline*/
+  --trmd: "TRMD" 0; /*Sheared*/
+  --trmc: "TRMC" 0; /*Rounded Slab*/
+  --skld: "SKLD" 0; /*Stripes*/
+  --trml: "TRML" 0; /*Worm Termininal*/
+  --skla: "SKLA" 0; /*Inline Skeleton*/
+  --trmf: "TRMF" 205;  /*Open Inline Terminal*/
+  --trmk: "TRMK" 0; /*Inline Terminal*/
+  --bldb: "BLDB" 0; /*Worm*/
+  --wmx2: "WMX2" 15; /*Weight*/
+  --trmb: "TRMB" 0; /*Flared*/
+  --trma: "TRMA" 1000; /*Rounded*/
+  --sklb: "SKLB" 0; /*Worm Skeleton*/
+  --trmg: "TRMG" 0; /*Slab*/
+  --trme: "TRME" 0; /*Bifurcated*/
+  /*Interesting setting that I might use later: https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant */
+  font-variation-settings: var(--blda), var(--trmd), var(--trmc), var(--skld), var(--trml), var(--skla), var(--trmf), var(--trmk), var(--bldb), var(--wmx2), var(--trmb), var(--trma), var(--sklb), var(--trmg), var(--trme);
+  font-weight: normal; /*Using bold on this font type causes visual glitches*/
+  font-size: 2rem;
+}
+/*An override for font size, will later hold the settings for decovar*/
+.decovar-blueprint{
+  font-size: 5rem;
+}
+h4.decovar-blueprint{
+  margin: 0px;
+}
+
+/* h1,h2,h3,h4,h5,h6*/
+/*Used this tool again  to get the default values for these styles of this variable font*/
+/*https://www.axis-praxis.org/specimens/decovar [Note I had to download the font from google fonts and upload it into the tool]*/
+.recursive-default{
+  /*Custom variables as stated by example here: https://www.recursive.design/#toolbar*/
+  /*Very close to sans linear*/
+  --mono: "MONO" 0;/* Monospace: Sans (natural-width) or Mono (fixed-width) */
+  --casl: "CASL" 0;/* Casual: Linear (0) to Casual (1)*/
+  --wght: "wght" 400;/* Weight: Light to ExtraBlack; usually set with `font-weight` */
+  --slnt: "slnt" 0;/* Slant: 0 to -15 degrees, auto cursive at -14 */
+  --crsv: "CRSV" 0;/* Cursive: always roman (0), auto substitution (0.5), or always cursive (1)*/
+  font-variation-settings: var(--mono),var(--casl),var(--wght),var(--slnt),var(--crsv);
+  /*Override h4 from later in the CSS*/
+  color: var(--black-color);
+  font-variant-caps: Normal;
+  font-family: var(--paragraph-font);
+  /*Override the decovar font size increase*/
+  font-size: inherit;
+  margin: 0; /*Fix the margins because they get all wacky when you change the font size*/
+}
+
+/*Console / Numerical Font*/
+.recursive-console{
+  --Cmono: "MONO" 1;
+  --Ccasl: "CASL" 0;
+  --Cwght: "wght" 335;
+  --Cslnt: "slnt" 0;
+  --Ccrsv: "CRSV" 0;
+  /*Override h4 from later in the CSS*/
+  font-variation-settings: var(--Cmono),var(--Ccasl),var(--Cwght),var(--Cslnt),var(--Ccrsv);
+  font-variant-caps: Normal;
+  font-family: var(--console-font);
+  color: var(--black-color);
+  /*Override the decovar font size increase*/
+  font-size: initial;
+}
+
+/*Custom Color Test Headers*/
+.row-width-header{
+  height : 1.5em;
+}
+
+/*Gradient box selector*/
+/*Original template*/
+.gradientContainer{
+  height: 6em;
+  background-image: linear-gradient(var(--rotVar),var(--primary-color),var(--secondary-color),var(--accent1-color),var(--accent2-color));/*Use the colors as a gradient*/
+}
+
+/*Alternate Designs
+.gradientContainerFlipped{
+  background-image: linear-gradient(270deg,var(--primary-color),var(--secondary-color),var(--accent1-color),var(--accent2-color));
+}
+.gradientContainerUp{
+  background-image: linear-gradient(0deg,var(--primary-color),var(--secondary-color),var(--accent1-color),var(--accent2-color));
+}
+.gradientContainerDown{
+  background-image: linear-gradient(180deg,var(--primary-color),var(--secondary-color),var(--accent1-color),var(--accent2-color));
+}
+.gradientContainerSlope{
+  background-image: linear-gradient(45deg,var(--primary-color),var(--secondary-color),var(--accent1-color),var(--accent2-color));
+}*/
+
+/*Make sure the gradient "content" box is max size, so that we can display the gradient behind it*/
+.gradientContentEmptyBox{
+  width: 100%;
+  height: 100%;
+}
+
+/*Alpha test*/
+.alphaTest{
+  opacity: 100%;
+  /*background: linear-gradient(0deg,#ffffff00 0%,#ffffffff);*/ /*Cool effect but not what I want*/
+  /*--maskGradient: linear-gradient(270deg,rgba(255,255,255,0.0) 0%,rgba(255,255,255,0.0) 25%,rgba(255,255,255,0.25) 25%,rgba(255,255,255,0.25) 50%,rgba(255,255,255,0.5) 50%,rgba(255,255,255,0.75) 75%,rgba(255,255,255,1.0) 75%,rgba(255,255,255,0.0) 100%); /*made it a variable to change it easier*/
+  --maskGradient: linear-gradient(270deg,#FFFFFF00,#FFFFFFFF); /*made it a variable to change it easier*/
+  mask-image: var(--maskGradient); /*this runs on firefox*/
+  -webkit-mask-image: var(--maskGradient); /*This one works on chrome https://www.w3schools.com/css//css3_masking.asp*/
+}
+.alphaTestRoot{
+  --inc: 25%; /*Declare this variable here it will be used to calculate the distance between each stopper*/
+  /*By starting and stopping at a shared position, and having two stoppers a distance apart from eachother, we create a repeating stripe pattern, I only changed it to a variable so that I could change it quicker*/
+  /*Also it's easier to repeat a gradient up and down than it is to repeat it horizontally to match cell width*/
+  background: repeating-linear-gradient(180deg,var(--primary-color) 0px, var(--primary-color) calc(var(--inc) * 1), var(--secondary-color) calc(var(--inc) * 1), var(--secondary-color) calc(var(--inc) * 2), var(--accent1-color) calc(var(--inc) * 2), var(--accent1-color) calc(var(--inc) * 3), var(--accent2-color) calc(var(--inc) * 3), var(--accent2-color) calc(var(--inc) * 4));
+}
+
+/*New "colors"*/
+.whitecolor{
+  background-color: var(--white-color);
+  color:var(--black-color);
+  width: fit-content;
+}
+.blackcolor{
+  background-color: var(--black-color);
+  color:var(--white-color);
+  width: fit-content;
+}
+
+/*Adjust text color in palette to reflect correct text color usage*/
+.secondary{
+  color:var(--white-color);
+}
+
+/*  Look around below...but DON'T CHANGE ANYTHING! */
+
+body {
+  max-width: 1200px; /*Why is this different from the last template???*/
+  margin: 0 auto;
+  padding: 4em;
+  font-size: 18px;
+  text-align: center;
+}
+img {
+  display: block;
+  margin: 0 auto;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--heading-font);
+  color: var(--headline-color-on-white);
+}
+h2 {
+  text-align: center;
+}
+hr {
+  height: 3px;
+  margin: 35px 0;
+  background: var(--accent1-color);
+}
+header {
+  padding: 1em;
+  text-align: center;
+  color: var(--paragraph-color-on-color);
+  background-color: var(--paragraph-background-color);
+}
+header > h1, header > h2 {
+  color: var(--headline-color-on-color);
+}
+
+p {
+  font-family: var(--paragraph-font);
+  color: var(--paragraph-color);
+  padding: 1em;
+}
+.colors {
+  width: 100%;
+  min-width: 350px;
+  margin: 30px auto;
+  text-align: center;
+}
+.colors th {
+  background-color: #999;
+}
+.colors td{
+  width: 25%; /*Needs to be calc(100%/6) now that we have new colors if we want it to be even*/
+  height: 3em;
+}
+
+.primary {
+  background-color: var(--primary-color);
+}
+.secondary {
+  background-color: var(--secondary-color);
+}
+.accent1 {
+  background-color: var(--accent1-color);
+}
+.accent2{
+  background-color: var(--accent2-color);
+}
+
+p.colored {
+  background-color: var(--paragraph-background-color);
+  color: var(--paragraph-color-on-color);
+}
+
+nav {
+  background-color: var(--nav-background-color);
+  line-height: 3em;
+  text-align: center;
+  font-size: 1.2em;
+}
+nav  {
+  list-style-type: none;
+  display: flex;
+
+}
+nav a {
+  padding:1em;
+  min-width: 120px;
+  text-decoration: none;
+  padding: 10px;
+
+}
+nav a:link, nav a:visited {
+  color: var(--nav-link-color);
+}
+nav a:hover {
+  color: var(--nav-hover-link-color);
+  background-color: var(--nav-hover-background-color);
+}
+
+.sitemap {
+  display: grid;
+  justify-content: center;
+
+  grid-template-columns: repeat(6, 15%);
+  grid-template-rows: 3em 1.5em 1.5em 3em;
+  grid-template-areas: ". . home home . ."
+    ". . . top . ."
+    ". left left right right ."
+    "page2 page2 . . page3 page3";
+}
+.sitemap > div {
+
+  text-align: center;
+
+}
+.sm-home {
+  grid-area: home;
+  background-color: #ccc;
+  line-height: 3em;
+}
+.sm-page2 {
+  grid-area: page2;
+  background-color: #ccc;
+  line-height: 3em;
+}
+.sm-page3 {
+  grid-area: page3;
+  background-color: #ccc;
+  line-height: 3em;
+}
+
+.top {
+  grid-area: top;
+  border-left: 1px solid;
+}
+
+.left {
+  grid-area: left;
+  border-top: 1px solid;
+  border-left: 1px solid;
+}
+
+.right {
+  grid-area: right;
+  border-top: 1px solid;
+  border-right: 1px solid;
+}
