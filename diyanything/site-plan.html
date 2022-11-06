@@ -164,8 +164,8 @@
       <!-- Think about how you want your navigation bar to look. In the site-plan.css file change the colors to your colors to get the look you desire. --> 
       <nav>
         <a href="#">Home</a>
-        <a href="#">Page2</a>
-        <a href="#">Page3</a>
+        <a href="#">Reverse Engineering</a>
+        <a href="#">Electrical Engineering</a>
       </nav>
       <hr>
       <h2>
@@ -176,10 +176,16 @@
           Home
         </div>
         <div class="sm-page2">
-          [Page2] <!-- change this -->
+          Reverse Engineering <!-- change this -->
         </div>
         <div class="sm-page3">
-          [Page3]  <!-- change this -->
+          Electrical Engineering  <!-- change this -->
+        </div>
+        <div class="sm-page4">
+          Computer Programming  <!-- change this -->
+        </div>
+        <div class="sm-page5">
+          Toolbox  <!-- change this -->
         </div>
 
         <div class="top">
@@ -201,29 +207,51 @@
       </h2>
       <h3>Home page</h3>
       <p>
-        [Written copy for the home page here]
+        My name is Bryce Pavlakos. My journey with computers started when I was 12, I used notepad to modify a video game's scripts, in a language that to this day, has not been documented online. In High School, I took programming classes, and discovered three things: what I did at age 12 was called “programming”, you can get paid to program, and that programming is easier in languages with online documentation, using programs that tell you when a semicolon is missing. In High School, I also had the chance to take a class in my other hobby, Electrical Engineering, and I enjoyed it just as much as my programming classes. The hobbies and skills prepared me for the next step in understanding computers, Reverse Engineering! Now let me clarify, by “Reverse Engineering” I mean: making programs function better than ever was originally intended, overriding hard-coded EXE limitations in programs that have no hope of ever being updated, and documenting unknown file formats so that a program can be created for mod making. These modifications, are what many people online call “impossible”, but I've learned that many of these “impossible” changes are often only a few bytes away. In my time Reverse Engineering, I've fully reverse-engineered 10+ file formats, across 8+ Video Games, and successfully modified the binaries of 6 Video Games, to make them function better or overcome a limitation. My experiences in mod making and reverse engineering, have taught me more about the inner workings of computers than anyone would want to willingly learn, and introduced me to powerful tools, many of which being free. It has also taught me, that nothing is truly impossible if you set your mind to it. It can be very difficult at times, but in the end overcoming a challenge is always worth the effort!
+        <br>
+        On this site, I will teach you 3 lessons about my hobbies (Computer Programming, Electrical Engineering, and Reverse Engineering) in a specific order, so that each lesson can build off the other one. First, I'll teach you the very basics of computer programming. After that, I will then teach you the basics of electrical engineering, so that you can take your code and use it to impact the physical world. And finally, after learning how programming and electricity work together, I'll then teach you the basics of reverse engineering, so that you can understand how a computer thinks, and in turn understand how to decode unknown file formats. I will also teach you how to formulate a plan, to modify finished binaries, so that limitations (or errors), in programs that have no hope of being updated, can be removed. On this website, I will also give you links, to every tool and tutorial source I know of, in the “Toolbox” page. All of these “tools” are free or near-free, and many of them will not be related to the lessons at all. This is intentional, I not only want to give you the tools to do my hobbies for free, I want to give every tool I know of, in the hopes of helping you with your hobbies. I promise you, that no matter who you are, or what your interest-level in my hobbies is, you can walk away from this website with something new!
       </p>
       <p>Images for the Home page</p>
-        <img src="#" alt="image for homepage">
-        <img src="#" alt="image for homepage">
+        <img src="images/h_icon_temp.PNG" alt="image for homepage">
+        <img src="images/h_hero_banner_temp.PNG" alt="image for homepage">
 
       <!--</ul> Detected as broken-->
-      <h3>[Page 2]</h3>
+      <h3>Reverse Engineering</h3>
       <p>
-        [Written copy for the Page 2 here]
+        During the lesson on programming, we learned that computers will do anything we tell them to do. We can even tell computers to turn a light on and off, with a high and low voltage. But how do computers store numbers and pictures? How does it know to say “Hello world!” when we tell it “print(“Hello World!”);”? Well, the answer is quite simple, all data in computers is stored in two ways: 1 and 0. 
+        These two numbers represent the voltage a basic CPU receives at it's input wire (known as the input pin), 1 for voltage, 0 for no voltage. On or off. This 0 or 1 value is called a “bit”. Bits can be used to represent many things, primarily “True” which is represented by 1, or “False”, which is represented by 0. Or it could represent the numbers 1 and 0. 
+
+        This is great, but the immediate problem occurs, when you you want to store the number 2. Do you simply add two bits of “1” together to make two? That could work, but what if you wanted to add 1 to 1? You'd need 100 bits set to 1 to do it, which means that a basic CPU would have to check it's input pin 100 times just to do simple addition! 
+
+        So how do computers do these incredible calculations so fast?  Instead of testing the value of 1 reading from the input pin, a basic CPU can instead, check it's input pin 8 times, reading 8 bits, to represent an “8-bit integer”, which means a whole number (integer) stored in 8 bits. But how can we store 100 in 8 1's and 0's? The answer: Math! But don't panic, it's really quite simple!
+
+        In an 8-bit integer, there are two things that determine the value of the number: how many 1's and 0's it has, and the position of the 1's and 0's. The position of the 1's and 0's in the group of 8, determines it's value, simply by representing it as 2 to the power of it's position from right to left, starting at 0. It is then added together with it's neighbors, to get the final value. The 0 and the 1 determine if the position should be included in the calculation. So instead of representing 2 as “1 1”, we can represent it as “0 0 1 0” or “(2^1 * 1) + (2^0 * 0)” or even simply: “2 + 0”. [Text continues to explain 99 in binary]
       </p>
       <p>Images for the Page 2</p>
-        <img src="#" alt="image for page">
-        <img src="#" alt="image for page">
+        <img src="images/re_icon_temp.PNG" alt="image for page">
+        <img src="images/re_binary_99_temp.PNG" alt="image for page">
 
       <!--</ul> Detected as broken-->
-      <h3>[Page 3]</h3>
+      <h3>Electrical Engineering</h3>
       <p>
-        [Written copy for the Page 3 here]
+        In the lesson on computer programming, you learned how to tell a computer what to do. But now, you will learn how to tell electricity what to do, which will allow you to make computer programs that interact with the world around you!
+
+        But before we do that we have to start simple
+
+        Electricity, is often confusing because it's invisible. But it's actually not that hard to understand! It's quite similar to something we deal with every day, water! Electricity is the energy produced by the movement of electrons, Like water flows through pipes, electrons flow from the positive terminal to the negative terminal (actually, electrons go from negative to positive, but we didn't know that when we invented electrical diagrams, so it's easier to understand it the way I'm teaching you).
+
+        Electrons will literally jump through hoops to get to the negative terminal, so they'll go through anything you put in their path, especially electronic components, like Light Emitting Diodes, light bulbs, resistors, and motors, which are designed to harness the energy electrons produce, to accomplish a specific purpose!
+
+        [Continue to talk about how like water, electrons take the path of least resistance, and produce short circuits]
+        [Introduce the tool]
+        [Walk through a simple circuit, explaining what a diode and resistor is]
+        [Add a push button]
+        [Swap it for a switch]
+        [Add Arduino]
       </p>
       <p>Images for the Page 3</p>
-        <img src="#" alt="image for page3">
-        <img src="#" alt="image for page3">
+        <img src="images/ee_icon_temp.PNG" alt="image for page3">
+        <img src="images/ee_circuit_temp.png" alt="image for page3">
 
       <!--</ul> Detected as broken-->
       <hr>
