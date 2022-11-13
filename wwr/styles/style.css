@@ -28,6 +28,7 @@ header{
     display: grid; /*W07 - Step 01A*/
     grid-template-columns: 150px auto; /*W07 - Step 01A*/
     /*border: 1px solid #0696ea;*/
+    border-radius: 0px 0px 10px 10px; /*Added week 09*/
 }
 
 .logo{
@@ -36,6 +37,13 @@ header{
     background: radial-gradient(#fff 50%,rgb(236, 245, 255));
     border: 2px solid #f67a14a2; /*https://www.w3schools.com/css/css3_buttons.asp https://developer.mozilla.org/en-US/docs/Web/CSS/border-style https://developer.mozilla.org/en-US/docs/Web/CSS/border*/
     border-radius: 20px; /*https://www.w3schools.com/css/css3_borders.asp*/
+    transition: border 300ms ease-out; /* https://css-tricks.com/a-really-nice-way-to-handle-popup-information/#aa-fade-in-out */
+}
+
+/*Added week 09*/
+.logo:hover{
+    border: 2px solid #1E0C6FA2;
+    /*transition: border 300ms ease-out;*/
 }
 
 #logo_link{/*Added Week 05*/
@@ -132,8 +140,10 @@ h4{ /*Generic Selector No longer in use due to #hero-msg h4*/
     color: #1e0c6f;
 }
 
-.button-box{ /*Generic Selector*/
+.button-box{ /*Generic Selector for the button-box class*/
     text-align: center;
+    margin-top: 80px; /*Push the button down - Week 09*/
+    translate: 0px -35px;
 }
 
 .book, .join{
@@ -290,10 +300,274 @@ footer .social img{ /*Added week 05*/
     padding-top: 15px; /*W05 - Step 04*/
 }
 
+#hero-msg.h_hero{
+    margin: 115px -50px auto -50px;
+    padding: 0px;
+    background-color:#ffffff8A;
+    border-radius: 500px;
+    background-image: repeating-linear-gradient(45deg, #ffffff2A 10px, transparent 20px, #ffffff2A 10px), repeating-linear-gradient(-45deg, #ffffff2A 10px, transparent 20px, #ffffff2A 10px);
+}
+
+/*Rafting Site Rivers Subpage Added Week 9*/
+
+/*River Hero Image*/
+#hero-img.rv_hero{
+    /*Updated locations*/
+    translate: 0px -25%;
+    grid-row: 1/5;
+    grid-column: 1/4;
+
+    /*Mask for the hero banner
+    Tutorials: https://css-tricks.com/clipping-masking-css/
+    */
+    --maskGrad: linear-gradient(0deg,#FFFFFF00 30%,#FFFFFFFF 60%,#FFFFFFFF 100%);
+    mask-image:var(--maskGrad);
+    -webkit-mask-image:var(--maskGrad);
+}
+
+/*Updated grid template*/
+#hero.rv_hero{
+    grid-template-rows: repeat(4,100px);
+    overflow: hidden;
+    /*Accidentally added this, but honestly, it looks good*/
+    /*border-radius: 500px;
+    background-image: repeating-linear-gradient(45deg, #ffffff2A 10px, transparent 20px, #ffffff2A 10px), repeating-linear-gradient(-45deg, #ffffff2A 10px, transparent 20px, #ffffff2A 10px);*/
+    grid-row: 1/5;
+    grid-column: 1/4;
+}
+
+#hero-box.rv_hero{
+    grid-row: 1/5;
+}
+
+/*Updated hero msg location*/
+#hero-msg.rv_hero{ /*Added W07*/
+    grid-column: 2/3; 
+    grid-row: 1/4;
+    margin: 115px 0px 20px 0px;
+    /*Cool border thing! I did this while modifying linear gradients*/
+    padding: 0px;
+    background-color:#ffffff9f;
+    border-radius: 500px;
+    background-image: repeating-linear-gradient(45deg, #ffffff2A 10px, transparent 20px, #ffffff2A 10px), repeating-linear-gradient(-45deg, #ffffff2A 10px, transparent 20px, #ffffff2A 10px);
+}
+
+/*River cards*/
+/*Card main grid controller*/
+#rv_card_grid{
+    display: grid;
+    grid-template-columns: 0fr 5fr 0fr;
+    grid-template-rows: repeat(3, 5fr);
+    gap: 50px 0px;
+    margin-top: 50px;
+    justify-items: center;
+}
+
+/*card root / card container grid*/
+section.rv_river_card_root{
+    grid-column: 2/3;
+    background-color: #1e0c6f54;
+    background-image: linear-gradient(#56c1ff96,#1e0c6fbb);
+    border-radius: 10px;
+    /* height: 100%; */
+    /*grid for DIVs*/
+    display: grid;
+    /*grid-template-columns: 15% 5% 60% 5% 15%;
+    grid-template-rows: 10% 55% 15% 5% 5%;/*100px 0.9fr 0.25fr 0.25fr 150px;*/ /*Controls the height of each section, calculates from content size*/
+    grid-template-columns: 15% 5% 60% 5% 15%;
+    grid-template-rows: 10% 55% 15% 5% 15%;/*100px 0.9fr 0.25fr 0.25fr 150px; /*Controls the height of each section, calculates from content size*/
+    gap: 0px;
+    justify-items: center;
+    align-items: center;
+    overflow: hidden;
+    border: 10px solid #00000000;
+    border-image: repeating-linear-gradient(45deg,#0695EA 0px,#1E0C6F 100px,#f67a14 200px,#0695EA 300px) 10;
+    height: 1356px;
+}
+/*Set the grid rows for each card*/ /* https://www.w3schools.com/CSSref/sel_nth-of-type.php */
+.rv_river_card_root:nth-of-type(1){grid-row: 1/2;}
+.rv_river_card_root:nth-of-type(2){grid-row: 2/3;}
+.rv_river_card_root:nth-of-type(3){grid-row: 3/4;}
+
+/*River Card Title*/
+div.rv_river_title_container{
+    /*background-color: #fff;*/
+    grid-row: 1/2;
+    grid-column: 1/6;
+    place-self: center stretch;
+    /* background-color: #fff; */
+    width: 100%;
+    height: 100%;
+    /* Subgrid (because grids only pass to direct children*/
+    /*Info:
+    https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Subgrid
+    https://css-tricks.com/grid-level-2-and-subgrid/
+    https://css-tricks.com/achieving-vertical-alignment-thanks-subgrid/
+    */
+    /*Not available on chrome
+    grid-template-rows: subgrid;
+    grid-template-columns: subgrid;
+    */
+    /*The same effect as the title*/
+    background-color:#ffffff9f;
+    background-image: repeating-linear-gradient(45deg, #ffffff2A 10px, transparent 20px, #ffffff2A 10px), repeating-linear-gradient(-45deg, #ffffff2A 10px, transparent 20px, #ffffff2A 10px);
+}
+
+h2.rv_river_title {
+    /*padding: 0.75em auto;*/
+    /* margin: 0px; */
+    margin: auto;
+    background-color: #ffffff00;
+    /* grid-row: 1/2;
+    grid-column: 1/6; */
+    place-self: center stretch;
+    /*Taken from the title selector*/
+    /* color: #0695EA; */
+    font-family: 'Architects Daughter', 'Papyrus', sans-serif; /*W05 - Step 01*/
+    font-size: 1.685em; /*new size*/
+    margin-top: 2.5rem; /*dynamic margin*/
+    letter-spacing: 0.05em;
+    /*text shadow for clarity*/
+    text-shadow: 1px 0px 0px #1E0C6F, 0px 1px 0px #1E0C6F, -1px 0px 0px #1E0C6F, 0px -1px 0px #1E0C6F;
+
+
+    /*This chain of articles is what brought me here:
+    https://css-tricks.com/bold-on-hover-without-the-layout-shift/ -> https://developer.mozilla.org/en-US/docs/Web/CSS/-webkit-text-stroke -> https://css-tricks.com/adding-stroke-to-web-text/
+     */
+     /* good but not perfect*//*
+    -webkit-text-fill-color: #0695EA;
+    -webkit-text-stroke-width: 0.25px;
+    -webkit-text-stroke-color: #1E0C6F;
+    */
+
+}
+
+/*River Card Image*/
+/*Container*/
+div.rv_river_img_container{
+    margin-top: 5%;
+    /* align-self: stretch; */
+    grid-row: 2/4;
+    grid-column: 2/5;
+    /*place-self: center;
+    overflow: hidden;*/
+    /*Not available on chrome
+    grid-template-rows: subgrid;
+    grid-template-columns: subgrid;
+    */
+    /* place-content: center stretch; */
+    place-self: stretch;
+    justify-items: stretch;
+}
+
+/*img element*/
+img.rv_river_img{
+    box-sizing: content-box;
+    width: 100%; /*Width of the Div*/
+    /* width: 200%; */
+    /*This doesn't work because it's not inheriting the grid*/
+    /* grid-row: 2/4; */
+    /* grid-column: 2/5; */
+    /* align-self: stretch; */
+    /* box-sizing: unset; */
+    /*object-fit: cover;*/
+
+    /*First try, inverted*//*
+    mask-image: repeating-linear-gradient(45deg,#00000000 0px 4px,#ffffffff 4px 8px, #00000000 8px 12px), repeating-linear-gradient(45deg,#00000000 0px 4px,#ffffffff 4px 8px, #00000000 8px 12px);
+    -webkit-mask-image: repeating-linear-gradient(45deg,#00000000 0px 4px,#ffffffff 4px 8px, #00000000 8px 12px),repeating-linear-gradient(-45deg,#00000000 0px 4px,#ffffffff 4px 8px, #00000000 8px 12px);
+    */
+    /*interesting bugged out one
+    mask-image: repeating-linear-gradient(45deg,#000000ff 0px 4px,#ffffff00 4px 8px, #000000ff 8px 12px), repeating-linear-gradient(45deg,#00000000 0px 4px,#ffffffff 4px 8px, #00000000 8px 12px);
+    -webkit-mask-image: repeating-linear-gradient(45deg,#000000ff 0px 4px,#ffffff00 4px 8px, #000000ff 8px 12px),repeating-linear-gradient(-45deg,#00000000 0px 4px,#ffffffff 4px 8px, #00000000 8px 12px);*/
+    --mHide: #00000079;
+    --mShow: #ffffffff;
+    --mGap: 1px;
+    --mGap2: 121px;
+    --mGap3: 1px;
+    --pos1: calc(var(--mGap));
+    --pos2: calc(var(--mGap) + var(--mGap2));
+    --pos3: calc(var(--mGap) + var(--mGap2) + var(--mGap3));
+    --gradMask45: repeating-linear-gradient(45deg,var(--mHide) 0px var(--pos1),var(--mShow) var(--pos1) var(--pos2), var(--mHide) var(--pos2) var(--pos3));
+    --gradMaskOpp45: repeating-linear-gradient(-45deg, var(--mHide) 0px var(--pos1), var(--mShow) var(--pos1) var(--pos2), var(--mHide) var(--pos2) var(--pos3));
+    /*--gradMask45: repeating-linear-gradient(45deg,var(--mHide) 0px var(--mGap),var(--mShow) var(--mGap) calc(var(--mGap)+var(--mGap2)), var(--mHide) calc(var(--mGap)+var(--mGap2)) calc(var(--mGap)+var(--mGap2)+var(--mGap3)));
+    --gradMaskOpp45: repeating-linear-gradient(-45deg,var(--mHide) 0px var(--mGap),var(--mShow) var(--mGap) calc(var(--mGap)+var(--mGap2)), var(--mHide) calc(var(--mGap)+var(--mGap2)) calc(var(--mGap)+var(--mGap2)+var(--mGap3)));
+    /*Interesting result
+    --gradMask45: repeating-linear-gradient(45deg,var(--mHide) 0px 2px,var(--mShow) 2px 8px, var(--mHide) 8px 10px);
+    --gradMaskOpp45: repeating-linear-gradient(-45deg, var(--mHide) 0px 2px, var(--mShow) 2px 8px, var(--mHide) 8px 10px);
+    */
+    /*The problem Im runnin into is that the gradients are cancelling eachother out, the little squares they make when inverted are where both are 0*/
+
+    /*
+    --mGap: 1px;
+    --mGap2: 75px;
+    --mGap3: 1px;
+    */
+    /*3d effect
+    --gradMask45: repeating-linear-gradient(45deg,var(--mHide) 0px 2px,var(--mShow) 2px 3px, var(--mHide) 8px 10px);
+    --gradMaskOpp45: repeating-linear-gradient(-45deg, var(--mHide) 0px 2px, var(--mShow) 2px 3px, var(--mHide) 8px 10px);
+    */
+
+    /*very odd but cool
+    --gradMask45: repeating-linear-gradient(45deg,var(--mHide) 0px 2px,var(--mShow) 2px 3px, var(--mHide) 3px 5px);
+    --gradMaskOpp45: repeating-linear-gradient(-45deg, var(--mHide) 0px 2px, var(--mShow) 2px 3px, var(--mHide) 3px 5px);
+    */
+    mask-image: var(--gradMask45), var(--gradMaskOpp45);
+    -webkit-mask-image: var(--gradMask45), var(--gradMaskOpp45);
+    mask-composite: destonation-in;
+    -webkit-mask-composite: destination-in;
+    border-radius: 15px;
+    border: 15px solid #f67a14;
+}
+
+/*river Card description*/
+div.rv_river_desc_box{
+    /* height: 110%; */
+    grid-row: 3/5;
+    grid-column: 3/4;
+    /*Not available on chrome
+    grid-template-rows: subgrid;
+    grid-template-columns: subgrid;
+    */
+    /*Triple layer a box shadow with no offset to get the outline effect*/
+    --bShadow: 0px 0px 25px #f67a14; /*This makes changing values easier*/
+    box-shadow: var(--bShadow), var(--bShadow), var(--bShadow), var(--bShadow);
+    background-color: #1e0c6fb9;
+    border-radius: 25px;
+    z-index: 1;
+}
+
+p.rv_river_msg{
+    font-size: 0.8em;
+    color: white;
+    /*padding: 20px 20px;
+    margin: 0px 30px;*/
+
+    /* padding: 1em 5em;
+    margin: 10px 50px; */
+
+    line-height: 1.45rem;/*1.45rem;*/
+    /* font-size: 1rem; */
+    padding: 0px 2.5rem;
+
+    /* font-size: 1rem; */
+    margin: 1em;
+}
+.rv_btn{
+    /*border-radius: 500px;*/
+    /* margin: 30px 0px 0px 10px; */
+    margin: 20px;
+    font-size: 1.5rem;
+    /*display: grid;*/
+    /*grid-column: 3/4;
+    grid-row: 5/6;*/
+    display: inline-block;
+}
+
+
 /*Mobile Phone Accessibility*/
 /*Added Week 07*/
 @media screen and (max-width: 900px){
-    #hero, .home-grid{
+    #hero, .home-grid, #hero.rv_hero{ /*Added river hero*/
         display: block;
         height: auto;
     }
@@ -316,6 +590,7 @@ footer .social img{ /*Added week 05*/
     .home-title{
         font-size: 25px;
         color: #0695EA;
+        margin: 0px;
     }
     .rivers-card, .camping-card, .rapids-card{
         margin: 50px auto;
@@ -331,5 +606,65 @@ footer .social img{ /*Added week 05*/
     }
     footer{
         margin-top: 25px;
+    }
+    /*rivers page*/
+    #hero-box.rv_hero{
+        margin: 0px 0px -39% 0px;
+    }
+    h1.rv_rivers-title{
+        z-index: 5;
+    }
+    #rv_card_grid{
+        display: block;
+        height: auto;
+        margin: 0 auto;
+    }
+    /*Rivers Page River Card*/
+    section.rv_river_card_root{
+        display: block;
+        width: auto;
+        height: auto;
+        padding: 0px;
+        border-image-outset: -2px;
+    }
+    /*Title container*/
+    div.rv_river_title_container{
+        height: auto;
+        top: 0;
+        position: relative;
+        padding: 1rem 0px;
+    }
+    h2.rv_river_title{
+        margin-top: 0px;
+    }
+    /*Image container and image*/
+    div.rv_river_img_container{
+        margin: 0px;
+        width: auto;
+    }
+    img.rv_river_img{
+        width: calc(100% - 10px); /*Subtract the border*/
+        margin: 10px auto 5px auto;
+        border: 5px solid #f67a14;
+        /* border-radius: 5px; */
+        mask-image: none;
+        -webkit-mask-image: none;
+        display: block;
+        justify-content: center;
+        object-fit: cover;
+    }
+    /*Text container, description and button*/
+    div.rv_river_desc_box{
+        width: 100%;
+        height: auto;
+        /*background-color: #00000000;*/
+        border-radius: 15px 15px 0px 0px;
+        background-image: none;
+        --bShadow: inset 0px 0px 15px #f67a14;
+    }
+    p.rv_river_msg{
+        margin: 3px;
+        padding: 1.5rem 1rem;
+        line-height: 1.20;
     }
 }
