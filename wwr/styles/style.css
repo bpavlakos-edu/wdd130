@@ -411,6 +411,7 @@ div.rv_river_title_container{
     /*The same effect as the title*/
     background-color:#ffffff9f;
     background-image: repeating-linear-gradient(45deg, #ffffff2A 10px, transparent 20px, #ffffff2A 10px), repeating-linear-gradient(-45deg, #ffffff2A 10px, transparent 20px, #ffffff2A 10px);
+    outline: 2px solid #00000033
 }
 
 h2.rv_river_title {
@@ -511,12 +512,18 @@ img.rv_river_img{
     --gradMask45: repeating-linear-gradient(45deg,var(--mHide) 0px 2px,var(--mShow) 2px 3px, var(--mHide) 3px 5px);
     --gradMaskOpp45: repeating-linear-gradient(-45deg, var(--mHide) 0px 2px, var(--mShow) 2px 3px, var(--mHide) 3px 5px);
     */
-    mask-image: var(--gradMask45), var(--gradMaskOpp45);
+    /*mask-image: var(--gradMask45), var(--gradMaskOpp45);
     -webkit-mask-image: var(--gradMask45), var(--gradMaskOpp45);
-    mask-composite: destonation-in;
-    -webkit-mask-composite: destination-in;
+    mask-composite: destination-in;
+    -webkit-mask-composite: destination-in;*/
+    /* --gradMaskLinear: linear-gradient(180deg,#000000ff 60%,rgba(255, 255, 255,0.60),rgba(255, 255, 255,0.0));
+    mask-image: var(--gradMaskLinear);
+    -webkit-mask-image: var(--gradMaskLinear); */
+    filter: drop-shadow(0px 0px 5px #000);
+    /*filter: drop-shadow(0px 0px 5px #f67a14);*/ /*Neon, neat!*/
+    
     border-radius: 15px;
-    border: 15px solid #f67a14;
+    border: 15px double #f67a14;
 }
 
 /*river Card description*/
@@ -566,7 +573,7 @@ p.rv_river_msg{
 
 /*Mobile Phone Accessibility*/
 /*Added Week 07*/
-@media screen and (max-width: 900px){
+@media screen and (max-width: 938px){
     #hero, .home-grid, #hero.rv_hero{ /*Added river hero*/
         display: block;
         height: auto;
@@ -607,9 +614,12 @@ p.rv_river_msg{
     footer{
         margin-top: 25px;
     }
-    /*rivers page*/
+    /*rivers page  Week 09*/
     #hero-box.rv_hero{
         margin: 0px 0px -39% 0px;
+    }
+    #hero-msg.rv_hero{
+        margin-bottom: 0px;
     }
     h1.rv_rivers-title{
         z-index: 5;
@@ -624,8 +634,8 @@ p.rv_river_msg{
         display: block;
         width: auto;
         height: auto;
-        padding: 0px;
-        border-image-outset: -2px;
+        margin: 15px 0px;
+        /* border-image-outset: -2px; */
     }
     /*Title container*/
     div.rv_river_title_container{
