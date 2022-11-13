@@ -158,7 +158,6 @@ h4{ /*Generic Selector No longer in use due to #hero-msg h4*/
     border: 3px solid #fff; /*Added for better visibility*/
     box-shadow: 0px 0px 0px 3px #f67a14;
     background-image: linear-gradient(#1E0C6F 50%, #000);
-    
 }
 
 .book:hover, .join:hover{
