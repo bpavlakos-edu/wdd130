@@ -227,7 +227,7 @@
 
         In an 8-bit integer, there are two things that determine the value of the number: how many 1's and 0's it has, and the position of the 1's and 0's. The position of the 1's and 0's in the group of 8, determines it's value, simply by representing it as 2 to the power of it's position from right to left, starting at 0. It is then added together with it's neighbors, to get the final value. The 0 and the 1 determine if the position should be included in the calculation. So instead of representing 2 as “1 1”, we can represent it as “0 0 1 0” or “(2^1 * 1) + (2^0 * 0)” or even simply: “2 + 0”. [Text continues to explain 99 in binary]
       </p>
-      <p>Images for the Page 2</p>
+      <p>Images for the Reverse Engineering Page</p>
         <img src="images/re_icon_temp.PNG" alt="image for page">
         <img src="images/re_binary_99_temp.PNG" alt="image for page">
 
@@ -249,7 +249,7 @@
         [Swap it for a switch]
         [Add Arduino]
       </p>
-      <p>Images for the Page 3</p>
+      <p>Images for the Electrical Engineering Page</p>
         <img src="images/ee_icon_temp.PNG" alt="image for page3">
         <img src="images/ee_circuit_temp.png" alt="image for page3">
 
@@ -258,26 +258,38 @@
       <h2>
         Wireframes
       </h2>
-      <p>
-        Create three wireframes for your site. One for each page and list them here</p>
-
+      <p>Create three wireframes for your site. One for each page and list them here</p>
       <h3>Home</h3>
       <p>         
-        [Any additional details about home that the wireframe does not make clear]
+        The home page is where I introduce the lesson topics. <br><br> The header will use CSS to animate a set of DIVs circles inside a grid layout, (similar to <a href="https://css-tricks.com/fun-times-css-pixel-art/" target="_blank">this article I found on CSS-tricks</a>, after I had already come up with the idea). I will use a python script to rapidly generate the necessary HTML and CSS code, or javascript to generate the html elements in the site itself.
       </p>
-      <img src="#" alt="home page wireframe">
+      <img src="images/hp_page_plan.png" alt="Home Page Wireframe">
 
-      <h3>[Page 2]</h3>
+      <h3>Electrical Engineering</h3>
       <p>         
-        [Any additional details about page 2 that the wireframe does not make clear]
+        This page is a lesson page, it's the second lesson of the three. We will be embedding the <a href="https://falstad.com/circuit/" target="_blank">falstad.com circuit simulator</a> to the page, to practice making electrical circuits. We will also walk through making a circuit using an arduino in <a href="https://www.tinkercad.com/circuits">TinkerCad</a>, which allows you to simulate many circuits without having to buy anything.
       </p>
-      <img src="#" alt="page 2 wireframe">
+      <img src="images/ee_page_plan.png" alt="Electrical Engineering Page Wireframe">
 
-      <h3>[Page 3]</h3>
+      <h3>Reverse Engineering</h3>
       <p>         
-        [Any additional details about page 3 that the wireframe does not make clear]
+        This page is a lesson page, it's the final lesson on the website. During this lesson I will teach the user about Binary, Hexadecimal, Common Hexadecimal Values, File Formats, Hex Editors, Cheat Engine (which is a tool for hex editing programs in real time), Assembly and Ghidra (a free open-source disassembly tool made and released by the NSA).
+        <br><br>
+        Unfortunately, Cheat Engine has recently become no longer safe to download, because it's installer has Adware that is practically forced, when it previously was able to be skipped. I'll give the user the old version of cheat engine I use (7.0), in a 7z file so they aren't put in danger. I will also give a link to the offical cheat engine github (it's open source), to compile the latest version (7.4) themselves if they want the newest features.
       </p>
-      <img src="#" alt="page 3 wireframe">
+      <img src="images/re_page_plan.png" alt="Reverse Engineering Page Wireframe">
+      <h3>Programming Page</h3>
+      <p>         
+        The Computer Programming Page will be just like the reverse engineering and electrical engineering page, it will be a "lesson" page, and sequentially it will be the first Lesson Page if the user were to go in order. We will use the <a href="https://processing.org/">Processing Programming Language</a> to make simple programs, and secretly have the user practice for the programming needed in the electrical engineering lesson. At the end I'll give them lots of good coding langauges to try next, and IDEs (like VSCode, Visual Studio, and IntelliJ) that they can use to make their own programs.
+      </p>
+      <img src="#" alt="Programming Page Wireframe [Coming soon!]">
+
+      <h3>Toolbox Page</h3>
+      <p>         
+        The toolbox page will contain a flex grid image gallery, of download links to various free or near free tools, like Audacity, Gimp, Inkscape, Blender, Godot, and Davinci Resolve. They will be organzied by topic, and the topics are indicated by H1 elements. There will also be links or embedded tutorials I've found useful on various topics, many of them being related to the software I mentioned here. This page will contain every program used in the tutorials, but many of the tools I provide here will not be related to the lessons, but they will be very useful. Each "card" will have a short description and push button, sending you to the download link. Cheat Engine will have a warning on this page too.
+      </p>
+      <img src="#" alt="Toolbox Page Wireframe [Coming soon!]">
+
     </main>
   </body>
 
