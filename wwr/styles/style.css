@@ -143,7 +143,7 @@ h4{ /*Generic Selector No longer in use due to #hero-msg h4*/
 .button-box{ /*Generic Selector for the button-box class*/
     text-align: center;
     margin-top: 80px; /*Push the button down - Week 09*/
-    translate: 0px -35px;
+    transform: translate(0px -35px);
 }
 
 .book, .join{
@@ -312,7 +312,7 @@ footer .social img{ /*Added week 05*/
 /*River Hero Image*/
 #hero-img.rv_hero{
     /*Updated locations*/
-    translate: 0px -25%;
+    transform: translate(0, -25%);
     grid-row: 1/5;
     grid-column: 1/4;
 
