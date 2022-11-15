@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whitewater Rafting For Real | Contact Us</title>
+    <link rel="stylesheet" href ="styles/style.css">
+    <style>
+        /*Added to reset font styles from other pages*/
+        body{
+            font-size: initial;
+        }
+        form{
+            /*Center the form*/
+            margin: 0 auto;
+            width: 400px;
+            /* Form outline */
+            padding: 1em;
+            /* border: 1px solid #ccc; */
+            border: 1px solid #0695EA;
+            border-radius: 1em;
+            background-color: #1e0c6fd2;
+        }
+        ul{
+            /*Likely a style reset*/
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        /*Interesting selector type: element next to element
+        adds an extra gap between li elements in succession*/
+        form li + li{
+            margin-top: 1em;
+        }
+        label{
+            /*Move all text labels to the same layout*/
+            display: inline-block;
+            width: 90px;
+            text-align: right;
+        }
+        input, textarea{
+            /*Ensure all text fields are the same size by using a monospace font*/
+            font: 1em sans-serif;
+            /*Uniform text field size*/
+            width: 300px;
+            box-sizing: border-box;
+            /*"Match form field borders"*/
+            /* border: 1px solid #999; */
+            border: 1px solid #0695EA;
+        }
+        input:focus,textarea:focus{
+            /*"Additional highlight for focused elements"*/
+            /* border-color: #000; */
+            border-color: #F67A14;
+        }
+        textarea{
+            /*"Align multiline text fields with their labels"*/
+            vertical-align: top;
+            /*Provide space to type some text*/
+            height: 5em;
+        }
+        .button{
+            /*"Align buttons with the text fields" */
+            padding-left: 90px; /*"Same size as the label elements"*/
+        }
+        button{
+            /*"This extra margin represent[s] roughly the same space as the space between the labels and their text fields"*/
+            margin-left: 0.5em;
+        }
+        /*Extra styles for functional form, from assingment*/
+        #feedback{
+            background-color: antiquewhite;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            /*"Make this element invisible until we are ready for it"*/
+            display: none;
+        }
+        .moveDown{
+            margin-top: 3em;
+        }
+    </style>
+</head>
+<body>
+    <div id="content">
+        <!--header remains the same-->
+        <header>
+            <a id="logo_link" href="index.html">
+                <img class="logo" src="images/raftinglogo.png" alt="Rafting For Real Logo">
+            </a>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="rivers.html">Rivers</a>
+                <a href="site-plan-rafting.html">Site Plan</a> 
+                <a href="contactus.html">Contact Us</a>
+            </nav>
+        </header>
+        <!--New hero image with special transparency and positioning-->
+        <div id="hero" class="rv_hero"><!--Tutorial seperated this from main, to make working with the hero image easier-->
+            <div id="hero-box" class="rv_hero">
+                <img id="hero-img" class="rv_hero" src="images/rv_hero.jpg" alt="People enjoying rafting">
+            </div>
+            <section id="hero-msg" class="rv_hero">
+                <h1 class="rv_rivers-title home-title">Contact Us</h1>
+                <h4>Schedule a ride to remember today!</h4>
+            </section>
+        </div>
+        <main id="cu_main">
+            <!--Activity Creating your first form-->
+            <form action="/my-handling-form-page" method="post">
+                <ul>
+                    <!--See https://www.w3schools.com/js/js_validation.asp for the "required" attribute-->
+                    <li>
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="user_name" required/>
+                    </li>
+                    <li>
+                        <label for="mail">E-mail:</label>
+                        <input type="email" id="mail" name="user_email" />
+                    </li>
+                    <li>
+                        <label for="msg">Message:</label>
+                        <textarea id="msg" name="user_message"></textarea>
+                    </li>
+                    <li class="button">
+                        <button type="submit">Send your message</button>
+                    </li>
+                </ul>
+            </form>
+            <!--Extra Content For Functional Form-->
+            <div id="feedback"></div>
+            <!--JavaScript is my friend!!!-->
+            <script>
+                //"get the feedback div element so we can do something with it."
+                //const feedbackElement = document.getElementById('feedback'); //The normal way to get an element by ID
+                const feedbackElement = feedback; //The cool way to get an HTML element by ID
+                //"get the form so we can read what was entered in it."
+                const formElement = document.forms[0];
+                //"add a 'listener' to wait for a submission of our form. When that happens run the code below."
+                formElement.addEventListener('submit', function(e){
+                    //"stop the form from doing the default action"?
+                    e.preventDefault();
+                    //"set the contents of our feedback element to a message letting the user know the form was submitted successfully. Notice that we pull the name that was entered in the form to personalize the message!"
+                    feedbackElement.innerHTML = "Hello "+formElement.user_name.value +"! Thank you for your message. We will get back with you as soon as possible!";
+                    //"Make the feedback element visible"
+                    feedbackElement.style.display = "block";
+                    //"add a class to move everything down so our message doesn't cover it"
+                    //document.body.classList.toggle('moveDown'); //Toggle isn't correct, and causes errors
+                    document.body.classList.add("moveDown"); //But add is correct, and works perfectly!
+                });
+
+            </script>
+        </main>
+        <!--Footer Remains the Same-->
+        <footer>
+            <p>Rafting For Real &copy; 2022 - Bryce Pavlakos</p>
+            <p><a href="site-plan-rafting.html">Site Plan</a></p>
+            <p><a href="contactus.html">Contact Us</a></p>
+            <div class="social">
+                <a href="https://facebook.com" target="_blank">
+                    <img src="images/facebook.png" alt="fb icon">
+                </a>
+                <a href="https://twitter.com" target="_blank">
+                    <img src="images/twitter.png" alt="twitter icon">
+                </a>
+                <a href="https://instagram.com" target="_blank">
+                    <img src="images/instagram.png" alt="instagram icon">
+                </a>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
