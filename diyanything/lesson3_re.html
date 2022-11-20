@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIY Anything | Home</title>
+    <style rel="stylesheet" href="styles/styles.css" ></style>
+</head>
+<body>
+    <header>
+        <nav>
+            <!-- <a href="lesson1_cp.html" class="linkContainer"> -->
+            <a href="index.html" class="linkContainer">
+                <img src="images/cd_icon_temp.png" class="linkIcon">
+                Computer Programming [Under Construction]
+            </a>
+            <a href="lesson2_ee.html" class="linkContainer">
+                <img src="images/ee_icon.svg" class="linkIcon">
+                Electronic Circuits
+            </a>
+            <a href="index.html" class="linkContainer">
+                <img src="images/h_icon.svg" class="linkIcon">
+                Home
+            </a>
+            <a href="lesson3_re.html" class="linkContainer">
+                <img src="images/re_icon.svg" class="linkIcon">
+                Reverse Engineering
+            </a>
+            <!-- <a href="toolbox.html" class="linkContainer"> -->
+            <a href="index.html" class="linkContainer">
+                <img src="images/tl_icon_temp.png" class="linkIcon">
+                Toolbox Archive [Under Construction]
+            </a>
+        </nav>
+        <div id="particleContainer">
+            <!--Filled using javascript-->
+        </div>
+    </header>
+    <div id="heroContainer">
+        <img id="heroImg" class="hero" src="images/re_hero.webp" alt="Lightbulb made of circuits and Binary code"> <!-- Exclude on subpages-->
+        <h1 id="heroTitle">REVERSE ENGINEERING</h1> <!--Controlled by JavaScript-->
+    </div>
+    <main>
+        <div id="reContentContainer">
+            <div id="lessonNav">
+                <h2>Chapter Quick Links</h2>
+                <a href="#part1">1. Thinking Like a computer</a>
+                <a href="#part2">2. Hexadecimal</a>
+                <a href="#part3">3. Common Data Types in Hex</a>
+                <!-- <a href="#part4">4. Cheat Engine - a Real-Time Hex Editor</a> -->
+                <!-- <a href="#part5">5. Documenting File Formats</a> -->
+                <!-- <a href="#part6">6. Intro to Ghidra</a> -->
+                <!-- <a href="#part7">7. Reverse Engineering an Exe</a> -->
+                <!-- <a href="#part8">8. Modifying an EXE</a> -->
+                <!-- <a href="#quiz">Guess That Data Type Quiz</a> -->
+                <a href="#conclusion">Conclusion</a>
+                <a href="#nextLevel">The Next Level</a>
+            </div>
+            <div id="reLessonContainer">
+                <section class="sectionContainer">
+                    <h2 id="part1"><a href="#part1">#</a>1. THINKING LIKE A COMPUTER</h2>
+                    <p>During the lesson on programming, we learned that computers will do anything we tell them to do. And during the electronic circuits lesson we learned how to tell computers to turn a light on and off, with a high and low voltage. But how do computers store numbers and pictures? How does it know to say “Hello world!” when we tell it “print(“Hello World!”);”?</p>
+                    <p>Well, the answer is quite simple, all data in computers is stored in two ways: 1 and 0.</p>
+                    <p>These two numbers represent the voltage a basic CPU receives at it’s input wire (known as the input pin), 1 for voltage, 0 for no voltage. On or off. This 0 or 1 value is called a “bit”. Bits can be used to represent many things, primarily “True” which is represented by 1, or “False”, which is represented by 0. Or it could represent the numbers 1 and 0.</p>
+                    <p>This is great, but the immediate problem occurs, when you want to store the number 2. Do you simply add two bits of “1” together to make two? That could work, but what if you wanted to add 1 to 1? You’d need 100 bits set to 1 to do it, which means that a basic CPU would have to check it’s input pin 100 times just to do simple addition!</p>
+                    <p>So how do computers do these incredible calculations so fast?  Instead of testing the value of 1 reading from the input pin, a basic CPU can instead, check it’s input pin 8 times, reading 8 bits, to represent an “8-bit integer”, which means a whole number (integer) stored in 8 bits. But how can we store 100 in 8 1’s and 0’s? The answer: Math! But don’t panic, it’s really quite simple!</p>
+                    <p>In an 8-bit integer, there are two things that determine the value of the number: how many 1’s and 0’s it has, and the position of the 1’s and 0’s. The position of the 1’s and 0’s in the group of 8, determines it’s value, simply by representing it as 2 to the power of it’s position from right to left, starting at 0. It is then added together with it’s neighbors, to get the final value. The 0 and the 1 determine if the position should be included in the calculation. So instead of representing 2 as “1 1”, we can represent it as “0 0 1 0” or “(2<sup>1</sup> * 1) + (2<sup>0</sup> * 0)” or even simply: “2 + 0”!</p>
+                    <p>So instead of needing 99 1s to represent 99, we only need 8 digits as shown below:</p>
+                    <img src="images/re_binary_99_temp.PNG">
+                    <p>Much easier than using 99 1s, right?</p>
+                    <p>But what about negative numbers, how do represent those?</p>
+                    <p>Well we do it exactly the same, but there's a catch! We sacrifice the last bit to represent the positive or negative sign. If its 1 the number is negative, if its a 0, the number is positive. This is kind of storage is called "signed", and it can only go up to 127 and down to -127. Also in a negative signed 8-bit integer, the values of the digits are flipped! So that every bit (besides the 2<sup>0</sup> bit, for some odd reason!) is 1 for 0 and 0 for -1.</p>
+                    <p>We can see this in the bit input of the windows 10 calculator app, in programmer mode, using the bit toggling keypad, the maximum signed "byte" which is comprised of 8 bits, is 127, represented by 0111 1111, while the minimum is -127, represented by 1000 0001</p>
+                    <img src="images/re_sb_127.png" alt="127 represented as 0111 1111 in programmer mode in the windows 10 calculator">
+                    <img src="images/re_sb_n127.png" alt="-127 represented as 0111 1111 in programmer mode in the windows 10 calculator">
+                    <p>The other kind of 8 bit integer storage, the one that uses all 8 bits to represent positive values 0 to 255 is called an unsigned byte.</p>
+                    <p>Cool! We can use 8 digits to represent 255! That's pretty compact!</p>
+                    <p>But what if I told you, we could go even smaller? And represent 0 to 65535 with only four digits? We can! Using what we learn in the next chapter!</p>
+                </section>
+                <section class="sectionContainer">
+                    <h2 id="part2"><a href="#part2">#</a>2. HEXADECIMAL</h2>
+                    <p>To store binary in a more condensed and human readable form, we came up with a system to represent 4 bits, or 0-15 with 1 digit.</p>
+                    <p>This digit goest from 0 to 9, to represent 0 through 9, obviously! But then it takes a strange turn, instead of using 10 to represent 10, it represents 10 with A. It then proceeds to use B through F to represent 11 to 15. Doing this represents 0 to 15 (or 0000 to 1111) as 0 to F</p>
+                    <p>This is nice and all, but 15 can only get us so far! So to go beyond 15 and represent the first bit of the latter 4 bits of a "byte" (8 bits), we're going to need another digit, just like the first one, going from 0 to F to represent 0000 to 1111!</p>
+                    <p>Just like in binary, how a binary digit represents 0 or 1 * 2<sup>index starting with 0</sup>, each of this new digit represents: 0 to 15 * 16<sup>index starting with 0</sup></p>
+                    <p>So just like that, 0 to 255 is stored by two digits, F and F.</p>
+                    <p>This form of data storage is called Hexadecimal, or Hex for short, like binary it can exponentially scale up depending on the number of digit pair groups it has, and 2 hexadecimal digits, by representing 8 bits by extension also represent 1 "byte" of data!</p>
+                    <p>From now on, I'm going to refer to "bytes" in the context of hex. And that's because hex is the easier way to view and edit the files that make our machines work!</p>
+                    <p>And the quickest way to calculate a single byte (2 hex digits / 8 bits) of unsigned hex by hand is to do: leftmost digit * 255 + rightmost digit * 16.</p>
+                    <p>Speaking of bytes and hex, I think it'd be helpful if you know what different combintations and lengths of bytes together usually mean! So that's what the next chapter is about!</p>
+                </section>
+                <section class="sectionContainer">
+                    <h2 id="part3"><a href="#part3">#</a>3. COMMON DATA TYPES IN HEX</h2>
+                    <p>As we explained in the previous lesson, when you stack different amounts of hex together by hand, it represents a higher value.</p>
+                    <p>But how do you represent a picture in hex? Well let's see with this simple image here:</p>
+                    <img src="images/re_colors.png">
+                    <p>Now, let's see it in a program called a hex editor:</p>
+                    <img src="images/re_colors_hex.png">
+                    <p>That's a little bit different, to the untrained eye, its 453 bytes of gibberish. So how do we make sense of it all? The answer: Datatypes! Every single byte in that file serves a purpose, so it's up to us to decode it.</p>
+                    <p>Luckily, we don't have to do all the work ourselves, hex editors, like the one I showed you in the picture make decoding things like that easy! But not all hex editors are created equal, in fact, the one I use is quite obscure but very powerful!</p>
+                    <p>Let me introduce you to REHex, an open source Hex Editor Created by github user solemnwarning / Daniel Collins, it features not only the standard "check the value of this byte in every data type" feature all hex editors have. But it also features a unique highlighting system, datatype marking system, and section commenting system, which will help turn the image above into an image like this:</p>
+                    <img src="images/re_colors_hex_labeled.PNG">
+                    <p>Pretty neat right? Well you can download this masterpiece of a hex editor for free here: <a href="https://github.com/solemnwarning/rehex/releases/tag/0.5.4">REHex Editor's Github Page</a></p>
+                    <p>It's the best hex editor around, and there's no doubt about it! (I like to set it to 1 byte per group though, in the preferences, but that just makes it easier for me!)</p>
+                    <p>But the world's best hex editor won't get you anywhere, if you don't know what to look for! But that's what the table below is for!</p>
+                    <p>Also I'm going to breifly mention that the "byte order" determines whether the group of hex is read left to right, or right to left. Right to left is called little endian, while left to right is called big endian. Most hex editors support swapping between the two to check the value, which makes it pretty clear which one it is. In my experience, little endian is more common than big endian. Also despite the byte order being read differently, the value of 1 byte is evaluated the same regardless, with the leftmost digit representing value * 16 while the rightmost digit represents value * 1</p>
+                    <p>Click on the values below that are colored when your cursor hovers over them to check their data type and value in the</p>
+                    <div id="hexExplorerContainer">
+                        <table>
+                            <tr>
+                                <th class="row-width-header" colspan="3">Interactive Hex Value Explorer</th>
+                            </tr>
+                            <tr>
+                                <th>Hexadecimal</th>
+                                <th>Ascii Value</th>
+                                <th>Datatype and Explanation</th>
+                            </tr>
+                            <tr>
+                                <td rowspan="20">
+                                    <div>
+                                        <p id="hexView">
+                                            <div onclick="console.log('int32')">00 00 00 01</div>
+                                            <div onclick="console.log('float32')">00 00 80 3F</div>
+                                            <div onclick="console.log('int16')">00 04</div>
+                                            <div onclick="console.log('zero terminated string')">00 1D 48 65 78 20<br> 65 64 69 74 69 6E 67 20 69 73 20 66 75 6E 21 00</div>
+                                            <!--Color-->
+                                            <!--4 byte Header-->
+                                            <!--Double / int64-->
+                                            <!--Vector 3-->
+                                            <!--Pointer-->
+                                            <!--Matrix 3-->
+                                        </p>
+                                    </div>
+                                </td>
+                                <td>
+                                    <p id="asciiView">
+                                        <div onclick="console.log('int32')">....</div>
+                                        <div onclick="console.log('float32')">..€?</div>
+                                        <div onclick="console.log('int16')">..</div>
+                                        <div onclick="console.log('zero terminated string')">..Hex <br>editing is fun!.</div>
+                                    </p>
+                                </td>
+                                <td>
+                                    <div id="explanationContainer">
+                                        <h3>Data Type: int32 / dword (32 bit integer)</h3>
+                                        <h4>Length: 4 bytes</h4>
+                                        <h4>Value: 4</h4>
+                                        <h4>Signed or Unsigned: Unknown, it doesn't exceed the signed / unsigned threshold for this data type</h4>
+                                        <h4>Byte Order: Little Endian (Right to Left)</h4>
+                                        <p>
+                                            A 32 bit integer is 4 bytes long, it can represent the whole number values 0 to 4,294,967,295 when unsigned, and -2,147,483,648 to 2,147,483,648 when signed.
+                                            <br>It does this by using each hex digit to represent a power of 16, starting at 16<sup>0</sup> and ending on 16<sup>7</sup>
+                                            <br>This data type is typically used to store numerical data, remaining file sizes, offsets, or even counts of entries. 
+                                            <br>One thing is certain, it serves an important purpose.
+                                        </p>
+                                    </div>
+                                </td>
+                            </tr>
+
+                        </table>
+                    </div>
+                </section>
+                <!-- <section class="sectionContainer">
+                    <h2 id="part4"><a href="#part4">#</a>4. CHEAT ENGINE - A REAL-TIME HEX EDITOR</h2>
+                    <p></p>
+                </section> -->
+                <!-- <section class="sectionContainer"><h2 id="part5"><a href="#part5">#</a>5. DOCUMENTING FILE FORMATS</h2></section> -->
+                <!-- <section class="sectionContainer"><h2 id="part6"><a href="#part6">#</a>6. INTRO TO GHIDRA</h2></section> -->
+                <!-- <section class="sectionContainer"><h2 id="part7"><a href="#part7">#</a>7. REVERSE ENGINEERING AN EXE</h2></section> -->
+                <!-- <section class="sectionContainer"><h2 id="part8"><a href="#part8">#</a>8. MODIFYING AN EXE</h2></section> -->
+                <section class="sectionContainer">
+                    <h2 id="quiz"><a href="#quiz">#</a>BONUS: GUESS THAT DATA TYPE QUIZ</h2>
+                    <p></p>
+                </section>
+                <section class="sectionContainer">
+                    <h2>COMING SOON!</h2>
+                    <li>Documenting File Formats</li>
+                    <li>Cheat Engine Is a Hex Editor</li>
+                    <li>Intro to Ghidra</li>
+                    <li>Reverse Engineering an Exe</li>
+                    <li>Modifying an EXE</li>
+                    <li>Guess That Data Type Quiz</li>
+                </section>
+                <!--Conclusion-->
+                <section class="sectionContainer">
+                    <h2 id="conclusion"><a href="#conclusion">#</a>CONGRATULATIONS!!!</h2>
+                    <p>Under Construction</p>
+                </section>
+                <section class="sectionContainer">
+                    <h2 id="nextLevel"><a href="#nextLevel">#</a>THE NEXT LEVEL</h2>
+                    <p>Under Construction</p>
+                    <!-- Insert Front Page Card to Next Page-->
+                </section>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div id="leftFooter"></div>
+        <div id="centerFooter">
+            <p>DIY Anything - Bryce Pavlakos - 2022</p>
+            <p><a href="site-plan.html">Site Plan</a></p>
+        </div>
+        <div id="rightFooter"></div>
+    </footer>
+    <script src="scripts/script.js"></script> <!-- External Javascript is loaded last-->
+</body>
+</html>
