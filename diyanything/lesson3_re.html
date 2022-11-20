@@ -12,24 +12,24 @@
         <nav>
             <!-- <a href="lesson1_cp.html" class="linkContainer"> -->
             <a href="index.html" class="linkContainer">
-                <img src="images/cd_icon_temp.png" class="linkIcon">
+                <img src="images/cd_icon_temp.png" class="linkIcon" alt="">
                 Computer Programming [Under Construction]
             </a>
             <a href="lesson2_ee.html" class="linkContainer">
-                <img src="images/ee_icon.svg" class="linkIcon">
+                <img src="images/ee_icon.svg" class="linkIcon" alt="">
                 Electronic Circuits
             </a>
             <a href="index.html" class="linkContainer">
-                <img src="images/h_icon.svg" class="linkIcon">
+                <img src="images/h_icon.svg" class="linkIcon" alt="">
                 Home
             </a>
             <a href="lesson3_re.html" class="linkContainer">
-                <img src="images/re_icon.svg" class="linkIcon">
+                <img src="images/re_icon.svg" class="linkIcon" alt="">
                 Reverse Engineering
             </a>
             <!-- <a href="toolbox.html" class="linkContainer"> -->
             <a href="index.html" class="linkContainer">
-                <img src="images/tl_icon_temp.png" class="linkIcon">
+                <img src="images/tl_icon_temp.png" class="linkIcon" alt="">
                 Toolbox Archive [Under Construction]
             </a>
         </nav>
@@ -38,7 +38,7 @@
         </div>
     </header>
     <div id="heroContainer">
-        <img id="heroImg" class="hero" src="images/re_hero.webp" alt="Lightbulb made of circuits and Binary code"> <!-- Exclude on subpages-->
+        <img id="heroImg" class="hero" src="images/re_hero.webp" alt="Hexadecimal code warping into the background"> <!-- Exclude on subpages-->
         <h1 id="heroTitle">REVERSE ENGINEERING</h1> <!--Controlled by JavaScript-->
     </div>
     <main>
@@ -67,7 +67,7 @@
                     <p>So how do computers do these incredible calculations so fast?  Instead of testing the value of 1 reading from the input pin, a basic CPU can instead, check it’s input pin 8 times, reading 8 bits, to represent an “8-bit integer”, which means a whole number (integer) stored in 8 bits. But how can we store 100 in 8 1’s and 0’s? The answer: Math! But don’t panic, it’s really quite simple!</p>
                     <p>In an 8-bit integer, there are two things that determine the value of the number: how many 1’s and 0’s it has, and the position of the 1’s and 0’s. The position of the 1’s and 0’s in the group of 8, determines it’s value, simply by representing it as 2 to the power of it’s position from right to left, starting at 0. It is then added together with it’s neighbors, to get the final value. The 0 and the 1 determine if the position should be included in the calculation. So instead of representing 2 as “1 1”, we can represent it as “0 0 1 0” or “(2<sup>1</sup> * 1) + (2<sup>0</sup> * 0)” or even simply: “2 + 0”!</p>
                     <p>So instead of needing 99 1s to represent 99, we only need 8 digits as shown below:</p>
-                    <img src="images/re_binary_99_temp.png">
+                    <img src="images/re_binary_99_temp.png" alt="99 shown as 0110 0011 with each digit represented by its 2 to the power of index times the binary value">
                     <p>Much easier than using 99 1s, right?</p>
                     <p>But what about negative numbers, how do represent those?</p>
                     <p>Well we do it exactly the same, but there's a catch! We sacrifice the last bit to represent the positive or negative sign. If its 1 the number is negative, if its a 0, the number is positive. This is kind of storage is called "signed", and it can only go up to 127 and down to -127. Also in a negative signed 8-bit integer, the values of the digits are flipped! So that every bit (besides the 2<sup>0</sup> bit, for some odd reason!) is 1 for 0 and 0 for -1.</p>
@@ -94,13 +94,13 @@
                     <h2 id="part3"><a href="#part3">#</a>3. COMMON DATA TYPES IN HEX</h2>
                     <p>As we explained in the previous lesson, when you stack different amounts of hex together by hand, it represents a higher value.</p>
                     <p>But how do you represent a picture in hex? Well let's see with this simple image here:</p>
-                    <img src="images/re_colors.png">
+                    <img src="images/re_colors.png" alt="3 even lines alternating between red blue and green, spaced by white">
                     <p>Now, let's see it in a program called a hex editor:</p>
-                    <img src="images/re_colors_hex.png">
+                    <img src="images/re_colors_hex.png" alt="the same picture above, shown in a hex editor, where it is 453 bytes long">
                     <p>That's a little bit different, to the untrained eye, its 453 bytes of gibberish. So how do we make sense of it all? The answer: Datatypes! Every single byte in that file serves a purpose, so it's up to us to decode it.</p>
                     <p>Luckily, we don't have to do all the work ourselves, hex editors, like the one I showed you in the picture make decoding things like that easy! But not all hex editors are created equal, in fact, the one I use is quite obscure but very powerful!</p>
                     <p>Let me introduce you to REHex, an open source Hex Editor Created by github user solemnwarning / Daniel Collins, it features not only the standard "check the value of this byte in every data type" feature all hex editors have. But it also features a unique highlighting system, datatype marking system, and section commenting system, which will help turn the image above into an image like this:</p>
-                    <img src="images/re_colors_hex_labeled.png">
+                    <img src="images/re_colors_hex_labeled.png" alt="the same picture as the picture in the hex editor, except it now has parts labeled, highlighted, and with set data types">
                     <p>Pretty neat right? Well you can download this masterpiece of a hex editor for free here: <a href="https://github.com/solemnwarning/rehex/releases/tag/0.5.4">REHex Editor's Github Page</a></p>
                     <p>It's the best hex editor around, and there's no doubt about it! (I like to set it to 1 byte per group though, in the preferences, but that just makes it easier for me!)</p>
                     <p>But the world's best hex editor won't get you anywhere, if you don't know what to look for! But that's what the table below is for!</p>
@@ -169,10 +169,19 @@
                 <!-- <section class="sectionContainer"><h2 id="part6"><a href="#part6">#</a>6. INTRO TO GHIDRA</h2></section> -->
                 <!-- <section class="sectionContainer"><h2 id="part7"><a href="#part7">#</a>7. REVERSE ENGINEERING AN EXE</h2></section> -->
                 <!-- <section class="sectionContainer"><h2 id="part8"><a href="#part8">#</a>8. MODIFYING AN EXE</h2></section> -->
-                <section class="sectionContainer">
+                <!--<section class="sectionContainer">
                     <h2 id="quiz"><a href="#quiz">#</a>BONUS: GUESS THAT DATA TYPE QUIZ</h2>
                     <p></p>
-                </section>
+                    <div id="quizBox">
+                        <h2>Guess that Data type!</h2>
+                        <div id="questionBox"></div>
+                        <div id="choicesBox">
+                        </div>
+                        
+                        <p id="scoreBox"></p>
+
+                    </div>
+                </section>-->
                 <section class="sectionContainer">
                     <h2>COMING SOON!</h2>
                     <li>Documenting File Formats</li>

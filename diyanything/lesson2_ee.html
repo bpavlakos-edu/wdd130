@@ -12,24 +12,24 @@
         <nav>
             <!-- <a href="lesson1_cp.html" class="linkContainer"> -->
             <a href="index.html" class="linkContainer">
-                <img src="images/cd_icon_temp.png" class="linkIcon">
+                <img src="images/cd_icon_temp.png" class="linkIcon" alt="">
                 Computer Programming [Under Construction]
             </a>
             <a href="lesson2_ee.html" class="linkContainer">
-                <img src="images/ee_icon.svg" class="linkIcon">
+                <img src="images/ee_icon.svg" class="linkIcon" alt="">
                 Electronic Circuits
             </a>
             <a href="index.html" class="linkContainer">
-                <img src="images/h_icon.svg" class="linkIcon">
+                <img src="images/h_icon.svg" class="linkIcon" alt="">
                 Home
             </a>
             <a href="lesson3_re.html" class="linkContainer">
-                <img src="images/re_icon.svg" class="linkIcon">
+                <img src="images/re_icon.svg" class="linkIcon" alt="">
                 Reverse Engineering
             </a>
             <!-- <a href="toolbox.html" class="linkContainer"> -->
             <a href="index.html" class="linkContainer">
-                <img src="images/tl_icon_temp.png" class="linkIcon">
+                <img src="images/tl_icon_temp.png" class="linkIcon" alt="">
                 Toolbox Archive [Under Construction]
             </a>
         </nav>
@@ -38,7 +38,7 @@
         </div>
     </header>
     <div id="heroContainer">
-        <img id="heroImg" class="hero" src="images/ee_hero.webp" alt="Lightbulb made of circuits and Binary code"> <!-- Exclude on subpages-->
+        <img id="heroImg" class="hero" src="images/ee_hero.webp" alt="Electronic Components Warping Into The Center Of Lightning"> <!-- Exclude on subpages-->
         <h1 id="heroTitle">ELECTRICAL ENGINEERING</h1> <!--Controlled by JavaScript-->
     </div>
     <main>
@@ -110,7 +110,8 @@
                             <br>The following section describes actions that should never be done by someone without having prior experience with electronic circuits, and knowing the dangers of electricity.
                             <br>DO NOT TRY THIS AT HOME!!! FALIURE TO HEED THESE WARNINGS WILL RESULT IN DAMAGE TO YOUR BODY OR YOUR DEVICES! I AM NOT RESPONSIBLE FOR ANY HARM THAT COMES TO YOU OR YOUR PROPERTY BY IGNORING THIS WARNING!
                         </p>
-                        <input id="warningCBox" type="checkbox" onchange="if(document.getElementById('warningCBox').checked == true){ document.getElementById('hiddenBox').hidden = false; }else{ document.getElementById('hiddenBox').hidden = true; }"> I understand this warning, and by checking this box I acknowledge that replicating any of the activities below is inherently dangerous, and could bring physical harm to me, to others, or to my property. I waive the author of any responsibility for any damage done by ignoring the warning, or attempting to replicate the actions of those described or shown below.</p>
+                        <input id="warningCBox" type="checkbox" onchange="if(document.getElementById('warningCBox').checked == true){ document.getElementById('hiddenBox').hidden = false; }else{ document.getElementById('hiddenBox').hidden = true; }">
+                        <label for="warningCBox">I understand this warning, and by checking this box I acknowledge that replicating any of the activities below is inherently dangerous, and could bring physical harm to me, to others, or to my property. I waive the author of any responsibility for any damage done by ignoring the warning, or attempting to replicate the actions of those described or shown below.</label>
                     </div>
                     <p>To see the info below about connecting more or less batteries to an electronic deivce. Read the warning above carefully, then click the checkbox to both show that you understand the warning, and know that replicating the actions below will cause harm.</p>
                     <p>If you are not interested in the subject, simply continue reading the lesson.</p>
@@ -171,16 +172,16 @@
                                 (As is mentioned in <a href="https://www.ibiblio.org/kuphaldt/electricCircuits/Ref/REF_9.html#xtocid102790" target="_blank">"Lessons in Electronics Volume 5 - Electronic Diagrams - Wires and Connections"</a>)</p>
                                 <p>I prefer to "bounce" over wires myself, but that's up to personal preference. However, the industry standard today, is to represent connections with dots, and draw a line straight through to represent passing.</p>
                             </td>
-                            <td><img src="images/ee_w_d.png"></td>
+                            <td><img src="images/ee_w_d.png" alt=""></td>
                         </tr>
                         <!--Battery-->
                         <tr>
                             <td>Battery</td>
                             <td>Provides power. It has two terminals. It provides DC power to circuits in a more portable fashion. The alternative is to either use a AC/DC power supply, and in electrical diagrams they are a line clearly marked as Vcc, and ground is marked as shown in the diagram.</td>
                             <td>
-                                <img src="images/ee_dcv_d.png">
-                                <!-- <img src="images/ee_acv_d.png"> -->
-                                <img src="images/ee_g_d.png">
+                                <img src="images/ee_dcv_d.png" alt="">
+                                <!-- <img src="images/ee_acv_d.png" alt=""> -->
+                                <img src="images/ee_g_d.png" alt="">
                             </td>
                         </tr>
                         <!--Resistor-->
@@ -197,8 +198,8 @@
                                 <p>Now because this is a lot to take in all at once, I'm attaching the color code diagram from the <a href="https://www.ibiblio.org/kuphaldt/electricCircuits/Ref/REF_2.html" target="_blank">restistor color code page of "Lessons In Electric Circuits: Volume V - Reference" By Tony R. Kuphaldt</a>. It even has colored examples of real resistors, that will help you understand the concept better, so please visit the page to learn more about resistors.</p>
                             </td>
                             <td>
-                                <img src="images/ee_r_d.png">
-                                <img src="images/ee_r_ccode.png">
+                                <img src="images/ee_r_d.png" alt="">
+                                <img src="images/ee_r_ccode.png" alt="">
                             </td>
                         </tr>
                         <!--LED-->
@@ -214,7 +215,7 @@
                                 <p>Any higher voltage or current than the manufacture specifications say it can handle, and it will be instantly destroyed.</p>
                                 <p>Because of this, LEDs are typically paired with a limiting resistor, to limit both the voltage and the current. When I use a 3v LED in a 5v circuit (which is a voltage that is quite common to work with), I pair it with a 200&Omega;(Ohm) or greater resistor to prevent it from getting destroyed.</p>
                             </td>
-                            <td><img src="images/ee_led_d.png"></td>
+                            <td><img src="images/ee_led_d.png" alt=""></td>
                         </tr>
                         <!---->
                         <!-- <tr>
@@ -263,7 +264,7 @@
                     <h2 id="part4"><a href="#part4">#</a>4. YOUR FIRST CIRCUIT</h2>
                     <p>Now that you know what some of the basic electronic components are, let's make your first circuit in Falstad!</p>
                     <p>In the falstad window below, replicate the following circuit:</p>
-                    <img src="images/ee_sample.png">
+                    <img src="images/ee_sample.png" alt="sample diagram of a basic LED circuit with a SPST switch">
                     <p>This circuit consists of</p>
                     <li>1 220 ohm resistor (located in draw on the toolbar, you can set the strength of a resitor by double clicking on it with the selection tool or scrolling the wheel up and down)</li>
                     <li>1 DC Power source (located in draw on the toolbar> inputs and outputs)</li>
@@ -317,7 +318,7 @@
                         <div class="cardHeader">
                             <a href="lesson3_re.html">
                                 <h2>Reverse</h2>
-                                <img src="images/re_icon.svg">
+                                <img src="images/re_icon.svg" alt="">
                                 <h2>Engineering</h2>
                             </a>
                         </div>
