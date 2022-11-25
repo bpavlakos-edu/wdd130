@@ -5,32 +5,42 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DIY Anything | Home</title>
-    <style rel="stylesheet" href="styles/styles.css" ></style>
+    <link rel="stylesheet" href="styles/styles.css">
 </head>
-<body>
+<body class="hp">
     <header>
         <nav>
             <!-- <a href="lesson1_cp.html" class="linkContainer"> -->
-            <a href="index.html" class="linkContainer">
-                <img src="images/cd_icon_temp.png" class="linkIcon" alt="">
-                Computer Programming [Under Construction]
+            <a href="index.html">
+                <div class="linkContainer">
+                    <img src="images/cd_icon_temp.png" class="linkIcon" alt="">
+                    <p>Computer Programming<br>[Under Construction]</p>
+                </div>
             </a>
-            <a href="lesson2_ee.html" class="linkContainer">
-                <img src="images/ee_icon.svg" class="linkIcon" alt="">
-                Electronic Circuits
+            <a href="lesson2_ee.html">
+                <div class="linkContainer">
+                    <img src="images/ee_icon.svg" class="linkIcon" alt="">
+                    <p>Electronic Circuits</p>
+                </div>
             </a>
-            <a href="index.html" class="linkContainer">
-                <img src="images/h_icon.svg" class="linkIcon" alt="">
-                Home
+            <a href="index.html">
+                <div class="linkContainer">
+                    <img src="images/h_icon.svg" class="linkIcon homeIcon" alt="">
+                    <p>Home</p>
+                </div>
             </a>
-            <a href="lesson3_re.html" class="linkContainer">
-                <img src="images/re_icon.svg" class="linkIcon" alt="">
-                Reverse Engineering
+            <a href="lesson3_re.html">
+                <div class="linkContainer">
+                    <img src="images/re_icon.svg" class="linkIcon" alt="">
+                    <p>Reverse Engineering</p>
+                </div>
             </a>
             <!-- <a href="toolbox.html" class="linkContainer"> -->
-            <a href="index.html" class="linkContainer">
-                <img src="images/tl_icon_temp.png" class="linkIcon" alt="">
-                Toolbox Archive [Under Construction]
+            <a href="index.html">
+                <div class="linkContainer">
+                    <img src="images/tl_icon_temp.png" class="linkIcon" alt="">
+                    <p>Toolbox Archive<br>[Under Construction]</p>
+                </div>
             </a>
         </nav>
         <div id="particleContainer">
@@ -39,7 +49,11 @@
     </header>
     <div id="heroContainer">
         <img id="heroImg" class="hero" src="images/h_icon.svg" alt="Lightbulb made of circuits and Binary code"> <!-- Exclude on subpages-->
-        <h1 id="heroTitle">DIY ANYTHING</h1> <!--Controlled by JavaScript-->
+        <div id="heroTitleContainer">
+            <div id="heroTitleBG"></div>
+            <h1 id="heroTitle">DIY ANYTHING</h1><!--Controlled by JavaScript-->
+        </div>
+        <!-- <img src="images/text16104.svg" alt=""> -->
     </div>
     <main>
         <div id="hpContentContainer">
@@ -51,68 +65,73 @@
                     <br><br>In the final lesson, you'll learn basics of reverse engineering, so that you can understand how a computer thinks. By learning how a computer thinks, you'll understand how to decode programs and unknown file formats. I will also teach you how to formulate a plan, to modify finished binaries, so that limitations (or errors), in programs that have no hope of being updated, can be removed.
                     <br><br>I will also give you links to every tool and tutorial source I know of, in the “Toolbox” page. All of these “tools” are free or near-free, and many of them will not be related to the lessons at all. This is intentional, I not only want to give you the tools to do my hobbies for free, I want to give you every tool I know of, in the hopes of helping you with your hobbies!
                     <br><br>I promise that no matter who you are, or what your interest-level in the topics is, you will walk away from this website with something new!
-                    </p>
+                </p>
             </div>
             <div id="lessonCardContainer">
                 <div class="lessonCard cpCard">
-                    <div class="cardHeader">
-                        <!-- <a href="lesson1_cp.html"> -->
-                        <a href="index.html">
-                            <h2>Computer</h2>
-                            <img src="images/cd_icon_temp.png" alt="">
-                            <h2>Programming [Under Construction]</h2>
-                        </a>
-                    </div>
+                    <!-- <a href="lesson1_cp.html"> -->
+                    <a href="index.html">
+                        <div class="cardHeader" class="cardHeaderLink">
+                            <h2 class="cardHtext1">Computer</h2>
+                            <img class="cardHico"src="images/ee_icon.svg" alt="">
+                            <h2 class="cardHtext2">Programming</h2>
+                        </div>
+                    </a>
                     <img src="images/cp_hero.webp" class="hpCardImg" alt="Computer Program Warping Into Cyberspace">
                     <p>Learn the basics of computer programming with Processing, a graphically focused, and Java-based programming language made for beginners!</p>
                 </div>
                 <div class="lessonCard eeCard">
-                    <div class="cardHeader">
-                        <a href="lesson2_ee.html">
-                            <h2>Electronic</h2>
-                            <img src="images/ee_icon.svg" alt="">
-                            <h2>Circuits</h2>
-                        </a>
-                    </div>
+                    <a href="lesson2_ee.html" class="cardHeaderLink">
+                        <div class="cardHeader">
+                            <h2 class="cardHtext1">Electronic</h2>
+                            <img class="cardHico"src="images/ee_icon.svg" alt="">
+                            <h2 class="cardHtext2">Circuits</h2>
+                        </div>
+                    </a>
                     <img src="images/ee_hero.webp" class="hpCardImg" alt="Electronic Components Warping Into The Center Of Lightning">
                     <!-- <iframe src="https://falstad.com/circuit/circuitjs.html?ctz=CQAgjCAMB0l3BWcMBMcUHYMGZIA4UA2ATmIxAUgoqoQFMBaMMAKAHcKU8Q1uwUALN15QWAN07c8hAZJ74oigbUVUYCduEHCF-ISDzYUojnqlGKA2YeORNCKwYsPZKQScuv3-C29l3TFF9vIOM8MEIPHzCIikIqcMiAuITYhHieZQ90qkEqfli8qJRCrILIvDhi2MraDAqq5IR6gyrmyJR07JbOyP4q3uKBrv6qDDx-TVGQcdkEYmNZ7IWZiYoVzFt7DYxjZjXNqLAD3fBj2XruZP2Lwm547kuPB5m7kBeuK80PvD4I4V+RzenzObwwCC2pn+Mwh73c4MhcIusMI7lwkw4qNk6LOsJx1zAeMgsmYsJwSSmhMW2EiMjGNOeWXJ7yyRjU31ZaDODLZRx5XOYDN27KhQq5hC6wuekvFXWwDOSEsi8r6-RAKqOXI1zC5GGJmrG+sIpz1GPeJqNp2wsMVVthzH11sRDux9rARsBBI990Bdy+mN9ge4NP970BIeQ4be13wwbe7t9pxjicWlsRpvNqexa2SGewa3dVpzU0gRZJpeMSqiFfeMqoVdzssiUuUIpmXNbyC6nZj3aq7q6dOrg6ZDKHuYZAlizPHmmZU76xKoC+rWRX7qyWNX9fhKPcub3yOMAgsB+PFnd7hPzsgV4vt9kLxj7heTyfc7er7eVlDTx-yAUf8Y0A-R3QUeYb3AlYlggjwYOgtYBBkODEOQ0hj2Q5J0JAJDZGw9oPHwlpagoFpkhIgiSKENsqMqEAyEiajCJaJiGJSZjIhyAw0gycieNSRjiApDhEhwoT6IyARxKwyTxKE2hHBkhTrGcRTNBsTwnGMBB+A8DSdOMYhHAMwjjN0oy5i4UzLKkfQIVDCZuHsgx9EcvTXNA7QXNDMxvK0VzMKmLzpBUsJApEiwQq0vzyMi1yan0PiKniipwu41LrCqKLyKy5CSLcnKEn0JYCrnNY3JKtLKtuKQqreKKnlKjhGuK2EmphMJWrCs0EQMZDmWyucGQa4bEqG5LHi5dqpQqqaqrmi59UG5qlv6paxpW6x9D9GLvkBNyduWsNasfU4juNbrM12zEzu2rp2qrA77rSx7kKHc6sii96NpZIr7ncB6Ae2gGXpBx8FHOiG3ohn6Xjc2D2oRuyViOhHkMowKACdSIyuRsoAlggA"></iframe> -->
-                    <p></p>
+                    <p>Learn how we harness electricity to get things done. Simulate your first circuit! And learn how Arduino bridges the gap between programmers and the real world!</p>
                 </div>
                 <div class="lessonCard reCard">
-                    <div class="cardHeader">
-                        <a href="lesson3_re.html">
-                            <h2>Reverse</h2>
-                            <img src="images/re_icon.svg" alt="">
-                            <h2>Engineering</h2>
-                        </a>
-                    </div>
+                    <a href="lesson3_re.html" class="cardHeaderLink">
+                        <div class="cardHeader">
+                            <h2 class="cardHtext1">Reverse</h2>
+                            <img class="cardHico"src="images/re_icon.svg" alt="">
+                            <h2 class="cardHtext2">Engineering</h2>
+                        </div>
+                    </a>
                     <img src="images/re_hero.webp" class="hpCardImg" alt="Highlighted Hexadecimal Code Warping Into the Center of a Shiny Cloud">
-                    <p></p>
+                    <p>From ones and zeroes, to hex and opcodes, learn the basics of what our devices read! With the right knowledge and the right tools, anyone can read a file format or modify an executable!</p>
                 </div>
                 <div class="lessonCard tbCard">
-                    <div class="cardHeader">
-                        <!-- <a href="toolbox.html"> -->
-                        <a href="index.html">
-                            <h2>The Tool</h2>
-                            <img src="images/tl_icon_temp.png" alt="">
-                            <h2>Archive [Under Construction]</h2>
-                        </a>
-                    </div>
+                    <!-- <a href="toolbox.html"> -->
+                    <a href="index.html" class="cardHeaderLink">
+                        <div class="cardHeader">
+                            <h2 class="cardHtext1">The Tool</h2>
+                            <img class="cardHico"src="images/ee_icon.svg" alt="">
+                            <h2 class="cardHtext2">Archive</h2>
+                        </div>
+                    </a>
                     <img src="images/tb_hero.webp" class="hpCardImg" alt="Many 3D Arrows of Various Sizes and Colors Pointing Downwards">
-                    <p></p>
+                    <p>Do you like free stuff? Of course you do! Go to the toolbox to get the best free (or nearly free) software money can't buy (Unless there's a premium version)!</p>
                 </div>
             </div>
             <div id="hpAboutMe">
                 <h2>About Me</h2>
-                <p>Hello! My name is Bryce Pavlakos. My journey with computers started when I was 12, I used notepad to modify a video game's scripts, in a language that to this day, has not been documented online. In High School, I took programming classes, and discovered three things: what I did at age 12 was called “programming”, you can get paid to program, and that programming is easier in languages with online documentation, using programs that tell you when a semicolon is missing. In High School, I also had the chance to take a class in my other hobby, Electrical Engineering, and I enjoyed it just as much as my programming classes. The hobbies and skills prepared me for the next step in understanding computers, Reverse Engineering! Now let me clarify, by “Reverse Engineering” I mean: making programs function better than ever was originally intended, overriding hard-coded EXE limitations in programs that have no hope of ever being updated, and documenting unknown file formats so that a program can be created for mod making. These modifications, are what many people online call “impossible”, but I've learned that many of these “impossible” changes are often only a few bytes away. In my time Reverse Engineering, I've fully reverse-engineered 10+ file formats, across 8+ Video Games, and successfully modified the binaries of 6 Video Games, to make them function better or overcome a limitation. My experiences in mod making and reverse engineering, have taught me more about the inner workings of computers than anyone would want to willingly learn, and introduced me to powerful tools, many of which being free. It has also taught me, that nothing is truly impossible if you set your mind to it. It can be very difficult at times, but in the end overcoming a challenge is always worth the effort!</p>
+                <p>Hello! My name is Bryce Pavlakos. My journey with computers started when I was 12, I used notepad to modify a video game's scripts, in a language that to this day, has not been documented online. 
+                    <br><br>In High School, I took programming classes, and discovered three things: what I did at age 12 was called “programming”, you can get paid to program, and that programming is easier in languages with online documentation, using programs that tell you when a semicolon is missing. 
+                    <br><br>Also in High School, I had the chance to take a class in my other hobby, Electrical Engineering, and I enjoyed it just as much as my programming classes. 
+                    <br><br>The hobbies I have and skills I accquired prepared me for the next step in understanding computers, Reverse Engineering!
+                    <br><br>Now let me clarify, by “Reverse Engineering” I mean: making programs function better than ever was originally intended, overriding hard-coded EXE limitations in programs that have no hope of ever being updated, and documenting unknown file formats so that a program can be created for mod making. These modifications, are what many people online call “impossible”, but I've learned that many of these “impossible” changes are often only a few bytes away. 
+                    <br><br>In my time Reverse Engineering, I've fully reverse-engineered 10+ file formats, across 8+ Video Games, and successfully modified the binaries of 6 Video Games, to make them function better or overcome a limitation. 
+                    <br><br>My experiences in mod making and reverse engineering, have taught me more about the inner workings of computers than anyone would want to willingly learn, and introduced me to powerful tools, many of which being free. It has also taught me, that nothing is truly impossible if you set your mind to it. It can be very difficult at times, but in the end overcoming a challenge is always worth the effort!</p>
             </div>
         </div>
     </main>
     <footer>
         <div id="leftFooter"></div>
         <div id="centerFooter">
-            <p>DIY Anything - Bryce Pavlakos - 2022</p>
-            <p><a href="site-plan.html">Site Plan</a></p>
+            <p>DIY Anything - Bryce Pavlakos - © 2022 - <a href="site-plan.html">Site Plan</a></p>
         </div>
         <div id="rightFooter"></div>
     </footer>

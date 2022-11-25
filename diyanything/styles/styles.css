@@ -1,0 +1,812 @@
+/*Font imports*/
+/*Body font: Recursive, special import instructions for full range found here: */
+@import url('https://fonts.googleapis.com/css2?family=Recursive:slnt,wght,CASL,CRSV,MONO@-15..0,300..1000,0..1,0..1,0..1&display=swap');
+/*With this import, I am importing the entire range of settings, not just one particular option*/
+
+@font-face {
+    font-family: "Decovar Alpha Regular";
+    /*font-family: "Decovar Blueprint"; /*Custom name for this preset, [once I figure out how to do that...]*/
+    src: url("fonts/DecovarAlpha-VF.ttf") format("truetype-variations");
+}
+
+
+/*Across all pages*/
+:root{
+    --blue: #248df0;
+    --darkblue: #001247;
+    --orange: #ff5900;
+    --teal: #63bb98;
+    /*"New" colors*/
+    --black: #000000;
+    --white: #ffffff;
+    --clipWidth: 100px;
+    --cardHeaderSize: 75px; /*This is so the card header size in the grid can be inherited*/
+    /*Javascript updating*/
+    --mouseX: 0px;
+    --mouseY: 0px;
+    --tiltX: var(--mouseX);
+    --tiltY: var(--mouseY);
+}
+
+/*Custom font presets*/
+/*Decovar blueprint*/
+/*Also the edfault header setting*/
+h1,h2,h3,.decovar-heading{
+    /*Presets*/
+    /*Values tested (and analyzed to find their font axis names) here: 
+    https://www.axis-praxis.org/specimens/decovar
+    Minimum of all values is 0, maximum is 1000*/
+    --blda: "BLDA" 0; /*Inline*/
+    --trmd: "TRMD" 0; /*Sheared*/
+    --trmc: "TRMC" 0; /*Rounded Slab*/
+    --skld: "SKLD" 0; /*Stripes*/
+    --trml: "TRML" 0; /*Worm Termininal*/
+    --skla: "SKLA" 0; /*Inline Skeleton*/
+    --trmf: "TRMF" 205;  /*Open Inline Terminal*/
+    --trmk: "TRMK" 0; /*Inline Terminal*/
+    --bldb: "BLDB" 0; /*Worm*/
+    --wmx2: "WMX2" 15; /*Weight*/
+    --trmb: "TRMB" 0; /*Flared*/
+    --trma: "TRMA" 1000; /*Rounded*/
+    --sklb: "SKLB" 0; /*Worm Skeleton*/
+    --trmg: "TRMG" 0; /*Slab*/
+    --trme: "TRME" 0; /*Bifurcated*/
+    /*Interesting setting that I might use later: https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant */
+    font-variation-settings: var(--blda), var(--trmd), var(--trmc), var(--skld), var(--trml), var(--skla), var(--trmf), var(--trmk), var(--bldb), var(--wmx2), var(--trmb), var(--trma), var(--sklb), var(--trmg), var(--trme);
+    font-weight: normal; /*Using bold on this font type causes visual glitches*/
+    /* font-size: 2rem; */
+    font-family: "Decovar Alpha Regular", "Arial Black", display;
+}
+/*Recusrsive Normal Text*/
+/*Also the default text setting for p and a*/
+p,a,.recursive-default{
+    /*Custom variables as stated by example here: https://www.recursive.design/#toolbar*/
+    /*Very close to sans linear*/
+    --mono: "MONO" 0;/* Monospace: Sans (natural-width) or Mono (fixed-width) */
+    --casl: "CASL" 0;/* Casual: Linear (0) to Casual (1)*/
+    --wght: "wght" 400;/* Weight: Light to ExtraBlack; usually set with `font-weight` */
+    --slnt: "slnt" 0;/* Slant: 0 to -15 degrees, auto cursive at -14 */
+    --crsv: "CRSV" 0;/* Cursive: always roman (0), auto substitution (0.5), or always cursive (1)*/
+    font-variation-settings: var(--mono),var(--casl),var(--wght),var(--slnt),var(--crsv);
+    font-family: Recursive, Helvetica, sans-serif;
+}
+
+/*Console / Numerical Font*/
+.recursive-console{
+    --Cmono: "MONO" 1;
+    --Ccasl: "CASL" 0;
+    --Cwght: "wght" 335;
+    --Cslnt: "slnt" 0;
+    --Ccrsv: "CRSV" 0;
+    /*Override h4 from later in the CSS*/
+    font-variation-settings: var(--Cmono),var(--Ccasl),var(--Cwght),var(--Cslnt),var(--Ccrsv);
+    font-variant-caps: Normal;
+    font-family: var(--console-font);
+    color: var(--black-color);
+    /*Override the decovar font size increase*/
+    font-size: initial;
+    font-family: Recursive,"Courier New", monospace; 
+}
+
+/*Page root*/
+
+
+body{
+    max-width: 1440px; /*0.75 * 1920 */
+    margin: 0 auto;
+    align-content: center;
+    font-size: 22px;
+}
+
+
+/*Header*/
+header{
+    background-color:  #248df047; /*#248df0e0;*/
+    /*Clipping*/
+    /*--clipWidth: 100px; /*experimenting with the width of the clip, changed to root so other elements can access it*/ 
+    padding: 0 var(--clipWidth); /*extra padding that we can cut off*/
+    overflow: hidden;
+    /*Information about clip path: https://css-tricks.com/creating-non-rectangular-headers/#aa-clip-path*/
+    /*I've think that clip path is the best fit for this operation*/
+    clip-path: polygon(0 0, 100% 0, calc(100% - var(--clipWidth)) 100%, var(--clipWidth) 100%); /*And it looks like I was correct, this is easy!*/
+    /*Fancy glass effect*/
+    /*Blur is from here:  https://css-tricks.com/backdrop-filter-effect-with-css/*/
+    backdrop-filter: blur(5px) drop-shadow(0px 0px 5px black);
+}
+
+/*Nav bar*/
+nav{
+    /* text-align: center; */ /*Uncomment */
+    /*grid-control*/ /*Uncomment */
+    /* display: grid;
+    grid-template-columns: repeat(5,1fr); */ /*Uncomment and above*/
+    /*WWR rafting project helped sort this out*/
+    /* display: flex;
+    justify-content: space-between; */
+    /*It didn't really do anything differently?*/
+    /* width: 100%; /*Uncomment */
+    /*New Version*/
+    text-align: center;
+    display: flex;
+    column-gap: 2%;
+    width: 100%;
+    justify-content: space-evenly;
+    flex-wrap: nowrap;
+    align-content: stretch;
+    flex-direction: row;
+}
+
+/*The container for the link object*/
+.linkContainer{
+    /* width: 100%; */
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 150px 1fr;
+    /*outline: 1px solid red; /*Testing*/
+    /* font-size: 0.95em; */
+    font-size: 0.75em;
+}
+/*Link icons*/
+.linkIcon{
+    height: 75px;
+    width: 100%;
+    padding: 5px 0px;
+    filter: drop-shadow(0 0 5px #000);
+    /* background-image: repeating-linear-gradient(var(--darkblue) 0px 5px, var(--black) 10px 15px); */
+    /*background: #001247a8;
+    backdrop-filter: blur(5px);*/
+    margin: auto auto 10px auto;
+}
+.linkContainer p{
+    grid-row: 2/3;
+    height: 100%;
+    text-align: bottom;
+    width: 100%;
+    transition: 500ms 0ms; /*slow down the text transtion*/
+}
+/*The center icon is bigger*/
+.linkIcon.homeIcon{
+    height: 150px;
+    width: 150px;
+    image-rendering: crisp-edges;
+}
+
+/*Extra padding for first and last child for slicing*/
+nav a{
+    /* width: 300px; */
+    background-color: #001247a8;
+    border-radius: 15px;
+    color: #fff;
+    border: 5px inset #248df0;
+    backdrop-filter: blur(15px);
+    flex-grow:1;
+    transition: 500ms 0ms; /*Slow down the transition*/
+}
+
+nav a:hover{
+    text-decoration: underline;
+    border: 5px outset #63bb98;
+}
+
+nav a:hover p{
+    /*--mono: "MONO" 0;/* Monospace: Sans (natural-width) or Mono (fixed-width) */
+    --casl: "CASL" 1;/* Casual: Linear (0) to Casual (1)*/
+    --wght: "wght" 800;/* Weight: Light to ExtraBlack; usually set with `font-weight` */
+    --slnt: "slnt" -15;/* Slant: 0 to -15 degrees, auto cursive at -14 */
+    /*--crsv: "CRSV" 0;/* Cursive: always roman (0), auto substitution (0.5), or always cursive (1)*/
+    font-variation-settings: var(--mono),var(--casl),var(--wght),var(--slnt),var(--crsv);
+    font-size: 1.1rem;
+}
+
+h1,h2,h3{
+    text-align: center;
+}
+
+h1{
+    font-size: 128px;
+    
+}
+
+h2{
+    font-size: 48px
+}
+
+/* p{
+
+} */
+
+a{
+    text-decoration-line: none; /*Disable Underlining Text*/
+}
+
+p a{
+    text-decoration-line: underline;
+}
+
+/*Footer*/
+footer{
+    display: grid;
+    grid-template-columns: calc(var(--clipWidth)*2) 1fr calc(var(--clipWidth)*2);
+    grid-row: 1fr;
+    width: 100%;
+    /* background-color: red; */
+    column-gap: 5px;
+    --footerColor: rgba(36, 141, 240, 0.25);
+    --blurPx: 10px;
+    transform: translateY(3px); /*Get rid of glitchy stuff*/
+}
+/*footer components*/
+#leftFooter{
+    background-color: var(--footerColor);
+    backdrop-filter: blur(10px);
+    clip-path: polygon(0px 0px, 0px 100%, 100% 100%, calc(100% - 20px) 0%);
+}
+#centerFooter{
+    background-color: var(--footerColor);
+    text-align: center;
+    /* margin: 0 auto; */
+    /* display: flex; */
+    /* row-gap: 10px; */
+    backdrop-filter: blur(10px);
+    clip-path: polygon(0% 0px, 20px 100%, calc(100% - 20px) 100%, 100% 0%);
+    color: white;
+}
+#rightFooter{
+    background-color: var(--footerColor);
+    backdrop-filter: blur(10px);
+    clip-path: polygon(20px 0px, 0px 100%, 100% 100%, 100% 0%);
+}
+
+footer a{
+    color: white;
+    transition: 500ms 0ms; /*Slow down the transition*/
+}
+
+footer a:hover{
+    /*--mono: "MONO" 0;/* Monospace: Sans (natural-width) or Mono (fixed-width) */
+    --casl: "CASL" 1;/* Casual: Linear (0) to Casual (1)*/
+    --wght: "wght" 800;/* Weight: Light to ExtraBlack; usually set with `font-weight` */
+    --slnt: "slnt" -15;/* Slant: 0 to -15 degrees, auto cursive at -14 */
+    /*--crsv: "CRSV" 0;/* Cursive: always roman (0), auto substitution (0.5), or always cursive (1)*/
+    font-variation-settings: var(--mono),var(--casl),var(--wght),var(--slnt),var(--crsv);
+}
+
+
+/*Frequent Containers*/
+/*Lesson Card*/
+.lessonCard{
+    /* display: grid; */
+    grid-template-columns: 0.5fr 9fr 0.5fr;
+    /* grid-template-rows: var(--cardHeaderSize) 0.5fr 0.5fr; */
+    grid-template-rows: 0.2fr 1.8fr 1fr;
+    /*Converting To Flex*/ /* https://stackoverflow.com/questions/51962136/why-is-my-grid-elements-height-not-being-calculated-correctly */
+    /*Never mind turning grid off fixed it!!!*/
+    /*Flex needs to be turned on*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+    /*Basic Design*/
+    color:#fff;
+    text-align: center;
+    /*Transparent Backgrounds template*/
+    --alphaBG: 0.25;
+    --redBG: 255;
+    --blueBG: 255;
+    --greenBG: 255;
+    backdrop-filter: blur(5px);
+    background-color: rgba(var(--redBG), var(--greenBG), var(--blueBG), var(--alphaBG));
+    /*Border rounding*/
+    border: 1px solid rgb(var(--redBG), var(--greenBG), var(--blueBG));
+    border-radius: 15px;
+    overflow: hidden;
+    /*Outline For Visibility*/
+    --glowColor: rgba(var(--redBG), var(--greenBG), var(--blueBG), 1.0);
+    box-shadow: inset 0px 0px 20px 10px var(--glowColor); /*Just remembered there's a missing parameter, spread radius https://www.cssmatic.com/box-shadow https://stackoverflow.com/questions/45972558/how-to-create-box-shadow-only-on-left-and-right-with-repeat-box#45978706*/
+}
+.cpCard{
+    --redBG: 99;
+    --greenBG: 187;
+    --blueBG: 152;
+    /*background-color: #63bb9840;*/
+}
+.eeCard{
+    --redBG: 255;
+    --greenBG: 89;/*187 yellow*/
+    --blueBG: 0;
+    /* background-color: #ff590040; */
+    /*ff5900*/
+}
+.reCard{
+    --redBG: 36;
+    --greenBG: 141;
+    --blueBG: 240;
+    /* background-color: #248df040; */
+}
+.tbCard{
+    --redBG: 00;
+    --greenBG: 18;
+    --blueBG: 71;
+    /* background-color: #00124740; */
+}
+
+/*Lesson card header*/
+.lessonCard a{
+    grid-column: 1/4;
+    grid-row: 1/2;
+    width: 100%; /*Needed to grow with flexbox*/
+}
+
+/*Header container*/
+.cardHeader{
+    /* height: 100px; */
+    grid-column: 1/4;
+    grid-row: 1/1;
+    grid-template-columns: 8fr 3fr 8fr;
+    display: grid;
+    grid-template-rows: var(--cardHeaderSize);
+    align-items: center;
+    border-bottom: 1px solid rgba(var(--redBG),var(--greenBG),var(--blueBG),0.90);
+    /*Experimental*/
+    /*--pull: 2px;
+    --pop: 2px;
+    border-top: var(--pull) inset lightblue;
+    border-left: var(--pull) inset blue;
+    border-right: var(--pop) inset red;
+    border-bottom: var(--pop) inset darkred;
+    transition: border 0.1s;
+    transform: translate(var(--pull) var(--pop)); */
+}
+
+/*Header Hover*/
+div.cardHeader:hover{
+    background-color: rgb(var(--redBG), var(--greenBG), var(--blueBG), 0.5); /*Transparent but not as transparent*/
+    backdrop-filter: blur(5px);
+    color:white;
+    /* --pull: 5px;
+    --pop: 25px; */
+    text-decoration: underline;
+    margin: 0px;
+}
+/*Image hover*/
+div.cardHeader:hover img{
+    box-shadow: inset 0px 0px 20px 1px var(--glowColor); /*Inner glow*/
+}
+/*Lesson Card Header Hyperlink, which also contains the text items*/
+.cardHeader a{
+    /* display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px; */
+    display: grid;
+    grid-template-columns: 4.5fr 1fr 4.5fr;
+    grid-template-rows: 1fr;
+    /* align-items: center; */
+    justify-items: stretch;
+    align-items: start;
+    font-size: 0.1rem;
+    margin: 0px;
+    grid-column: 1/4;
+    grid-row: 1/1;
+}
+/*Its 3 elements*/
+/*Textbox 1*/
+.cardHtext1{
+    /*old*/
+    /* text-align: right center; */
+    /* padding-right: 50px; */
+    /* font-size: 12px; */
+    /*New*/
+    /*margin: auto 0px auto auto ; /*align to the correct side*/
+    margin: initial; /*align to the correct side*/
+}
+/*Center Icon*/
+.cardHico{
+    /*Old*/
+    /*width: 100%;*/
+    /*/* height: 100px; */
+    /*object-fit: scale-down;*/
+    /*display: inline;*/
+    /*inline-size: 10px;*/
+    /*new*/
+    /* width: 100%; */
+    /* height: 4rem; */
+    object-fit: scale-down;
+    /* display: inline; */
+    /* inline-size: 10px; */
+    width: 70%;
+    height: 70%;
+    padding: 5% 5%;
+    margin: 0 auto;
+    background-color: #001247BB;
+    border-radius: 5px;
+    outline: 2px solid #ffffff5B;
+}
+.cardHtext2{
+    /*old*/
+    /* text-align: left center; */
+    /* padding-left: 50px; */
+    /* font-size: 12px; */
+    /*New*/
+    /*margin: auto auto auto 0px; /*align to the correct side*/
+    margin: initial; /*align to the correct side*/
+}
+/*Settings for both text containers*/
+.cardHeader h2{
+    /* font-size: 140%; */
+    /*Clamp wasn't working but min can do the same thing! https://css-tricks.com/how-do-you-do-max-font-size-in-css/ */
+    font-size: min(1.8vw, 140%); /*Dynamic font size, pick the smaller of the two, so that the big screens don't mess it up!*/
+    font-weight: 5px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    text-shadow: 0px 0px 3px #ffffff;
+    --trmf: "TRMF" 0;
+    /* --trma: "TRMA" 0; */
+    /* --wmx2: "WMX2" 0; */
+    color: white;
+    /* transition: 2s;
+    transition-property: --wmx2; */
+    line-height: 30px;
+    /* clip-path: polygon(0px 0px, 0px 100%, 100% 100%, 100% 0); */
+    clip-path: polygon(0px 0px, 0px 100%, 100% 200%, 100% 0); /*Bugged but cool version, was trying to do 200% to make it more dramatic but this is too cool, perhaps a python program could help generate this*/
+    transition: all 0s 250ms, clip-path 1s 0s;
+}
+
+.cardHeader:hover h2{
+    font-size: min(1.4vw, 90%);
+    --trmf: "TRMF" 0;
+    /* --trma: "TRMA" 0; */
+    --wmx2: "WMX2" 1000;
+    color: white;
+    /* clip-path: polygon(100% 100%, 100% 0px, 0px 0px, 0px 100%); */
+    clip-path: polygon(100% 100%, 100% 0px, 0px 0px, 0px 200%); /*Bugged but cool version, was trying to do 200% to make it more dramatic but this is too cool, perhaps a python program could help generate this*/
+    
+}
+
+/*Lesson card picture*/
+.hpCardImg{
+    width: 80%;
+    object-fit: cover;
+    grid-row: 2/3;
+    grid-column: 2/3;
+    /* outline: 12px double slategray; */
+    filter: drop-shadow(5px 5px 12px black);
+    border-radius: 5px 5px 100px 100px;
+    margin-top: 5%;
+}
+
+/*Lesson card text*/
+.lessonCard p{
+    grid-row: 3/4;
+    grid-column: 2/3;
+    color: white;
+    text-shadow: 2px 1px 0px #000;
+    background-color: rgba(var(--redBG), var(--greenBG), var(--blueBG), 0.65);
+    /* margin: 0px; */
+    place-self: stretch;
+    /* height: 70%; */
+    margin: 1.1rem 0.8rem;
+    /* font-size: 0.5rem; */
+    padding: 2rem 4rem;
+    line-height: 2rem;
+    border-radius: 20px;
+    flex-grow: 1; /*Needed for flexbox*/
+}
+
+
+/*home page specific*/
+/*Background*/
+body.hp{
+    background-color: #001247;
+    /* background-image: repeating-linear-gradient(45deg, var(--blue) 0px 15px, var(--darkblue) 15px 30px); */
+    /* background-image: repeating-linear-gradient(45deg, var(--blue) 0px, var(--darkblue) 20px 30px, var(--blue) 35px); */
+    /*Animation Successful*/
+    /* background-image: repeating-linear-gradient(0deg, var(--blue) 0px, var(--darkblue) 25px 50px); /*Lines */
+    background-image: repeating-linear-gradient(339deg, var(--blue) -12px, var(--darkblue) 25px 35px);/*squares*/
+    background-image: repeating-linear-gradient(315deg, var(--blue) -12px, var(--darkblue) 25px 35px);/*squares*/
+    background-attachment: fixed; /*Parallax Effect*/
+    /* animation: scroll 5s linear infinite; */
+    animation: scroll 4s linear infinite;
+    animation-fill-mode: both;
+    background-size: 50px 50px; /*makes it tile infinitely or make new shapes*/ /*Thank you w3schools: https://www.w3schools.com/cssref/css3_pr_background-size.php*/
+}
+
+/*Hero container*/
+#heroContainer {
+    margin: 0 var(--clipWidth);
+    display: grid;
+    grid-template: 1fr / 1fr;
+    /* width: 925px; */
+    align-self: center;
+    /* justify-self: center; */
+    align-items: center;
+    justify-items: center;
+    background-color: #0012477a;
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    margin-top: 2%;
+}
+
+/*Hero image*/
+#heroImg {
+    /* width: 51%; */
+    height: 85%;
+    margin: 0px 13px;
+    padding: 0px 0px;
+}
+
+/*Main content container*/
+#hpContentContainer{
+    margin: 0 var(--clipWidth);
+}
+
+/*About me and intro message*/
+#hpIntroMsg, #hpAboutMe{
+    background: #248df069;
+    border-radius: 15px;
+    border: 1px solid #248df0;
+    backdrop-filter: blur(5px);
+    color: white;
+    margin: 6% 0;
+    overflow: hidden;
+}
+
+#hpIntroMsg h2, #hpAboutMe h2{
+    padding: 0.5rem;
+    text-indent: 0%;
+    text-align: center;
+    outline: 1px solid #248df0;
+    margin: 0;
+    background-color: #00124798;
+}
+#hpIntroMsg p, #hpAboutMe p{
+    text-indent: 5%;
+    margin: 2.5%;
+    padding: 2.5%;
+    line-height: 1.2em;
+    background-color: #001247cb;
+    border-radius: 15px;
+    /* box-shadow: 0px 0px 0px 50px#63bb98; */
+    outline: 4px solid #ff5900bd;
+    box-shadow: inset 0px 0px 30px 10px #ff5900, 0px 0px 30px 10px #63bb98;
+}
+
+
+/*Main card container on the front page*/
+#lessonCardContainer{
+    display: grid;
+    /* grid-template: 500px 500px / 500px 500px; */
+    grid-template: 1fr 1fr / 1fr 1fr;
+    justify-content: space-evenly;
+    gap: 100px 100px;
+}
+
+
+
+
+
+
+/*Animations*/
+@keyframes scroll{
+    0% {
+        background-position-y: 0px;
+        background-position-x: 0px;
+    }
+    
+    100% {
+        background-position-y: 50px; /*Needs to match tile size*/
+        background-position-x: 50px; /*Needs to match tile size*/
+    }
+}
+
+/*Javascript operated items*/
+/* Header Particle System*/
+#particleContainer{
+    grid-template-columns: repeat(var(--particleXCount),var(--particleXSize));
+    grid-template-rows: repeat(var(--particleYCount),var(--particleYSize));
+    /*column-gap: calc(var(--particleXSize) / 2);
+    row-gap: calc(var(--particleYSize) / 2);*/
+    display: grid;
+    gap: 2px;
+    /* border: 3px double #248df0; */
+    /* background-color: white;*/
+    /* background-image: linear-gradient(90deg,#ff0,#0ff);  */
+    /* margin: 5px -50px 10px -50px; */
+    margin: 6px -50px 10px -90px;
+    padding: 1px;
+    overflow: hidden;
+}
+
+.particle{
+    background-color: white;
+    /* outline: inset 1px black; */
+    width: var(--particleXSize);
+    height: var(--particleYSize);
+    /* display: inline-block; */
+    border-radius: 50%;
+    animation: 10s fade linear infinite, 5s shift linear infinite; /*https://developer.mozilla.org/en-US/docs/Web/CSS/animation#syntax*/
+}
+
+.particle.r0{
+    background-color: white;
+    /* animation: 5s fade reverse linear infinite; */
+    /* animation-delay: -5s; */
+    animation-direction: reverse;
+}
+.particle.r2{
+    background-color: white;
+    /* animation: 5s fade reverse linear infinite; */
+    /* animation-delay: -5s; */
+    animation-direction: reverse;
+}
+.particle.r4{
+    background-color: white;
+    /* animation: 5s fade reverse linear infinite; */
+    /* animation-delay: -5s; */
+    animation-direction: reverse;
+}
+
+.particle.r0:nth-child(odd){
+    animation-delay: -5s, 0s;
+}
+.particle.r1:nth-child(even){
+    animation-delay: -5s, 0s;
+}
+.particle.r2:nth-child(odd){
+    animation-delay: -5s, 0s;
+}
+.particle.r3:nth-child(even){
+    animation-delay: -5s, 0s;
+}
+.particle.r4:nth-child(odd){
+    animation-delay: -5s, 0s;
+}
+
+@keyframes fade{
+    0%{
+        background-color: rgba(255, 255, 255, 0.450);
+    }
+    50%{
+        background-color: rgba(255, 255, 255, 0.200);
+        /*border-radius: 0%;*/
+    }
+    100%{
+        background-color: rgba(255, 255, 255, 0.450);
+    }
+}
+
+@keyframes shift {
+    0%{
+        transform: translateX(0px);
+    }
+    50%{
+        border-radius: 0%;
+        transform: translateX(22px);
+    }
+    100%{
+        transform: translateX(44px);
+    }
+}
+
+/*Main Title*/
+#heroTitle {
+    font-size: 143px; /*Slightly larger than original*/
+    margin: 0;
+    /*Planning on doing gradient text: https://css-tricks.com/snippets/css/gradient-text/ */
+    background-image: repeating-linear-gradient(90deg, #248df0 0%, #63bb98 25%, #ff5900 50%, #63bb98 75%, #248df0 100%);
+    background-size: 30% 100%; /*Thank you w3 schools for explaining better than MDN: https://www.w3schools.com/cssref/css3_pr_background-size.php */
+    background-position-x: -226px; /*Adjusted by hand*/
+    /*That was surprisingly easy, I did it in developer tools*/
+    background-clip: text; /*Firefox version*/
+    -webkit-background-clip: text;
+    color: #ffffff00;
+    text-rendering: geometricprecision;
+    transform-style: preserve-3d;
+    --tiltX: var(--mouseX);
+    --tiltY: var(--mouseY);
+    --rotX: max(calc(-0.25*var(--tiltY)),-45deg);
+    --rotY: min(calc(0.25*var(--tiltX)), 45deg);
+    /* transform: rotateX(var(--rotX)) rotateY(var(--rotY)) rotateZ(0deg); */
+    transform: rotateX(var(--mouseY)) rotateY(var(--mouseX)) rotateZ(0deg) translateZ(15px);
+    /* border: 5px solid red; */
+    /* transform-origin: bottom; */
+    /* transition: transform 300ms; */
+    /* text-shadow: 0px 0px 5px #000000; */
+
+}
+
+/*Background on title*/
+h1#heroTitle::before {
+    content: "";
+    background-color: #0012477a;
+    margin: 0 auto;
+    width: 105%;
+    height: 105%;
+    z-index: -1;
+    transform-style: preserve-3d;
+    transform: translateZ(-25px) translateX(-2.5%) translateY(-2.5%);
+    position: fixed;
+    filter: drop-shadow(0px 9px 5px #001247);
+    backdrop-filter: blur(6px);
+    border-radius: 50px;
+}
+
+/*Media query for smaller screens*/
+@media screen and (max-width : 1100px) and (min-width : 801px){
+    /*Switch to block*/
+    h1#heroTitle::before {
+        content: "";
+        background-color: #0012477a;
+        margin: 0 auto;
+        width: 90%;
+        height: 105%;
+        z-index: -1;
+        transform-style: preserve-3d;
+        transform: translateZ(-25px) translateX(-38%) translateY(-2.5%);
+        position: fixed;
+        filter: drop-shadow(0px 9px 5px #001247);
+        backdrop-filter: blur(6px);
+        border-radius: 50px;
+    }
+}
+
+@media screen and (max-width : 800px){
+    /*Switch to block*/
+    :root{
+        --clipWidth: 50px;
+    }
+    body{
+        max-width: 800px;
+        margin: 0 0;
+    }
+    #hpContentContainer{
+        width: calc(100% - (var(--clipWidth) * 2));
+    }
+
+    nav{
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        align-content: center;
+        /* width: calc(100% - (var(--clipWidth) * 2)); */
+        /* padding: 0px var(--clipWidth); */
+        /* margin: 0 (var(--clipWidth) * 2); */
+    }
+    .linkContainer{
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+    }
+    .linkIcon {
+        height: 75px;
+        width: 75px;
+        padding: 0px 0px;
+        filter: drop-shadow(0 0 5px #000);
+        /* background-image: repeating-linear-gradient(var(--darkblue) 0px 5px, var(--black) 10px 15px); */
+        margin: 5px;
+        flex-shrink: 1;
+    }
+    .linkIcon.homeIcon{
+        height: 75px;
+        width: 75px;
+    }
+    #lessonCardContainer{
+        display: flex;
+        flex-direction: column;
+    }
+    h1#heroTitle{
+        font-size: 64px;
+    }
+    /*Lesson card size increase*/
+    .cardHeader h2{
+        font-size: max(1.8vw, 140%)
+    }
+    .cardHeader:hover h2{
+        font-size: max(1.4vw, 90%)
+    }
+
+    footer p{
+        font-size: 1vw;
+    }
+}

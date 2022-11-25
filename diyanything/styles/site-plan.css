@@ -68,7 +68,7 @@ And a wonderful example of why this font is good: https://variablefonts.typenetw
 
   --rotVar: 90deg; /*This variable controls the gradient's rotation*/
 }
-/*COmbining selectors
+/*Combining selectors
 I tried making sense of this: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors
 BUt the only thing I know from that is adjacent sibling, * universal selector, and list selector, it didn't explain the others well
 Now searching through CSS Tricks::after
