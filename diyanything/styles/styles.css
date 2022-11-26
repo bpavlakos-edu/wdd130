@@ -820,6 +820,6 @@ h1#heroTitle::before {
         font-size: max(1.4vw, 90%)
     }
     footer p{
-        font-size: 1vw;
+        font-size: 2rem;
     }
 }
