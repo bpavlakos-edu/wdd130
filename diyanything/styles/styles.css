@@ -24,8 +24,9 @@
     /*Javascript updating*/
     --mouseX: 0px;
     --mouseY: 0px;
-    --tiltX: var(--mouseX);
-    --tiltY: var(--mouseY);
+    /*Old*/
+    /* --tiltX: var(--mouseX);
+    --tiltY: var(--mouseY); */
 }
 
 /*Custom font presets*/
@@ -45,7 +46,7 @@ h1,h2,h3,.decovar-heading{
     --trmf: "TRMF" 205;  /*Open Inline Terminal*/
     --trmk: "TRMK" 0; /*Inline Terminal*/
     --bldb: "BLDB" 0; /*Worm*/
-    --wmx2: "WMX2" 15; /*Weight*/
+    --wmx2: "WMX2" 13; /*Weight*/
     --trmb: "TRMB" 0; /*Flared*/
     --trma: "TRMA" 1000; /*Rounded*/
     --sklb: "SKLB" 0; /*Worm Skeleton*/
@@ -158,13 +159,26 @@ nav{
     backdrop-filter: blur(5px);*/
     margin: auto auto 10px auto;
 }
+/*Navigation text*/
 .linkContainer p{
     grid-row: 2/3;
     height: 100%;
-    text-align: bottom;
+    /* text-align: bottom; /*Invalid */
     width: 100%;
     transition: 500ms 0ms; /*slow down the text transtion*/
+    transition-property: var(--casl) var(--wght) var(--slnt);
 }
+/*Special  font selector because the a is the hover trigger*/
+nav a:hover p{
+    /*--mono: "MONO" 0;/* Monospace: Sans (natural-width) or Mono (fixed-width) */
+    --casl: "CASL" 1;/* Casual: Linear (0) to Casual (1)*/
+    --wght: "wght" 800;/* Weight: Light to ExtraBlack; usually set with `font-weight` */
+    --slnt: "slnt" -15;/* Slant: 0 to -15 degrees, auto cursive at -14 */
+    /*--crsv: "CRSV" 0;/* Cursive: always roman (0), auto substitution (0.5), or always cursive (1)*/
+    /* font-variation-settings: var(--mono),var(--casl),var(--wght),var(--slnt),var(--crsv); */
+    /* font-size: 1.1rem; /*Produces too much lag*/
+}
+
 /*The center icon is bigger*/
 .linkIcon.homeIcon{
     height: 150px;
@@ -179,24 +193,13 @@ nav a{
     border-radius: 15px;
     color: #fff;
     border: 5px inset #248df0;
-    backdrop-filter: blur(15px);
+    /* backdrop-filter: blur(15px); */ /*Too laggy*/
     flex-grow:1;
     transition: 500ms 0ms; /*Slow down the transition*/
 }
-
 nav a:hover{
     text-decoration: underline;
     border: 5px outset #63bb98;
-}
-
-nav a:hover p{
-    /*--mono: "MONO" 0;/* Monospace: Sans (natural-width) or Mono (fixed-width) */
-    --casl: "CASL" 1;/* Casual: Linear (0) to Casual (1)*/
-    --wght: "wght" 800;/* Weight: Light to ExtraBlack; usually set with `font-weight` */
-    --slnt: "slnt" -15;/* Slant: 0 to -15 degrees, auto cursive at -14 */
-    /*--crsv: "CRSV" 0;/* Cursive: always roman (0), auto substitution (0.5), or always cursive (1)*/
-    font-variation-settings: var(--mono),var(--casl),var(--wght),var(--slnt),var(--crsv);
-    font-size: 1.1rem;
 }
 
 h1,h2,h3{
@@ -227,8 +230,8 @@ p a{
 /*Footer*/
 footer{
     display: grid;
-    grid-template-columns: calc(var(--clipWidth)*2) 1fr calc(var(--clipWidth)*2);
-    grid-row: 1fr;
+    grid-template-columns: calc(var(--clipWidth)*2) 1fr calc(var(--clipWidth)*2); /*I want each section on the ends to be 2* clip width*/
+    grid-template-rows: 1fr;
     width: 100%;
     /* background-color: red; */
     column-gap: 5px;
@@ -437,7 +440,7 @@ div.cardHeader:hover img{
     /* font-size: 140%; */
     /*Clamp wasn't working but min can do the same thing! https://css-tricks.com/how-do-you-do-max-font-size-in-css/ */
     font-size: min(1.8vw, 140%); /*Dynamic font size, pick the smaller of the two, so that the big screens don't mess it up!*/
-    font-weight: 5px;
+    /* font-weight: 5px; /*Invalid */
     text-overflow: ellipsis;
     overflow: hidden;
     text-shadow: 0px 0px 3px #ffffff;
@@ -572,7 +575,6 @@ body.hp{
     box-shadow: inset 0px 0px 30px 10px #ff5900, 0px 0px 30px 10px #63bb98;
 }
 
-
 /*Main card container on the front page*/
 #lessonCardContainer{
     display: grid;
@@ -581,11 +583,6 @@ body.hp{
     justify-content: space-evenly;
     gap: 100px 100px;
 }
-
-
-
-
-
 
 /*Animations*/
 @keyframes scroll{
@@ -603,19 +600,31 @@ body.hp{
 /*Javascript operated items*/
 /* Header Particle System*/
 #particleContainer{
-    grid-template-columns: repeat(var(--particleXCount),var(--particleXSize));
-    grid-template-rows: repeat(var(--particleYCount),var(--particleYSize));
+    /* grid-template-columns: repeat(var(--particleXCount),var(--particleXSize)); */
+    /* grid-template-rows: repeat(var(--particleYCount),var(--particleYSize)); */
+    /*row container*/
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(var(--particleYCount),1fr);
     /*column-gap: calc(var(--particleXSize) / 2);
     row-gap: calc(var(--particleYSize) / 2);*/
     display: grid;
-    gap: 2px;
+    /* gap: 2px;/*Pre row container */
+    gap: 5px;
     /* border: 3px double #248df0; */
     /* background-color: white;*/
     /* background-image: linear-gradient(90deg,#ff0,#0ff);  */
     /* margin: 5px -50px 10px -50px; */
-    margin: 6px -50px 10px -90px;
-    padding: 1px;
+    /* margin: 6px -50px 10px -90px; /*Pre grid container*/
+    margin: 10px -25%;
+    /* padding: 1px; /*Pre grid container*/
     overflow: hidden;
+}
+
+/*New row container to save on preformance*/
+.rowContainer{
+    display: flex;
+    animation: 5s shift linear infinite;
+    gap: 5px;
 }
 
 .particle{
@@ -625,23 +634,32 @@ body.hp{
     height: var(--particleYSize);
     /* display: inline-block; */
     border-radius: 50%;
-    animation: 10s fade linear infinite, 5s shift linear infinite; /*https://developer.mozilla.org/en-US/docs/Web/CSS/animation#syntax*/
+    /*animation: 10s fade linear infinite, 5s shift linear infinite; /*https://developer.mozilla.org/en-US/docs/Web/CSS/animation#syntax*/
+    animation: 10s fade linear infinite; /*Row contianer version*/
+    animation-timing-function: revert; /*Less lag, and more fun!*/
+    /*Particle Optimization*/
+    shape-rendering: optimizespeed;
+    /* color-rendering: optimizespeed; */
+    /* buffered-rendering: auto; */
 }
 
-.particle.r0{
-    background-color: white;
+/* .particle.r0{ */
+.rowContainer.cr0{
+    /*background-color: white; /* background-color: white;/*Not for row contianer */
     /* animation: 5s fade reverse linear infinite; */
     /* animation-delay: -5s; */
     animation-direction: reverse;
 }
-.particle.r2{
-    background-color: white;
+/* .particle.r2{ */
+.rowContainer.cr2{
+    /*background-color: white; /* background-color: white;/*Not for row contianer */
     /* animation: 5s fade reverse linear infinite; */
     /* animation-delay: -5s; */
     animation-direction: reverse;
 }
-.particle.r4{
-    background-color: white;
+/* .particle.r4{ */
+.rowContainer.cr4{
+    /* background-color: white;/*Not for row contianer */
     /* animation: 5s fade reverse linear infinite; */
     /* animation-delay: -5s; */
     animation-direction: reverse;
@@ -669,7 +687,7 @@ body.hp{
     }
     50%{
         background-color: rgba(255, 255, 255, 0.200);
-        /*border-radius: 0%;*/
+        border-radius: 0%;
     }
     100%{
         background-color: rgba(255, 255, 255, 0.450);
@@ -680,18 +698,22 @@ body.hp{
     0%{
         transform: translateX(0px);
     }
-    50%{
-        border-radius: 0%;
-        transform: translateX(22px);
-    }
+    /*Not needed for grid container*/
+    /* 50%{ */
+        /* border-radius: 0%; */
+        /* transform: translateX(22px); */
+    /* } */
     100%{
-        transform: translateX(44px);
+        /* transform: translateX(44px); */
+        transform: translateX(50px);
     }
 }
 
 /*Main Title*/
 #heroTitle {
-    font-size: 143px; /*Slightly larger than original*/
+    /* --titleW: 100%; */
+    /* --titleH: 100%; */
+    font-size: 138px; /*Slightly larger than original*/
     margin: 0;
     /*Planning on doing gradient text: https://css-tricks.com/snippets/css/gradient-text/ */
     background-image: repeating-linear-gradient(90deg, #248df0 0%, #63bb98 25%, #ff5900 50%, #63bb98 75%, #248df0 100%);
@@ -703,10 +725,10 @@ body.hp{
     color: #ffffff00;
     text-rendering: geometricprecision;
     transform-style: preserve-3d;
-    --tiltX: var(--mouseX);
-    --tiltY: var(--mouseY);
-    --rotX: max(calc(-0.25*var(--tiltY)),-45deg);
-    --rotY: min(calc(0.25*var(--tiltX)), 45deg);
+    /* --tiltX: var(--mouseX); */
+    /* --tiltY: var(--mouseY); */
+    /* --rotX: max(calc(-0.25*var(--tiltY)),-45deg); */
+    /* --rotY: min(calc(0.25*var(--tiltX)), 45deg); */
     /* transform: rotateX(var(--rotX)) rotateY(var(--rotY)) rotateZ(0deg); */
     transform: rotateX(var(--mouseY)) rotateY(var(--mouseX)) rotateZ(0deg) translateZ(15px);
     /* border: 5px solid red; */
@@ -719,42 +741,31 @@ body.hp{
 /*Background on title*/
 h1#heroTitle::before {
     content: "";
-    background-color: #0012477a;
+    background-color: #001247b9;
     margin: 0 auto;
-    width: 105%;
-    height: 105%;
+    /* width: 105%; */
+    /* height: 105%; */
+    /* width: var(--titleW); */
+    /* height: var(--titleH); */
+    width: 100%;
+    height: 100%;
     z-index: -1;
     transform-style: preserve-3d;
-    transform: translateZ(-25px) translateX(-2.5%) translateY(-2.5%);
+    /*transform: translateZ(-25px) translateX(calc(-0.1* var(--titleW))) translateY(-2.5%); */
+    transform: translateZ(-25px);
     position: fixed;
-    filter: drop-shadow(0px 9px 5px #001247);
-    backdrop-filter: blur(6px);
+    /* filter: drop-shadow(0px 9px 5px #001247); */
+    /* backdrop-filter: blur(6px); */
     border-radius: 50px;
+    display: block; /*This is what actually fixed it, by setting it to fixed and block it inherits the size of the parent*/
 }
 
-/*Media query for smaller screens*/
-@media screen and (max-width : 1100px) and (min-width : 801px){
-    /*Switch to block*/
-    h1#heroTitle::before {
-        content: "";
-        background-color: #0012477a;
-        margin: 0 auto;
-        width: 90%;
-        height: 105%;
-        z-index: -1;
-        transform-style: preserve-3d;
-        transform: translateZ(-25px) translateX(-38%) translateY(-2.5%);
-        position: fixed;
-        filter: drop-shadow(0px 9px 5px #001247);
-        backdrop-filter: blur(6px);
-        border-radius: 50px;
-    }
-}
+/*Media Queries*/
 
 @media screen and (max-width : 800px){
-    /*Switch to block*/
+    /*Switch roots to block display*/
     :root{
-        --clipWidth: 50px;
+        --clipWidth: 50px; /*Half clip width, will affect many other items*/
     }
     body{
         max-width: 800px;
@@ -763,7 +774,8 @@ h1#heroTitle::before {
     #hpContentContainer{
         width: calc(100% - (var(--clipWidth) * 2));
     }
-
+    
+    /*Switch nav to top down*/
     nav{
         display: flex;
         flex-direction: column;
@@ -773,6 +785,7 @@ h1#heroTitle::before {
         /* padding: 0px var(--clipWidth); */
         /* margin: 0 (var(--clipWidth) * 2); */
     }
+    /*Nav link containers and pictures*/
     .linkContainer{
         display: flex;
         flex-wrap: nowrap;
@@ -782,7 +795,7 @@ h1#heroTitle::before {
         height: 75px;
         width: 75px;
         padding: 0px 0px;
-        filter: drop-shadow(0 0 5px #000);
+        /* filter: drop-shadow(0 0 5px #000); */
         /* background-image: repeating-linear-gradient(var(--darkblue) 0px 5px, var(--black) 10px 15px); */
         margin: 5px;
         flex-shrink: 1;
@@ -791,12 +804,13 @@ h1#heroTitle::before {
         height: 75px;
         width: 75px;
     }
+    /*Small title*/
+    h1#heroTitle{
+        font-size: 64px;
+    }
     #lessonCardContainer{
         display: flex;
         flex-direction: column;
-    }
-    h1#heroTitle{
-        font-size: 64px;
     }
     /*Lesson card size increase*/
     .cardHeader h2{
@@ -805,7 +819,6 @@ h1#heroTitle::before {
     .cardHeader:hover h2{
         font-size: max(1.4vw, 90%)
     }
-
     footer p{
         font-size: 1vw;
     }

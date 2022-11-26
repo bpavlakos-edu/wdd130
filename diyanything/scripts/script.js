@@ -18,6 +18,8 @@ function initialize_particles(particleXCount = 3, particleYCount = 3, particleXS
     //console.log(container);
     //let parser = new DOMParser() //Initalization for the parser
     for (let y = 0; y<particleYCount; y++){
+        let rowContainer = document.createElement("div");
+        rowContainer.classList= ["rowContainer cr"+y];
         for (let x = 0; x < particleXCount; x++){
             //let newParticle = parser.parseFromString('<div class="particle p'+particle_id+'"></div>',"text/html");
             //console.log(newParticle);
@@ -26,17 +28,20 @@ function initialize_particles(particleXCount = 3, particleYCount = 3, particleXS
             newParticle.classList = ["particle p"+particle_id+" r"+y+" c"+x];
             //newParticle.innerText = ""+particle_id+","+x+","+y; //Debugging
             //console.log(newParticle);
-            container.appendChild(newParticle);
+            rowContainer.appendChild(newParticle);
+            // container.appendChild(newParticle);
             particle_id++;
         }
+        container.appendChild(rowContainer);
     }
 }
 
 /*Store the hero Header as a JavaScript variable*/
-var heroHeader = null;
-connectToHeader();
-function connectToHeader(){
-    heroHeader = document.getElementById("heroTitleContainer").getBoundingClientRect();
+// var heroHeader = null;
+// connectToHeader();
+// function connectToHeader(){
+    // heroHeader = document.getElementById("heroTitleContainer").getBoundingClientRect();
+    /*Unused code:*/
     /*
     clientRect has the following variables:
     x = x position in document
@@ -48,35 +53,42 @@ function connectToHeader(){
     right: X position of the right side
     left: X position of the left side
     */
-}
+// }
 
-
-var minX = heroHeader.left;
-var maxX = heroHeader.right;
-var minY = heroHeader.top;
-var maxY = heroHeader.bottom;
-var Bwidth = heroHeader.width;
-var Bheight = heroHeader.height;
+// var minX = heroHeader.left;
+// var maxX = heroHeader.right;
+// var minY = heroHeader.top;
+// var maxY = heroHeader.bottom;
+// var Bwidth = heroHeader.width;
+// var Bheight = heroHeader.height;
 
 /*Update the hero title size*/
 function updateHeroTitle(){
-    heroHeader = document.getElementById("heroTitleContainer").getBoundingClientRect();
+    let heroHeader = document.getElementById("heroTitleContainer").getBoundingClientRect();
     // minX = heroHeader.x;
     // maxX = heroHeader.x - heroHeader.width;
     // minY = heroHeader.y;
     // maxY = heroHeader.y - heroHeader.height;
-    minX = heroHeader.left;
-    maxX = heroHeader.right;
-    minY = heroHeader.top;
-    maxY = heroHeader.bottom;
-    Bwidth = heroHeader.width;
-    Bheight = heroHeader.height;
+    let minX = heroHeader.left;
+    let maxX = heroHeader.right;
+    let minY = heroHeader.top;
+    let maxY = heroHeader.bottom;
+    let Bwidth = heroHeader.width;
+    let Bheight = heroHeader.height;
     // console.log(heroHeader.x+","+heroHeader.y+" "+minX+","+maxX+","+minY+","+maxY+","+Bwidth+","+Bheight);
+    return [minX, maxX, minY, maxY, Bwidth, Bheight]
 }
+
 let update_timer = 0;
 document.onmousemove = function(mEvent){
     if(update_timer <= 0){
-        updateHeroTitle();
+        let TitleData = updateHeroTitle();
+        let minX = TitleData[0]
+        let maxX = TitleData[1]
+        let minY = TitleData[2]
+        let maxY = TitleData[3]
+        let Bwidth = TitleData[4]
+        let Bheight = TitleData[5]
         /*
         Mouse events store the following information:
         clientX = x position on the screen
@@ -121,28 +133,33 @@ document.onmousemove = function(mEvent){
             tiltY = maxTiltY;
         }else{//???
             /*Something is very wrong here*/
-            // tiltY = -1 * (((maxY-mouseY) / Bheight) - 0.5) * maxTiltY;
+            //tiltY = -1 * (((maxY-mouseY) / Bheight) - 0.5) * maxTiltY;
             tiltY = ((-2 * (((maxY-mouseY) / Bheight) - 0.5)) * maxTiltY);
         }
         /*Filter out ones that exceed maximum*/
-        if(tiltY > maxTiltY){
+        if(tiltY > maxTiltY) {
             tiltY = maxTiltY;
-        }else if(tiltY < -maxTiltY){
+        }else if(tiltY < -maxTiltY) {
             tiltY = -maxTiltY;
         }
 
         /*Flip X if Y is negative*/
-        if(tiltY < 0){
+        //if(tiltY < 0){
+            //Attempted fixes
             // tiltX = -tiltX;
             // tiltY = -tiltY;
-        }
+        //}
 
         /*Why is this happenging??? I must have messed up a calculation, I really need a way to visualize this...*/
-
+        
+        //It's because it was correct the first time!!!
         
         // console.log("Y "+tiltY+" "+(-2 * (((maxY-mouseY) / Bheight) - 0.5)));
-        document.querySelector(":root").style.setProperty("--mouseX",tiltX+"deg");
-        document.querySelector(":root").style.setProperty("--mouseY",-tiltY+"deg");
+        document.querySelector("#heroTitle").style.setProperty("--mouseX",tiltX+"deg");
+        document.querySelector("#heroTitle").style.setProperty("--mouseY",-tiltY+"deg");
+        //Do not update height:
+        // document.querySelector("#heroTitle").style.setProperty("--titleW",Bwidth+"px");
+        // document.querySelector("#heroTitle").style.setProperty("--titleH",Bheight+"px");
 
         update_timer = 10; /*Adding a timer keeps it from lagging out*/
         // console.log("Mouse:["+mEvent.clientX+","+mEvent.clientY+","+mEvent.offsetX+","+mEvent.offsetY+"] Header:["+heroHeader.x+","+heroHeader.y+","+heroHeader.width+","+heroHeader.height+"]");
