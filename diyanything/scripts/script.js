@@ -160,8 +160,8 @@ document.onmousemove = function(mEvent){
         //Do not update height:
         // document.querySelector("#heroTitle").style.setProperty("--titleW",Bwidth+"px");
         // document.querySelector("#heroTitle").style.setProperty("--titleH",Bheight+"px");
-
-        update_timer = 10; /*Adding a timer keeps it from lagging out*/
+        /*Disabled update delay timer*/
+        update_timer = 0; /*Adding a timer keeps it from lagging out*/
         // console.log("Mouse:["+mEvent.clientX+","+mEvent.clientY+","+mEvent.offsetX+","+mEvent.offsetY+"] Header:["+heroHeader.x+","+heroHeader.y+","+heroHeader.width+","+heroHeader.height+"]");
     }else{
         update_timer -= 2;
