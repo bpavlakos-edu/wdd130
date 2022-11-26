@@ -769,10 +769,12 @@ h1#heroTitle::before {
     }
     body{
         max-width: 800px;
-        margin: 0 0;
+        margin: 0px;
     }
     #hpContentContainer{
-        width: calc(100% - (var(--clipWidth) * 2));
+        /* width: calc(100% - (var(--clipWidth) * 2)); */
+        width: unset;
+        margin: 0px;
     }
     
     /*Switch nav to top down*/
@@ -805,6 +807,9 @@ h1#heroTitle::before {
         width: 75px;
     }
     /*Small title*/
+    #heroContainer{
+        margin: 10px 0px 0px 0px;
+    }
     h1#heroTitle{
         font-size: 64px;
     }
@@ -821,5 +826,13 @@ h1#heroTitle::before {
     }
     footer p{
         font-size: 2rem;
+    }
+}
+/*Alternate ways to query mobile devices*/
+/* https://css-tricks.com/touch-devices-not-judged-size/ */
+@media (hover: none){
+    h1#heroTitle{
+        font-size: 64px;
+        transform: none;
     }
 }
