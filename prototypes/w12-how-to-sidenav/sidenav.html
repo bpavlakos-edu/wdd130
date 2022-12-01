@@ -1,0 +1,39 @@
+<!--From the tutorial here:: https://www.w3schools.com/howto/howto_css_fixed_sidebar.asp -->
+<!--Auto Height: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_sidenav_fixed2-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SideNav test</title>
+    <!-- <link rel="stylesheet" href="styles/styles_full.css"> -->
+    <link id=cssController rel="stylesheet" href="styles/styles_auto.css">
+</head>
+<body>
+    <div class="sidenav">
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Clients</a>
+        <a href="#">Contact</a>
+    </div>
+    <!--Sample Text-->
+    <div class="main">
+        <h2>Auto Sidebar</h2>
+        <p>This sidebar is as tall as its content (the links), and is always shown.</p>
+        <p>Scroll down the page to see the result.</p>
+        <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
+        <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
+        <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
+        <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
+    </div>
+    <footer style="display: flex; justify-content: center; flex-direction: column; align-items: center;">
+        <button id=altBtn onclick="cssController.href='styles/styles_full.css'; altBtn.style='display: none; text-align: center;'; normBtn.style='display: inline; text-align: center;';" style='display: inline; text-align: center;'>Click here to change to the full side version!</button><br>
+        <button id=normBtn onclick="cssController.href='styles/styles_auto.css'; normBtn.style='display: none; text-align: center;'; altBtn.style='display: inline; text-align: center;'" style='display: none; text-align: center;'>Click here to change to the auto sized version!</button><br>
+        <a href="https://www.w3schools.com/howto/howto_css_fixed_sidebar.asp" style="text-align: center;">Click here to see original tutorial!</a>
+        <a href="index.html" style="text-align: center;">Click here to see the custom version!</a>
+    </footer>
+</body>
+<!--Link to original-->
+
+</html>

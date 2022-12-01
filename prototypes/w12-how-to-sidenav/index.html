@@ -1,0 +1,119 @@
+<!--Based on the following: https://www.w3schools.com/howto/howto_css_fixed_sidebar.asp -->
+<!--Auto Height: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_sidenav_fixed2-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom SideNav Test</title>
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+    <!--Added fake contents to simulate what goes above the article-->
+    <header>
+        <h1 style="text-align: center;">Nav Bar</h1>
+    </header>
+    <div id="fakeHero">
+        <h1 style="text-align: center;">Hero text</h1>
+    </div>
+    <!--Put this in a seperate container so that it is seperated from the hero header and footer-->
+    <!-- This container also allows us to use grid or flex -->
+    <div id="contentContainer">
+        <div id="lessonNavTrack"> <!--Added a "track" for the sidebar to move in, it's what is set by the grid or size parameter-->
+            <div id="lessonNav" > <!--Changed -->
+                <h2 onclick="toggleQuickLinks();">Quick Links</h2> <!--Added a title header-->
+                <a href="#P1">1. Paragraph A</a> <!--Gave the links references to the paragraphs below-->
+                <a href="#P2">2. Paragraph B</a> <!--Gave the links references to the paragraphs below-->
+                <a href="#P3">3. Paragraph C</a> <!--Gave the links references to the paragraphs below-->
+                <a href="#P4">4. Paragraph D</a> <!--Gave the links references to the paragraphs below-->
+                <a href="#P5">5. Paragraph E</a> <!--Gave the links references to the paragraphs below-->
+                <a href="#P6">6. Paragraph F</a> <!--Gave the links references to the paragraphs below-->
+                <a href="#P7">7. Paragraph G</a> <!--Gave the links references to the paragraphs below-->
+                <a href="#P8">8. Paragraph H</a> <!--Gave the links references to the paragraphs below-->
+            </div>
+        </div>
+        <!--Sample Text-->
+        <div id="lessonContainer"> <!--Put this in a seperate container so that it behaves similar to the one that will be on my page (seperated from the hero header and footer)-->
+            <h2 id="P1">1. Paragraph A</h2>
+            <p>This text is here to show that the side bar continues scrolling with the page.</p>
+            <p>Unlike the tutorial version, this navigation panel will use flex to scale with the page.</p>
+            <p>Try making the screen width smaller, a media query will activate. Tap on the navigation panel to open it.</p>
+            <p>The javascript will update the side navigation panel, so that it highlights the last visible section header.</p>
+            <p>This document has been heavily modified to simulate this feature's usage in my personal website. Integration will be quick because of how I designed it.</p>
+            <p>There are 8 paragraphs, which is the average number of sections if all sections of my website were finished.</p>
+            <p>The remaining challenge is to make the JavaScript track the users scrolling progress without lagging. And making sure this doesn't break other parts of the website!</p>
+            <br>
+            <h2 id="P2">2. Paragraph B</h2>
+            <p>This text is here to show that the side bar continues scrolling with the page.</p>
+            <p>Unlike the tutorial version, this navigation panel will use flex to scale with the page.</p>
+            <p>Try making the screen width smaller, a media query will activate. Tap on the navigation panel to open it.</p>
+            <p>The javascript will update the side navigation panel, so that it highlights the last visible section header.</p>
+            <p>This document has been heavily modified to simulate this feature's usage in my personal website. Integration will be quick because of how I designed it.</p>
+            <p>There are 8 paragraphs, which is the average number of sections if all sections of my website were finished.</p>
+            <p>The remaining challenge is to make the JavaScript track the users scrolling progress without lagging. And making sure this doesn't break other parts of the website!</p>
+            <br>
+            <h2 id="P3">3. Paragraph C</h2>
+            <p>This text is here to show that the side bar continues scrolling with the page.</p>
+            <p>Unlike the tutorial version, this navigation panel will use flex to scale with the page.</p>
+            <p>Try making the screen width smaller, a media query will activate. Tap on the navigation panel to open it.</p>
+            <p>The javascript will update the side navigation panel, so that it highlights the last visible section header.</p>
+            <p>This document has been heavily modified to simulate this feature's usage in my personal website. Integration will be quick because of how I designed it.</p>
+            <p>There are 8 paragraphs, which is the average number of sections if all sections of my website were finished.</p>
+            <p>The remaining challenge is to make the JavaScript track the users scrolling progress without lagging. And making sure this doesn't break other parts of the website!</p>
+            <br>
+            <h2 id="P4">4. Paragraph D</h2>
+            <p>This text is here to show that the side bar continues scrolling with the page.</p>
+            <p>Unlike the tutorial version, this navigation panel will use flex to scale with the page.</p>
+            <p>Try making the screen width smaller, a media query will activate. Tap on the navigation panel to open it.</p>
+            <p>The javascript will update the side navigation panel, so that it highlights the last visible section header.</p>
+            <p>This document has been heavily modified to simulate this feature's usage in my personal website. Integration will be quick because of how I designed it.</p>
+            <p>There are 8 paragraphs, which is the average number of sections if all sections of my website were finished.</p>
+            <p>The remaining challenge is to make the JavaScript track the users scrolling progress without lagging. And making sure this doesn't break other parts of the website!</p>
+            <br>
+            <h2 id="P5">5. Paragraph E</h2>
+            <p>This text is here to show that the side bar continues scrolling with the page.</p>
+            <p>Unlike the tutorial version, this navigation panel will use flex to scale with the page.</p>
+            <p>Try making the screen width smaller, a media query will activate. Tap on the navigation panel to open it.</p>
+            <p>The javascript will update the side navigation panel, so that it highlights the last visible section header.</p>
+            <p>This document has been heavily modified to simulate this feature's usage in my personal website. Integration will be quick because of how I designed it.</p>
+            <p>There are 8 paragraphs, which is the average number of sections if all sections of my website were finished.</p>
+            <p>The remaining challenge is to make the JavaScript track the users scrolling progress without lagging. And making sure this doesn't break other parts of the website!</p>
+            <br>
+            <h2 id="P6">6. Paragraph F</h2>
+            <p>This text is here to show that the side bar continues scrolling with the page.</p>
+            <p>Unlike the tutorial version, this navigation panel will use flex to scale with the page.</p>
+            <p>Try making the screen width smaller, a media query will activate. Tap on the navigation panel to open it.</p>
+            <p>The javascript will update the side navigation panel, so that it highlights the last visible section header.</p>
+            <p>This document has been heavily modified to simulate this feature's usage in my personal website. Integration will be quick because of how I designed it.</p>
+            <p>There are 8 paragraphs, which is the average number of sections if all sections of my website were finished.</p>
+            <p>The remaining challenge is to make the JavaScript track the users scrolling progress without lagging. And making sure this doesn't break other parts of the website!</p>
+            <br>
+            <h2 id="P7">7. Paragraph G</h2>
+            <p>This text is here to show that the side bar continues scrolling with the page.</p>
+            <p>Unlike the tutorial version, this navigation panel will use flex to scale with the page.</p>
+            <p>Try making the screen width smaller, a media query will activate. Tap on the navigation panel to open it.</p>
+            <p>The javascript will update the side navigation panel, so that it highlights the last visible section header.</p>
+            <p>This document has been heavily modified to simulate this feature's usage in my personal website. Integration will be quick because of how I designed it.</p>
+            <p>There are 8 paragraphs, which is the average number of sections if all sections of my website were finished.</p>
+            <p>The remaining challenge is to make the JavaScript track the users scrolling progress without lagging. And making sure this doesn't break other parts of the website!</p>
+            <br>
+            <h2 id="P8">8. Paragraph H</h2>
+            <p>This text is here to show that the side bar continues scrolling with the page.</p>
+            <p>Unlike the tutorial version, this navigation panel will use flex to scale with the page.</p>
+            <p>Try making the screen width smaller, a media query will activate. Tap on the navigation panel to open it.</p>
+            <p>The javascript will update the side navigation panel, so that it highlights the last visible section header.</p>
+            <p>This document has been heavily modified to simulate this feature's usage in my personal website. Integration will be quick because of how I designed it.</p>
+            <p>There are 8 paragraphs, which is the average number of sections if all sections of my website were finished.</p>
+            <p>The remaining challenge is to make the JavaScript track the users scrolling progress without lagging. And making sure this doesn't break other parts of the website!</p>
+            <br>
+        </div>
+    </div>
+    <!--Also added a fake footer to simulate stopping the nav bar-->
+    <footer id="fakeFooter">
+        <h1 style="text-align: center;">Fake footer</h1>
+        <a href="sidenav.html" style="text-align: center; display: block;">Click here to see the original samples!</a>
+    </footer>
+    <script src="scripts/script.js"></script>
+</body>
+</html>

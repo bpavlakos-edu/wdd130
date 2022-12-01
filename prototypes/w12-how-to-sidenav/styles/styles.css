@@ -1,0 +1,169 @@
+/*
+Based on CSS From the following tutorials:
+https://www.w3schools.com/howto/howto_css_fixed_sidebar.asp
+https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_sidenav_fixed2
+*/
+/*Smooth scrolling*/
+/* https://www.w3schools.com/CSSref/pr_scroll-behavior.php */
+/*Html selector is the entire document*/
+html{
+  scroll-behavior: smooth; /*The magic attribute! But I should probably figure out how to query this, as some users might find it annoying*/
+}
+
+body {
+  font-family: "Lato", sans-serif;
+  margin: 0px; /*Reset the margin of all items*/
+}
+
+/*New*/
+#lessonNavTrack{
+  /*grid-column: 1/2; /*Set grid column*/
+  flex-grow: 0; /*Disable flex growing*/
+}
+
+#lessonNav { /*Changed name to lesson nav to match the site it will be used on*/
+  --themeColor: #ff5900; /*added variable so it can be changed with custom classes*/
+  --outlineColor: white;
+  /*--themeColor: white; /*added variable so it can be changed with custom classes*/
+  /* display: inline-block; */
+  /*width: fit-content; /*Changed to fit content so it increases size to match it's contents*/
+  /*width: 200%; /*Changed to 200% [Failed because I need the track size to change not this*/
+  width: max-content; /*Changed to max content so it doesn't collapse the text*/
+  position: sticky;/*changed from fixed to sticky so it doesn't trigger unless the user scrolls past it*/
+  z-index: 1;
+  /*Renabled for sticky, requires at least 1 pixel to activate*/
+  top: -0.001px; /*negative pixels work too, very convenient
+  /*Disabled absolute position*/
+  /*top: 20px;*/
+  /* left: 10px; */
+  background: white; /*Changed to match site*/
+  /* overflow-x: hidden; /*Disabled*/
+  /*padding: 8px 4px; /*Gave it a more padding on the sides*/
+  text-align: center; /*Aligns text items to center of box*/
+  /* grid-column: 1/2; /*Previously the parent container used grid*/
+  display: flex; /*Flex display*/
+  flex-direction: column; /*Flex display column*/
+  align-items: center; /*Flex display center*/
+  color: black; /*All text set to white*/
+  border: 3px solid var(--themeColor);
+}
+
+/*Created the header for lesson navigator*/
+#lessonNav h2{
+  margin: 0; /*Heading should fill the entire space*/
+  padding: 0px 0px; /*Heading should fill the entire space, but flex can behave oddly!*/
+  /*outline: 2px solid red; /*Debugging*/
+  border-bottom: 2px solid rgba(0, 0, 0, 0.50); /*Make a shadow color automatically, can even produce a 3d effect if it's white!*/
+  background-color: var(--themeColor); /*We want the header to have the theme color*/
+  /*Add more selectors here to produce even cooler results*/
+}
+
+#lessonNav a {
+  /* padding: 6px 8px 6px 16px; */
+  /*padding: 8px 8px; /*Changed padding to even padding so its not lopsided*/
+  padding: 8px 0px; /*Changed padding to even padding so its not lopsided*/
+  text-decoration: none; /*No underlining*/
+  font-size: 16px; /*changed font size so more items can fit*/
+  color: black; /*Text color should be black by default, to go on the white background*/
+  display: block; /*Not inline, block! We want each link to be its own element*/
+  width: fit-content; /*Make sure the width fits the content*/
+  border: 2px dashed rgba(255, 255, 255, 0.00); /*Invisible border for when scrolling highlight starts working*/
+  transition: 1s 0s border; /*Slow the transition for boarder*/
+}
+
+#lessonNav a:hover {
+  /*color: white; /*Changed to site plan color*/
+  /*background-color: #001247; /*Changed to site plan color*/
+  text-decoration: underline; /*Underline the text*/
+  /* border: 2px dashed var(--themeColor); /*Testing the highlighting*/
+}
+
+/*Javascript triggered class*/
+/*This will be nice once I figure out how to apply scrolled when the element appears on screen*/
+#lessonNav a.scrolled{
+  border: 2px dashed var(--themeColor); /*Highlight the hyperlink, because there's an invisible border, this will be a smooth transition*/
+}
+
+/*New selectors
+/*Changing it to a grid system*/
+/*lesson content container root*/
+/*Contains the nav box container and the lesson text container*/
+#contentContainer{
+  display: flex; /*Use flex to make two columns, I would force the size if I knew how to use flex better*/
+  /* grid-template-columns: 2fr 8fr; */
+  justify-content: center; /* Center the entire thing*/
+}
+
+/*lesson text container*/
+#lessonContainer{
+  /* grid-column: 2/3; */
+  /* margin: 0px 10px 0px 50px; */
+  margin-left: 10px; /*Space on the left from the navigation box*/
+  padding: 10px; /*Extra white space*/
+}
+
+/*Disabled so I can change it to a grid system, also it's no longer applicable due to new classes*/
+/*The thing to keep in mind is it manually offset the content from the sidebar, so to reactivate it we need to change the selector to #lessonContainer*/
+/* .main {
+  margin-left: 140px;
+  font-size: 28px; 
+  padding: 0px 10px;
+} */
+
+/*Disabled because I don't want it to interfere*/
+/*@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}*/
+
+@media screen and (max-width: 750px){
+  /*Change to column flex direction*/
+  #contentContainer{
+    /* display: block; */
+    flex-direction: column;
+  }
+  /*make the track itself sticky*/
+  #lessonNavTrack{
+    position: sticky;
+    top: -0.001px; /*Yes, an even smaller trigger for sticky*/
+    /* overflow-wrap: scroll; */
+  }
+  /*Make the lessonNav scrollable and right aligned*/
+  #lessonNav{
+    margin: auto auto;
+    /* margin: auto auto auto 0px; */
+    /* flex-direction: row; */
+    
+    /* margin: 0px auto auto auto; */
+    /* display: grid; */
+    /* grid-template-columns: 1fr 0px 0px 0px 0px; */
+    /* width: 100%; */
+    /*added as overflow protection*/
+    max-height: 200px;
+    overflow-x: hidden; /*No, disable scrolling left and right*/
+    overflow-y: scroll; /*Only scroll up and down*/
+    font-size: small; /*Make the font smaller by default*/
+    left: 98%; /*Hacky way to force it left, because margin wasn't working!*/
+  }
+  /*Make the header sticky so we can scroll down*/
+  #lessonNav h2{
+    position: sticky;
+    top: -1px; /*trigger sticky*/
+    width: 100%; /*Fill the space?*/
+    font-size: 16px; /*Smaller font is more user friendly*/
+  }
+  /*Hide links by default*/
+  #lessonNav a{
+    display: none;
+    font-size: 12px; /*Smaller font is more user friendly*/
+  }
+  /*show the link when javascript says not to hide it*/
+  #lessonNav a.show{
+    display: block; /*Reset to default*/
+  }
+  /*Make the lesson fill the screen*/
+  #lessonContainer{
+    display: block;
+  }
+  
+}

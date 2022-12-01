@@ -1,0 +1,54 @@
+/*
+CSS From the following tutorials:
+https://www.w3schools.com/howto/howto_css_fixed_sidebar.asp
+https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_sidenav_fixed2
+*/
+/*Created comments to analyze it*/
+
+/*Main body selector / Descendant Selector */
+body {
+  font-family: "Lato", sans-serif; /*Apply this font to all items*/
+}
+
+/*Nav div*/
+.sidenav {
+  width: 130px; /*Fixed width*/
+  position: fixed; /*Force to stay in position*/
+  z-index: 1; /*Forces it to appear on top*/
+  top: 20px; /*The y position it will be fixed to (From top)*/
+  left: 10px; /*The x position it will be fixed to (From Left)*/
+  background: #eee; /*Background color*/
+  overflow-x: hidden; /*Auto-Crops contents that exceed it on the X-Axis*/
+  padding: 8px 0; /*Top and bottom whitespace*/
+}
+
+/*Hyperlink*/
+.sidenav a {
+  padding: 6px 8px 6px 16px; /*Gives extra space?*/
+  text-decoration: none; /*Disables underlining*/
+  font-size: 25px; /*Sets the font size*/
+  color: #2196F3; /*Sets the text color*/
+  display: block; /*Changes the links to not be inline, so that they stack*/
+}
+/*Nav hypelink hover*/
+.sidenav a:hover {
+  color: #064579; /*Changes the text color*/
+}
+
+.main {
+  /*Original Comment: "Same width as the sidebar + left position in px"*/
+  margin-left: 140px; /*Pushes the actual content left so that the sidenav can fit*/
+  /*Original Comment: "Increased text to enable scrolling"*/
+  font-size: 28px; /*Simply enlarged the font size so that it can scroll*/
+  padding: 0px 10px; /*Extra whitespace is a gap between the content and the sidebar*/
+}
+
+/*Insanely niche media selector that makes the font size of links smaller and the padding smaller too so it fits*/
+@media screen and (max-height: 450px) { /*(450px height??? Who has a screen that small??? I need 300% zoom to get it!)*/
+  .sidenav {
+    padding-top: 15px; /*Push it down 15px for an unknown reason*/
+  }
+  .sidenav a {
+    font-size: 18px; /*Make the font size smaller so it has extra white space*/
+  }
+}
