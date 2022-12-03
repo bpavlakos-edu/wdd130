@@ -16,6 +16,10 @@
     --darkblue: #001247;
     --orange: #ff5900;
     --teal: #63bb98;
+    --RGBblue: 36, 141, 240;
+    --RGBdarkblue: 0, 18, 71;
+    --RGBorange: 255, 89, 0;
+    --RGBteal: 99, 187, 152;
     /*"New" colors*/
     --black: #000000;
     --white: #ffffff;
@@ -27,6 +31,10 @@
     /*Old*/
     /* --tiltX: var(--mouseX);
     --tiltY: var(--mouseY); */
+}
+
+html{
+    scroll-behavior: smooth; 
 }
 
 /*Custom font presets*/
@@ -60,7 +68,8 @@ h1,h2,h3,.decovar-heading{
 }
 /*Recusrsive Normal Text*/
 /*Also the default text setting for p and a*/
-p,a,.recursive-default{
+/*Added the body default value to make sure we don't miss any components*/
+body,p,a,.recursive-default{
     /*Custom variables as stated by example here: https://www.recursive.design/#toolbar*/
     /*Very close to sans linear*/
     --mono: "MONO" 0;/* Monospace: Sans (natural-width) or Mono (fixed-width) */
@@ -161,12 +170,14 @@ nav{
 }
 /*Navigation text*/
 .linkContainer p{
+    width: max-content; /*W12: Fix for static width*/
     grid-row: 2/3;
     height: 100%;
     /* text-align: bottom; /*Invalid */
     width: 100%;
     transition: 500ms 0ms; /*slow down the text transtion*/
     transition-property: var(--casl) var(--wght) var(--slnt);
+    
 }
 /*Special  font selector because the a is the hover trigger*/
 nav a:hover p{
@@ -278,6 +289,9 @@ footer a:hover{
 
 /*Frequent Containers*/
 /*Lesson Card*/
+.lessonPage .lessonCard{
+    filter: drop-shadow(5px 5px 5px black);
+}
 .lessonCard{
     /* display: grid; */
     grid-template-columns: 0.5fr 9fr 0.5fr;
@@ -403,6 +417,7 @@ div.cardHeader:hover img{
     /*New*/
     /*margin: auto 0px auto auto ; /*align to the correct side*/
     margin: initial; /*align to the correct side*/
+    text-decoration: none;
 }
 /*Center Icon*/
 .cardHico{
@@ -498,22 +513,27 @@ div.cardHeader:hover img{
 }
 
 
-/*home page specific*/
+
 /*Background*/
-body.hp{
+body{
     background-color: #001247;
     /* background-image: repeating-linear-gradient(45deg, var(--blue) 0px 15px, var(--darkblue) 15px 30px); */
     /* background-image: repeating-linear-gradient(45deg, var(--blue) 0px, var(--darkblue) 20px 30px, var(--blue) 35px); */
     /*Animation Successful*/
     /* background-image: repeating-linear-gradient(0deg, var(--blue) 0px, var(--darkblue) 25px 50px); /*Lines */
-    background-image: repeating-linear-gradient(339deg, var(--blue) -12px, var(--darkblue) 25px 35px);/*squares*/
+    /*background-image: repeating-linear-gradient(339deg, var(--blue) -12px, var(--darkblue) 25px 35px);/*squares*/
+    /*background-image: repeating-linear-gradient(270deg, var(--orange) -2px, #000000 25px 35px);*/
     background-image: repeating-linear-gradient(315deg, var(--blue) -12px, var(--darkblue) 25px 35px);/*squares*/
-    background-attachment: fixed; /*Parallax Effect*/
+    
     /* animation: scroll 5s linear infinite; */
-    animation: scroll 4s linear infinite;
+    animation: particleMove 4s linear infinite;
     animation-fill-mode: both;
     background-size: 50px 50px; /*makes it tile infinitely or make new shapes*/ /*Thank you w3schools: https://www.w3schools.com/cssref/css3_pr_background-size.php*/
 }
+
+
+
+/*home page specific*/
 
 /*Hero container*/
 #heroContainer {
@@ -529,6 +549,7 @@ body.hp{
     backdrop-filter: blur(10px);
     border-radius: 15px;
     margin-top: 2%;
+    justify-content: center; /*W12 fix for centering hero images*/
 }
 
 /*Hero image*/
@@ -584,8 +605,888 @@ body.hp{
     gap: 100px 100px;
 }
 
+/*Electical engineering Page*/
+
+body.ee{
+    --themeHighlight: #ff5900;
+    --themeDark: #5a3600;
+    /*
+    --blue: #f8df26;
+    --darkblue: #654f02;
+    */
+    /*background-image: conic-gradient(var(--blue) 45deg, var(--darkblue) 90deg);/*Accidental bread board pattern*/
+    /*background-image: conic-gradient(#ff5900 266deg, var(--darkblue) 351deg); /*Depth*/
+    /*background-image: conic-gradient(#ff5900 266deg, var(--darkblue) 311deg);/*Cubbies*/
+    /*background-image: conic-gradient(#ff5900, #5a3600,#ff5900, #5a3600);/*Weird disk*/
+    /*background-image: conic-gradient(#ff5900 0deg, #5a3600 45deg,#ff5900, #5a3600);/*Shelf thingy*/
+    /*background-image: conic-gradient(#ff5900 88deg, #5a3600 45deg,#ff5900, #5a3600);/*Brain melter*/
+    /*background-image: conic-gradient(#ff5900 88deg, #5a3600 45deg,#ff5900 270deg, #5a3600 150deg); /*3D Grid*/
+    /*background-image: conic-gradient(#ff5900 224deg, #5a3600 45deg,#ff5900 270deg, #5a3600 339deg); /*Zip ties*/
+    /*background-image: conic-gradient(#ff5900 135deg, #5a3600 45deg,#ff5900 316deg, #5a3600 288deg); /*Pattern*/
+    /*background-image: conic-gradient(#ff5900 135deg, #5a3600 45deg,#ff5900 316deg, #5a3600 288deg); /*Pattern*/
+    /*background-image: conic-gradient(#ff5900 135deg, #5a3600 267deg,#ff5900 151deg, #5a3600 265deg);/*Hyper realistic grid*/
+    /*background-image: conic-gradient(#ff5900 135deg, #5a3600 267deg,#ff5900 316deg, #5a3600 265deg); /*Why does this look so real???*/
+    /*background-image: conic-gradient(#ff5900 135deg, #5a3600 267deg,#ff5900 316deg, #5a3600 265deg); /*Why does this look so real???*/
+    /*background-image: repeating-conic-gradient(#ff5900,#ffb444,#ff5900,#ff7400 76%); /*Nice texture*/
+    /*background-image: repeating-conic-gradient(#ff5900,#ffb444,#ff5900,#ff7400 76%); /*Nice texture*/
+    /*background-image: repeating-conic-gradient(#ff5900,#ffb444,#ff5900,#ff7400 60%);/*Pillows*/
+    /*background-image: repeating-conic-gradient(#ff5900,#ffb444,#ff5900,#ff7400 60%);/*Pillows*/
+    /*background-image: repeating-conic-gradient(#ff5900,#ffb444,#ff5900 -3%,#fd7e13 60%);/*Omega orange*/
+    /*background-image: repeating-conic-gradient(#ff5900 11%,#ffb444 50%,#b23f00 80%,#fd7e13 60%); /*Cube WIP*/
+    /*background-image: repeating-conic-gradient(#ff5900 11%,#ffb444 88%,#b23f00 80%,#fd7e13 60%); /*Triangles*/
+    /*background-image: repeating-conic-gradient(at 50% 60%,#ff5900 11%,#ffb444 50%,#b23f00 80%,#fd7e13 60%); /*Raw At*/
+    /*background-image: repeating-conic-gradient(at 85% 92%,#ff5900 11%,#ffb444 50%,#b23f00 80%,#fd7e13 60%);/*Intentional at, boxes*/
+    /*background-image: repeating-conic-gradient(at 85% 92%,#ff5900 11%,#ffb444 50%,#b23f00 80%,#fd7e13 60%);/*Intentional at, boxes*/
+    /*background-image: repeating-conic-gradient(at 85% 92%,#ff5900 11%,#ffffff 50%,#b23f00 80%,#fd7e13 100%); /*Creamsicle shelf*/
+    /*background-image: repeating-conic-gradient(at 85% 92%,#ff5900 11%,#8a620b 50%,#b23f00 80%,#fd7e13 100%); /*??? Color changing*/
+    /*background-image: repeating-conic-gradient(at 0% 219%,#5a5a5a 11%,#2f1313 50%,#000000 80%,#fd7e13 100%); /*Textured grid (really messed up offset)*/
+    /*background-image: repeating-conic-gradient(at 0% 219%,#5a5a5a 11%,#2f1313 50%,#000000 80%,#fd7e13 100%); /*Textured grid (really messed up offset)*/
+    /*background-image: repeating-conic-gradient(at 50% 50%,#5a5a5a 11%,#2f1313 50%,#000000 80%,#fd7e13 100%); /*Nice render*/
+    /*background-image: repeating-conic-gradient(at 50% 50%,#5a5a5a 11%,#2f1313 50%,#000000 80%,#fd7e13 100%);/*??? Duplicate?*/
+    /*background-image: repeating-conic-gradient(at 50% 65%,#5a5a5a 18%,#2f1313 50%,#000000 79%,#fd7e13 90%);/*chevrons*/
+    /*background-image: repeating-conic-gradient(at 50% 65%,#ff5900 18%,#2f1313 50%,#ff5900 79%,#2f1313 90%);/*chevrons*/
+    /*background-image: repeating-conic-gradient(at 50% 50%,#ff5900 0% 20%,#2f1313 21% 100%);/*chevrons*/
+    /*background-image: repeating-conic-gradient(at 50% 50%,#2f1313 0% 20%,#ff5900 10% 40%); /*Buggy*/
+    /*background-image: repeating-conic-gradient(at 50% 50%, white 8% 5%, grey 17% 37%, white 20% 25%, grey 65% 87%,white 80% 100%); /*Mint*/
+    /*background-image: repeating-conic-gradient(at 50% 50%, white 0% 15%, grey 20% 40%, white 20% 25%, grey 65% 87%,white 80% 100%); /*Mint*/
+    /*background-image: repeating-conic-gradient(at 50% 50%, white 0% 13%, grey 25% 51%, grey 32% 37%, white 20% 60%, grey 73% 60%,white 90% 100%); /*Mesh*/
+    /*background-image: repeating-conic-gradient(at 50% 50%, white 0% 13%, grey 25% 51%, grey 32% 37%, white 20% 60%, grey 73% 60%,white 90% 100%); /*Mesh*/
+    /*background-image: repeating-conic-gradient(at 50% 50%, var(--themeHighlight) 0% 13%,  var(--themeDark) 25% 51%, rgb(255, 230, 0) 32% 37%, rgb(255, 238, 0) 20% 60%, rgb(90, 89, 0) 73% 60%,rgb(112, 101, 0) 90% 100%); /*Mesh*/
+    /*background-image: repeating-conic-gradient(at 50% 50%, var(--themeHighlight) 0% 13%, var(--themeDark) 25% 51%, rgb(255, 230, 0) 32% 37%, rgb(255, 238, 0) 20% 60%, rgb(33 32 0) 73% 60%,rgb(112, 101, 0) 90% 100%); /*Circuit board*/
+    /*background-image: repeating-conic-gradient(at 50% 50%,#FFFFFFFF 0% 0%,#7F7F7FFF 10% 10%,#000000FF 20% 20%,#FFFFFFFF 30% 30%,#7F7F7FFF 50% 50%,#FFFFFFFF 70% 70%,#000000FF 80% 80%,#7F7F7FFF 100% 100%,#FFFFFFFF 100% 100%);/*Boxes*/
+    /*background-image: repeating-conic-gradient(at 50% 50%,#FFF700FF 0% 0%,#FF4D00FF 16.6667% 16.6667%,#FFF700FF 33.3333% 33.3333%,#FF5900FF 50% 50%,#FFF700FF 66.6667% 66.6667%,#FF5900FF 83.3333% 83.3333%,#FFF700FF 100% 100%);/*Boxes Oragne Yellow*/
+    /*background-image: repeating-conic-gradient(at 50% 50%,#FFF700FF 0% 0%,var(--orange) 16.6667% 16.6667%,#FFF700FF 33.3333% 33.3333%,var(--orange) 50% 50%,#FFF700FF 66.6667% 66.6667%,var(--orange) 83.3333% 83.3333%,#FFF700FF 100% 100%);/*Boxes Oragne Yellow*/
+    /* background: repeating-linear-gradient(108deg, var(--blue) -12px, var(--darkblue) 25px 36px); */
+    /*background: repeating-conic-gradient(at 50% 50%,#FF4800FF 15% 15%,#00AAFFFF 85% 85%,#FF4D00FF 60% 60%,#FFAA00FF 105% 105%);*/
+    background: repeating-conic-gradient(at 50% 100%,#FF4800FF 15% 15%,#00AAFFFF 85% 85%,#FF4D00FF 60% 60%,#FFAA00FF 100% 100%);
+    background-size: 50px 50px;
+    /*backdrop-filter: blur(5px); /*Cool but I need to color stuff*/
+    animation: eebackground 6s linear infinite; /*New background*/
+    background-attachment: fixed; /*Parallax Effect*/
+}
+
+/*EE Color setup*/
+.ee.lessonPage{
+    /* background-color:#ff5900; */
+    /* background-color:rgb(255, 89, 0); */
+    --lThemeR: 255;
+    --lThemeG: 89;
+    --lThemeB: 0;
+    /*HSV*/
+    --lThemeHue: 21;
+    /*--lThemeAlpha: 1.0;
+    --lThemeAOpaque: 0.8;
+    --lThemeAHalf: 0.5;*/
+    /*filter: hue-rotate(180deg); /*I forgot orange is a complemnatry color so its exactly 180*/
+    /*hex colors*/
+    /*Unfortunately this doesn't work*/
+    --lHColor: var(--orange);
+    --lHColorSecond: var(--teal);
+    --lHColorThird: var(--blue);
+    --lHColorFourth: var(--darkblue);
+    --lHColorDark: var(--darkblue);
+    --lHColorExtra: #5a3600;
+    /*So now we need RGB list equivalents due to a chrome bug*/
+    /* https://stackoverflow.com/questions/52037809/add-alpha-channel-to-hex-color-declared-on-css-variable */
+    /*RGBA*/
+    --cRGBColor: var(--RGBorange);
+    --cRGBColorSecond: var(--RGBteal);
+    --cRGBColorThird: var(--RGBblue);
+    --cRGBColorFourth: var(--RGBdarkblue);
+    --cRGBColorDark: var(--RGBdarkblue);
+    --cRGBColorAlpha100: 1.0;
+    --cRGBColorAlpha075: 0.75;
+    --cRGBColorAlpha050: 0.50;
+    --cRGBColorAlpha025: 0.25;
+    --cRGBColorAlpha000: 0.0;
+}
+
+/*Iframes*/
+/*All Iframes*/
+.ee iframe{
+    box-shadow: 5px 5px 5px 5px #00000082; /*Important*/
+    /*border: 5px solid var(--lHColorSecond); /*Important*/
+    border: 4px solid var(--lHColorSecond);
+    filter: drop-shadow(2px 4px 1px black);
+    border-radius: 5px;
+}
+
+
+/*Falstad sizing*/
+.ee iframe[src*="falstad.com"]{
+    width: 100%;
+    /* height: 1024px; */
+    margin: 0 auto;
+    display: block;
+    /* border: unset; /*Removed due to shared selector*/
+}
+
+/*Table*/
+.ee table{
+    /* display: flex; */
+    table-layout: auto;
+    width: 100%;
+    
+    
+    /* filter: drop-shadow(1px 1px 0px rgb(255, 255, 255)); */
+    /* border: 8px double var(--lHColorSecond); */
+    /*border-radius: 50px;/*Matching*/
+    /* overflow: hidden; */
+    
+}
+
+.ee tbody{
+    table-layout: fixed;
+    font-size: 1.5rem;
+    background: repeating-linear-gradient(45deg, #ffad00, transparent 100px);
+    border-radius: 50px;/*Matching*/
+    vertical-align: top;
+    /* animation: eebackground 4s linear infinite; /* Cool but accidental*/
+}
+
+/* h2[content*="COMING SOON!"] ~ li{
+
+} */
+
+/* .ee tr > *{
+    tabl
+} */
+
+/*Table Header*/
+.ee th{
+    text-align: center;
+    margin: auto;
+    background-color: rgba(var(--cRGBColorThird),0.6);
+    text-decoration: dashed;
+    text-decoration-line: underline;
+    padding: 1em;
+    border-radius: 15px; /*cool! rounded cells!*/
+    /* box-shadow: 0.1px 0.1px 5px #000; */
+}
+/*table body*/
+/*rules for all table definitions*/
+.ee td{
+    text-align: center;
+    border-radius: 15px; /*cool! rounded cells!*/
+    /* box-shadow: 0.1px 0.1px 5px #000; */
+}
+/*Links need a higher priority selector to overwrite other rules*/
+.ee .sectionContainer tbody td a{
+    text-shadow: unset;
+}
+/*Table Text*/
+.ee td p{
+    font-size: smaller;
+}
+/*Table header*/
+.ee tr td:first-of-type{
+    /* font-size: 2.2rem; */
+    /*color:#f0f; /*Debugger*/
+    /* text-decoration-line: underline; */
+    /*V2*/
+    font-size: 2.1rem;
+    text-decoration-line: underline;
+    padding: 15px;
+}
+/*Middle column*/
+.ee tr td:nth-child(2){
+    /* font-size: 0.95rem; */
+    font-size: 1.5rem;
+    padding: 14px;
+    line-height: 0.9em;
+    /* background-color: red; */
+    vertical-align: middle;
+}
+/*Coming soon section*/
+.ee tbody tr:last-of-type > *{
+    /*Set all the items to the same thing*/
+    font-size: initial;
+    text-decoration: none;
+    vertical-align: middle;
+    padding: 1em;
+    margin: auto;
+    line-height: 1em;
+    font-size: 1.5rem;
+}
+/* .ee tbody:last-child{
+    font-size: inital;
+} */
+
+/*Table image*/
+.ee td img{
+    display: block;
+    width: 100%;
+    border-radius: 25px;
+    /* margin: auto; */
+    /* box-shadow: #000; */
+    margin: 3% 0px;
+    box-shadow: 1px 1px 10px 1px black;
+}
+
+/*Warning and hidden content*/
+.ee .warning{
+    background-color: rgba(255, 255, 0, 0.856);
+    color: red;
+    /* text-shadow: 2px 2px 2px black; */
+    text-shadow: black 0px 1px 0px;
+    font-size: 18px;
+    margin: 10px;
+    text-align: center;
+    border: ridge 5px #000000bb;
+}
+/*First paragraph*/
+.ee .warning p:first-of-type{
+    font-size: 2.5rem;
+    margin: 5% 0px 0px 0px;
+    text-decoration: underline;
+}
+/*All other paragraphs*/
+.ee .warning p{
+    margin-top: 0px;
+    margin: 0px 5%;
+}
+/*Checkbox*/
+#warningCBox{
+    height: 50px;
+    width: 100%;
+    margin: 0px auto;
+}
+/*Disclaimer*/
+#Disclaimer{
+    display: inline-block;
+}
+
+/*Hide and blur*/
+#hiddenBox.hiddenContent{
+    /* display: none; */
+    filter: blur(15px);
+    background-color: black;
+}
+/*Hide Iframes and links so the user can't press them*/
+#hiddenBox.hiddenContent iframe, #hiddenBox.hiddenContent a{
+    display: none;
+}
+/*Remove text selection*/
+#hiddenBox.hiddenContent p{
+    user-select: none;
+}
+/*Begone tables!!! What???*/
+#hiddenBox.hiddenContent > *{
+    user-select: none;
+}
+
+/*Cool transition*/
+#hiddenBox.visibleContent{
+    transition: all 1s;
+    /* background-color: #001247; */
+}
+#hiddenBox.visibleContent > *{
+    transition: all 1s;
+}
+/*Align the iframes*/
+#hiddenBox.visibleContent iframe[src*="youtube-nocookie.com"]{
+    /* width: 100%; */
+    /* height: 100%; */
+    /* height: 1024px; */
+    margin: 0 auto;
+    display: block;
+    align-self: center;
+    /* border: unset; /*Removed due to shared selector*/
+}
+
+/*The two equation images*/
+.ee .groupedImages{
+    display: flex;
+    flex-direction: row;
+    border: 5px solid rgba(var(--cRGBColorSecond),1.0);
+    border-radius: 5px;
+    overflow: clip;
+    place-items: stretch;
+    border-radius: 10px;
+    
+    filter: drop-shadow(2px 2px 2px #000);
+    margin: 0 25%;
+
+    background: white;/*Fix the gap*/
+}
+
+/* .ee .groupedImages Img{
+} */
+
+/*========================= Reverse Engineering page ==================================*/
+/*preview*/
+body.ee.lessonPage .re.sectionContainer, .re .lessonPage{
+    /* background-color:#248df0; */
+    /* background-color:rgb(36, 141, 240) */
+    --lThemeR: 36;
+    --lThemeG: 141;
+    --lThemeB: 240;
+    /*HSV*/
+    --lThemeHue: 21;
+    /*--lThemeAlpha: 1.0;
+    --lThemeAOpaque: 0.8;
+    --lThemeAHalf: 0.5;*/
+    /*filter: hue-rotate(180deg); /*I forgot orange is a complemnatry color so its exactly 180*/
+    /*hex colors*/
+    /*Unfortunately this doesn't work*/
+    --lHColor: var(--blue);
+    --lHColorSecond: var(--teal);
+    --lHColorThird: var(--orange);
+    --lHColorFourth: var(--darkblue);
+    --lHColorDark: var(--darkblue);
+    --lHColorExtra: #5a3600;
+    /*So now we need RGB list equivalents due to a chrome bug*/
+    /* https://stackoverflow.com/questions/52037809/add-alpha-channel-to-hex-color-declared-on-css-variable */
+    /*RGBA*/
+    --cRGBColor: var(--RGBblue);
+    --cRGBColorSecond: var(--RGBteal);
+    --cRGBColorThird: var(--RGBorange);
+    --cRGBColorFourth: var(--RGBdarkblue);
+    --cRGBColorDark: var(--RGBdarkblue);
+    --cRGBColorAlpha100: 1.0;
+    --cRGBColorAlpha075: 0.75;
+    --cRGBColorAlpha050: 0.50;
+    --cRGBColorAlpha025: 0.25;
+    --cRGBColorAlpha000: 0.0;
+
+
+    /*Colors must be redeclared in this defintition to be injected on another page*/
+    /*use for local settings*/
+    --localR: var(--lThemeR);
+    --localG: var(--lThemeG);
+    --localB: var(--lThemeB);
+    --localA: var(--lThemeAlpha);
+    --quickCLocalRGB: rgba(var(--localR), var(--localG), var(--localB), var(--localAlpha));
+    --localH: var(--lThemeHue);
+    --localS: var(--lThemeSat);
+    --localL: var(--lThemeNormL);
+    --localAalt: var(--lThemeA);
+    --quickCLocalRGB: hsla(var(--localH), var(--localS), var(--localL), var(--localAalt)); /*Background color on lesson cards*/
+    /*Quick colors*/
+    --quickColor: rgba(var(--lThemeR), var(--lThemeG), var(--lThemeB), var(--lThemeAlpha));
+    --quickCOpaque: rgba(var(--lThemeR), var(--lThemeG), var(--lThemeB), var(--lThemeAOpaque));
+    --quickCHalf: rgba(var(--lThemeR), var(--lThemeG), var(--lThemeB), var(--lThemeAHalf));
+    --quickCInvisible: rgba(var(--lThemeR), var(--lThemeG), var(--lThemeB), var(--lThemeAInvisible)); /*Nav header color*/
+    --quickCCardBg: rgba(var(--lThemeR), var(--lThemeG), var(--lThemeB), var(--lThemeAClear)); /*Background color on lesson cards*/
+    --quickCDark: hsla(var(--lThemeHue), var(--lThemeSat), var(--lThemeDarkL), var(--lThemeASemiClear));
+    --quickCLight: hsla(var(--lThemeHue), var(--lThemeSat), var(--lThemeLightL), var(--lThemeASemiClear));
+}
+
+/*All lesson pages ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+/*Color variable defaults*/
+.lessonPage{
+    /* background-color:#248df0; /*Light blue*/
+    /* background-color:#001247; /*Dark blue*/
+    /* background-color:#ff5900; /*Orange*/
+    /* background-color:#63bb98; /*Teal*/
+    /*background-color:hsl(209, 87%, 54%); /*Light blue*/
+    /*background-color:hsl(225, 100%, 14%); /*Dark blue*/
+    /*background-color:hsl(21, 100%, 50%); /*Orange*/
+    /*background-color:hsl(156, 39%, 56%); /*Teal*/
+    /*#248df047*/ /*Header Default*/
+    /*#001247a8*/ /*Dark Clear*/
+    /*background-color:hsla(209, 87%, 54%, 0.278); /*Header Default*/
+    /*background-color:hsla(225, 100%, 14%, 0.659); /*Dark Clear*/
+    --lThemeR: 255;
+    --lThemeG: 255;
+    --lThemeB: 255;
+    --lThemeAlpha: 1.0;
+    --lThemeAOpaque: 0.8;
+    --lThemeASemiClear: 0.659;
+    --lThemeAHalf: 0.5;
+    --lThemeAInvisible: 0.278;
+    --lThemeAClear: 0.25; /*used by lesson cards*/
+    --lThemeATransparent: 0;
+    /*HSLA*/
+    --lThemeHue: 209;
+    --lThemeSat: 100%;
+    --lThemeNormL: 50%;
+    --lThemeLightL: 80%; /*Dark luminance*/
+    --lThemeDarkL: 14%; /*Dark luminance*/
+    /*use for local settings*/
+    --localR: var(--lThemeR);
+    --localG: var(--lThemeG);
+    --localB: var(--lThemeB);
+    --localA: var(--lThemeAlpha);
+    --quickCLocalRGB: rgba(var(--localR), var(--localG), var(--localB), var(--localAlpha));
+    --localH: var(--lThemeHue);
+    --localS: var(--lThemeSat);
+    --localL: var(--lThemeNormL);
+    --localAalt: var(--lThemeA);
+    --quickCLocalRGB: hsla(var(--localH), var(--localS), var(--localL), var(--localAalt)); /*Background color on lesson cards*/
+    /*Quick colors*/
+    --quickColor: rgba(var(--lThemeR), var(--lThemeG), var(--lThemeB), var(--lThemeAlpha));
+    --quickCOpaque: rgba(var(--lThemeR), var(--lThemeG), var(--lThemeB), var(--lThemeAOpaque));
+    --quickCHalf: rgba(var(--lThemeR), var(--lThemeG), var(--lThemeB), var(--lThemeAHalf));
+    --quickCInvisible: rgba(var(--lThemeR), var(--lThemeG), var(--lThemeB), var(--lThemeAInvisible)); /*Nav header color*/
+    --quickCCardBg: rgba(var(--lThemeR), var(--lThemeG), var(--lThemeB), var(--lThemeAClear)); /*Background color on lesson cards*/
+    --quickCDark: hsla(var(--lThemeHue), var(--lThemeSat), var(--lThemeDarkL), var(--lThemeASemiClear));
+    --quickCLight: hsla(var(--lThemeHue), var(--lThemeSat), var(--lThemeLightL), var(--lThemeASemiClear));
+    /*Secondary color*/
+    --lTheme2R: 128;
+    --lTheme2G: 128;
+    --lTheme2B: 128;
+    --lTheme2A: 1.0;
+    --lTheme2ACustom: 0.2;
+    --quickSecColor: rgba(var(--lThemeR), var(--lThemeG), var(--lThemeB), var(--lTheme2A));
+    /*You can pass hexcode as a color parameter of RGB!!!*/
+    /* https://stackoverflow.com/questions/40010597/how-do-i-apply-opacity-to-a-css-color-variable#41265350 */
+    --lHColor: 255, 255, 255;
+    --lHColorSecond: 128, 128, 128;
+    --lHColorThird: 200, 200, 200;
+    --lHColorFourth: 65, 65, 65; /*the color in the palette we are not using*/
+    --lHColorDark: 0,0,0;
+    --lHColorExtra: 0, 255, 255;
+    /*With this you can set the value in hex with the lesson page color settings, and then pass it into an rgba*/
+
+    /*Actually it doesn't work, very annoying*/
+    --cRGBColor: 255,255,255;
+    --cRGBColorSecond: 128, 128, 128;
+    --cRGBColorThird: 200, 200, 200;
+    --cRGBColorFourth: 65, 65, 65;
+    --cRGBColorDark: 0,0,0;
+    --cRGBColorAlpha100: 1.0;
+    --cRGBColorAlpha075: 0.75;
+    --cRGBColorAlpha050: 0.50;
+    --cRGBColorAlpha025: 0.25;
+    --cRGBColorAlpha000: 0.0;
+}
+
+/*All images need to fill their width*/ /*Does nothing now?*/
+.sectionContainer img [src*="ee_"]{
+    display: block;
+    width: 100%;
+}
+
+.sectionContainer > .contentBackdrop > img{
+    border-radius: 10px;
+    border: 5px solid rgba(var(--cRGBColorSecond),1.0);
+    filter: drop-shadow(2px 2px 2px #000);
+    width: 75%;
+    margin: 0 auto;
+    display: block;
+}
+
+/*header*/
+/*Nav bar*/
+.lessonPage header{
+    background-color: var(--quickCInvisible);
+    backdrop-filter: blur(5px);
+    background-color: var(--quickCInvisible);
+    border: 1px solid var(--quickColor);
+    /* border-radius: 15px; */
+    overflow: hidden;
+    box-shadow: inset 0px 0px 20px 10px var(--quickColor)
+}
+
+/*Link borders and background*/
+.lessonPage nav a{
+    background-color: var(--quickCDark);
+    border-color: var(--quickColor);
+}
+.lessonPage nav a:hover{
+    border-color: var(--quickCLight);
+}
+
+/*Hero image*/
+.lessonPage #heroContainer{
+    grid-template-columns: 100%; /*take up the full available width instead of sizing based on contents*/
+    background-color: var(--quickCInvisible);
+    box-shadow: inset 0px 0px 20px 10px var(--quickColor); /*glow*/
+    padding: 2%;
+}
+.lessonPage #heroImg{
+    width: 90%;
+    height: auto; /*change the height*/
+    /*margin: 4% 10%; /*Inset the picture*/
+    /* filter: drop-shadow(5px 5px 12px var(--quickColor)); */
+    filter: drop-shadow(5px 5px 12px black);
+    border-radius: 5px 5px 100px 100px;
+}
+/*Title*/
+.lessonPage #heroTitle{
+    font-size: 100px; /*Smaller font size to store more words*/
+    /* filter: hue-rotate(180deg); */
+    /*Experimental*/
+    /*background-image: repeating-linear-gradient(90deg, #248df0 0%, #63bb98 25%, #ff5900 50%, #63bb98 75%, #248df0 100%);*/
+    /* background-image: repeating-linear-gradient(90deg, var(--lHColorSecond) 0%, var(--lHColorThird) 25%, var(--lHColorFourth) 50%, var(--lHColorThird) 75%, var(--lHColorSecond) 100%); */
+    /* background-image: repeating-linear-gradient(90deg, var(--lHColorSecond) 0%, var(--lHColorFourth) 25%, var(--lHColorThird) 50%, var(--lHColorFourth) 75%, var(--lHColorSecond) 100%); */
+}
+/*Backdrop color*/
+.lessonPage #heroTitle:before{
+    background-color: var(--quickCDark);
+    
+    /*experimental*/
+    /* border: 5px solid var(--quickColor); */
+    /* background-color: rgba(255,255,255, var(--quickCInvisible)); */
+    /* --mouseX: inherit; */
+    /* --mouseY: inherit; */
+    /* backdrop-filter: hue-rotate(calc(var(--mouseX))); */
+    /*/* backdrop-filter: hue-rotate(calc(var(--mouseX)*var(--mouseY))); */
+
+}
+/**/
+/* .lessonPage main{
+
+} */
+
+/*=================Lesson Content Container (Not header or footer)============*/
+.lessonPage #contentContainer{
+    display: flex;
+    flex-direction: row;
+    /* width: calc(100% - (var(--clipWidth) * 2)); /*Size needs to fit content */
+    gap: 10px;
+    /* margin-top: 5%; */
+    margin: 3.5% 0px ;
+}
+
+/*Quick Links*/
+.lessonPage #quickLinkBox { /*Changed name to lesson nav to match the site it will be used on*/
+  
+  width: max-content; /*Changed to max content so it doesn't collapse the text*/
+  position: sticky;/*changed from fixed to sticky so it doesn't trigger unless the user scrolls past it*/
+  z-index: 1;
+  top: -0.001px; /*Move to trigger sticky*/
+  background: var(--quickCInvisible);
+  border: 6px double var(--quickColor); /*unfortunately this is offset*/
+  
+  display: flex; /*Flex display*/
+  
+  flex-direction: column; /*Flex display column*/
+  align-items: stretch; /*Flex display center*/
+  text-align: center; /*Aligns text items to center of box*/
+
+  color: rgb(255, 255, 255); /*All text set to white*/
+  
+  line-height: 4rem; /*Increased line height so its not super small*/
+
+  /*Fancy effects*/
+  border-radius: 40px;
+  backdrop-filter: blur(5px);
+  overflow: hidden;
+  box-shadow: inset 0px 0px 20px 10px var(--quickColor);
+
+  /*Bugfixes*/
+  /* margin: 0 0 10% 0; */
+  padding: 0 0 5% 0;
+}
+
+/*==================QUICK LINK=======================*/
+
+/*Quick link header*/
+.lessonPage #quickLinkBox h2{
+    /* margin: 5%; */
+    /* margin: -1px -12px 0px -12px; */
+    /* padding: 0px 0px 2% 0px; */
+    margin: -7px -12px 0px -12px;
+    padding: 2% 0px 2% 0px;
+    border-bottom: 2px inset var(--quickColor);
+    background-color: var(--quickCOpaque);
+    /*Font modifications*/
+    font-size: 30px;
+    font-variant: small-caps;
+    /* A very interesting issue with decovar solved with line height: https://stackoverflow.com/questions/12498757/is-there-an-invisible-padding-margin-for-font-size */
+    /*line-height: 1.0em; /*1em is the best option*/
+    line-height: 1.25em; /*1em is the best option*/
+    /*Visibility*/
+    --trmf: "TRMF" 0;
+    text-shadow: 1px 2px 2px #000, 2px 1px 2px #000;
+}
+
+/*quick link hyperlinks*/
+.lessonPage #quickLinkBox a{
+    font-size: 15px;
+    /* padding: auto; */
+    text-decoration: underline; /*restore text decoration*/
+    margin: 4px;
+    padding: 5px;
+    /* padding-left: 0.5em; */
+    color: var(--lHColorThird);
+    /* background-color: rgba(var(--lHColorDark) / 50%); /*Complete faliure*/
+    /*background-color: rgba(var(--lHColorDark) / 50%); /*Complete faliure*/
+    background-color: rgba(var(--cRGBColorFourth), 0.7);
+    backdrop-filter: blur(5px);
+    border-radius: 50px;
+
+    /*Visibility*/
+    /* text-shadow: 1px 1px 1px var(--white); */
+    --outlineColor: rgb(255, 255, 255);
+    --outlineBlur: 0px;
+    /* text-shadow: 0.5px -0.5px var(--outlineBlur) var(--outlineColor),0.5px 0.5px var(--outlineBlur) var(--outlineColor),-0.5px -0.5px var(--outlineBlur) var(--outlineColor),-0.5px 0.5px var(--outlineBlur) var(--outlineColor); */
+    /*text-shadow: 1px 1px 3px, -1px -1px 3px;/*Neon*/
+    /* --neonColor: rgba(var(--cRGBColorThird),0.5); */
+    /* --neonBlur: 2px; */
+    --wght: "wght" 750;
+    line-height: 1.5em;
+
+
+    /*hidden border*/
+    outline: 2px solid;
+    outline-color: rgba(var(--cRGBColorThird),1.0);
+    transition: 500ms 0s outline-color, 500ms 0s outline-style, 500ms 0s color, 500ms 0s box-shadow;
+}
+
+.lessonPage #quickLinkBox a:hover{
+    /*Change outline*/
+    outline-style: inset;
+    outline-color: rgba(var(--cRGBColorSecond),1.0);
+    color: var(--lHColorSecond);
+    /*Variable font adjust*/
+    /*--mono: "MONO" 0;/* Monospace: Sans (natural-width) or Mono (fixed-width) */
+    --casl: "CASL" 1;/* Casual: Linear (0) to Casual (1)*/
+    --wght: "wght" 800;/* Weight: Light to ExtraBlack; usually set with `font-weight` */
+    --slnt: "slnt" -15;/* Slant: 0 to -15 degrees, auto cursive at -14 */
+    /*--crsv: "CRSV" 0;/* Cursive: always roman (0), auto substitution (0.5), or always cursive (1)*/
+    font-variation-settings: var(--mono),var(--casl),var(--wght),var(--slnt),var(--crsv);
+}
+
+/*For when the text is scrolled*/
+.lessonPage #quickLinkBox a.scrolled{
+    outline-style: dashed;
+    /*color: var(--lHColorSecond);*/
+    /* filter: invert(); */
+    /* box-shadow: inset 0px 0px 20px 5px; */
+    /* box-shadow: inset 0px 0px 10px 0px; */
+    /* text-shadow: white 0px 2px 4px ; */
+
+
+    box-shadow: inset 0px 0px 10px 0px;
+    text-shadow: #000000 0px 0px 20px;
+    filter: drop-shadow(0px 0px 2px rgba(0, 0, 0, 0.568));
+    /* color: rgba(var(--cRGBColor),1.0); */
+}
+
+
+/*Quick links Track*/
+.lessonPage #quickLinksTrack{
+  /*grid-column: 1/2; /*Set grid column*/
+  flex-grow: 1; /*Disable flex growing*/
+}
+
+
+/*==============lesson page text content==================*/
+
+/*Main root of the contents*/
+.lessonPage .lessonContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    /*backdrop-filter: blur(5px) ; /*hue-rotate(180deg)*/
+    /* border-radius: 45px; */
+    /* border: 5px double rgba(var(--cRGBColor),0.45); */
+    /* background: linear-gradient(transparent,var(--blue)); */
+}
+.lessonPage .sectionContainer{
+    /*/* background-color: var(--quickColor); */
+    /* background-color: var(--quickColor); */
+    /* padding: 5% 5%; */
+    /* margin: 5% 0%; */
+    
+    /*Transparent Backgrounds template*/
+    /*/* backdrop-filter: blur(5px); */
+    /*/* background-color: var(--quickCInvisible); */
+    /*Border rounding*/
+    /* border: 1px solid var(--quickColor); */
+    /* border-radius: 15px; */
+    /* overflow: hidden; */
+    /*Outline For Visibility*/
+    /*box-shadow: inset 0px 0px 20px 10px var(--quickColor); /*Just remembered there's a missing parameter, spread radius https://www.cssmatic.com/box-shadow https://stackoverflow.com/questions/45972558/how-to-create-box-shadow-only-on-left-and-right-with-repeat-box#45978706*/
+
+    /*V2*/
+    background-color: var(--quickColor);
+    padding: 5% 5%;
+    /* margin: 5% 0%; */
+    margin: 0;
+    backdrop-filter: blur(5px);
+    background-color: var(--quickCInvisible);
+    border: 1px solid var(--quickColor);
+    border-radius: 169px;
+    overflow: hidden;
+    box-shadow: inset 0px 0px 20px 10px var(--quickColor);
+}
+
+/*Hyperlink header*/
+.lessonPage h2 a {
+    font-size: 0.7em;
+    margin: 10px;
+}
+
+/*Disable the top and bottom margin for the first and last section containers*/
+.lessonPage .sectionContainer:first-of-type{
+    margin-top: 0px;
+}
+.lessonPage .sectionContainer:last-of-type{
+    margin-bottom: 2% 0;
+}
+
+
+/*Section background*/
+.lessonPage .sectionContainer .contentBackdrop{
+    /*background-color: var(--quickCOpaque);
+    /*padding: 1em 5%;
+    /*margin: 0px;
+    /*color: white;
+    /*text-shadow: 2px 1px 0px #000;
+    /* border-radius: 15% 110%;/* Very weird shape */
+    /*border-radius: 5px;/* Very weird shape */
+
+    /*V2*/
+    background-color: var(--quickCOpaque);
+    padding: 0 5% 5% 5%;
+    margin: 0px;
+    border-radius: 118px;
+    overflow: hidden;
+    /*Child text settings*/
+    color: white;
+    text-shadow: 2px 1px 0px #000; 
+}
+
+/*Hyperlinks on lesson pages*/
+.lessonPage .sectionContainer a{
+    /* text-shadow: 0px 1px 0px #fff; */
+    /* color: var(--quickColor); */
+    /* filter: hue-rotate(180deg); */
+    /* text-shadow: 2px 1px 0px white; */
+
+    color: var(--lHColorSecond);
+    /* filter: hue-rotate(180deg); */
+    /* text-shadow: white 0px 1px 0px; */
+    /* text-shadow: 0.5px 0.5px 5px black; */
+    text-shadow: -0.5px -0.5px 0.5px #000, 
+    0.5px 0.5px 0.5px #000, 
+    0.5px -0.5px 0.5px #000, 
+    -0.5px 0.5px 0.5px #000;
+    text-decoration: underline;
+    /* filter: drop-shadow(1px 2px 1px black); */
+    /* filter: drop-shadow(0.5px 0.5px 200px 0px black); */
+
+    /*heavy font weight*/
+    /* --casl: "CASL" 0; */
+    /* --wght: "wght" 1000; */
+    /* --slnt: "slnt" 0; */
+    /* --crsv: "CRSV" 0; */
+    /* font-variation-settings: var(--mono),var(--casl),var(--wght),var(--slnt),var(--crsv); */
+    /* font-family: Recursive, Helvetica, sans-serif; */
+}
+
+/*Hyperlink in text*/
+.lessonPage .sectionContainer a{
+    text-decoration: underline;
+}
+
+.lessonPage .sectionContainer a:hover{
+    /*--mono: "MONO" 0;/* Monospace: Sans (natural-width) or Mono (fixed-width) */
+    --casl: "CASL" 1;/* Casual: Linear (0) to Casual (1)*/
+    --wght: "wght" 800;/* Weight: Light to ExtraBlack; usually set with `font-weight` */
+    --slnt: "slnt" -15;/* Slant: 0 to -15 degrees, auto cursive at -14 */
+    /*--crsv: "CRSV" 0;/* Cursive: always roman (0), auto substitution (0.5), or always cursive (1)*/
+    font-variation-settings: var(--mono),var(--casl),var(--wght),var(--slnt),var(--crsv);
+}
+
+.lessonPage .sectionContainer .lessonCard a{
+    text-decoration: none;
+}
+
+/*section header*/
+/*TODO: MAKE THIS NOT APPLY TO LESSON CARDS*/
+.lessonPage .sectionContainer .contentBackdrop > h2{
+    background-color: var(--quickCOpaque);
+    border-radius: 5px;
+    color: white;
+    /* margin: 0px -100%; */
+    /* margin: 0px 0px; */
+    /* margin: 0px -8%; */
+    margin: 0px -7%;
+    /* padding: 25px 8%; */
+    padding: 25px 6%;
+    background: repeating-linear-gradient(315deg, #08000333 15px 24px, transparent 30px 35px);
+    text-shadow: 4px 4px 2px #000;
+    border-bottom: 6px ridge #fff;
+    /*Advanced changes*/
+    /* --trmf: "TRMF" 0; */
+    /* font-size: 52px; */
+}
+
+/*hyperlink tags*/
+.lessonPage .sectionContainer h2 a{
+    text-decoration: none;
+}
+
+/*List item*/
+.sectionContainer li{
+    margin: 0 8%;
+    line-height: 1.5em;
+    font-size: 85%;
+}
+
+/*.lessonPage .sectionContainer p{*/
+    /* background-color: var(--quickCOpaque);
+    padding: 1em 5%;
+    margin: 0px; */
+/*}*/
+/*Wacky selectors that act like background color
+.lessonPage .sectionContainer > p:first-of-type{
+    border-radius: 50px 50px 0px 0px;
+}
+.lessonPage .sectionContainer > h2 ~ p:last-of-type{
+    border-radius: 0px 0px 50px 50px;
+}
+.lessonPage .sectionContainer td{
+    margin: 0px;
+}*/
+/*It also helps you spot gaps!!!*/
+
+/*Cited Image box*/
+.citedImageBox{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 12px double var(--teal);
+    border-radius: 50px;
+    /*backdrop-filter: hue-rotate(180deg);*/
+    font-size: 0.75em;
+}
+
+.citedImageBox img{
+    width: 50%;
+    filter: drop-shadow(2px 2px 2px #000);
+}
+
+.citedImageBox p{
+    margin: 10px auto;
+    place-self: stretch;
+}
+
+/*All ohms law formulas*/
+.sectionContainer img[src*="ee_ohms_law"]{
+    width: 50%;
+    display: block;
+    margin: 0 auto;
+    place-self: center;
+}
+
+
+/*Footer*/
+footer{
+    --footerColor: rgba(var(--cRGBColor),0.25);
+}
+
+footer > *{
+    box-shadow: inset 0px 0px 20px 10px var(--quickColor);
+}
+
+/*All text in the footer*/
+/* footer > * > *{
+    text-shadow: 0px 0px 20px;
+} */
+
+
+
+
+
 /*Animations*/
-@keyframes scroll{
+@keyframes particleMove{
     0% {
         background-position-y: 0px;
         background-position-x: 0px;
@@ -596,6 +1497,19 @@ body.hp{
         background-position-x: 50px; /*Needs to match tile size*/
     }
 }
+
+@keyframes eebackground{
+    0% {
+        background-position-y: -50px;
+        background-position-x: 0px;
+    }
+    
+    100% {
+        background-position-y: 50px; /*Needs to match tile size*/
+        background-position-x: 0px; /*Needs to match tile size*/
+    }
+}
+
 
 /*Javascript operated items*/
 /* Header Particle System*/
@@ -641,6 +1555,8 @@ body.hp{
     shape-rendering: optimizespeed;
     /* color-rendering: optimizespeed; */
     /* buffered-rendering: auto; */
+    /* clip-path: polygon(0% 5%, 50% 100%, 50% 100%, 100% 5%); */ /*Experimental*/
+    /* box-shadow: inset 4px -4px 5px 5px #000000;*/
 }
 
 /* .particle.r0{ */
@@ -681,6 +1597,32 @@ body.hp{
     animation-delay: -5s, 0s;
 }
 
+/*Particle style 2 for EE Page*/
+.ee .particle{
+    background-color: rgb(255, 247, 0);
+    /* outline: inset 1px black; */
+
+    /* display: inline-block; */
+    border-radius: 15%;
+    /*animation: 10s fade linear infinite, 5s shift linear infinite; /*https://developer.mozilla.org/en-US/docs/Web/CSS/animation#syntax*/
+    animation: 10s eeparticle linear infinite; /*Row contianer version*/
+    animation-timing-function: revert; /*Less lag, and more fun!*/
+    /*Particle Optimization*/
+    shape-rendering: optimizespeed;
+    /* color-rendering: optimizespeed; */
+    /* buffered-rendering: auto; */
+    /* clip-path: polygon(0% 5%, 50% 100%, 50% 100%, 100% 5%); */ /*Experimental*/
+    /* box-shadow: inset 4px -4px 5px 5px #000000;*/
+    /* box-shadow: inset 0px 0px 5px 1px rgba(var(--cRGBColorSecond),0.65); */
+    /* filter: drop-shadow(5px 5px 5px black);/*Too laggy */
+}
+
+.ee .rowContainer{
+    /* animation: none; */
+    animation: 5s eeshift linear infinite;
+    /* filter: drop-shadow(1px 1px 1px black); */
+}
+
 @keyframes fade{
     0%{
         background-color: rgba(255, 255, 255, 0.450);
@@ -695,6 +1637,34 @@ body.hp{
 }
 
 @keyframes shift {
+    0%{
+        transform: translateX(0px);
+    }
+    /*Not needed for grid container*/
+    /* 50%{ */
+        /* border-radius: 0%; */
+        /* transform: translateX(22px); */
+    /* } */
+    100%{
+        /* transform: translateX(44px); */
+        transform: translateX(50px);
+    }
+}
+
+@keyframes eeparticle{
+    0%{
+        background-color: rgba(255, 247, 0, 0.450);
+        transform: rotate3d(1, 1, 1, 360deg)
+    }
+    50%{
+        background-color: rgba(255, 247, 0, 0.200);
+    }
+    100%{
+        background-color: rgba(255, 247, 0, 0.450);
+    }
+}
+
+@keyframes eeshift {
     0%{
         transform: translateX(0px);
     }
@@ -769,6 +1739,7 @@ h1#heroTitle::before {
     }
     body{
         max-width: 800px;
+        min-width: 300px;
         margin: 0px;
     }
     #hpContentContainer{
@@ -817,6 +1788,23 @@ h1#heroTitle::before {
         display: flex;
         flex-direction: column;
     }
+    /*footer*/
+    footer{
+        display: flex;
+        font-size: 15px;
+        align-items: stretch;
+    }
+    footer p{
+        font-size: 1rem;
+        padding: 5%;
+    }
+    footer #leftFooter, footer #rightFooter{
+        width: 25%;
+    }
+    footer #centerFooter{
+        width: inherit;
+    }
+    /*Lesson pages etc*/
     /*Lesson card size increase*/
     .cardHeader h2{
         font-size: max(1.8vw, 140%)
@@ -824,8 +1812,135 @@ h1#heroTitle::before {
     .cardHeader:hover h2{
         font-size: max(1.4vw, 90%)
     }
-    footer p{
-        font-size: 2rem;
+    
+    /*Quick Link / Lesson media queries*/
+    .lessonPage #contentContainer{
+        /* display: block; */
+        flex-direction: column;
+    }
+    .lessonPage #lessonNavTrack{
+        position: sticky;
+        top: -0.001px;
+        /* overflow-wrap: scroll; */
+    }
+    .lessonPage #quickLinkBox{
+        margin: auto auto;
+
+        /*added as overflow protection*/
+        /* height: fit-content; */
+        overflow-x: hidden;
+        overflow-y: hidden;
+        font-size: small;
+        left: 98%;
+        width: unset;
+        
+        z-index: 1;
+        /*Transition*/
+        /*height: 10vh; /*10% of height*/
+        height: 2rem; /*Change to 1 line height*/
+        transition: 300ms 0s height;
+
+        /*Size limit*/
+        max-height: max-content;
+    }
+    .lessonPage #quickLinkBox.visible{
+        height: 35vh; /*35 %*/
+        overflow-y: scroll;
+    }
+    .lessonPage #quickLinkBox h2{
+        position: sticky;
+        top: -1px;
+        width: 100%;
+        font-size: 16px;
+        margin: -7px 0px -7% 0px; /*Fix the header*/
+        /* padding: 7px 0px 7px 0px; */
+        /* background-color: rgba(var(--cRGBColorSecond),var(--lThemeAOpaque)); */
+        text-decoration: underline;
+        z-index: 1;
+        /* font-size: 52px; */
+        font-size: 32px;
+        cursor: pointer;
+        /* pointer-events: all; */
+        user-select: none;
+    }
+    .lessonPage #quickLinkBox.visible h2{
+        margin: -7px 0px 7px 0px; /*Fix the header*/
+        /* background-color: rgba(var(--cRGBColor),var(--lThemeAOpaque)); */
+        text-decoration: none;
+    }
+    .lessonPage #quickLinkBox a{
+        display: none;
+        font-size: 12px;
+    }
+    /*Unhide*/
+    .lessonPage #quickLinkBox.visible a{
+        display: unset;
+    }
+    /*Various content fixing*/
+    /*Lesson container has lower z-index than the quick links*/
+    .lessonPage .lessonContainer{
+        /* display: block; */
+        z-index: -1;
+    }
+    /*Smaller border radius = more space */
+    .lessonPage .sectionContainer{
+        border-radius: 25px;
+    }
+    .lessonPage .sectionContainer .contentBackdrop{
+        border-radius: 25px;
+    }
+    /*Title font Change*/
+    .lessonPage #heroTitle{
+        font-size: 55px;
+    }
+    .lessonPage .sectionContainer .contentBackdrop > h2 {
+        /* margin: 0px -100%; */
+        /* margin: 0px 0px; */
+        /* margin: 0px -8%; */
+        margin: 0px -7%;
+        /* padding: 25px 8%; */
+        padding: 25px 7%;
+        /* --trmf: "TRMF" 0; */
+        font-size: 28px;
+    }
+    .lessonPage .sectionContainer h2 > a{
+        margin: 0px;
+    }
+    .lessonPage .sectionContainer a{
+        word-break: break-all;
+    }
+    /*Fix font size*/
+    .lessonPage{
+        font-size: 0.95rem;
+    }
+    /*ee page*/
+    /*fix images*/
+    .sectionContainer img[src*="ee_ohms_law"] {
+        width: 80%;
+        display: block;
+        margin: 0 auto;
+        place-self: center;
+    }
+    .ee .groupedImages{
+        margin: 0;
+    }
+    /*Reset grouped images*/
+    .ee .groupedImages img{
+        width: 45%;
+    }
+    .ee .lessonPage li{
+        display: block;
+    }
+    /*EE table*/
+    .ee tbody{
+        display: flex;
+    }
+    .ee td{
+        display: flex;
+        flex-direction: column;
+    }
+    .ee tr{
+        display: none;
     }
 }
 /*Alternate ways to query mobile devices*/

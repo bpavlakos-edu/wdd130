@@ -167,3 +167,124 @@ document.onmousemove = function(mEvent){
         update_timer -= 2;
     }
 }
+
+//Checkbox evaluation
+function evalCB(checkBoxIn){
+    // if(document.getElementById('warningCBox').checked == true){
+    let hiddenBox = document.getElementById('hiddenBox');
+    if(checkBoxIn.checked == true){
+        hiddenBox.classList.replace('hiddenContent','visibleContent'); 
+    }else{
+        hiddenBox.classList.replace('visibleContent','hiddenContent'); 
+    }
+}
+
+//Quick link globals
+
+let quickLinks = document.getElementsByClassName("quickLink");
+let chapterHeaderList = document.getElementsByClassName("sectionContainer");
+let currentChapter = 0;
+let lastPos = [];
+let maxChapter = chapterHeaderList.length;
+let inititalizedList = false; //Prevent the code from updating like crazy
+let YposList = [];//Store the ypos
+let disableScrollTracking = false;
+let debuggerText = document.querySelector("#quickLinkBox h2");
+let previousChapter = -1;
+
+updateQuickLinks();
+function updateQuickLinks(){
+    if(quickLinks.length == 0){
+        disableScrollTracking = true;
+    }
+    if(!disableScrollTracking){
+        let scrollYCapture = scrollY;
+        let screenYCapture = window.innerHeight;
+        if(!inititalizedList){
+            YposList = [];
+            for(let i=0;i<maxChapter;i++){
+                let boundingBox = chapterHeaderList[i].getBoundingClientRect();
+                let minY = boundingBox.top;
+                let maxY = boundingBox.bottom;
+                YposList.push([minY,maxY]);
+                // debuggerText.textContent = ""+scrollYCapture;
+                //debuggerText.textContent = ""+screenYCapture;
+                //quickLinks[i].textContent = ""+minY+", "+maxY;
+                // if(minY <= scrollYCapture && scrollYCapture <= maxY){
+                    // currentChapter = i;
+                    // lastPos = structuredClone([minY,maxY]);
+                    // console.log("Chapter: "+currentChapter);
+                // }
+                if(minY * 1.5 < window.innerHeight){
+                    currentChapter = i;
+                }
+            }
+            if(previousChapter != currentChapter && previousChapter != -1){
+                quickLinks[previousChapter].classList.toggle("scrolled");
+                quickLinks[currentChapter].classList.toggle("scrolled");
+                previousChapter = currentChapter;
+            }else if(previousChapter == -1){
+                previousChapter = 0;
+            }
+            
+            //Do this over and over again!!!
+
+            //inititalizedList = false; //Done with initalization
+
+        }else{
+            //This never worked!!! And since it's not intensive to repeat initalization, just do that over and over again!!!
+
+            //Figure out the next chapter
+            console.log("Last Chapter: "+currentChapter);
+            console.log(scrollYCapture);
+            //Repeat until the mouse is within range
+            while(!(scrollYCapture >= lastPos[0] && scrollYCapture <= lastPos[1])){
+                
+                if(scrollYCapture < lastPos[0]){
+                    currentChapter--;
+                }else if(scrollYCapture > lastPos[1]){
+                    currentChapter++;
+                }
+                if(currentChapter >= maxChapter + 1){
+                    currentChapter = maxChapter;
+                    lastPos = structuredClone(YposList[maxChapter]);
+                    break;/*Get out of the loop*/
+                }else if(currentChapter < 0){
+                    currentChapter = 0;
+                    lastPos = structuredClone(YposList[1]);
+                    break;/*Get out of the loop*/
+                }
+                lastPos = structuredClone(YposList[currentChapter]);
+            }
+            //Only update if the chapter doesn't match
+            if(currentChapter > 0 && currentChapter < maxChapter + 1 ){
+                lastPos = YposList[currentChapter];
+            }
+
+        }
+    }
+    
+}
+
+//Quick link tracker on scroll event
+document.onscroll = function(scrollEvent){
+    if(!disableScrollTracking){
+        updateQuickLinks();
+    }
+    // console.log(scrollY);
+}
+
+//Was going to be a function to toggle the scrolled class on and off
+//But I ended up doing it in the loop
+function quickLinkChange(){
+    let lastQuickLink = document.querySelectorAll(".scrolled");
+}
+
+function quickLinkToggle(){
+    let quickLinkBox = document.getElementById("quickLinkBox");
+    if (window.innerWidth <= 800){ //Media query
+        quickLinkBox.classList.toggle("visible");
+    }else{
+        quickLinkBox.classList.toggle("visible",false); //Force to off
+    }
+}

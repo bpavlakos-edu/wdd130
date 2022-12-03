@@ -1,36 +1,49 @@
+<!--This site uses iframes, and they need to be protected from using cookies-->
+<!--This strategy stops them from activating: https://stackoverflow.com/questions/44837450/recommended-method-to-prevent-any-content-inside-iframe-from-setting-cookies#44837553 -->
+<!--Essentially you add the "sandbox" attribute to the iframe but ensure that javascript is enabled by passing it as the parameter-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DIY Anything | Home</title>
-    <style rel="stylesheet" href="styles/styles.css" ></style>
+    <title>DIY Anything | Electrical Engineering</title>
+    <link rel="stylesheet" href="styles/styles.css">
 </head>
-<body>
+<body class="ee lessonPage">
     <header>
         <nav>
             <!-- <a href="lesson1_cp.html" class="linkContainer"> -->
-            <a href="index.html" class="linkContainer">
-                <img src="images/cd_icon_temp.png" class="linkIcon" alt="">
-                Computer Programming [Under Construction]
+            <a href="index.html">
+                <div class="linkContainer">
+                    <img src="images/cd_icon_temp.png" class="linkIcon" alt="">
+                    <p>Computer Programming<br>[Under Construction]</p>
+                </div>
             </a>
-            <a href="lesson2_ee.html" class="linkContainer">
-                <img src="images/ee_icon.svg" class="linkIcon" alt="">
-                Electronic Circuits
+            <a href="lesson2_ee.html">
+                <div class="linkContainer">
+                    <img src="images/ee_icon.svg" class="linkIcon" alt="">
+                    <p>Electronic Circuits</p>
+                </div>
             </a>
-            <a href="index.html" class="linkContainer">
-                <img src="images/h_icon.svg" class="linkIcon" alt="">
-                Home
+            <a href="index.html">
+                <div class="linkContainer">
+                    <img src="images/h_icon.svg" class="linkIcon homeIcon" alt="">
+                    <p>Home</p>
+                </div>
             </a>
-            <a href="lesson3_re.html" class="linkContainer">
-                <img src="images/re_icon.svg" class="linkIcon" alt="">
-                Reverse Engineering
+            <a href="lesson3_re.html">
+                <div class="linkContainer">
+                    <img src="images/re_icon.svg" class="linkIcon" alt="">
+                    <p>Reverse Engineering</p>
+                </div>
             </a>
             <!-- <a href="toolbox.html" class="linkContainer"> -->
-            <a href="index.html" class="linkContainer">
-                <img src="images/tl_icon_temp.png" class="linkIcon" alt="">
-                Toolbox Archive [Under Construction]
+            <a href="index.html">
+                <div class="linkContainer">
+                    <img src="images/tl_icon_temp.png" class="linkIcon" alt="">
+                    <p>Toolbox Archive<br>[Under Construction]</p>
+                </div>
             </a>
         </nav>
         <div id="particleContainer">
@@ -39,31 +52,39 @@
     </header>
     <div id="heroContainer">
         <img id="heroImg" class="hero" src="images/ee_hero.webp" alt="Electronic Components Warping Into The Center Of Lightning"> <!-- Exclude on subpages-->
-        <h1 id="heroTitle">ELECTRICAL ENGINEERING</h1> <!--Controlled by JavaScript-->
+        <div id="heroTitleContainer">
+            <h1 id="heroTitle">ELECTRICAL ENGINEERING</h1> <!--Controlled by JavaScript-->
+        </div>
     </div>
     <main>
-        <div id="eeContentContainer">
-            <div id="lessonNav">
-                <h2>Chapter Quick Links</h2>
-                <a href="#part1">1. An introduction to conduction</a>
-                <a href="#part2">2. What is electricity?</a>
-                <a href="#part3">3. Basic Electronic Components</a>
-                <a href="#part4">4. Your First Circuit</a>
-                <!-- <a href="#part5">5. Advanced Electronic Components</a> -->
-                <!-- <a href="#part6">6. Making An Advanced Circuit</a> -->
-                <!-- <a href="#part7">7. An Intro To Arduino</a> -->
-                <!-- <a href="#part8">8. Your First Arduino Circuit On TinkerCad</a> -->
-                <a href="#conclusion">Conclusion</a>
-                <a href="#nextLevel">The Next Level</a>
+        <div id="contentContainer" onscroll="updateQuickLinks();">
+            <div id="lessonNavTrack">
+                <div id="quickLinkBox">
+                    <h2 onclick="quickLinkToggle();">Chapter Quick Links</h2>
+                    <a href="#part1" class="scrolled quickLink">1. An introduction to conduction</a>
+                    <a href="#part2" class="quickLink">2. What is electricity?</a>
+                    <a href="#part3" class="quickLink">3. Basic Electronic Components</a>
+                    <a href="#part4" class="quickLink">4. Your First Circuit</a>
+                    <!-- <a href="#part5">5. Advanced Electronic Components</a> -->
+                    <!-- <a href="#part6">6. Making An Advanced Circuit</a> -->
+                    <!-- <a href="#part7">7. An Intro To Arduino</a> -->
+                    <!-- <a href="#part8">8. Your First Arduino Circuit On TinkerCad</a> -->
+                    <a href="#comingSoon" class="quickLink">Coming Soon!</a>
+                    <a href="#conclusion" class="quickLink">Conclusion</a>
+                    <a href="#nextLevel" class="quickLink">The Next Level</a>
+                </div>
             </div>
-            <div id="eeLessonContainer">
+            <div id="eeLessonContainer" class="lessonContainer">
                 <section class="sectionContainer">
+                    <div class="contentBackdrop">
                     <h2 id="part1"><a href="#part1">#</a>1. AN INTRODUCTION TO CONDUCTION</h2>
                     <p>In the lesson on computer programming, you learned how to tell a computer what to do. But now, you will learn how to tell electricity what to do, which will allow you to make computer programs that interact with the world around you!</p> 
                     <p>To help you on your journey, we're going to rob you of your chance to make "magic smoke" (aka catching an electronic component on fire), by having you start with a <a href="https://falstad.com/circuit/" target="_blank">circuit simulator from www.falstad.com!</a></p> 
                     <p>But before we do that, we need to answer a simple question first:</p>
+                    </div>
                 </section>
                 <section class="sectionContainer">
+                    <div class="contentBackdrop">
                     <h2 id="part2"><a href="#part2">#</a>2. WHAT IS ELECTRICITY</h2>
                     <p>Electricity is the energy produced by the movement of electrons. The reason it can be confusing because electrons are invisible, but it's actually not that hard to understand! It's very similar to something we deal with every day: water! Like water flows through pipes, electrons flow from the positive terminal to the negative terminal. The measurement of the energy produced by this movement is called "power", which is measured in "voltage", and the speed at which the electrons move, or "current" as it's called in electronics, is measured in "amperage".</p>
                     
@@ -74,13 +95,13 @@
                     <iframe src="https://falstad.com/circuit/circuitjs.html?ctz=CQAgjCAMB0l3BWc0AcAWA7ATgSgbJHmHFigniApJZdQgKYC0YYAUAO7gBMKIK1YDBX5RWYFBEHDqXcn2rUAzHGhgE6sIpZYsPfODjcF0NFBNiJIWdJCLFNpSrUa0WPFkgY0XCsQFdjUxg0Cwg7GzQwB1sndQQwV3dPb19DMACzIPMAc0oeeUoCAoVWACVuXhE3YqgQNDpa4wRWACc6qIKEfJEBetb23zRTLt4EoKt+MorwIZBqsca6hoUzZtyRmeGihZLxMPtNgcPHGEhXQjwuKMuWA39AzNCrOQXw45jT87wb76vJNIywUee3AQkO1neyk+Hl+1z+dyMmUenHSo1mUmOHGmHQxHUgT1xFAheI+JkwOjsxGUKHmAIewSexIobxJULJ2CwlMg1Np9yRDJBLIokV8FBO7IpWm5kBpqT5QIZ63yHXIAjFonKqPAFHm6uo9RoKxgzTaIu1eVG6owzSAA" allowfullscreen="true" width="1024" height="768"></iframe>
                     <p>Voltage, Resistance, and Current all work together in a predictable fashion. So predictable in fact that it can be mathematically represented by an equation called "Ohm's Law". Which is the following equation:</p>
                     
-                    <img src="images/ee_ohms_law.png" alt="Voltage Equals Current Times Resistance">
+                    <img src="images/ee_ohms_law.png" class="equation1"alt="Voltage Equals Current Times Resistance">
                     
                     <p>Which we can then use basic algebra, to create the following equations:</p>
-                    
-                    <img src="images/ee_ohms_law_2.png" alt="Current Equals Voltage Divied By Resistance">
-                    
-                    <img src="images/ee_ohms_law_3.png" alt="Resistance Equals Voltage Divied By Current">
+                    <div class="groupedImages">
+                        <img src="images/ee_ohms_law_2.png" alt="Current Equals Voltage Divied By Resistance">
+                        <img src="images/ee_ohms_law_3.png" alt="Resistance Equals Voltage Divied By Current">
+                    </div>
                     <p>Usually, the resistance and voltage are known before you even turn the circuit on. And with these equations, you can predict the current and voltage at specific points.</p>
                     <p>In the following image, voltage is represented by "V", amperage is represented by "A", and Resistance is represented by "&Omega;".</p> 
                     <p>The last value is power, which is called a "watt", it is represented by "W". You can read more about watts <a href="https://en.wikipedia.org/wiki/Watt" target="_blank">here on wikipedia,</a> where it explains that watts are a unit of power, and can be calculated using the equation "Watts = Voltage &times; Amperage". But that's not necessary to understand lesson.</p>
@@ -105,17 +126,19 @@
                     <p>Even in devices where you put batteries up and down, they're really connected together in series, by thin metal contacts that go across the top and bottom each slot.</p>
                     
                     <div class="warning">
+                        <p>WARNING!!!</p>
                         <p>
-                            WARNING!!!
                             <br>The following section describes actions that should never be done by someone without having prior experience with electronic circuits, and knowing the dangers of electricity.
                             <br>DO NOT TRY THIS AT HOME!!! FALIURE TO HEED THESE WARNINGS WILL RESULT IN DAMAGE TO YOUR BODY OR YOUR DEVICES! I AM NOT RESPONSIBLE FOR ANY HARM THAT COMES TO YOU OR YOUR PROPERTY BY IGNORING THIS WARNING!
                         </p>
-                        <input id="warningCBox" type="checkbox" onchange="if(document.getElementById('warningCBox').checked == true){ document.getElementById('hiddenBox').hidden = false; }else{ document.getElementById('hiddenBox').hidden = true; }">
-                        <label for="warningCBox">I understand this warning, and by checking this box I acknowledge that replicating any of the activities below is inherently dangerous, and could bring physical harm to me, to others, or to my property. I waive the author of any responsibility for any damage done by ignoring the warning, or attempting to replicate the actions of those described or shown below.</label>
+                        <!-- <input id="warningCBox" type="checkbox" onchange="if(document.getElementById('warningCBox').checked == true){ document.getElementById('hiddenBox').hidden = false; }else{ document.getElementById('hiddenBox').hidden = true; }"> -->
+                        <input id="warningCBox" type="checkbox" onchange="evalCB(this)">
+                        <label for="warningCBox" id="Disclaimer">I understand this warning, and by checking this box I acknowledge that replicating any of the activities below is inherently dangerous, and could bring physical harm to me, to others, or to my property. I waive the author of any responsibility for any damage done by ignoring the warning, or attempting to replicate the actions of those described or shown below.</label>
                     </div>
                     <p>To see the info below about connecting more or less batteries to an electronic deivce. Read the warning above carefully, then click the checkbox to both show that you understand the warning, and know that replicating the actions below will cause harm.</p>
                     <p>If you are not interested in the subject, simply continue reading the lesson.</p>
-                    <div id="hiddenBox" hidden="true">
+                    <!-- <div id="hiddenBox" hidden="true"> -->
+                    <div id="hiddenBox" class="hiddenContent">
                         <p>Any electronic device in your house can operate less batteries than normal, as long as the circuit is bridged by a conductive material.</p>
                         <p>When an electronic device is turned on, with less batteries than normal, by briging the remaining slot with a conductive material, it will do one of 3 things:</p>
                         <li>It won't turn on at all</li>
@@ -139,7 +162,6 @@
                         <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/mnkjvEdeIlc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         <h3><a href="https://www.youtube.com/watch?v=KFDlVgBMomQ" target="_blank">Equalo - How Many Potatoes Does It Take To Run Doom</a></h3>
                         <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/KFDlVgBMomQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                        
                     </div>
                     <p>But it doesn't matter how many electronic components you've attached together, if there's a shortcut to the negative terminal, the electrons will take it!</p>
                     <!--Short Circuit-->
@@ -148,182 +170,195 @@
                     <p>While we're on the subject of water, how does water itself affect an electronic circuit? Tap water is a great conductor, which essentially makes it a big wire connecting literally everything it touches together! As you can imagine, it creates lots of short circuits and damages electronic components with ease! Though there are some circuits out there, which use water to intentionally complete the circuit! A good example of this is a water alarm which uses water as a wire, to connect the battery and alarm together!</p>
                     <p>If you're interested in this subject you can read an article from <a href="https://www.howtogeek.com/360301/how-water-damages-electronics/" target="_blank">how to geek here, written by Craig Lloyd</a>, about how the minerals inside water act as conductors, and then even corrode circuit boards after periods of long exposure, it even helped me to better understand how to teach this concept!</p>
                     <p>But that's enough about water. Now you're ready to know the basic components, that bring to life the electronic devices you know and love!</p>
+                    </div>
                 </section>
                 <section class="sectionContainer">
-                    <h2 id="part3"><a href="#part3">#</a>3. BASIC ELECTRONIC COMPONENTS</h2>
-                    <p>There are many electronic components, so it's difficult to memorize them all at once. There are also electrical diagrams, which you're going to need to be able to read. Below are common electronic components, and their representations in electrical diagrams.</p>
-                    <p>All electronic component's electrical diagram pictures are all from volume 5 of the e-book on electrical engineering, titled "Lessons In Electric Circuits: Volume V - Reference", created by Tony R. Kuphaldt. "Lessons In Electric Circuits" is a 6-volume ebook series on Electrical Engineering, created and copyrighted by Tony R. Kuphaldt, and published under both a "DESIGN SCIENCE LISCENCE" (<a href="https://www.ibiblio.org/kuphaldt/electricCircuits/index.htm" target="_blank">as stated here</a> and <a href="https://www.ibiblio.org/kuphaldt/electricCircuits/Devel/dsl.html " target="_blank">here</a>) and has a Creative Commons 4.0 Attribution License (<a href="https://www.ibiblio.org/kuphaldt/electricCircuits/Ref/REF_A3.html"target="_blank">as stated here</a>, and <a href="https://creativecommons.org/licenses/by/4.0/legalcode" target="_blank">the CC by 4.0 license details are here</a>). "These books and all related files are published under the terms and conditions of the Design Science License. These terms and conditions allow for free copying, distribution, and/or modification of this document by the general public." as stated on the book's home page.</p>
-                    <p>The book's home page is here: <a href="https://www.ibiblio.org/kuphaldt/electricCircuits/index.htm" target="_blank">https://www.ibiblio.org/kuphaldt/electricCircuits</a></p>
-                    <p>I strongly encourage you to read the entire 6-volume book after the lesson, if you want to learn more about electronics. It's an amazing resource, and it is absolutely free!</p>
-                    <table>
-                        <!--Header-->
-                        <tr>
-                            <th>Component Name</th>
-                            <th>Description</th>
-                            <th>Electrical Diagram Image</th>
-                        </tr>
-                        <!--Wire-->
-                        <tr>
-                            <td>Wire</td>
-                            <td>
-                                <p>The wire, the lifeblood of our electronic circuits, they connect the electrons to the electronic components.</p> 
-                                <p>These are represented by straight lines in electrical diagrams. The only complicated part is when they go across each-other!</p>
-                                <p>Electrical diagrams, are unfortunately not unanimous in the representation of this, some may choose to have the wire "bounce" over the wire its crossing, while others may choose to draw straight through it and represent an actual connection with a dot. 
-                                (As is mentioned in <a href="https://www.ibiblio.org/kuphaldt/electricCircuits/Ref/REF_9.html#xtocid102790" target="_blank">"Lessons in Electronics Volume 5 - Electronic Diagrams - Wires and Connections"</a>)</p>
-                                <p>I prefer to "bounce" over wires myself, but that's up to personal preference. However, the industry standard today, is to represent connections with dots, and draw a line straight through to represent passing.</p>
-                            </td>
-                            <td><img src="images/ee_w_d.png" alt=""></td>
-                        </tr>
-                        <!--Battery-->
-                        <tr>
-                            <td>Battery</td>
-                            <td>Provides power. It has two terminals. It provides DC power to circuits in a more portable fashion. The alternative is to either use a AC/DC power supply, and in electrical diagrams they are a line clearly marked as Vcc, and ground is marked as shown in the diagram.</td>
-                            <td>
-                                <img src="images/ee_dcv_d.png" alt="">
-                                <!-- <img src="images/ee_acv_d.png" alt=""> -->
-                                <img src="images/ee_g_d.png" alt="">
-                            </td>
-                        </tr>
-                        <!--Resistor-->
-                        <tr>
-                            <td>Resistor</td>
-                            <td>
-                                <p>Resistors are components used to create resistance... Yes, that is what they do, as the name suggests.<p>
-                                <p>Essentially, inside of them is a coil of wire, this physical distance is designed to increase the physical distance the electrons have to travel in an attempt to slow them down.<p>
-                                <p>Because of this vital function, there are many different strengths of resistors, the more &Omega; (ohms) a resistor is, the more it can slow electrons down.</p>
-                                <p>Due to there being so many resistor strengths, a band-based color code was developed to make them easier to identify, and it's quite simple. </p>
-                                <p>A resistor's color code is read from left to right, with a gap before the final band.</p>
-                                <p>The first band on a resistor signifies the number of its leading digit, the last band before a gap signifies the number of zeroes. And bands between them represent additional digits in the number.</p>
-                                <p>The final band after the gap represents the "tolerance" of the resistor, or in other words the percentage range of accuracy to the printed number. This means the number that the resistor tells you could be plus or minus the percent specified by the final band.</p>
-                                <p>Now because this is a lot to take in all at once, I'm attaching the color code diagram from the <a href="https://www.ibiblio.org/kuphaldt/electricCircuits/Ref/REF_2.html" target="_blank">restistor color code page of "Lessons In Electric Circuits: Volume V - Reference" By Tony R. Kuphaldt</a>. It even has colored examples of real resistors, that will help you understand the concept better, so please visit the page to learn more about resistors.</p>
-                            </td>
-                            <td>
-                                <img src="images/ee_r_d.png" alt="">
-                                <img src="images/ee_r_ccode.png" alt="">
-                            </td>
-                        </tr>
-                        <!--LED-->
-                        <tr>
-                            <td>Light Emitting Diode (L.E.D.)</td>
-                            <td>
-                                <p>A light emitting diode is a one-way component that produces light using electricity.</p>
-                                <p>They weren't as common in the beginning of electronics, but as electronic circuits have become smaller, they have become easier to produce and more powerful, all while using less energy.</p>
-                                <p>Today they have virtually erased the need for traditional light bulbs in most devices, the traditional lamp-based flashlights of yesterday cannot compete with the LED arrays put in todays flashlights.</p>
-                                <p>A typical LED consists of two metal contacts, an anode and a cathode. The anode must be connected to a positive voltage source, while the cathode must be connected to a place in the circuit where the electrons can reach the negative or ground terminal. Otherwise the electrons cannot get across.</p>
-                                <p>This "one way" behavior is shared with diodes, which also have anodes and cathodes. Hence the name of this divice is "Light Emitting Diode"</p>
-                                <p>Unlike wires or switches, LEDs are designed to operate at very narrow range of voltages and currents, most operate at around 3v and below, but it depends on what their "specfications" are. Specifications are usally shown in the product listing, or datasheet that the manufacturer provides online or comes the item itself.</p>
-                                <p>Any higher voltage or current than the manufacture specifications say it can handle, and it will be instantly destroyed.</p>
-                                <p>Because of this, LEDs are typically paired with a limiting resistor, to limit both the voltage and the current. When I use a 3v LED in a 5v circuit (which is a voltage that is quite common to work with), I pair it with a 200&Omega;(Ohm) or greater resistor to prevent it from getting destroyed.</p>
-                            </td>
-                            <td><img src="images/ee_led_d.png" alt=""></td>
-                        </tr>
-                        <!---->
-                        <!-- <tr>
-                            <td></td>
-                            <td></td>
-                            <td><img src="images/ee_pb_d.png"></td>
-                        </tr> -->
-                        <!---->
-                        <!-- <tr>
-                            <td>Single Pull Single Thrust (SPST) Switch</td>
-                            <td>
-                                <p>An electronic device designed to open and close a circuit.</p>
-                                <p>Essentially, it's a piece of conductive material that is physically moved into a position where it can bridge a connection.</p>
-                                <p>Unlike push buttons, it can have more than one output, and it stays in a fixed position.</p>
-                                <p>A typical SPST Switch has 3 pins, the one in the middle is usually used as the voltage input, while the other two are the outputs.</p>
-                                <p>A common configuration for this component is to have one of the output pins be connected to nothing, or grounded so that a single output can be turned on or off easily</p>
-                            </td>
-                            <td><img src="images/ee_spst_d.png"></td>
-                        </tr> -->
-                        <!---->
-                        <tr>
-                            <td>Single Pull Double Thrust (SPST) Switch</td>
-                            <td>
-                                <p>An electronic device designed to open and close a circuit, and have one or more outputs.</p>
-                                <p>Essentially, it's a piece of conductive material that is physically moved into a position where it can bridge a connection.</p>
-                                <p>Unlike push buttons, it can have more than one output, and it stays in a fixed position.</p>
-                                <p>A typical SPST Switch has 3 pins, the one in the middle is usually used as the voltage input, while the other two are the outputs.</p>
-                                <p>A common configuration for this component is to have one of the output pins be connected to nothing, or grounded so that a single output can be turned on or off easily</p>
-                            </td>
-                            <!-- <td><img src="images/ee_spdt_d.png"></td> -->
-                        </tr>
-                        <!---->
-                        <!-- <tr>
-                            <td></td>
-                            <td></td>
-                            <td><img src="images/ee__d.png"></td>
-                        </tr> -->
-                        <tr>
-                            <td>More Components Coming Soon!</td>
-                            <td>More Components Coming Soon!</td>
-                            <td>More Components Coming Soon!</td>
-                        </tr>
-                    </table>
+                    <div class="contentBackdrop">
+                        <h2 id="part3"><a href="#part3">#</a>3. BASIC ELECTRONIC COMPONENTS</h2>
+                        <p>There are many electronic components, so it's difficult to memorize them all at once. There are also electrical diagrams, which you're going to need to be able to read. Below are common electronic components, and their representations in electrical diagrams.</p>
+                        <p>All electronic component's electrical diagram pictures are all from volume 5 of the e-book on electrical engineering, titled "Lessons In Electric Circuits: Volume V - Reference", created by Tony R. Kuphaldt. "Lessons In Electric Circuits" is a 6-volume ebook series on Electrical Engineering, created and copyrighted by Tony R. Kuphaldt, and published under both a "DESIGN SCIENCE LISCENCE" (<a href="https://www.ibiblio.org/kuphaldt/electricCircuits/index.htm" target="_blank">as stated here</a> and <a href="https://www.ibiblio.org/kuphaldt/electricCircuits/Devel/dsl.html " target="_blank">here</a>) and has a Creative Commons 4.0 Attribution License (<a href="https://www.ibiblio.org/kuphaldt/electricCircuits/Ref/REF_A3.html"target="_blank">as stated here</a>, and <a href="https://creativecommons.org/licenses/by/4.0/legalcode" target="_blank">the CC by 4.0 license details are here</a>). "These books and all related files are published under the terms and conditions of the Design Science License. These terms and conditions allow for free copying, distribution, and/or modification of this document by the general public." as stated on the book's home page.</p>
+                        <p>The book's home page is here: <a href="https://www.ibiblio.org/kuphaldt/electricCircuits/index.htm" target="_blank">https://www.ibiblio.org/kuphaldt/electricCircuits</a></p>
+                        <p>I strongly encourage you to read the entire 6-volume book after the lesson, if you want to learn more about electronics. It's an amazing resource, and it is absolutely free!</p>
+                        <table>
+                            <!--Header-->
+                            <tr>
+                                <th>Component Name</th>
+                                <th>Description</th>
+                                <th>Electrical Diagram Image</th>
+                            </tr>
+                            <!--Wire-->
+                            <tr>
+                                <td>Wire</td>
+                                <td>
+                                    <p>The wire, the lifeblood of our electronic circuits, they connect the electrons to the electronic components.</p> 
+                                    <p>These are represented by straight lines in electrical diagrams. The only complicated part is when they go across each-other!</p>
+                                    <p>Electrical diagrams, are unfortunately not unanimous in the representation of this, some may choose to have the wire "bounce" over the wire its crossing, while others may choose to draw straight through it and represent an actual connection with a dot. 
+                                    (As is mentioned in <a href="https://www.ibiblio.org/kuphaldt/electricCircuits/Ref/REF_9.html#xtocid102790" target="_blank">"Lessons in Electronics Volume 5 - Electronic Diagrams - Wires and Connections"</a>)</p>
+                                    <p>I prefer to "bounce" over wires myself, but that's up to personal preference. However, the industry standard today, is to represent connections with dots, and draw a line straight through to represent passing.</p>
+                                </td>
+                                <td><img src="images/ee_w_d.png" alt=""></td>
+                            </tr>
+                            <!--Battery-->
+                            <tr>
+                                <td>Battery</td>
+                                <td><p>Provides power. It has two terminals. It provides DC power to circuits in a more portable fashion.</p> 
+                                    <p>The alternative is to either use a AC/DC power supply, and in electrical diagrams they are a line clearly marked as Vcc, and ground is marked as shown in the diagram.</p></td>
+                                <td>
+                                    <img src="images/ee_dcv_d.png" alt="">
+                                    <!-- <img src="images/ee_acv_d.png" alt=""> -->
+                                    <img src="images/ee_g_d.png" alt="">
+                                </td>
+                            </tr>
+                            <!--Resistor-->
+                            <tr>
+                                <td>Resistor</td>
+                                <td>
+                                    <p>Resistors are components used to create resistance... Yes, that is what they do, as the name suggests.<p>
+                                    <p>Essentially, inside of them is a coil of wire, this physical distance is designed to increase the physical distance the electrons have to travel in an attempt to slow them down.<p>
+                                    <p>Because of this vital function, there are many different strengths of resistors, the more &Omega; (ohms) a resistor is, the more it can slow electrons down.</p>
+                                    <p>Due to there being so many resistor strengths, a band-based color code was developed to make them easier to identify, and it's quite simple. </p>
+                                    <p>A resistor's color code is read from left to right, with a gap before the final band.</p>
+                                    <p>The first band on a resistor signifies the number of its leading digit, the last band before a gap signifies the number of zeroes. And bands between them represent additional digits in the number.</p>
+                                    <p>The final band after the gap represents the "tolerance" of the resistor, or in other words the percentage range of accuracy to the printed number. This means the number that the resistor tells you could be plus or minus the percent specified by the final band.</p>
+                                    <p>Now because this is a lot to take in all at once, I'm attaching the color code diagram from the <a href="https://www.ibiblio.org/kuphaldt/electricCircuits/Ref/REF_2.html" target="_blank">restistor color code page of "Lessons In Electric Circuits: Volume V - Reference" By Tony R. Kuphaldt</a>. It even has colored examples of real resistors, that will help you understand the concept better, so please visit the page to learn more about resistors.</p>
+                                    <img src="images/ee_r_ccode.png" alt="">    
+                                </td>
+                                <td>
+                                    <img src="images/ee_r_d.png" alt="">
+                                </td>
+                            </tr>
+                            <!--LED-->
+                            <tr>
+                                <td>Light Emitting Diode (L.E.D.)</td>
+                                <td>
+                                    <p>A light emitting diode is a one-way component that produces light using electricity.</p>
+                                    <p>They weren't as common in the beginning of electronics, but as electronic circuits have become smaller, they have become easier to produce and more powerful, all while using less energy.</p>
+                                    <p>Today they have virtually erased the need for traditional light bulbs in most devices, the traditional lamp-based flashlights of yesterday cannot compete with the LED arrays put in todays flashlights.</p>
+                                    <p>A typical LED consists of two metal contacts, an anode and a cathode. The anode must be connected to a positive voltage source, while the cathode must be connected to a place in the circuit where the electrons can reach the negative or ground terminal. Otherwise the electrons cannot get across.</p>
+                                    <p>This "one way" behavior is shared with diodes, which also have anodes and cathodes. Hence the name of this device is "Light Emitting Diode"</p>
+                                    <p>Unlike wires or switches, LEDs are designed to operate at very narrow range of voltages and currents, most operate at around 3v and below, but it depends on what their "specfications" are. Specifications are usally shown in the product listing, or datasheet that the manufacturer provides online or comes the item itself.</p>
+                                    <p>Any higher voltage or current than the manufacture specifications say it can handle, and it will be instantly destroyed.</p>
+                                    <p>Because of this, LEDs are typically paired with a limiting resistor, to limit both the voltage and the current. When I use a 3v LED in a 5v circuit (which is a voltage that is quite common to work with), I pair it with a 200&Omega;(Ohm) or greater resistor to prevent it from getting destroyed.</p>
+                                </td>
+                                <td><img src="images/ee_led_d.png" alt=""></td>
+                            </tr>
+                            <!---->
+                            <!-- <tr>
+                                <td></td>
+                                <td></td>
+                                <td><img src="images/ee_pb_d.png"></td>
+                            </tr> -->
+                            <!---->
+                            <!-- <tr>
+                                <td>Single Pull Single Thrust (SPST) Switch</td>
+                                <td>
+                                    <p>An electronic device designed to open and close a circuit.</p>
+                                    <p>Essentially, it's a piece of conductive material that is physically moved into a position where it can bridge a connection.</p>
+                                    <p>Unlike push buttons, it can have more than one output, and it stays in a fixed position.</p>
+                                    <p>A typical SPST Switch has 3 pins, the one in the middle is usually used as the voltage input, while the other two are the outputs.</p>
+                                    <p>A common configuration for this component is to have one of the output pins be connected to nothing, or grounded so that a single output can be turned on or off easily</p>
+                                </td>
+                                <td><img src="images/ee_spst_d.png"></td>
+                            </tr> -->
+                            <!---->
+                            <tr>
+                                <td>Single Pull Double Thrust (SPDT) Switch</td>
+                                <td>
+                                    <p>An electronic device designed to open and close a circuit, and have one or more outputs.</p>
+                                    <p>Essentially, it's a piece of conductive material that is physically moved into a position where it can bridge a connection.</p>
+                                    <p>Unlike push buttons, it can have more than one output, and it stays in a fixed position.</p>
+                                    <p>A typical SPDT Switch has 3 pins, the one in the middle is usually used as the voltage input, while the other two are the outputs.</p>
+                                    <p>A common configuration for this component is to have one of the output pins be connected to nothing, or grounded so that a single output can be turned on or off easily</p>
+                                </td>
+                                <td><img src="images/ee_spdt_d.png" alt=""></td>
+                            </tr>
+                            <!---->
+                            <!-- <tr>
+                                <td></td>
+                                <td></td>
+                                <td><img src="images/ee__d.png"></td>
+                            </tr> -->
+                            <tr>
+                                <td>More Components Coming Soon!</td>
+                                <td>More Components Coming Soon!</td>
+                                <td>More Components Coming Soon!</td>
+                            </tr>
+                        </table>
+                    </div>
                 </section>
                 <section class="sectionContainer">
-                    <h2 id="part4"><a href="#part4">#</a>4. YOUR FIRST CIRCUIT</h2>
-                    <p>Now that you know what some of the basic electronic components are, let's make your first circuit in Falstad!</p>
-                    <p>In the falstad window below, replicate the following circuit:</p>
-                    <img src="images/ee_sample.png" alt="sample diagram of a basic LED circuit with a SPST switch">
-                    <p>This circuit consists of</p>
-                    <li>1 220 ohm resistor (located in draw on the toolbar, you can set the strength of a resitor by double clicking on it with the selection tool or scrolling the wheel up and down)</li>
-                    <li>1 DC Power source (located in draw on the toolbar> inputs and outputs)</li>
-                    <li>1 LED (located in draw > passive components)</li>  
-                    <li>1 switch (located in draw > passive components, click it to turn it on and off)</li>
-                    <li>And wires to connect them together (located in draw)</li>
-                    <br>
-                    <p>If you ever get confused with the components, look at the toolbar in the falstad window, there's a "draw" and <a href="https://falstad.com/circuit/" target="_blank">and lots of help on the home page</a> and they will tell you everything you need to know about using it!</p>
-                    <iframe src="https://falstad.com/circuit/circuitjs.html?ctz=CQAgjCAMB0l3BWcMBMcUHYMGZIA4UA2ATmIxAUgoqoQFMBaMMAKCA" allowfullscreen="true" width="1024" height="768"></iframe>
-                    <p>Have fun! and don't be afraid to experiment, or look at some of the default circuits under the "circuits" menu in the toolbar.</p>
-                    <p>Here's the sample in action:</p>
-                    <iframe src="https://falstad.com/circuit/circuitjs.html?ctz=CQAgjCAMB0l3BWcMBMcUHYMGZIA4UA2ATmIxAUgoqoQFMBaMMAKAGcRMURtC8eE3XvypUAZgEMANmzoswhbgBYFPSEpArCnJVW4ATOpICuUgC4MpdfeCh2YkVgCdOGbmGJDB4T3ZRpYeCDg7BYAN058HT0o3A1RTVp7KGgEFgB3SP4UXSyfbkgMvI9uLnyoIuxvEs1VGsLMrXKmnNEiprja7WEKxtUeqqE+Xtch7NjhhryetH5OwpslJTn1TWXozhBDE3MWAA9NQnIUPA1CJW0T8g0ckAAeBgYAHTYAFQALAEs2F-1PpzoAGMzJ8APYAOxYQA" allowfullscreen="true" width="1024" height="768"></iframe>
+                    <div class="contentBackdrop">
+                        <h2 id="part4"><a href="#part4">#</a>4. YOUR FIRST CIRCUIT</h2>
+                        <p>Now that you know what some of the basic electronic components are, let's make your first circuit in Falstad!</p>
+                        <p>In the falstad window below, replicate the following circuit:</p>
+                        <img src="images/ee_sample.png" alt="sample diagram of a basic LED circuit with a SPST switch">
+                        <p>This circuit consists of:</p>
+                        <li>1&times; 220 &Omega; (ohm) resistor (located in draw on the toolbar, you can set the strength of a resitor by double clicking on it with the selection tool or scrolling the wheel up and down)</li>
+                        <li>1&times; DC Power source (located in draw on the toolbar > inputs and outputs)</li>
+                        <li>1&times; LED (located in draw > passive components)</li>  
+                        <li>1&times; switch (located in draw > passive components, click it to turn it on and off)</li>
+                        <li>And wires to connect them together (located in draw)</li>
+                        <br>
+                        <p>If you ever get confused with the components, look at the toolbar in the falstad window, there's a "draw" and <a href="https://falstad.com/circuit/" target="_blank">and lots of help on the home page</a> and they will tell you everything you need to know about using it!</p>
+                        <iframe src="https://falstad.com/circuit/circuitjs.html?ctz=CQAgjCAMB0l3BWcMBMcUHYMGZIA4UA2ATmIxAUgoqoQFMBaMMAKCA" allowfullscreen="true" width="1024" height="768"></iframe>
+                        <p>Have fun! and don't be afraid to experiment, or look at some of the default circuits under the "circuits" menu in the toolbar.</p>
+                        <p>Here's the sample in action:</p>
+                        <iframe src="https://falstad.com/circuit/circuitjs.html?ctz=CQAgjCAMB0l3BWcMBMcUHYMGZIA4UA2ATmIxAUgoqoQFMBaMMAKAGcRMURtC8eE3XvypUAZgEMANmzoswhbgBYFPSEpArCnJVW4ATOpICuUgC4MpdfeCh2YkVgCdOGbmGJDB4T3ZRpYeCDg7BYAN058HT0o3A1RTVp7KGgEFgB3SP4UXSyfbkgMvI9uLnyoIuxvEs1VGsLMrXKmnNEiprja7WEKxtUeqqE+Xtch7NjhhryetH5OwpslJTn1TWXozhBDE3MWAA9NQnIUPA1CJW0T8g0ckAAeBgYAHTYAFQALAEs2F-1PpzoAGMzJ8APYAOxYQA" allowfullscreen="true" width="1024" height="768"></iframe>
+                    </div>
                 </section>
                 <!-- <section class="sectionContainer">
+                    <div class="contentBackdrop">
                     <h2 id="part5"><a href="#part5">#</a>5. ADVANCED ELECTRONIC COMPONENTS</h2>
                     <p></p>
 
-                </section> -->
-                <!-- <section class="sectionContainer"><h2 id="part6"><a href="#part6">#</a>5. MAKING AN ADVANCED CIRCUIT</h2></section> -->
-                <!-- <section class="sectionContainer"><h2 id="part7"><a href="#part7">#</a>6. AN INTRO TO ARDUINO</h2></section> -->
-                <!-- <section class="sectionContainer"><h2 id="part8"><a href="#part8">#</a>7. YOUR FIRST ARDUINO CIRCUIT ON TINKERCAD</h2></section> -->
+                </div></section> -->
+                <!-- <section class="sectionContainer"><div class="contentBackdrop"><h2 id="part6"><a href="#part6">#</a>5. MAKING AN ADVANCED CIRCUIT</h2></div></section> -->
+                <!-- <section class="sectionContainer"><div class="contentBackdrop"><h2 id="part7"><a href="#part7">#</a>6. AN INTRO TO ARDUINO</h2></div></section> -->
+                <!-- <section class="sectionContainer"><div class="contentBackdrop"><h2 id="part8"><a href="#part8">#</a>7. YOUR FIRST ARDUINO CIRCUIT ON TINKERCAD</h2></div></section> -->
                 <section class="sectionContainer">
-                    <h2>COMING SOON!</h2>
-                    <li>Alternating Current Vs DC Current</li>
-                    <li>Advanced Electronic Components</li>
-                    <li>Making An Advanced Circuit</li>
-                    <li>An Intro To Arduino</li>
-                    <li>Your First Arduino Circuit On <a href="https://www.tinkercad.com/circuits" target="_blank">TinkerCad</a></li>
+                    <div class="contentBackdrop">
+                        <h2 id="comingSoon"><a href="#comingSoon">#</a>COMING SOON!</h2>
+                        <li>Alternating Current Vs DC Current</li>
+                        <li>Advanced Electronic Components</li>
+                        <li>Making An Advanced Circuit</li>
+                        <li>An Intro To Arduino</li>
+                        <li>Your First Arduino Circuit On <a href="https://www.tinkercad.com/circuits" target="_blank">TinkerCad</a></li>
+                    </div>
                 </section>
                 <!--Conclusion-->
                 <section class="sectionContainer">
-                    <h2 id="conclusion"><a href="#conclusion">#</a>CONGRATULATIONS!!!</h2>
-                    <p>You've completed the lesson on electrical engineering! I hope you learned something new about the invisible but shocking world of electricity!</p>
-                    <p>Even more important, I hope you had fun with electronic circuits! They're all sorts of fun to tinker with, and you can make some pretty cool things with them.</p>
-                    <p>Now that you've learned the basics, you're ready to get an electronic kit of your own, go out, buy one and experiment! Or just have fun taking electronics apart, that's just about as good, and you'll learn a ton doing it!</p>
-                    <h2>Additional Readings For Learning Even More about electronics:</h2>
-                    <!-- List Items -->
-                    <li><a href="https://www.ibiblio.org/kuphaldt/electricCircuits/index.htm" target="_blank">https://www.ibiblio.org/kuphaldt/electricCircuits/index.htm</a> - a free ebook on Electronic Circuits, can teach you a ton about electronics! It helped me make sure what I was saying was accurate</li><!--E Book-->
-                    <li><a href="https://falstad.com/circuit/directions.html" target="_blank">https://falstad.com/circuit/directions.html</a> - the manual for the <a href="https://falstad.com/circuit/">Falstad.com</a> circuit simulator, it can teach you a ton about many electronic concepts!</li><!--Falstad Help Page-->
-                    <li><a href="https://en.wikipedia.org/wiki/Electricity" target="_blank">https://en.wikipedia.org/wiki/Electricity</a> - the wikipedia article for electricity, it will give you an overview and more dtails about it and it's relationship with magnetisim, it goes into a lot more detail than I did here about the physics behind it</li><!--Wikipedia Electricity-->
-                    <li><a href="https://simple.wikipedia.org/wiki/Electricity" target="_blank">https://simple.wikipedia.org/wiki/Electricity</a> - the simple wikipedia article for electricty, if nothing I said here makes any sense!!!</li><!--Wikipedia Electricity-->
+                    <div class="contentBackdrop">
+                        <h2 id="conclusion"><a href="#conclusion">#</a>CONGRATULATIONS!!!</h2>
+                        <p>You've completed the lesson on electrical engineering! I hope you learned something new about the invisible but shocking world of electricity!</p>
+                        <p>Even more important, I hope you had fun with electronic circuits! They're all sorts of fun to tinker with, and you can make some pretty cool things with them.</p>
+                        <p>Now that you've learned the basics, you're ready to get an electronic kit of your own, go out, buy one and experiment! Or just have fun taking electronics apart, that's just about as good, and you'll learn a ton doing it!</p>
+                        <h2>Additional Readings For Learning Even More about electronics:</h2>
+                        <!-- List Items -->
+                        <li><a href="https://www.ibiblio.org/kuphaldt/electricCircuits/index.htm" target="_blank">https://www.ibiblio.org/kuphaldt/electricCircuits/index.htm</a> - a free ebook on Electronic Circuits, can teach you a ton about electronics! It helped me make sure what I was saying was accurate</li><!--E Book-->
+                        <li><a href="https://falstad.com/circuit/directions.html" target="_blank">https://falstad.com/circuit/directions.html</a> - the manual for the <a href="https://falstad.com/circuit/">Falstad.com</a> circuit simulator, it can teach you a ton about many electronic concepts!</li><!--Falstad Help Page-->
+                        <li><a href="https://en.wikipedia.org/wiki/Electricity" target="_blank">https://en.wikipedia.org/wiki/Electricity</a> - the wikipedia article for electricity, it will give you an overview and more dtails about it and it's relationship with magnetisim, it goes into a lot more detail than I did here about the physics behind it</li><!--Wikipedia Electricity-->
+                        <li><a href="https://simple.wikipedia.org/wiki/Electricity" target="_blank">https://simple.wikipedia.org/wiki/Electricity</a> - the simple wikipedia article for electricty, if nothing I said here makes any sense!!!</li><!--Wikipedia Electricity-->
                     
                     <!-- <li><a href="toolbox.html#electronics" target="_blank">Check The Toolbox For Additional Electrical Engineering Resources!</a></li> -->
+                    </div>
                 </section>
-                <section class="sectionContainer">
-                    <h2 id="nextLevel"><a href="#nextLevel">#</a>THE NEXT LEVEL</h2>
-                    <p>Now that you know about what powers electronic devices, you're ready for the next step in your journey!</p>
-                    <p>Click the link below to get started!</p>
-                    <!-- Insert Front Page Card to Next Page-->
-                    <div class="lessonCard reCard">
-                        <div class="cardHeader">
-                            <a href="lesson3_re.html">
-                                <h2>Reverse</h2>
-                                <img src="images/re_icon.svg" alt="">
-                                <h2>Engineering</h2>
+                <section class="re sectionContainer">
+                    <div class="contentBackdrop">
+                        <h2 id="nextLevel"><a href="#nextLevel">#</a>THE NEXT LEVEL</h2>
+                        <p>Now that you know about what powers electronic devices, you're ready for the next step in your journey!</p>
+                        <p>Click the link below to get started!</p>
+                        <!-- Insert Front Page Card to Next Page-->
+                        <div class="lessonCard reCard">
+                            <a href="lesson3_re.html" class="cardHeaderLink">
+                                <div class="cardHeader">
+                                    <h2 class="cardHtext1">Reverse</h2>
+                                    <img class="cardHico" src="images/re_icon.svg" alt="">
+                                    <h2 class="cardHtext2">Engineering</h2>
+                                </div>
                             </a>
+                            <img src="images/re_hero.webp" class="hpCardImg" alt="Highlighted Hexadecimal Code Warping Into the Center of a Shiny Cloud">
+                            <p>From ones and zeroes, to hex and opcodes, learn the basics of what our devices read! With the right knowledge and the right tools, anyone can read a file format or modify an executable!</p>
                         </div>
-                        <img src="images/re_hero.webp" class="hpCardImg" alt="Highlighted Hexadecimal Code Warping Into the Center of a Shiny Cloud">
-                        <p></p>
                     </div>
                 </section>
             </div>
@@ -332,8 +367,7 @@
     <footer>
         <div id="leftFooter"></div>
         <div id="centerFooter">
-            <p>DIY Anything - Bryce Pavlakos - 2022</p>
-            <p><a href="site-plan.html" target="_blank">Site Plan</a></p>
+            <p>DIY Anything - Bryce Pavlakos - &copy; 2022 - <a href="site-plan.html">Site Plan</a></p>
         </div>
         <div id="rightFooter"></div>
     </footer>
