@@ -4,33 +4,43 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DIY Anything | Home</title>
-    <style rel="stylesheet" href="styles/styles.css" ></style>
+    <title>DIY Anything | Reverse Engineering</title>
+    <link rel="stylesheet" href="styles/styles.css" >
 </head>
-<body>
+<body class="re lessonPage">
     <header>
         <nav>
             <!-- <a href="lesson1_cp.html" class="linkContainer"> -->
-            <a href="index.html" class="linkContainer">
-                <img src="images/cd_icon_temp.png" class="linkIcon" alt="">
-                Computer Programming [Under Construction]
+            <a href="index.html">
+                <div class="linkContainer">
+                    <img src="images/cd_icon_temp.png" class="linkIcon" alt="">
+                    <p>Computer Programming<br>[Under Construction]</p>
+                </div>
             </a>
-            <a href="lesson2_ee.html" class="linkContainer">
-                <img src="images/ee_icon.svg" class="linkIcon" alt="">
-                Electronic Circuits
+            <a href="lesson2_ee.html">
+                <div class="linkContainer">
+                    <img src="images/ee_icon.svg" class="linkIcon" alt="">
+                    <p>Electronic Circuits</p>
+                </div>
             </a>
-            <a href="index.html" class="linkContainer">
-                <img src="images/h_icon.svg" class="linkIcon" alt="">
-                Home
+            <a href="index.html">
+                <div class="linkContainer">
+                    <img src="images/h_icon.svg" class="linkIcon homeIcon" alt="">
+                    <p>Home</p>
+                </div>
             </a>
-            <a href="lesson3_re.html" class="linkContainer">
-                <img src="images/re_icon.svg" class="linkIcon" alt="">
-                Reverse Engineering
+            <a href="lesson3_re.html">
+                <div class="linkContainer">
+                    <img src="images/re_icon.svg" class="linkIcon" alt="">
+                    <p>Reverse Engineering</p>
+                </div>
             </a>
             <!-- <a href="toolbox.html" class="linkContainer"> -->
-            <a href="index.html" class="linkContainer">
-                <img src="images/tl_icon_temp.png" class="linkIcon" alt="">
-                Toolbox Archive [Under Construction]
+            <a href="index.html">
+                <div class="linkContainer">
+                    <img src="images/tl_icon_temp.png" class="linkIcon" alt="">
+                    <p>Toolbox Archive<br>[Under Construction]</p>
+                </div>
             </a>
         </nav>
         <div id="particleContainer">
@@ -39,126 +49,195 @@
     </header>
     <div id="heroContainer">
         <img id="heroImg" class="hero" src="images/re_hero.webp" alt="Hexadecimal code warping into the background"> <!-- Exclude on subpages-->
-        <h1 id="heroTitle">REVERSE ENGINEERING</h1> <!--Controlled by JavaScript-->
+        <div id="heroTitleContainer">
+            <h1 id="heroTitle">REVERSE ENGINEERING</h1> <!--Controlled by JavaScript-->
+        </div>
     </div>
     <main>
-        <div id="reContentContainer">
-            <div id="lessonNav">
-                <h2>Chapter Quick Links</h2>
-                <a href="#part1">1. Thinking Like a computer</a>
-                <a href="#part2">2. Hexadecimal</a>
-                <a href="#part3">3. Common Data Types in Hex</a>
-                <!-- <a href="#part4">4. Cheat Engine - a Real-Time Hex Editor</a> -->
-                <!-- <a href="#part5">5. Documenting File Formats</a> -->
-                <!-- <a href="#part6">6. Intro to Ghidra</a> -->
-                <!-- <a href="#part7">7. Reverse Engineering an Exe</a> -->
-                <!-- <a href="#part8">8. Modifying an EXE</a> -->
-                <!-- <a href="#quiz">Guess That Data Type Quiz</a> -->
-                <a href="#conclusion">Conclusion</a>
-                <a href="#nextLevel">The Next Level</a>
+        <div id="contentContainer" onscroll="updateQuickLinks();">
+            <div id="lessonNavTrack">
+                <div id="quickLinkBox">
+                    <h2 onclick="quickLinkToggle();">Chapter Quick Links</h2>
+                    <a href="#part1" class="scrolled quickLink">1. Thinking Like a computer</a>
+                    <a href="#part2" class="quickLink">2. Hexadecimal</a>
+                    <a href="#part3" class="quickLink">3. Common Data Types in Hex</a>
+                    <!-- <a href="#part4">4. Cheat Engine - a Real-Time Hex Editor</a> -->
+                    <!-- <a href="#part5">5. Documenting File Formats</a> -->
+                    <!-- <a href="#part6">6. Intro to Ghidra</a> -->
+                    <!-- <a href="#part7">7. Reverse Engineering an Exe</a> -->
+                    <!-- <a href="#part8">8. Modifying an EXE</a> -->
+                    <!-- <a href="#quiz">Guess That Data Type Quiz</a> -->
+                    <a href="#comingSoon" class="quickLink">Coming Soon!</a>
+                    <a href="#conclusion" class="quickLink">Conclusion</a>
+                    <a href="#nextLevel" class="quickLink">The Next Level</a>
+                </div>
             </div>
-            <div id="reLessonContainer">
+            <div id="reLessonContainer" class="lessonContainer">
                 <section class="sectionContainer">
-                    <h2 id="part1"><a href="#part1">#</a>1. THINKING LIKE A COMPUTER</h2>
-                    <p>During the lesson on programming, we learned that computers will do anything we tell them to do. And during the electronic circuits lesson we learned how to tell computers to turn a light on and off, with a high and low voltage. But how do computers store numbers and pictures? How does it know to say “Hello world!” when we tell it “print(“Hello World!”);”?</p>
-                    <p>Well, the answer is quite simple, all data in computers is stored in two ways: 1 and 0.</p>
-                    <p>These two numbers represent the voltage a basic CPU receives at it’s input wire (known as the input pin), 1 for voltage, 0 for no voltage. On or off. This 0 or 1 value is called a “bit”. Bits can be used to represent many things, primarily “True” which is represented by 1, or “False”, which is represented by 0. Or it could represent the numbers 1 and 0.</p>
-                    <p>This is great, but the immediate problem occurs, when you want to store the number 2. Do you simply add two bits of “1” together to make two? That could work, but what if you wanted to add 1 to 1? You’d need 100 bits set to 1 to do it, which means that a basic CPU would have to check it’s input pin 100 times just to do simple addition!</p>
-                    <p>So how do computers do these incredible calculations so fast?  Instead of testing the value of 1 reading from the input pin, a basic CPU can instead, check it’s input pin 8 times, reading 8 bits, to represent an “8-bit integer”, which means a whole number (integer) stored in 8 bits. But how can we store 100 in 8 1’s and 0’s? The answer: Math! But don’t panic, it’s really quite simple!</p>
-                    <p>In an 8-bit integer, there are two things that determine the value of the number: how many 1’s and 0’s it has, and the position of the 1’s and 0’s. The position of the 1’s and 0’s in the group of 8, determines it’s value, simply by representing it as 2 to the power of it’s position from right to left, starting at 0. It is then added together with it’s neighbors, to get the final value. The 0 and the 1 determine if the position should be included in the calculation. So instead of representing 2 as “1 1”, we can represent it as “0 0 1 0” or “(2<sup>1</sup> * 1) + (2<sup>0</sup> * 0)” or even simply: “2 + 0”!</p>
-                    <p>So instead of needing 99 1s to represent 99, we only need 8 digits as shown below:</p>
-                    <img src="images/re_binary_99_temp.png" alt="99 shown as 0110 0011 with each digit represented by its 2 to the power of index times the binary value">
-                    <p>Much easier than using 99 1s, right?</p>
-                    <p>But what about negative numbers, how do represent those?</p>
-                    <p>Well we do it exactly the same, but there's a catch! We sacrifice the last bit to represent the positive or negative sign. If its 1 the number is negative, if its a 0, the number is positive. This is kind of storage is called "signed", and it can only go up to 127 and down to -127. Also in a negative signed 8-bit integer, the values of the digits are flipped! So that every bit (besides the 2<sup>0</sup> bit, for some odd reason!) is 1 for 0 and 0 for -1.</p>
-                    <p>We can see this in the bit input of the windows 10 calculator app, in programmer mode, using the bit toggling keypad, the maximum signed "byte" which is comprised of 8 bits, is 127, represented by 0111 1111, while the minimum is -127, represented by 1000 0001</p>
-                    <img src="images/re_sb_127.png" alt="127 represented as 0111 1111 in programmer mode in the windows 10 calculator">
-                    <img src="images/re_sb_n127.png" alt="-127 represented as 0111 1111 in programmer mode in the windows 10 calculator">
-                    <p>The other kind of 8 bit integer storage, the one that uses all 8 bits to represent positive values 0 to 255 is called an unsigned byte.</p>
-                    <p>Cool! We can use 8 digits to represent 255! That's pretty compact!</p>
-                    <p>But what if I told you, we could go even smaller? And represent 0 to 65535 with only four digits? We can! Using what we learn in the next chapter!</p>
+                    <div class="contentBackdrop">
+                        <h2 id="part1"><a href="#part1">#</a>1. THINKING LIKE A COMPUTER</h2>
+                        <p>During the lesson on programming, we learned that computers will do anything we tell them to do. And during the electronic circuits lesson we learned how to tell computers to turn a light on and off, with a high and low voltage. But how do computers store numbers and pictures? How does it know to say “Hello world!” when we tell it “print(“Hello World!”);”?</p>
+                        <p>Well, the answer is quite simple, all data in computers is stored in two ways: 1 and 0.</p>
+                        <p>These two numbers represent the voltage a basic CPU receives at it's input wire (known as the input pin), 1 for voltage, 0 for no voltage. On or off. This 0 or 1 value is called a “bit”. Bits can be used to represent many things, primarily “True” which is represented by 1, or “False”, which is represented by 0. Or it could represent the numbers 1 and 0.</p>
+                        <p>This is great, but the immediate problem occurs, when you want to store the number 2. Do you simply add two bits of “1” together to make two? That could work, but what if you wanted to add 1 to 1? You'd need 100 bits set to 1 to do it, which means that a basic CPU would have to check it's input pin 100 times just to do simple addition!</p>
+                        <p>So how do computers do these incredible calculations so fast?  Instead of testing the value of 1 reading from the input pin, a basic CPU can instead, check it's input pin 8 times, reading 8 bits, to represent an “8-bit integer”, which means a whole number (integer) stored in 8 bits. But how can we store 100 in 8 1's and 0's? The answer: Math! But don't panic, it's really quite simple!</p>
+                        <p>In an 8-bit integer, there are two things that determine the value of the number: how many 1's and 0's it has, and the position of the 1's and 0's. The position of the 1's and 0's in the group of 8, determines it's value, simply by representing it as 2 to the power of it's position from right to left, starting at 0. It is then added together with it's neighbors, to get the final value. The 0 and the 1 determine if the position should be included in the calculation. So instead of representing 2 as “1 1”, we can represent it as “0 0 1 0” or “(2<sup>1</sup> * 1) + (2<sup>0</sup> * 0)” or even simply: “2 + 0”!</p>
+                        <p>So instead of needing 99 1s to represent 99, we only need 8 digits as shown below:</p>
+                        <img src="images/re_binary_99_temp.png" alt="99 shown as 0110 0011 with each digit represented by its 2 to the power of index times the binary value">
+                        <p>Much easier than using 99 1s, right?</p>
+                        <p>But what about negative numbers, how do represent those?</p>
+                        <p>Well we do it exactly the same, but there's a catch! We sacrifice the last bit to represent the positive or negative sign. If its 1 the number is negative, if its a 0, the number is positive. This is kind of storage is called "signed", and it can only go up to 127 and down to -127. Also in a negative signed 8-bit integer, the values of the digits are flipped! So that every bit (besides the 2<sup>0</sup> bit, for some odd reason!) is 1 for 0 and 0 for -1.</p>
+                        <p>We can see this in the bit input of the windows 10 calculator app, in programmer mode, using the bit toggling keypad, the maximum signed "byte" which is comprised of 8 bits, is 127, represented by 0111 1111, while the minimum is -127, represented by 1000 0001</p>
+                        <div class="dualimg">
+                            <img src="images/re_sb_127.png" alt="127 represented as 0111 1111 in programmer mode in the windows 10 calculator">
+                            <img src="images/re_sb_n127.png" alt="-127 represented as 0111 1111 in programmer mode in the windows 10 calculator">
+                        </div>
+                        <p>The other kind of 8 bit integer storage, the one that uses all 8 bits to represent positive values 0 to 255 is called an unsigned byte.</p>
+                        <p>Cool! We can use 8 digits to represent 255! That's pretty compact!</p>
+                        <p>But what if I told you, we could go even smaller? And represent 0 to 65535 with only four digits? We can! Using what we learn in the next chapter!</p>
+                    </div>
                 </section>
                 <section class="sectionContainer">
-                    <h2 id="part2"><a href="#part2">#</a>2. HEXADECIMAL</h2>
-                    <p>To store binary in a more condensed and human readable form, we came up with a system to represent 4 bits, or 0-15 with 1 digit.</p>
-                    <p>This digit goest from 0 to 9, to represent 0 through 9, obviously! But then it takes a strange turn, instead of using 10 to represent 10, it represents 10 with A. It then proceeds to use B through F to represent 11 to 15. Doing this represents 0 to 15 (or 0000 to 1111) as 0 to F</p>
-                    <p>This is nice and all, but 15 can only get us so far! So to go beyond 15 and represent the first bit of the latter 4 bits of a "byte" (8 bits), we're going to need another digit, just like the first one, going from 0 to F to represent 0000 to 1111!</p>
-                    <p>Just like in binary, how a binary digit represents 0 or 1 * 2<sup>index starting with 0</sup>, each of this new digit represents: 0 to 15 * 16<sup>index starting with 0</sup></p>
-                    <p>So just like that, 0 to 255 is stored by two digits, F and F.</p>
-                    <p>This form of data storage is called Hexadecimal, or Hex for short, like binary it can exponentially scale up depending on the number of digit pair groups it has, and 2 hexadecimal digits, by representing 8 bits by extension also represent 1 "byte" of data!</p>
-                    <p>From now on, I'm going to refer to "bytes" in the context of hex. And that's because hex is the easier way to view and edit the files that make our machines work!</p>
-                    <p>And the quickest way to calculate a single byte (2 hex digits / 8 bits) of unsigned hex by hand is to do: leftmost digit * 255 + rightmost digit * 16.</p>
-                    <p>Speaking of bytes and hex, I think it'd be helpful if you know what different combintations and lengths of bytes together usually mean! So that's what the next chapter is about!</p>
+                    <div class="contentBackdrop">
+                        <h2 id="part2"><a href="#part2">#</a>2. HEXADECIMAL</h2>
+                        <p>To store binary in a more condensed and human readable form, we came up with a system to represent 4 bits, or 0-15 with 1 digit.</p>
+                        <p>This digit goest from 0 to 9, to represent 0 through 9, obviously! But then it takes a strange turn, instead of using 10 to represent 10, it represents 10 with A. It then proceeds to use B through F to represent 11 to 15. Doing this represents 0 to 15 (or 0000 to 1111) as 0 to F</p>
+                        <p>This is nice and all, but 15 can only get us so far! So to go beyond 15 and represent the first bit of the latter 4 bits of a "byte" (8 bits), we're going to need another digit, just like the first one, going from 0 to F to represent 0000 to 1111!</p>
+                        <p>Just like in binary, how a binary digit represents 0 or 1 * 2<sup>index starting with 0</sup>, each of this new digit represents: 0 to 15 * 16<sup>index starting with 0</sup></p>
+                        <p>So just like that, 0 to 255 is stored by two digits, F and F.</p>
+                        <p>This form of data storage is called Hexadecimal, or Hex for short, like binary it can exponentially scale up depending on the number of digit pair groups it has, and 2 hexadecimal digits, by representing 8 bits by extension also represent 1 "byte" of data!</p>
+                        <p>From now on, I'm going to refer to "bytes" in the context of hex. And that's because hex is the easier way to view and edit the files that make our machines work!</p>
+                        <p>And the quickest way to calculate a single byte (2 hex digits / 8 bits) of unsigned hex by hand is to do: (leftmost digit * 16) + rightmost digit.</p>
+                        <p>Speaking of bytes and hex, I think it'd be helpful if you know what different combintations and lengths of bytes together usually mean! So that's what the next chapter is about!</p>
+                    </div>
                 </section>
                 <section class="sectionContainer">
-                    <h2 id="part3"><a href="#part3">#</a>3. COMMON DATA TYPES IN HEX</h2>
-                    <p>As we explained in the previous lesson, when you stack different amounts of hex together by hand, it represents a higher value.</p>
-                    <p>But how do you represent a picture in hex? Well let's see with this simple image here:</p>
-                    <img src="images/re_colors.png" alt="3 even lines alternating between red blue and green, spaced by white">
-                    <p>Now, let's see it in a program called a hex editor:</p>
-                    <img src="images/re_colors_hex.png" alt="the same picture above, shown in a hex editor, where it is 453 bytes long">
-                    <p>That's a little bit different, to the untrained eye, its 453 bytes of gibberish. So how do we make sense of it all? The answer: Datatypes! Every single byte in that file serves a purpose, so it's up to us to decode it.</p>
-                    <p>Luckily, we don't have to do all the work ourselves, hex editors, like the one I showed you in the picture make decoding things like that easy! But not all hex editors are created equal, in fact, the one I use is quite obscure but very powerful!</p>
-                    <p>Let me introduce you to REHex, an open source Hex Editor Created by github user solemnwarning / Daniel Collins, it features not only the standard "check the value of this byte in every data type" feature all hex editors have. But it also features a unique highlighting system, datatype marking system, and section commenting system, which will help turn the image above into an image like this:</p>
-                    <img src="images/re_colors_hex_labeled.png" alt="the same picture as the picture in the hex editor, except it now has parts labeled, highlighted, and with set data types">
-                    <p>Pretty neat right? Well you can download this masterpiece of a hex editor for free here: <a href="https://github.com/solemnwarning/rehex/releases/tag/0.5.4">REHex Editor's Github Page</a></p>
-                    <p>It's the best hex editor around, and there's no doubt about it! (I like to set it to 1 byte per group though, in the preferences, but that just makes it easier for me!)</p>
-                    <p>But the world's best hex editor won't get you anywhere, if you don't know what to look for! But that's what the table below is for!</p>
-                    <p>Also I'm going to breifly mention that the "byte order" determines whether the group of hex is read left to right, or right to left. Right to left is called little endian, while left to right is called big endian. Most hex editors support swapping between the two to check the value, which makes it pretty clear which one it is. In my experience, little endian is more common than big endian. Also despite the byte order being read differently, the value of 1 byte is evaluated the same regardless, with the leftmost digit representing value * 16 while the rightmost digit represents value * 1</p>
-                    <p>Click on the values below that are colored when your cursor hovers over them to check their data type and value in the</p>
-                    <div id="hexExplorerContainer">
-                        <table>
-                            <tr>
-                                <th class="row-width-header" colspan="3">Interactive Hex Value Explorer</th>
-                            </tr>
-                            <tr>
-                                <th>Hexadecimal</th>
-                                <th>Ascii Value</th>
-                                <th>Datatype and Explanation</th>
-                            </tr>
-                            <tr>
-                                <td rowspan="20">
-                                    <div>
-                                        <p id="hexView">
-                                            <div onclick="console.log('int32')">00 00 00 01</div>
-                                            <div onclick="console.log('float32')">00 00 80 3F</div>
-                                            <div onclick="console.log('int16')">00 04</div>
-                                            <div onclick="console.log('zero terminated string')">00 1D 48 65 78 20<br> 65 64 69 74 69 6E 67 20 69 73 20 66 75 6E 21 00</div>
-                                            <!--Color-->
-                                            <!--4 byte Header-->
-                                            <!--Double / int64-->
-                                            <!--Vector 3-->
-                                            <!--Pointer-->
-                                            <!--Matrix 3-->
-                                        </p>
+                    <div class="contentBackdrop">
+                        <h2 id="part3"><a href="#part3">#</a>3. COMMON DATA TYPES IN HEX</h2>
+                        <p>As we explained in the previous lesson, when you stack different amounts of hex together by hand, it represents a higher value.</p>
+                        <p>But how do you represent a picture in hex? Well let's see with this simple image here:</p>
+                        <img src="images/re_colors.png" alt="3 even lines alternating between red blue and green, spaced by white">
+                        <p>Now, let's see it in a program called a hex editor:</p>
+                        <img src="images/re_colors_hex.png" alt="the same picture above, shown in a hex editor, where it is 453 bytes long">
+                        <p>That's a little bit different, to the untrained eye, its 453 bytes of gibberish. So how do we make sense of it all? The answer: Datatypes! Every single byte in that file serves a purpose, so it's up to us to decode it.</p>
+                        <p>Luckily, we don't have to do all the work ourselves, hex editors, like the one I showed you in the picture make decoding things like that easy! But not all hex editors are created equal, in fact, the one I use is quite obscure but very powerful!</p>
+                        <p>Let me introduce you to REHex, an open source Hex Editor Created by github user solemnwarning / Daniel Collins, it features not only the standard "check the value of this byte in every data type" feature all hex editors have. But it also features a unique highlighting system, datatype marking system, and section commenting system, which will help turn the image above into an image like this:</p>
+                        <img src="images/re_colors_hex_labeled.png" alt="the same picture as the picture in the hex editor, except it now has parts labeled, highlighted, and with set data types">
+                        <p>Pretty neat right? Well you can download this masterpiece of a hex editor for free here: <a href="https://github.com/solemnwarning/rehex/releases/tag/0.5.4">REHex Editor's Github Page</a></p>
+                        <p>It's the best hex editor around, and there's no doubt about it! (I like to set it to 1 byte per group though, in the preferences, but that just makes it easier for me!)</p>
+                        <p>However one thing that hex editor doesn't have yet is ANSI Ascii display, which makes it easier to identify bytes as text, for that I use HxD, which is another free hex editor you can <a href="https://mh-nexus.de/en/hxd/">download from their website here</a>.</p>
+                        <p>It's pretty feature packed too, but it doesn't have the advanced features (like highlighting) that ReHex does. It was my first hex editor, I used it to great extent for years before I made the switch!</p>
+                        <p>But the world's best hex editor won't get you anywhere, if you don't know what to look for! But that's what the table below is for!</p>
+                        <p>Also I'm going to briefly mention that the "byte order" determines whether the group of hex is read left to right, or right to left. Right to left is called little endian, while left to right is called big endian. Most hex editors support swapping between the two to check the value, which makes it pretty clear which one it is. In my experience, little endian is more common than big endian. Also despite the byte order being read differently, the value of 1 byte is evaluated the same regardless, with the leftmost digit representing value * 16 while the rightmost digit represents value * 1</p>
+                        <p>Click on the values below that are colored when your cursor hovers over them to check their data type and value in the interactive hex explorer!</p>
+                        <p>(Note: ANSI Text Display is from HxD, in ReHex many bytes will be shown as: ".")</p>
+                        <div id="hexExplorerContainer">
+                            <h2 id="tableTitle">Interactive Hex Value Explorer</h2>
+                            <!-- <div id="tableTitle"></div> -->
+                            <div id="tableContents">
+                                <div id="hexTD" >
+                                    <h4>Hexadecimal</h4>
+                                    <div id="hexDiv" class="recursive-console">
+                                        <div class="hex int active" onclick="updateHexBox('int');" onmouseenter="linkHover('int');" onmouseleave="linkHover('int',false);">01 00 00 00</div>
+                                        <div class="hex float" onclick="updateHexBox('float');" onmouseenter="linkHover('float');" onmouseleave="linkHover('float',false);">00 00 80 3F</div>
+                                        <!-- <div class="hex float" onclick="updateHexBox('float',false);">00 00 80 3F</div>
+                                        <div class="hex float" onclick="updateHexBox('float',false);">00 00 80 3F</div> -->
+                                        <div class="hex short" onclick="updateHexBox('short');" onmouseenter="linkHover('short');" onmouseleave="linkHover('short',false);"> 04 00</div>
+                                        <div class="hex stringzero" onclick="updateHexBox('stringzero');" onmouseenter="linkHover('stringzero');" onmouseleave="linkHover('stringzero',false);">1D 00 48 65 78 20 65 64 69 74 69 6E 67 20 69 73 20 66 75 6E 21 00</div><!-- 78 20<br> 65-->
+                                        <div class="hex int_be" onclick="updateHexBox('int_be');" onmouseenter="linkHover('int_be');" onmouseleave="linkHover('int_be',false);">00 00 00 12</div>
+                                        <div class="hex int_s" onclick="updateHexBox('int_s');" onmouseenter="linkHover('int_s');" onmouseleave="linkHover('int_s',false);">FE FF FF FF</div>
+                                        <div class="hex color" onclick="updateHexBox('color');" onmouseenter="linkHover('color');" onmouseleave="linkHover('color',false);">24 8D F0 FF</div>
+                                        <div class="hex header" onclick="updateHexBox('header');" onmouseenter="linkHover('header');" onmouseleave="linkHover('header',false);">44 41 54 41</div>
+                                        <div class="hex matrix" onclick="updateHexBox('matrix');" onmouseenter="linkHover('matrix');" onmouseleave="linkHover('matrix',false);">00 00 80 3F 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 80 3F 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 80 3F 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 80 3F</div>
+                                        <!--Color-->
+                                        <!--4 byte Header-->
+                                        <!--Double / int64-->
+                                        <!--Vector 3-->
+                                        <!--Pointer-->
+                                        <!--Matrix 3-->
                                     </div>
-                                </td>
-                                <td>
-                                    <p id="asciiView">
-                                        <div onclick="console.log('int32')">....</div>
-                                        <div onclick="console.log('float32')">..€?</div>
-                                        <div onclick="console.log('int16')">..</div>
-                                        <div onclick="console.log('zero terminated string')">..Hex <br>editing is fun!.</div>
+                                </div>
+                                <div id="textTD" >
+                                    <h4>Ascii Value (ANSI)</h4>
+                                    <div id="ansiDiv" class="recursive-console">
+                                        <div class="ansi int active" onclick="updateHexBox('int');" onmouseenter="linkHover('int');" onmouseleave="linkHover('int',false);">....</div>
+                                        <div class="ansi float" onclick="updateHexBox('float');" onmouseenter="linkHover('float');" onmouseleave="linkHover('float',false);">..€?</div>
+                                        <div class="ansi short" onclick="updateHexBox('short');" onmouseenter="linkHover('short');" onmouseleave="linkHover('short',false);">..</div>
+                                        <div class="ansi stringzero" onclick="updateHexBox('stringzero');" onmouseenter="linkHover('stringzero');" onmouseleave="linkHover('stringzero',false);">..Hex editing is fun!.</div> <!--Hex <br>ed-->
+                                        <div class="ansi int_be" onclick="updateHexBox('int_be');" onmouseenter="linkHover('int_be');" onmouseleave="linkHover('int_be',false);">....</div>
+                                        <div class="ansi int_s" onclick="updateHexBox('int_s');" onmouseenter="linkHover('int_s');" onmouseleave="linkHover('int_s',false);">þÿÿï</div>
+                                        <div class="ansi color" onclick="updateHexBox('color');" onmouseenter="linkHover('color');" onmouseleave="linkHover('color',false);">ÿ$.ð</div>
+                                        <div class="ansi header" onclick="updateHexBox('header');" onmouseenter="linkHover('header');" onmouseleave="linkHover('header',false);">DATA</div>
+                                        <div class="ansi matrix" onclick="updateHexBox('matrix');" onmouseenter="linkHover('matrix');" onmouseleave="linkHover('matrix',false);">..€?..................€?....................€?................€?</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="infoTD">
+                                <!-- <th>Datatype and Explanation</th> -->
+                                <div id="infoDiv">
+                                    <h4 id="nameLabel">Data Type: Int32 / dword (32 bit integer)</h3>
+                                    <h4 id="lengthLabel">Length: 4 bytes</h4>
+                                    <h4 id="valueLabel">Value: 4</h4>
+                                    <h4 id="signedLabel">Signed or Unsigned: Unknown, it doesn't exceed the signed / unsigned threshold for this data type</h4>
+                                    <h4 id="byteOrderLabel">Byte Order: Little Endian (Left to Right)</h4>
+                                    <p class="desc int active">
+                                        A 32 bit integer is 4 bytes long, it can represent the whole number values 0 to 4,294,967,295 when unsigned, and -2,147,483,648 to 2,147,483,648 when signed.
+                                        <br>It does this by using each hex digit to represent a power of 16, starting at 16<sup>0</sup> and ending on 16<sup>7</sup>
+                                        <br>This data type is typically used to store numerical data, remaining file sizes, offsets, or even entry counts. 
+                                        <br>One thing is certain, it serves an important purpose.
                                     </p>
-                                </td>
-                                <td>
-                                    <div id="explanationContainer">
-                                        <h3>Data Type: int32 / dword (32 bit integer)</h3>
-                                        <h4>Length: 4 bytes</h4>
-                                        <h4>Value: 4</h4>
-                                        <h4>Signed or Unsigned: Unknown, it doesn't exceed the signed / unsigned threshold for this data type</h4>
-                                        <h4>Byte Order: Little Endian (Right to Left)</h4>
-                                        <p>
-                                            A 32 bit integer is 4 bytes long, it can represent the whole number values 0 to 4,294,967,295 when unsigned, and -2,147,483,648 to 2,147,483,648 when signed.
-                                            <br>It does this by using each hex digit to represent a power of 16, starting at 16<sup>0</sup> and ending on 16<sup>7</sup>
-                                            <br>This data type is typically used to store numerical data, remaining file sizes, offsets, or even counts of entries. 
-                                            <br>One thing is certain, it serves an important purpose.
-                                        </p>
-                                    </div>
-                                </td>
-                            </tr>
-
-                        </table>
+                                    <p class="desc float">
+                                        A 32 bit float is 4 bytes long, it can represent a vast number of both positive an negative values, but what makes it special is that it can represent non whole numbers.
+                                        <br>For the exact information on how it's calculated, you can read about it <a href="https://en.wikipedia.org/wiki/Single-precision_floating-point_format">here on wikipedia</a>
+                                        <br>This data type is typically used to store vertex positions in 3D space, vectors, fractions, and just about anything you don't want to use a whole number for.
+                                        <br>Despite all of these features, floating point numbers have one weakness: rounding errors. These are caused by the fact that the floating point algorithim is physically incapable of representing some numbers.
+                                        <br>Most of the time this isn't a big deal, just don't use it to control anything incredibly important like rocket navigation systems or bank accounts!
+                                    </p>
+                                    <p class="desc short">
+                                        A 16 bit integer is 2 bytes long, it can represent the whole number values 0 to 65,535 when unsigned, and -32,767 to 32,767 when signed.
+                                        <br>It does this by using each hex digit to represent a power of 16, starting at 16<sup>0</sup> and ending on 16<sup>3</sup>
+                                        <br>This data type is typically used to store numerical data, just like Int32 does with the benifit of taking half the space.
+                                        <br>This makes it particularly appealing to developers who are designing software, that will run on devices with limited disk space.
+                                    </p>
+                                    <p class="desc int_s">
+                                        A 32 bit integer is 4 bytes long, it can represent the whole number values 0 to 4,294,967,295 when unsigned, and -2,147,483,648 to 2,147,483,648 when signed.
+                                        <br>It does this by using each hex digit to represent a power of 16, starting at 16<sup>0</sup> and ending on 16<sup>7</sup>
+                                        <br>This data type is typically used to store numerical data, remaining file sizes, offsets, or even entry counts. 
+                                        <br>One thing is certain, it serves an important purpose.
+                                    </p>
+                                    <p class="desc int_be">
+                                        A 32 bit integer is 4 bytes long, it can represent the whole number values 0 to 4,294,967,295 when unsigned, and -2,147,483,648 to 2,147,483,648 when signed.
+                                        <br>It does this by using each hex digit to represent a power of 16, starting at 16<sup>0</sup> and ending on 16<sup>7</sup>
+                                        <br>This data type is typically used to store numerical data, remaining file sizes, offsets, or even entry counts. 
+                                        <br>One thing is certain, it serves an important purpose.
+                                    </p>
+                                    <p class="desc stringzero" >
+                                        A zero terminated string is used to represent text, it can often be directly translated to ascii, and it's one of the few things that is easy to read in a text file
+                                        <br>A string can be as long as it's length bytes can fit. In this example, it's length is stored in a 2 byte short before the text starts. That means the maximum length of this string is 65,535 bytes!
+                                        <br>What makes a zero terminated string special is that it will always end in 00, which makes reading the text data with a program easy.
+                                        <br>There are many types of strings, some put a 00 between each letter, others have a predetermined length that is filled by 00 if it's shorter than expected
+                                    </p>
+                                    <p class="desc color">
+                                        Colors are a data type that takes many shapes and forms. Most commonly, it is stored in 4 bytes, with each byte representing it's Red, Blue, and Green value. And then sometimes making use of the A or Alpha value.
+                                        <br>Ever wonder why colors are limited to 0 to 255? It's because 255 is the maximum value a single byte can handle!
+                                        <br>Another way to store colors is by using 4 floating point numbers, where each one represents a 0.0 to 1.0 for Red, Blue, Green, and Alpha.
+                                    </p>
+                                    <p class="desc header">
+                                        Headers are a special data type, usually designed to tell a user or a program what kind of file it is, or what section of the file they are in, or to trigger a special action.
+                                        <br>Headers can be in plain text, or they can be a predetermined set of numbers. Sometimes they can even just be used to fill space.
+                                        <br>No matter what the header means, or what purpose they serve, they'll always be unique to the file format you are decoding.
+                                    </p>
+                                    <p class="desc matrix">
+                                        A matrix is a collection of 16 floating point numbers, representing the 3d rotation of an object, in 3D modeling this is known as a transformation matrix.
+                                        <br>Typically they are found inside 3D model files that are animated or need to rotate things like bones.
+                                        <br>The easiest way to spot a matrix is by seeing a large group of 00 00 80 3F and 00 00 00 00. Especially if the 00 00 80 3F shifts position.
+                                        <br>Those matricies are called an "identity matrix", and they represent the rotation of 0&deg; in all directions.
+                                        <br>The alternative to storing 3D rotations in hex, in a much smaller space, is a set of four Float values called a Quaternion. Every float in it represents the angle of rotation on each axis.
+                                        <br>Matrix and Quaternions can both be difficult to understand on paper, but that's what 3D modeling software is for! Especially open source ones like blender which allow you to make scripts to read them!
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </section>
                 <!-- <section class="sectionContainer">
@@ -183,23 +262,46 @@
                     </div>
                 </section>-->
                 <section class="sectionContainer">
-                    <h2>COMING SOON!</h2>
-                    <li>Documenting File Formats</li>
-                    <li>Cheat Engine Is a Hex Editor</li>
-                    <li>Intro to Ghidra</li>
-                    <li>Reverse Engineering an Exe</li>
-                    <li>Modifying an EXE</li>
-                    <li>Guess That Data Type Quiz</li>
+                    <div class="contentBackdrop">
+                        <h2 id="comingSoon"><a href="#comingSoon">#</a>COMING SOON!</h2>
+                        <li>Documenting File Formats</li>
+                        <li>Cheat Engine Is a Hex Editor</li>
+                        <li>Intro to Ghidra</li>
+                        <li>Reverse Engineering an Exe</li>
+                        <li>Modifying an EXE</li>
+                        <li>Guess That Data Type Quiz</li>
+                    </div>
                 </section>
                 <!--Conclusion-->
                 <section class="sectionContainer">
-                    <h2 id="conclusion"><a href="#conclusion">#</a>CONGRATULATIONS!!!</h2>
-                    <p>Under Construction</p>
+                    <div class="contentBackdrop">
+                        <h2 id="conclusion"><a href="#conclusion">#</a>CONGRATULATIONS!!!</h2>
+                        <p>You have completed all the lessons! Now you truly have what it takes to DIY anything!</p>
+                        <p>I challenge you to never give up on doing accomplishing a goal, especially when it's difficult!</p>
+                        <p>Don't be afraid to be the first to solve a problem, that's how you know you'll learn something new!</p>
+                        <p>Most important of all, never abandon a project when someone else says it's impossible.</p>
+                        <p>No one has created something great, by waiting for someone else to do it for them, go and do it yourself!</p>
+                    </div>
                 </section>
-                <section class="sectionContainer">
-                    <h2 id="nextLevel"><a href="#nextLevel">#</a>THE NEXT LEVEL</h2>
-                    <p>Under Construction</p>
-                    <!-- Insert Front Page Card to Next Page-->
+                <section class="dl sectionContainer">
+                    <div class="contentBackdrop">
+                        <h2 id="nextLevel"><a href="#nextLevel">#</a>THE NEXT LEVEL</h2>
+                        <p>While our time of teaching has come to an end, I don't want to leave you empty handed!</p>
+                        <p>Unfortunately, the page I want to share with you is still under construction! So please come back later to get access to:</p>
+                        <div class="lessonCard tbCard">
+                            <!-- <a href="toolbox.html"> -->
+                            <a href="index.html" class="cardHeaderLink">
+                                <div class="cardHeader">
+                                    <h2 class="cardHtext1">The Tool</h2>
+                                    <img class="cardHico" src="images/ee_icon.svg" alt="">
+                                    <h2 class="cardHtext2">Archive</h2>
+                                </div>
+                            </a>
+                            <img src="images/tb_hero.webp" class="hpCardImg" alt="Many 3D Arrows of Various Sizes and Colors Pointing Downwards">
+                            <p>Do you like free stuff? Of course you do! Go to the toolbox to get the best free (or nearly free) software money can't buy (Unless there's a premium version)!</p>
+                        </div>
+                        <!-- Insert Front Page Card to Next Page-->
+                    </div>
                 </section>
             </div>
         </div>
@@ -207,8 +309,7 @@
     <footer>
         <div id="leftFooter"></div>
         <div id="centerFooter">
-            <p>DIY Anything - Bryce Pavlakos - 2022</p>
-            <p><a href="site-plan.html">Site Plan</a></p>
+            <p>DIY Anything - Bryce Pavlakos - &copy; 2022 - <a href="site-plan.html">Site Plan</a></p>
         </div>
         <div id="rightFooter"></div>
     </footer>

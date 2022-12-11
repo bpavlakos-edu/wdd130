@@ -192,6 +192,11 @@ let disableScrollTracking = false;
 let debuggerText = document.querySelector("#quickLinkBox h2");
 let previousChapter = -1;
 
+//Things to check when this isn't working:
+//Does the number of sectionContainers equal the number of quick links?
+//Do the sections overlap?
+
+
 updateQuickLinks();
 function updateQuickLinks(){
     if(quickLinks.length == 0){
@@ -207,9 +212,9 @@ function updateQuickLinks(){
                 let minY = boundingBox.top;
                 let maxY = boundingBox.bottom;
                 YposList.push([minY,maxY]);
-                // debuggerText.textContent = ""+scrollYCapture;
+                //debuggerText.textContent = ""+scrollYCapture;
                 //debuggerText.textContent = ""+screenYCapture;
-                //quickLinks[i].textContent = ""+minY+", "+maxY;
+                //quickLinks[i].textContent = ""+minY+", "+maxY;//Debugging line
                 // if(minY <= scrollYCapture && scrollYCapture <= maxY){
                     // currentChapter = i;
                     // lastPos = structuredClone([minY,maxY]);
@@ -286,5 +291,58 @@ function quickLinkToggle(){
         quickLinkBox.classList.toggle("visible");
     }else{
         quickLinkBox.classList.toggle("visible",false); //Force to off
+    }
+}
+
+//Hex explorer
+const hexTextList = {
+    int: ["int32 / dword (32 bit integer)","4 bytes (32 bits)","1","Unknown, it doesn't exceed the signed / unsigned threshold for this data type","Big Endian"],
+    float: ["Float (Float32 32)","4 bytes (32 bits)","1.0","Cannot be signed","Big Endian"],
+    short: ["Int16 / word (16 bit integer)","2 bytes (16 bits)","4","Unknown, it doesn't exceed the signed / unsigned threshold for this data type","Big Endian"],
+    stringzero: ["Zero Terminated String","Currently 21 bytes (including short and 0 terminator), varies in size",'"Hex editing is fun!"',"Strings Don't have Endianess, but the string length short is Little Endian"],
+    int_s: ["Int32 / dword (32 bit integer)","4 bytes (32 bits)","-1","Signed","Big Endian"],
+    int_be: ["Int32 / dword (32 bit integer)","4 bytes (32 bits)","12","Unknown, it doesn't exceed the signed / unsigned threshold for this data type"],
+    color: ["Color RGBA","4 byte entries","RGBA (36, 141, 250, 255)","Signed","Not Applicable, Single Bytes Don't Have Endianess"],
+    header: ["Header","Int32","4 bytes, typically 4 bytes, varies in size","1","Not Applicable, Headers do not have Endianess"],
+    matrix: ["Matrix","64 bytes (16 float32 entries)","[1.0 0.0 0.0 0.0], [0.0 1.0 0.0 0.0], [0.0 0.0 1.0 0.0], [0.0 0.0 0.0 1.0]","Cannot be signed"],
+}
+//Update the hex info panel, and mark the current item as "active"
+function updateHexBox(callerNameStr){
+    let currentActiveList = document.querySelectorAll('div.hex.active, div.ansi.active, .desc.active');
+    let activeListLen = currentActiveList.length; //Store the length
+    //Remove the active status from all active items
+    for(let i = 0; i<activeListLen; i++){
+        let curItem = currentActiveList[i];
+        let curClassName = curItem.classList[1];//Get the name of the item (it's the second item)
+        if(curClassName == callerNameStr){ //If it's identical to the one that's trying to activate return early
+            return;
+        }else{//Remove it if it doesn't contain the input string
+            console.log("Removing: "+curClassName);
+            curItem.classList.toggle("active",false);
+        }
+    }
+    //Set the desired hex and ascii display to active
+    let activationElemList = document.querySelectorAll("."+callerNameStr);
+    console.log(activationElemList);
+    let activeElemLength = activationElemList.length;
+    for(let i = 0; i<activeElemLength;i++){
+        let elemToActivate = activationElemList[i];
+        elemToActivate.classList.toggle("active",true);
+    }
+    //Update the description
+    let descriptionEntry = hexTextList[callerNameStr];
+    document.getElementById("nameLabel").textContent = "Data Type: "+descriptionEntry[0];
+    document.getElementById("lengthLabel").textContent = "Length: "+descriptionEntry[1];
+    document.getElementById("valueLabel").textContent = "Value: "+descriptionEntry[2];
+    document.getElementById("signedLabel").textContent = "Signed or Unsigned: "+descriptionEntry[3];
+    document.getElementById("byteOrderLabel").textContent = "Byte Order: "+descriptionEntry[4];
+
+    //Not applicable, I just added more entries //Activate the corresponding text box
+
+}
+function linkHover(in_name, set_state=true){
+    let target_elements = document.querySelectorAll("."+in_name);
+    for (let i = 0; i < target_elements.length; i++) {
+        target_elements[i].classList.toggle("hov",set_state); //Set it to what the function call says (ex called false will force it off!!!)
     }
 }

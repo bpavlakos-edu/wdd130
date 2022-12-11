@@ -662,7 +662,7 @@ body.ee{
     background-size: 50px 50px;
     /*backdrop-filter: blur(5px); /*Cool but I need to color stuff*/
     animation: eebackground 6s linear infinite; /*New background*/
-    background-attachment: fixed; /*Parallax Effect*/
+    background-attachment: fixed; /*Fix Parallax Effect*/
 }
 
 /*EE Color setup*/
@@ -914,15 +914,16 @@ body.ee{
 } */
 
 /*========================= Reverse Engineering page ==================================*/
-/*preview*/
-body.ee.lessonPage .re.sectionContainer, .re .lessonPage{
+/*preview and root theme*/
+body.ee.lessonPage .re.sectionContainer, .re.lessonPage{
     /* background-color:#248df0; */
     /* background-color:rgb(36, 141, 240) */
+    /* background-color:hsl(209, 87%, 54%); */
     --lThemeR: 36;
     --lThemeG: 141;
     --lThemeB: 240;
     /*HSV*/
-    --lThemeHue: 21;
+    --lThemeHue: 209; /*ALWAYS CHANGE THIS!!!*/
     /*--lThemeAlpha: 1.0;
     --lThemeAOpaque: 0.8;
     --lThemeAHalf: 0.5;*/
@@ -971,6 +972,370 @@ body.ee.lessonPage .re.sectionContainer, .re .lessonPage{
     --quickCDark: hsla(var(--lThemeHue), var(--lThemeSat), var(--lThemeDarkL), var(--lThemeASemiClear));
     --quickCLight: hsla(var(--lThemeHue), var(--lThemeSat), var(--lThemeLightL), var(--lThemeASemiClear));
 }
+
+body.re{
+    animation: rebackground 6s linear infinite; /*New background*/
+    background-attachment: fixed; /*Fix Parallax Effect*/
+}
+
+/*Images on this page need to be a little smaller by default*/
+.re .sectionContainer > .contentBackdrop > img{
+    width: 71%; /*I wanted 70% but that made visual bugs*/
+}
+
+/*Hex explorer (its a table)*/
+/*Table root*/
+/* .re #hexExplorerContainer{
+    width: 100%;
+    outline: 2px solid #ff00ff5e;/*Debugging*/
+/*} */
+/*Shift selected typed comment*/
+/*/*Body of table*/
+/*.re #hexExplorerContainer tbody{
+/*    /*Ported from .ee*/
+/*    table-layout: fixed;
+/*    font-size: 1.5rem;
+/*    /* background: repeating-linear-gradient(45deg, #ffad00, transparent 100px); */
+/*    background: rgba(255,255,255,0.5);
+/*    border-radius: 50px;/*Matching*/
+/*    vertical-align: top;
+/*    /*width: 100%;
+/*    /*table-layout: fixed;*/
+/*    outline: 2px solid red;/*Debugging*/
+/*}*/
+
+/*Table title*/
+/*Select all comment*/
+/* .re #hexExplorerContainer th{ */
+    /* width: 100%; */
+    /* background: repeating-linear-gradient(var(--lHColor),var(--lHColorDark)); */
+    /* outline: 2px solid yellow; */
+/* } */
+
+/*Select all comment*/
+/*.re #hexExplorerContainer tr{
+/*    outline: 2px solid pink;/*Debugging*/
+/*}*/
+
+/*Shift selected typed comment*/
+/*.re #hexExplorerContainer td{
+/*    outline: 2px solid purple;/*Debugging*/
+/*}*/
+
+/*Select all comment (both)*/
+/* #tableHeaders > th:first-of-type, #tableContents > td:first-of-type{
+    font-size: 1em;
+    width: 32rem;
+}
+
+#tableHeaders > th:nth-of-type(2), #tableContents > th:nth-of-type(2){
+    font-size: 1em;
+    width: 32rem;
+} */
+
+/* #tableHeaders > th:nth-of-type(3), #tableContents > th:nth-of-type(3){ */
+    /* display: block; */
+    /* font-size: 0.80em; */
+    /* width: 20%; */
+/* } */
+
+/*Containers*/
+/* .re #ansiDiv{
+    display: inline-table;
+} */
+
+/* .editorflex{
+    display: flex;
+} */
+
+/*V2 Grid instead of table*/
+.re #hexExplorerContainer{
+    /* width: 100%; */
+    /*outline: 2px solid #ff00ff5e;/*Debugging*/
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(var(--cRGBColorFourth), 0.7);
+    border-radius: 50px;
+    /* padding: 5% 0px; */
+    padding: 2% 0px 2% 0px;
+    box-shadow: inset 0px 0px 20px 10px var(--quickColor);
+    backdrop-filter: blur(5px);
+    border: 5px solid var(--quickCHalf); /*Cover the glitchy stuff*/
+}
+
+/*Table title*/
+.re h2#tableTitle{
+    margin:0 auto;
+    /* width: max-content;/*Attempt at full banner size */
+}
+
+/*Splitter for hexadecimal and ascii*/
+.re #tableContents{
+    font-size: 1.5em;
+    display: grid;
+    grid-template-columns: min(32.5rem,33.5vw) min(12rem,12.4vw); /*16 characters wide, 8 characters wide*/ /*Now has fallbacks for small sizes*/
+    justify-content: center;
+    gap: 1%;
+    height: 16rem; /*10rem;*/
+    font-size: 1.5rem;
+    /* background-color: rgba(var(--cRGBColorFourth), 0.7);/*Not needed here */
+    /* padding: 42px; */
+    
+}
+
+/*Headers for hex reader sections*/
+.re #tableContents h4 {
+    width: max-content;
+    font-size: min(18px,1vw);
+    /* text-align: center; */
+    align-self: center;
+    align-content: center;
+    /* margin: 0 0 5px 0; */
+    margin: 0 0 0 0;
+    /* padding: 12px 40%; */
+    padding: 12px 100%;
+    background: repeating-linear-gradient(315deg, rgba(var(--cRGBColor),0.2) 15px 24px, transparent 30px 35px);
+    background-color: rgba(var(--cRGBColor),0.5);
+}
+
+/*Hex box and ascii box*/
+.re #hexTD, .re #textTD{
+    /* background-color: #fff; */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border-radius: 15px;
+}
+
+/*Both parts of the editor*/
+#hexDiv, #ansiDiv{
+    background-color: rgb(255, 255, 255); /*Background color*/
+    padding-bottom: 100%; /*Fill available space*/
+    padding-top: 1px; /*A little space at the top*/
+}
+
+/*Specific settings for text*/
+#ansiDiv {
+    display: inline-table; /*So they don't have a gap*/
+    /*padding: 0px 0.5em 100% 0.5em; /* Extra padding for extra wrapping*/
+    /*Changed to left and right*/
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    
+}
+
+#hexDiv{
+    /* padding: 0px 0.5em; */
+    padding-left: 1%;
+}
+
+/*Table hex and ascii containers, get set to inline*/
+/*Had to change the name to .ansi because .ascii was interfering with the selectors*/
+.re div.hex,.re div.ansi{
+    --backColorActive: rgba(0, 0, 0,255);  /*Default color for highilight*/
+    --backColorInactive: rgba(0, 0, 0, 0);  /*Default color for highilight*/
+    --textColorActive: rgba(255,255,255,255); /*Default active text color*/
+    display: inline;
+    text-shadow: none;
+    padding: 0;
+    /* width: 32em;/*Doesn't work */
+    background-color: var(--backColorInactive);
+    vertical-align: text-top;
+    outline: 2px dashed var(--backColorActive);
+    /* font-stretch: normal; */
+    color: black;
+    line-height: 1.5;
+    transform: translate(-1px 0px);
+    font-size: min(18px,1vw); /*Clamped font size, will pick the smallest option*/
+    transition: 500ms 0s background-color, 500ms 0s color;
+}
+/*Text entry*/
+.re div.ansi{
+    word-break: break-all; /* Allow individual characters to be wrapped */
+    line-break: anywhere; /* Allow individual characters have a new line */
+    /*width: 8em; /* Attempt to restrict the width */
+}
+
+/*active hex entry / ascii */
+.re div.hex.active, 
+.re div.ansi.active{
+    background-color: var(--backColorActive); /* Highlight*/
+    color: var(--textColorActive); /* Highlighted text color */
+    outline-style: solid;
+    filter: opacity(100%); /*Dummy filter so it renders on top, because z-index doesn't work for this*/
+}
+
+/*On hover make the border solid, and make it appear on top*/
+.re div.hex:hover, 
+.re div.ansi:hover, 
+.re div.ansi.hov,
+.re div.hex.hov{
+    cursor: pointer;
+    outline-style: solid;
+    /* z-index: 2; */
+    filter: opacity(100%); /*Dummy filter so it renders on top, because z-index doesn't work for this*/
+    background-color: white;
+}
+
+
+/*active hover*/
+.re div.hex.active:hover, 
+.re div.ansi.active:hover, 
+.re div.ansi.active.hov,
+.re div.hex.active.hov{
+    cursor: pointer;
+    outline-style: solid;
+    /* z-index: 2; */
+    filter: opacity(100%); /*So it renders on top, because z-index doesn't work for this*/
+    background-color: var(--backColorActive);
+}
+
+/*Minor changes to hyper link colors*/
+.re.lessonPage .sectionContainer a{
+    color: var(--lHColorThird);
+    /*Not sold on the text shadow*/
+    text-shadow: -0.5px -0.5px 0.5px #000, 
+    0.5px 0.5px 0.5px #000, 
+    0.5px -0.5px 0.5px #000, 
+    -0.5px 0.5px 0.5px #000;
+}
+
+/*Text info*/
+#infoDiv{
+    margin: 1% 14.5%;
+    /* padding: 0.4% 3%; */
+    padding: 0.4% 3% 3% 3%;
+    backdrop-filter: blur(5px);
+    background-color: var(--quickCInvisible);
+    border: 1px solid var(--quickColor);
+    overflow: hidden;
+    box-shadow: inset 0px 0px 20px 10px var(--quickColor);
+    font-size: 14px;
+    border-radius: 14px;
+    border: 8px double var(--quickCInvisible); /*Get rid of glitchy stuff*/
+}
+
+/*Descriptions hidden via Javascript*/
+
+.re.lessonPage .desc.active{
+    display: initial;
+}
+
+/*Hidden state*/
+.re.lessonPage .desc{
+    display: none;
+}
+
+
+/*Color profiles*/
+.re div .int{
+    --backColorActive: rgba(100, 255, 0, 255);  /*Default color for highilight*/
+    --backColorInactive: rgba(100, 255, 0, 0);  /*Default color for highilight*/
+    --textColorActive: rgba(0,0,0,255); /*Active text color is black for visibility (ReHex editor does this too!)*/
+}
+
+.re div .float{
+    --backColorActive: rgba(0, 0, 255, 255);  /*Default color for highilight*/
+    --backColorInactive: rgba(0, 0, 255, 0);  /*Default color for highilight*/
+}
+
+.re div .short{
+    --backColorActive: rgba(255, 136, 0, 255);  /*Default color for highilight*/
+    --backColorInactive: rgba(255, 136, 0, 0);  /*Default color for highilight*/
+}
+
+.re div .stringzero{
+    --backColorActive: rgba(0, 190, 133, 255);  /*Default color for highilight*/
+    --backColorInactive: rgba(0, 190, 133, 0);  /*Default color for highilight*/
+}
+
+.re div .int_be{
+    --backColorActive: rgba(255, 0, 242, 255);  /*Default color for highilight*/
+    --backColorInactive: rgba(255, 0, 242, 0);  /*Default color for highilight*/
+}
+
+.re div .int_s{
+    --backColorActive: rgba(0, 117, 172, 255);  /*Default color for highilight*/
+    --backColorInactive: rgba(0, 117, 172, 0);  /*Default color for highilight*/
+}
+
+.re div .color{
+    --backColorActive: rgba(36,141,249,255);  /*Default color for highilight*/
+    --backColorInactive: rgba(36,141,249,0);  /*Default color for highilight*/
+}
+
+.re div .header{
+    --backColorActive: rgba(255, 0, 0,255);  /*Default color for highilight*/
+    --backColorInactive: rgba(255, 0, 0, 0);  /*Default color for highilight*/
+}
+
+.re div .matrix{
+    --backColorActive: rgba(122, 0, 170,255);  /*Default color for highilight*/
+    --backColorInactive: rgba(122, 0, 170, 0);  /*Default color for highilight*/
+}
+
+/*========================= Download Page ==================================*/
+/*preview and root theme*/
+body.re.lessonPage .dl.sectionContainer, .dl.lessonPage{
+    background-color:#001247;
+    background-color:rgb(0, 18, 71);
+    background-color:hsl(225, 100%, 14%);
+    --lThemeR: 0;
+    --lThemeG: 18;
+    --lThemeB: 71;
+    /*HSV*/
+    --lThemeHue: 225; /*ALWAYS CHANGE THIS!!!*/
+    /*--lThemeAlpha: 1.0;
+    --lThemeAOpaque: 0.8;
+    --lThemeAHalf: 0.5;*/
+    /*filter: hue-rotate(180deg); /*I forgot orange is a complemnatry color so its exactly 180*/
+    /*hex colors*/
+    /*Unfortunately this doesn't work*/
+    --lHColor: var(--darkblue);
+    --lHColorSecond: var(--orange);
+    --lHColorThird: var(--blue);
+    --lHColorFourth: var(--teal);
+    --lHColorDark: var(--teal);
+    --lHColorExtra: #5a3600;
+    /*So now we need RGB list equivalents due to a chrome bug*/
+    /* https://stackoverflow.com/questions/52037809/add-alpha-channel-to-hex-color-declared-on-css-variable */
+    /*RGBA*/
+    --cRGBColor: var(--RGBdarkblue);
+    --cRGBColorSecond: var(--RGBorange);
+    --cRGBColorThird: var(--RGBblue);
+    --cRGBColorFourth: var(--RGBteal);
+    --cRGBColorDark: var(--RGBteal);
+    --cRGBColorAlpha100: 1.0;
+    --cRGBColorAlpha075: 0.75;
+    --cRGBColorAlpha050: 0.50;
+    --cRGBColorAlpha025: 0.25;
+    --cRGBColorAlpha000: 0.0;
+
+
+    /*Colors must be redeclared in this defintition to be injected on another page*/
+    /*use for local settings*/
+    --localR: var(--lThemeR);
+    --localG: var(--lThemeG);
+    --localB: var(--lThemeB);
+    --localA: var(--lThemeAlpha);
+    --quickCLocalRGB: rgba(var(--localR), var(--localG), var(--localB), var(--localAlpha));
+    --localH: var(--lThemeHue);
+    --localS: var(--lThemeSat);
+    --localL: var(--lThemeNormL);
+    --localAalt: var(--lThemeA);
+    --quickCLocalRGB: hsla(var(--localH), var(--localS), var(--localL), var(--localAalt)); /*Background color on lesson cards*/
+    /*Quick colors*/
+    --quickColor: rgba(var(--lThemeR), var(--lThemeG), var(--lThemeB), var(--lThemeAlpha));
+    --quickCOpaque: rgba(var(--lThemeR), var(--lThemeG), var(--lThemeB), var(--lThemeAOpaque));
+    --quickCHalf: rgba(var(--lThemeR), var(--lThemeG), var(--lThemeB), var(--lThemeAHalf));
+    --quickCInvisible: rgba(var(--lThemeR), var(--lThemeG), var(--lThemeB), var(--lThemeAInvisible)); /*Nav header color*/
+    --quickCCardBg: rgba(var(--lThemeR), var(--lThemeG), var(--lThemeB), var(--lThemeAClear)); /*Background color on lesson cards*/
+    --quickCDark: hsla(var(--lThemeHue), var(--lThemeSat), var(--lThemeDarkL), var(--lThemeASemiClear));
+    --quickCLight: hsla(var(--lThemeHue), var(--lThemeSat), var(--lThemeLightL), var(--lThemeASemiClear));
+}
+
+
+
 
 /*All lesson pages ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
@@ -1053,12 +1418,36 @@ body.ee.lessonPage .re.sectionContainer, .re .lessonPage{
     --cRGBColorAlpha000: 0.0;
 }
 
+body.re{
+    background-image: repeating-linear-gradient(-45deg, var(--blue) 9px, var(--darkblue) 60px 0px);
+}
+
 /*All images need to fill their width*/ /*Does nothing now?*/
 .sectionContainer img [src*="ee_"]{
     display: block;
     width: 100%;
 }
 
+/*Dual image container Added for Reverse engineering page*/
+.lessonPage div.dualimg{
+    display: flex;
+    width: 85%;
+    margin: 3% auto;
+    gap: 5%;
+    justify-content: space-evenly;
+}
+/*The images inside the dualimg container*/
+.lessonPage div.dualimg img{
+    display: block; /*inline block makes a weird gap*/
+    /* https://www.w3schools.com/css/css3_images.asp Guide to responsive images*/
+    max-width: 50%; /*Max width is a special setting, not just a restriction (also it needs to 50% because there are two of them): https://www.w3schools.com/Css/css_max-width.asp */
+    height: auto;
+    resize: both;
+    border-radius: 10px;
+    border: 5px solid rgba(var(--cRGBColorSecond),1.0);
+}
+
+/*Immediate child images of the content backdrop, to prevent the descendant images from being changed*/
 .sectionContainer > .contentBackdrop > img{
     border-radius: 10px;
     border: 5px solid rgba(var(--cRGBColorSecond),1.0);
@@ -1510,6 +1899,18 @@ footer > *{
     }
 }
 
+@keyframes rebackground{
+    0% {
+        background-position-y: 0px;
+        background-position-x: -50px;
+    }
+    
+    100% {
+        background-position-y: 0px; /*Needs to match tile size*/
+        background-position-x: 50px; /*Needs to match tile size*/
+    }
+}
+
 
 /*Javascript operated items*/
 /* Header Particle System*/
@@ -1623,6 +2024,32 @@ footer > *{
     /* filter: drop-shadow(1px 1px 1px black); */
 }
 
+/*Particle style 3 for re Page*/
+.re .particle{
+    background-color: rgb(0, 225, 255);
+    /* outline: inset 1px black; */
+
+    /* display: inline-block; */
+    /* border-radius: 15%; */
+    /*animation: 10s fade linear infinite, 5s shift linear infinite; /*https://developer.mozilla.org/en-US/docs/Web/CSS/animation#syntax*/
+    animation: 10s reparticle linear infinite; /*Row contianer version*/
+    animation-timing-function: revert; /*Less lag, and more fun!*/
+    /*Particle Optimization*/
+    shape-rendering: optimizespeed;
+    /* color-rendering: optimizespeed; */
+    /* buffered-rendering: auto; */
+    /* clip-path: polygon(0% 5%, 50% 100%, 50% 100%, 100% 5%); */ /*Experimental*/
+    /* box-shadow: inset 4px -4px 5px 5px #000000;*/
+    box-shadow: inset 0px 0px 5px 5px rgba(var(--cRGBColor),0.65);
+    /* filter: drop-shadow(5px 5px 5px black);/*Too laggy */
+}
+
+.ee .rowContainer{
+    /* animation: none; */
+    animation: 5s eeshift linear infinite;
+    /* filter: drop-shadow(1px 1px 1px black); */
+}
+
 @keyframes fade{
     0%{
         background-color: rgba(255, 255, 255, 0.450);
@@ -1661,6 +2088,21 @@ footer > *{
     }
     100%{
         background-color: rgba(255, 247, 0, 0.450);
+    }
+}
+
+@keyframes reparticle{
+    0%{
+        /* background-color: rgb(0, 225, 255, 0.450); */
+        transform: scale3d(3.5, 3.5, 3.5);
+    }
+    50%{
+        /* background-color: rgba(0, 225, 255, 0.200); */
+        transform: scale3d(1.0, 1.0, 1.0);
+    }
+    100%{
+        /* background-color: rgba(0, 225, 255, 0.450); */
+        transform: scale3d(3.5, 3.5, 3.5);
     }
 }
 
@@ -1822,6 +2264,7 @@ h1#heroTitle::before {
         position: sticky;
         top: -0.001px;
         /* overflow-wrap: scroll; */
+        z-index: 1;/*Finally, I figured out why z index wasn't working!*/
     }
     .lessonPage #quickLinkBox{
         margin: auto auto;
@@ -1880,7 +2323,7 @@ h1#heroTitle::before {
     /*Lesson container has lower z-index than the quick links*/
     .lessonPage .lessonContainer{
         /* display: block; */
-        z-index: -1;
+        z-index: 0; /*Now is at 0 because I found out the track needed to be 1 for the quick link box*/
     }
     /*Smaller border radius = more space */
     .lessonPage .sectionContainer{
