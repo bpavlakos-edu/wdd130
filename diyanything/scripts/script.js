@@ -296,15 +296,15 @@ function quickLinkToggle(){
 
 //Hex explorer
 const hexTextList = {
-    int: ["int32 / dword (32 bit integer)","4 bytes (32 bits)","1","Unknown, it doesn't exceed the signed / unsigned threshold for this data type","Big Endian"],
-    float: ["Float (Float32 32)","4 bytes (32 bits)","1.0","Cannot be signed","Big Endian"],
-    short: ["Int16 / word (16 bit integer)","2 bytes (16 bits)","4","Unknown, it doesn't exceed the signed / unsigned threshold for this data type","Big Endian"],
+    int: ["int32 / dword (32 bit integer)","4 bytes (32 bits)","1","Unknown, it doesn't exceed the signed / unsigned threshold for this data type","Little Endian"],
+    float: ["Float (Float32 32)","4 bytes (32 bits)","1.0","Cannot be signed","Little Endian"],
+    short: ["Int16 / word (16 bit integer)","2 bytes (16 bits)","4","Unknown, it doesn't exceed the signed / unsigned threshold for this data type","Little Endian"],
     stringzero: ["Zero Terminated String","Currently 21 bytes (including short and 0 terminator), varies in size",'"Hex editing is fun!"',"Strings Don't have Endianess, but the string length short is Little Endian"],
-    int_s: ["Int32 / dword (32 bit integer)","4 bytes (32 bits)","-1","Signed","Big Endian"],
-    int_be: ["Int32 / dword (32 bit integer)","4 bytes (32 bits)","12","Unknown, it doesn't exceed the signed / unsigned threshold for this data type"],
+    int_s: ["Int32 / dword (32 bit integer)","4 bytes (32 bits)","-1","Signed","Little Endian"],
+    int_be: ["Int32 / dword (32 bit integer)","4 bytes (32 bits)","12","Unknown, it doesn't exceed the signed / unsigned threshold for this data type","Big Endian"],
     color: ["Color RGBA","4 byte entries","RGBA (36, 141, 250, 255)","Signed","Not Applicable, Single Bytes Don't Have Endianess"],
-    header: ["Header","Int32","4 bytes, typically 4 bytes, varies in size","1","Not Applicable, Headers do not have Endianess"],
-    matrix: ["Matrix","64 bytes (16 float32 entries)","[1.0 0.0 0.0 0.0], [0.0 1.0 0.0 0.0], [0.0 0.0 1.0 0.0], [0.0 0.0 0.0 1.0]","Cannot be signed"],
+    header: ["Header","4 bytes, typically 4 bytes, varies in size","Not applicable","Not Applicable, Headers do not have Endianess"],
+    matrix: ["Matrix","64 bytes (16 float32 entries)","[1.0 0.0 0.0 0.0], [0.0 1.0 0.0 0.0], [0.0 0.0 1.0 0.0], [0.0 0.0 0.0 1.0]","Cannot be signed","Little Endian"],
 }
 //Update the hex info panel, and mark the current item as "active"
 function updateHexBox(callerNameStr){
