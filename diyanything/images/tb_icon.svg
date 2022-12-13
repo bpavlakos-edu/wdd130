@@ -1,0 +1,60 @@
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg width="33.148mm" height="37.425mm" version="1.1" viewBox="0 0 33.148 37.425" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <linearGradient id="a">
+   <stop stop-color="#248df0" offset="0"/>
+   <stop stop-color="#63bb98" offset=".5"/>
+   <stop stop-color="#ff5900" offset="1"/>
+  </linearGradient>
+  <linearGradient id="k" x1="63.2" x2="80.777" y1="19.792" y2="5.6846" gradientTransform="translate(45.757 112.86)" gradientUnits="userSpaceOnUse" spreadMethod="reflect">
+   <stop stop-color="#ff5900" offset="0"/>
+   <stop stop-color="#63bb98" offset=".45652"/>
+   <stop stop-color="#248df0" offset="1"/>
+  </linearGradient>
+  <linearGradient id="j" x1="67.012" x2="58.356" y1="20.439" y2="25.618" gradientTransform="translate(45.757 112.86)" gradientUnits="userSpaceOnUse" spreadMethod="reflect">
+   <stop stop-color="#ff5900" offset="0"/>
+   <stop stop-color="#248df0" offset=".46247"/>
+   <stop stop-color="#63bb98" offset="1"/>
+  </linearGradient>
+  <linearGradient id="i" x1="16.574" x2="28.102" y1="-9.2836" gradientTransform="translate(99.346 115.52)" gradientUnits="userSpaceOnUse" spreadMethod="reflect">
+   <stop stop-color="#ff5900" offset="0"/>
+   <stop stop-color="#63bb98" offset=".43546"/>
+   <stop stop-color="#248df0" offset="1"/>
+  </linearGradient>
+  <linearGradient id="l" x1="59.33" x2="52.232" y1="88.659" y2="84.713" gradientTransform="translate(92.037 54.519)" gradientUnits="userSpaceOnUse" xlink:href="#a" spreadMethod="reflect"/>
+  <linearGradient id="h" x1="144.57" x2="147.54" y1="140.24" y2="138.13" gradientTransform="translate(92.037 54.519)" gradientUnits="userSpaceOnUse" xlink:href="#a" spreadMethod="reflect"/>
+  <linearGradient id="g" x1="13.675" x2="18.944" y1="-5.3945" y2="-3.2618" gradientTransform="translate(99.346 115.52)" gradientUnits="userSpaceOnUse" spreadMethod="reflect">
+   <stop stop-color="#ff5900" offset="0"/>
+   <stop stop-color="#63bb98" offset=".5"/>
+   <stop stop-color="#248df0" offset="1"/>
+  </linearGradient>
+  <linearGradient id="f" x1="11.73" x2="17.689" y1="17.438" y2="15.682" gradientTransform="translate(99.346 115.52)" gradientUnits="userSpaceOnUse">
+   <stop stop-color="#ff5900" offset="0"/>
+   <stop stop-color="#63bb98" offset=".5"/>
+   <stop stop-color="#248df0" offset="1"/>
+  </linearGradient>
+  <linearGradient id="e" x1="25.844" x2="22.895" y1="2.3836" y2="4.2027" gradientTransform="translate(99.346 115.52)" gradientUnits="userSpaceOnUse" spreadMethod="reflect">
+   <stop stop-color="#ff5900" offset="0"/>
+   <stop stop-color="#63bb98" offset=".5"/>
+   <stop stop-color="#248df0" offset="1"/>
+  </linearGradient>
+  <linearGradient id="d" x1="14.615" x2="7.3391" y1="5.0809" y2="5.7082" gradientTransform="translate(99.346 115.52)" gradientUnits="userSpaceOnUse" xlink:href="#a"/>
+  <linearGradient id="c" x1="27.145" x2="29.629" y1="4.7016" y2="7.7778" gradientTransform="translate(99.346 115.52)" gradientUnits="userSpaceOnUse" xlink:href="#a" spreadMethod="reflect"/>
+  <linearGradient id="b" x1="50.029" x2="51.073" y1="83.247" y2="87.352" gradientTransform="translate(92.037 54.519)" gradientUnits="userSpaceOnUse" xlink:href="#a" spreadMethod="reflect"/>
+ </defs>
+ <g transform="translate(-99.346 -115.52)" stroke-miterlimit="5">
+  <g stroke-width=".279">
+   <path d="m115.92 115.66a7.8061 7.6449 0 0 0-7.8062 7.645 7.8061 7.6449 0 0 0 7e-3 0.1328h2.9564a4.8514 4.7282 0 0 1-9e-3 -0.1328 4.8514 4.7282 0 0 1 4.8514-4.7279 4.8514 4.7282 0 0 1 4.8514 4.7279 4.8514 4.7282 0 0 1-3e-3 0.1328h2.9549a7.8061 7.6449 0 0 0 3e-3 -0.1328 7.8061 7.6449 0 0 0-7.8057-7.645z" fill="url(#i)" stroke="url(#g)" style="paint-order:markers fill stroke"/>
+   <path d="m109.67 122.39a2.07 2.07 0 0 0-1.7916 1.0516h3.592a2.07 2.07 0 0 0-1.8004-1.0516z" fill="url(#d)" stroke="url(#f)" style="paint-order:markers fill stroke"/>
+   <path d="m122.2 122.39a2.07 2.07 0 0 0-1.7916 1.0516h3.592a2.07 2.07 0 0 0-1.8004-1.0516z" fill="url(#c)" stroke="url(#e)" style="paint-order:markers fill stroke"/>
+  </g>
+  <path d="m102.2 123.44c-1.5024 0-2.712 1.2096-2.712 2.712v1.1906h32.869v-1.1906c0-1.5024-1.2096-2.712-2.712-2.712zm-2.712 4.5956v22.061c0 1.5024 1.2095 2.712 2.712 2.712h27.445c1.5024 0 2.712-1.2096 2.712-2.712v-22.061zm3.8706 1.3069h25.222c1.5024 0 2.712 1.2095 2.712 2.712v16.039c0 1.5024-1.2096 2.712-2.712 2.712h-25.222c-1.5024 0-2.712-1.2096-2.712-2.712v-16.039c0-1.5024 1.2095-2.712 2.712-2.712z" fill="url(#k)" stroke="url(#j)" stroke-linejoin="round" stroke-width=".279" style="paint-order:markers fill stroke"/>
+  <g transform="matrix(1.3481 .45471 -.45363 1.3513 -18.439 -118.43)" fill="url(#b)" stroke="url(#h)" stroke-width=".19591">
+   <path d="m150.09 137.41-6.9566 6.9566a2.5959 2.5958 45 0 1 0.97528 0.61207 2.5959 2.5958 45 0 1 0.61315 0.9749l6.9559-6.9559z" style="paint-order:markers fill stroke"/>
+   <path d="m149.86 136.83a1.779 3.1982 45 0 0-0.37198 2.7647 1.779 3.1982 45 0 0 2.7647-0.37126 2.97 2.9673 45 0 1-1.5709-0.82253 2.97 2.9673 45 0 1-0.8218-1.5709z" style="paint-order:markers fill stroke"/>
+   <path d="m145.17 143.92a1.779 3.1982 45 0 0-2.681 0.31389 2.5959 2.5958 45 0 1 1.6177 0.74945 2.5959 2.5958 45 0 1 0.7509 1.6162 1.779 3.1982 45 0 0 0.31243-2.6795z" style="paint-order:markers fill stroke"/>
+   <path d="m154.01 133.6a2.97 2.9673 45 0 0-3.33 0.60036 2.97 2.9673 45 0 0 2e-3 4.1982 2.97 2.9673 45 0 0 4.1985 2e-3 2.97 2.9673 45 0 0 0.60036-3.33l-2.2034 2.2034a1.0398 0.7503 45 0 1-1.2661-0.20499 1.0398 0.7503 45 0 1-0.20463-1.2658z" style="paint-order:markers fill stroke"/>
+   <path d="m144.1 144.98a2.5959 2.5958 45 0 0-3.6709 0 2.5959 2.5958 45 0 0-3.6e-4 3.6712 2.5959 2.5958 45 0 0 3.6716 0 2.5959 2.5958 45 0 0-3.6e-4 -3.6712zm-1.0652 0.18452c4e-3 2e-3 -0.0349 0.0937 0.37637 0.505 0.82261 0.82261 0.36706-0.15405 0.46845 1.0049s0.38006 0.11842-0.2872 1.0714c-0.66727 0.95295 0.21566 0.33507-0.90804 0.63617-1.1237 0.3011-0.0506 0.39518-1.105-0.0965-1.0544-0.49165-0.29287 0.26983-0.78453-0.78453-0.49165-1.0544-0.39756 0.0187-0.0965-1.105 0.30109-1.1237-0.31678-0.24077 0.63617-0.90804s-0.0875-0.3886 1.0714-0.2872c0.57947 0.0507 0.62529-0.0379 0.62887-0.0362z" style="paint-order:markers fill stroke"/>
+  </g>
+ </g>
+</svg>

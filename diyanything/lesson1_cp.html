@@ -4,33 +4,43 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DIY Anything | Home</title>
-    <style rel="stylesheet" href="styles/styles.css" ></style>
+    <title>DIY Anything | Computer Programming</title>
+    <link rel="stylesheet" href="styles/styles.css">
 </head>
-<body>
+<body class="cp lessonPage">
     <header>
         <nav>
             <!-- <a href="lesson1_cp.html" class="linkContainer"> -->
-            <a href="index.html" class="linkContainer">
-                <img src="images/cd_icon_temp.png" class="linkIcon" alt="">
-                Computer Programming [Under Construction]
+            <a href="lesson1_cp.html">
+                <div class="linkContainer">
+                    <img src="images/cp_icon.svg" class="linkIcon" alt="">
+                    <p>Computer Programming</p>
+                </div>
             </a>
-            <a href="lesson2_ee.html" class="linkContainer">
-                <img src="images/ee_icon.svg" class="linkIcon" alt="">
-                Electronic Circuits
+            <a href="lesson2_ee.html">
+                <div class="linkContainer">
+                    <img src="images/ee_icon.svg" class="linkIcon" alt="">
+                    <p>Electronic Circuits</p>
+                </div>
             </a>
-            <a href="index.html" class="linkContainer">
-                <img src="images/h_icon.svg" class="linkIcon" alt="">
-                Home
+            <a href="index.html">
+                <div class="linkContainer">
+                    <img src="images/h_icon.svg" class="linkIcon homeIcon" alt="">
+                    <p>Home</p>
+                </div>
             </a>
-            <a href="lesson3_re.html" class="linkContainer">
-                <img src="images/re_icon.svg" class="linkIcon" alt="">
-                Reverse Engineering
+            <a href="lesson3_re.html">
+                <div class="linkContainer">
+                    <img src="images/re_icon.svg" class="linkIcon" alt="">
+                    <p>Reverse Engineering</p>
+                </div>
             </a>
             <!-- <a href="toolbox.html" class="linkContainer"> -->
-            <a href="index.html" class="linkContainer">
-                <img src="images/tl_icon_temp.png" class="linkIcon" alt="">
-                Toolbox Archive [Under Construction]
+            <a href="toolbox.html">
+                <div class="linkContainer">
+                    <img src="images/tb_icon.svg" class="linkIcon" alt="">
+                    <p>Toolbox Archive</p>
+                </div>
             </a>
         </nav>
         <div id="particleContainer">
@@ -38,55 +48,135 @@
         </div>
     </header>
     <div id="heroContainer">
-        <img id="heroImg" class="hero" src="images/cp_hero.webp" alt="Lightbulb made of circuits and Binary code"> <!-- Exclude on subpages-->
-        <h1 id="heroTitle">COMPUTER PROGRAMMING</h1> <!--Controlled by JavaScript-->
+        <img id="heroImg" class="hero" src="images/cp_hero.webp" alt="Computer Code Warping Into Cyberspace">
+        <div id="heroTitleContainer">
+            <h1 id="heroTitle">COMPUTER PROGRAMMING</h1> <!--Controlled by JavaScript-->
+        </div>
     </div>
     <main>
-        <div id="cpContentContainer">
-            <div id="lessonNav">
-                <h2>Chapter Quick Links</h2>
-                <a href="#part1">1. Telling a Computer What To Do</a>
-                <a href="#part2">2. Intro to Processing</a>
-                <a href="#part3">3. Your First Program</a>
-                <a href="#part4">4. Variables</a>
-                <a href="#part5">5. Boolean Logic</a>
-                <a href="#part6">6. Loops</a>
-                <a href="#part7">7. Functions / Methods</a>
-                <a href="#part8">8. Drawing With Processing</a>
-                <!-- <a href="#part9">9. Key Presses</a> -->
-                <!-- <a href="#part10">10. Small Video Game</a> -->
-                <!-- <a href="#part11">11. Other Programming Langauges</a> -->
-                <a href="#conclusion">Conclusion</a>
-                <a href="#nextLevel">The Next Level</a>
-            </div>
-            <div id="cpLessonContainer">
-                <div class="sectionContainer"><h2 id="part1"><a href="#part1">#</a>1. Telling a Computer What To Do</h2></div>
-                <div class="sectionContainer"><h2 id="part2"><a href="#part2">#</a>2. Intro to Processing</h2></div>
-                <div class="sectionContainer"><h2 id="part3"><a href="#part3">#</a>3. Your First Program</h2></div>
-                <div class="sectionContainer"><h2 id="part4"><a href="#part4">#</a>4. Variables</h2></div>
-                <div class="sectionContainer"><h2 id="part5"><a href="#part5">#</a>5. Boolean Logic</h2></div>
-                <div class="sectionContainer"><h2 id="part6"><a href="#part6">#</a>6. Loops</h2></div>
-                <div class="sectionContainer"><h2 id="part7"><a href="#part7">#</a>7. Functions / Methods</h2></div>
-                <div class="sectionContainer"><h2 id="part8"><a href="#part8">#</a>8. Drawing With Processing</h2></div>
-                <!-- <div class="sectionContainer"><h2 id="part9"><a href="#part9">#</a>9. Drawing With Processing</h2></div> -->
-                <!-- <div class="sectionContainer"><h2 id="part10"><a href="#part10">#</a>10. Drawing With Processing</h2></div> -->
-                <!-- <div class="sectionContainer"><h2 id="part11"><a href="#part11">#</a>11. Drawing With Processing</h2></div> -->
-                <div class="sectionContainer">
-                    <h2>COMING SOON!</h2>
-                    <li>Key Presses</li>
-                    <li>Other Programming Langauges</li>
-                    <li>Your First Arduino Circuit On <a href="https://www.tinkercad.com/circuits">TinkerCad</a></li>
+        <div id="contentContainer" onscroll="updateQuickLinks();">
+            <div id="lessonNavTrack">
+                <div id="quickLinkBox">
+                    <h2 onclick="quickLinkToggle();">Chapter Quick Links</h2>
+                    <a href="#part1" class="scrolled quickLink">1. Telling a Computer What To Do</a>
+                    <a href="#part2" class="quickLink">2. Intro to Processing</a>
+                    <!-- <a href="#part3" class="quickLink">3. Your First Program</a> -->
+                    <!-- <a href="#part4" class="quickLink">4. Variables</a> -->
+                    <!-- <a href="#part5" class="quickLink">5. Boolean Logic</a> -->
+                    <!-- <a href="#part6" class="quickLink">6. Loops</a> -->
+                    <!-- <a href="#part7" class="quickLink">7. Functions / Methods</a> -->
+                    <!-- <a href="#part8" class="quickLink">8. Drawing With Processing</a> -->
+                    <!-- <a href="#part9">9. Key Presses</a> -->
+                    <!-- <a href="#part10">10. Small Video Game</a> -->
+                    <!-- <a href="#part11">11. Other Programming Langauges</a> -->
+                    <a href="#comingSoon" class="quickLink">Coming Soon!</a>
+                    <a href="#conclusion" class="quickLink">Conclusion</a>
+                    <a href="#nextLevel" class="quickLink">The Next Level</a>
                 </div>
-                <div class="sectionContainer"><h2 id="conclusion"><a href="#conclusion">#</a>CONGRATULATIONS!!!</h2></div>
-                <div class="sectionContainer"><h2 id="nextLevel"><a href="#nextLevel">#</a>THE NEXT LEVEL</h2></div><!--Conclusion-->
+            </div>
+            <div id="cpLessonContainer" class="lessonContainer">
+                <section class="sectionContainer">
+                    <div class="contentBackdrop">
+                        <h2 id="part1"><a href="#part1">#</a>1. Telling a Computer What To Do</h2>
+                        <p>Programming is a very interesting concept, essentially at it's core it's telling a computer what to do, the only issue is that it will do exactly what you tell it to do! It's a fantastic skill, that can help you make anything from video games, to budgeting software, and even bots that surf the web to help get you camping reservations!</p>
+                        <p>But to a beginner, programming can be very confusing, so confusing you don't know where to start! I felt that way too, when I first began programming at the age of 12. Luckily, unlike me at age 12, today you'll be learning how to program in an established programming language, one that was meant to be programmed in using an IDE (which is computer software that helps you program and checks for errors), not an undocumented scripting language from a 1999 video game, that I programmed in using notepad.</p>
+                        <p>So to begin you on your programming journey, today you'll be learning one of the first programming languages I formally learned: Processing!</p>
+                        <p>What's processing? Well, you'll find out in the next section.</p>
+                    </div>
+                </section>
+                <section class="sectionContainer">
+                    <div class="contentBackdrop">
+                        <h2 id="part2"><a href="#part2">#</a>2. Intro to Processing</h2>
+                        <p>Processing is a Java Based programming langauge, created for a unique purpose.</p>
+                        <p>What makes it so special?</p>
+                        <p>As stated on it's <a href="https://processing.org/overview">overview page</a>:</p>
+                        <p><q>From the beginning, Processing was designed to be as simple as possible for beginners... The same elements taught in a beginning high school or university computer science class are taught through Processing, but with a different emphasis. With its focus on creating visual, interactive media, students new to programming find it satisfying to make something appear on their screen within moments of using the software.</q></p>
+                        <p>From that we know that Processing is a great langauge to start on, but as an experienced Java programmer, I can tell you that everything you learn here will help you to learn a language like java too! The overlap between the two is huge, it's just processing has prebuilt code to make certain things take less time to type in.</p>
+                        <p>On the flip side, Processing has some real world application too! It's the primary language for <a href="https://www.arduino.cc/en/software">programming Arduino Microcontrollers</a>, which are basically a programmable electron chip, that can control or interact with electonic devices and parts. But you'll learn about that more in the next lesson!</p>
+                        <p>Just know that what you learn about programming here will carry on to countless things in the future!</p>
+                        <p>Sounds great right? Yes it does! Go download Processing now <a href="https://processing.org/">here on their website</a> so we can continue your computer programming journey!</p>
+                    </div>
+                </section>
+                <!-- <section class="sectionContainer">
+                    <div class="contentBackdrop">
+                        <h2 id="part3"><a href="#part3">#</a>3. Your First Program</h2>
+                    </div>
+                </section>
+                <section class="sectionContainer">
+                    <div class="contentBackdrop">
+                        <h2 id="part4"><a href="#part4">#</a>4. Variables</h2>
+                    </div>
+                </section>
+                <section class="sectionContainer">
+                    <div class="contentBackdrop">
+                        <h2 id="part5"><a href="#part5">#</a>5. Boolean Logic</h2>
+                    </div>
+                </section>
+                <section class="sectionContainer">
+                    <div class="contentBackdrop">
+                        <h2 id="part6"><a href="#part6">#</a>6. Loops</h2>
+                    </div>
+                </section>
+                <section class="sectionContainer">
+                    <div class="contentBackdrop">
+                        <h2 id="part7"><a href="#part7">#</a>7. Functions / Methods</h2>
+                    </div>
+                </section>
+                <section class="sectionContainer">
+                    <div class="contentBackdrop">
+                        <h2 id="part8"><a href="#part8">#</a>8. Drawing With Processing</h2>
+                    </div>
+                </section> -->
+                <!--     <div class="sectionContainer"><h2 id="part9"><a href="#part9">#</a>9. Drawing With Processing</h2>
+                    </div> -->
+                <!--     <div class="sectionContainer"><h2 id="part10"><a href="#part10">#</a>10. Drawing With Processing</h2>
+                    </div> -->
+                <!--     <div class="sectionContainer"><h2 id="part11"><a href="#part11">#</a>11. Drawing With Processing</h2>
+                    </div> -->
+                <section class="sectionContainer">
+                    <div class="contentBackdrop">
+                        <h2 id="comingSoon"><a href="#comingSoon">#</a>COMING SOON!</h2>
+                        <li>Your First Program</li>
+                        <li>Variables</li>
+                        <li>Boolean Logic</li>
+                        <li>Loops</li>
+                        <li>Functions / Methods</li>
+                        <li>Drawing With Processing</li>
+                        <li>Key Presses</li>
+                        <li>Other Programming Langauges</li>
+                        <!-- <li>Your First Arduino Circuit On <a href="https://www.tinkercad.com/circuits">TinkerCad</a></li> -->
+                    </div>
+                </section>
+                <section class="sectionContainer">
+                    <div class="contentBackdrop">
+                        <h2 id="conclusion"><a href="#conclusion">#</a>CONGRATULATIONS!!!</h2>
+                    </div>
+                </section>
+                <section class="ee sectionContainer">
+                    <div class="contentBackdrop">
+                        <h2 id="nextLevel"><a href="#nextLevel">#</a>THE NEXT LEVEL</h2>
+                        <p>Now that you have a better idea of how to tell a computer to do something, next you'll learn how telling a computer to do something works!</p>
+                        <p>Click the link below to get started!</p>
+                        <div class="lessonCard eeCard">
+                            <a href="lesson2_ee.html" class="cardHeaderLink">
+                                <div class="cardHeader">
+                                    <h2 class="cardHtext1">Electronic</h2>
+                                    <img class="cardHico" src="images/ee_icon.svg" alt="">
+                                    <h2 class="cardHtext2">Circuits</h2>
+                                </div>
+                            </a>
+                            <img src="images/ee_hero.webp" class="hpCardImg" alt="Electronic Components Warping Into The Center Of Lightning">
+                            <p>Learn how we harness electricity to get things done. Simulate your first circuit! And learn how Arduino bridges the gap between programmers and the real world!</p>
+                        </div>
+                    </div>
+                </section><!--Conclusion-->
             </div>
         </div>
     </main>
     <footer>
         <div id="leftFooter"></div>
         <div id="centerFooter">
-            <p>DIY Anything - Bryce Pavlakos - 2022</p>
-            <p><a href="site-plan.html">Site Plan</a></p>
+            <p>DIY Anything - Bryce Pavlakos - &copy; 2022 - <a href="site-plan.html">Site Plan</a></p>
         </div>
         <div id="rightFooter"></div>
     </footer>

@@ -183,6 +183,13 @@ function evalCB(checkBoxIn){
 
 let quickLinks = document.getElementsByClassName("quickLink");
 let chapterHeaderList = document.getElementsByClassName("sectionContainer");
+//toolbox page patch
+let dlHeaderList = document.getElementsByClassName("dlsectionContainer");
+if(dlHeaderList != null){
+    if(dlHeaderList.length >= 1){
+        chapterHeaderList = dlHeaderList;
+    }
+}
 let currentChapter = 0;
 let lastPos = [];
 let maxChapter = chapterHeaderList.length;
