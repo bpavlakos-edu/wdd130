@@ -1,0 +1,131 @@
+<!--Wiki Chase Generator Created By Bryce P-->
+<!--Warning! The Live-Server extension will reset the page when a JSON File is loaded! For the correct experience, open the HTML in your browser directly instead!-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wiki-Chase Generator</title>
+    <link rel="stylesheet" href="styles/styles_wiki.css">
+    <script src="scripts/script_wiki.js" defer></script> <!--Use the defer tag-->
+</head>
+<body id="chaseGeneratorRoot">
+    <header>
+        <h1 id="mainTitle">Wiki-Chase Generator</h1>
+    </header>
+    <!--About-->
+    <div id="aboutContainer">
+        <h2>What is a Wiki-Chase?</h2>
+        <p>A wiki chase is a game you can play using any wiki-style website. 
+            You start by picking a wiki article to start from, then you pick an article (or topic) to reach. 
+            You race to the second article from the first, using only the hyperlinks found in the article itself, or any articles it links to. 
+            You repeat this process until you finally reach your target article. You can continue your chase by picking another article to reach, starting from where you finished.
+            Still confused? Read the <a href="https://en.wikipedia.org/wiki/Wikipedia:Wikirace" target="_blank">Wikipedia article on Wikiraces</a> for ideas on how to play!
+        </p>
+        <h2>How do I win?</h2>
+        <p>There are many ways to win a wiki-chase, and it all depends on what you decide winning is. Some people choose a winner based on speed alone, while others might choose the winner based on who can reach the finish with the least amount of articles in between. Choose the goal you like the most!</p>
+        <h2>What is this tool for?</h2>
+        <p>Picking an article requires thinking, and no one wants to think while playing a game! So use this tool to choose pages for you at random, you can even share your list with someone else! Pretty neat right?</p>
+
+    </div>
+    <div id="topContainerSplitter" class="hideDeco">
+        <div id="topContainer" class="hideDeco">
+            <!-- Generation Settings-->
+            <div id="settingsContainer">
+                <!--Root URL Controls-->
+                <label for="rootUrlBox">Root Wiki URL:</label>
+                <input type="text" value="en.wikipedia.org" id="rootUrlBox" name="rUrlIn">
+                <!--Subpage Controller-->
+                <label for="apiPathBox">Wiki API Path (Typically "w","wiki", or blank):</label>
+                <input type="text" value="w" id="apiPathBox" name="apiIn">
+                <!--Random Page Number Controller-->
+                <label for="ranNumBox">Number of Pages:</label>
+                <input type="number" value="5" id="ranNumBox" name="rNumIn" min="2" max="500">
+                <!--Namespace dropdown menu-->
+                <label for="namespaceDropdown">Page Type:</label>
+                <!--Docs page: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select-->
+                <select id="namespaceDropdown" name="rNsMenu">
+                    <option value="0">Articles</option>
+                    <option value="1">Talk Pages</option>
+                    <option value="2">User Pages</option>
+                    <option value="3">User Talk Pages</option>
+                    <option value="*">Any Page</option>
+                </select>
+                <!--Generate button-->
+                <button id="genBtn">Generate</button>
+            </div>
+            <!--Import / Export section-->
+            <div id="shareContainer">
+                <p>Chasing is more fun with friends, share this list with someone and let the race begin!</p>
+                <button class="fileBtn" id="inBtn">Import</button>
+                <button class="fileBtn" id="outBtn">Export</button>
+                <br>
+                <!-- Credit for JSON file Handling: https://stackoverflow.com/questions/36127648/uploading-a-json-file-and-using-it -->
+                <!-- File input type from https://stackoverflow.com/a/36198572 , accept parameter from https://stackoverflow.com/a/56062650 -->
+                <label for="filePicker" id="fpLabel">fp</label>
+                <input type="file" id="filePicker" accept="application/json">
+            </div>
+        </div>
+        <!--Show the last API call for the user-->
+        <!--<div id="lastApiContainer">
+            <p>Last api call: <a href="#" target="_blank">None</a></p>
+        </div>-->
+    </div>
+    <!--Chase Page List-->
+    <div id="chaseContainer">
+        <!-- Ordered List https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ol -->
+        <ol id="pageListRoot">
+            <li id="emptyItem">Looks like nothing is here yet! Press the "Generate" button start the chase!</li>
+            <li id="errorItem" class="hidden">There was an error!</li>
+        </ol>
+    </div>
+    <!--Officially Tested Wiki List-->
+    <div id="supportedContainer">
+        <h2>Confirmed Compatible Wiki Urls:</h2>
+        <div id="supportedList" class="hideDeco">
+            <h3>/w/ Api Path:</h3>
+            <ul>
+                <li>*any*.wikipedia.org/w/api.php</li>
+                <li>*any*.wikibooks.org/w/api.php</li>
+                <li>www.mediawiki.org/w/api.php</li>
+                <li>wiki.blender.org/w/api.php</li>
+                <li>biosector01.com/w/api.php</li>
+                <li>bulbapedia.bulbagarden.net/w/api.php</li>
+            </ul>
+            <h3>/wiki/ Api Path:</h3>
+            <ul>
+                <li>wiki.inkscape.org/wiki/api.php</li>
+            </ul>
+            <h3>Custom Api Path:</h3>
+            <ul>
+                <li>*any*.fandom.com/api.php</li>
+            </ul>
+        </div>
+        <h2>Wiki Urls with Errors:</h2>
+        <div id="unsupportedList" class="hideDeco">
+            <h3>CORS Header URL Mismatch:</h3>
+            <ul>
+                <li>wiki.audacityteam.org/w/api.php</li>
+            </ul>
+            <h3>Doesn't Use the MediaWiki API:</h3>
+            <ul>
+                <li>wiki.openttd.org</li>
+            </ul>
+        </div>
+        <p>Any website powered by the <a href="https://www.mediawiki.org/wiki/MediaWiki" target="_blank">mediawiki.org api</a> should work, as long as it supports Special:Random, and doesn't have any errors!</p>
+        <p>
+            Need ideas?
+            <br>Visit <a href="https://www.mediawiki.org/wiki/Sites_using_MediaWiki/en" target="_blank">this MediaWiki article</a>, it's a list of nearly every external English website using the MediaWiki API!
+            <br>Visit <a href="https://meta.wikimedia.org/wiki/List_of_Wikimedia_projects_by_size" target="_blank">this Wikimedia article</a> for a list of the largest official Wikimedia projects!
+            <br><br>
+            <u><b>Warning!</b></u><br>
+            The results of this program are completely random! I don't have a way to filter them, nor can a predict what it will choose. So if something nasty appears in the list, please just generate a new one!
+        </p>
+    </div>
+    <footer>
+        <p>This tool was created by Bryce Pavlakos &copy; 2023</p>
+        <p>Visit <a href="index.html" target="_blank">My Website here</a> for more cool things!</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,233 @@
+/*Wiki Chase Generator, created by Bryce P*/
+
+/*Goal: Match wikipedia's CSS as much as possible, or even pull it's CSS completley*/
+
+/*Main root settings*/
+html{
+    /*Background like the one on my personal website*/
+    background-image: repeating-linear-gradient(0deg, #ffffff -12px, #555 25px 15px, #EEE 25px 35px);
+    background-size: 50px 50px;
+    /* background-repeat: both; */
+    animation: bgMove 4s linear infinite;
+    animation-fill-mode: both;
+    font-size: 22px;
+    background-attachment: fixed; /*Fixed Parallax Effect*/
+}
+
+/*Animation*/
+
+@keyframes bgMove{
+    0% {
+        background-position-y: 0px;
+        background-position-x: 0px;
+    }
+    
+    100% {
+        background-position-y: -50px; /*Needs to match tile size*/
+        background-position-x: 50px; /*Needs to match tile size*/
+    }
+}
+
+/*Global styles*/
+
+/*text settings*/
+button, input, select {
+    font-size: 0.9rem;
+    align-self: center;
+    max-width: 50%;
+    margin: 5px;
+}
+
+/*Default div*/
+/*div{
+    padding: 10px;
+    margin: 10px 0;
+    /* box-shadow: 0px 0px 15px black;  */ /*test*/
+/*}*/
+
+/*Shared box shadow*/
+div, h1#mainTitle, footer{
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 15px;
+    background-color: #ffffffd5; 
+    /* box-shadow: inset 0px 0px 10px 0px black; */
+    box-shadow: 0px 0px 10px 0px black;
+    /* backdrop-filter: drop-shadow(0px 0px 1px black); */
+}
+
+/*For Divs to disable the global setting*/
+div.hideDeco{
+    background-color: initial;
+    box-shadow: initial;
+    padding: initial;
+    margin: initial;
+}
+
+
+/*Main body and all children (using cascading)*/
+body#chaseGeneratorRoot{
+    /*background: repeating-linear-gradient(0deg, #f00 0%, #0f0 50%, #00f 100%);*/
+    font-family: 'Segoe UI', Tahoma, "Geneva", Verdana, sans-serif; 
+    /*Page size control*/
+    max-width: 1100px;
+    text-align: center;
+    /* margin: 15px auto 0px auto; */
+    margin: 15px auto;
+    padding: 15px;
+    /*Background color and border*/
+    border-radius: 25px;
+    background-color: #ffffff47;
+    backdrop-filter: blur(5px) drop-shadow(0px 0px 5px black);
+    border: 5px solid rgba(255, 255, 255, 0.308);
+}
+
+/*Header Titles*/
+h1,h2,h3,h4,h5{
+    font-family: 'Times New Roman', Times, serif;
+    margin: 10px 0px;
+}
+
+/*Main title*/
+
+h1#mainTitle {
+    /* border: 15px double #49494959; */ /*Test*/
+    /* box-shadow: 0px 0px 15px black; */ /*Test*/
+    /*Merged with div*/
+    /* backdrop-filter: blur(5px) drop-shadow(0px 0px 5px black); 
+    border-radius: 15px; 
+    box-shadow: inset 0px 0px 10px 0px black; */
+    text-decoration: 2px underline;
+}
+
+/*Top Container (Contains Settings and Import/Export)*/
+div#topContainer{
+    /*Top container display settings*/
+    display: flex;
+    flex-direction: row;
+    gap: 2.5%;
+}
+
+/*Settings container*/
+div#settingsContainer{
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 70%;/*Flex Size Control*/
+}
+
+/*Import Export / Share Container*/
+div#shareContainer{
+    /*border: 2px #ffffff; /*Placeholder*/
+    flex: 1 1 20%;/*Flex Size Control*/
+}
+
+
+/*Hidden placeholder text (and error)*/
+li#emptyItem.hidden, li#errorItem.hidden{
+    display: none;
+}
+/*Override the placeholder text list style*/
+li#emptyItem, li#errorItem{
+    list-style-type: none;
+}
+/*Error message*/
+li#errorItem{
+    color:red;
+}
+
+/* ~~~~~~~~~ PAGE CHASE CONTAINER ~~~~~~~~~~~~~ */
+#chaseContainer{
+    border: 5px solid lightskyblue;
+    transition: 300ms 0s height;
+    min-height: 8rem;
+    max-height: max-content;
+    padding: 1rem 2rem;
+    /* text-align: left; */
+}
+
+ol#pageListRoot li a, a{
+    color: blue;
+    text-decoration: none;
+}
+
+ol#pageListRoot li a:hover, a:hover{
+    color: blue;
+    text-decoration: underline;
+}
+
+/*Ordered list*/
+ol#pageListRoot{
+    display: inline-block;
+    text-align: left;
+}
+
+/*Start and finish selectors*/
+
+/*First link selector (excluding the placeholder)*/
+/*Has selector: https://css-tricks.com/almanac/selectors/h/has/ */
+
+/*Somehow: #pageListRoot li:not(li#emptyItem):first-of-type
+means: #pageListRoot li:first-of-type exclude if li#emptyItem is true
+That makes it exclude the only element that meets the first-of-type condition
+*/
+
+/*
+Credit for solution to selection problem, by using the sibling selector instead:
+https://css-tricks.com/almanac/selectors/f/first-of-type/#comment-1754803 
+*/
+/*First item*/
+/* #pageListRoot li#emptyItem + li{ */
+#pageListRoot li#emptyItem + li#errorItem + li{
+list-style-type: none;
+    /*Debugging*/
+    /* border: 2px solid red; */
+}
+/*Text before first page*/
+/* #pageListRoot li#emptyItem + li::marker{ */
+#pageListRoot li#emptyItem + li#errorItem + li::marker{
+content: "Start: ";/*Add Text*/
+    font-weight: bold;/*More emphasis*/
+    /*Debugging*/
+    /* border: 2px solid red; */
+}
+
+/*The last item*/
+#pageListRoot li:last-child:not(li#emptyItem):not(li#errorItem){
+    list-style-type: none;
+    /*Debugging*/
+    /* border: 2px solid red; */
+}
+
+#pageListRoot li:last-child:not(li#emptyItem):not(li#errorItem)::marker{
+    content: "Finish: ";/*Add Text*/
+    font-weight: bold;/*More emphasis*/
+    /*Debugging*/
+    /* border: 2px solid red; */
+}
+
+/*Supported List and Unsupported list*/
+#supportedList li, #unsupportedList li{
+    list-style-type: none;
+}
+
+/*Test selector*/
+/*#pageListRoot li:not(li#emptyItem){
+    border: 2px solid pink;
+}*/
+
+/*File upload button*/
+#filePicker,#fpLabel{
+    display: none; /*Hide it! It's just there to be triggered by the import button*/
+}
+
+#aboutContainer p{
+    margin: 10px;
+    text-align: left;
+}
+
+/*Media query*/
+@media screen and (max-width : 800px) {
+    div#topContainer{
+        display: block;
+    }
+}
